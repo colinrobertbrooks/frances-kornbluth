@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Art | Kornbluth </title>
+    <link rel="shortcut icon" href="/images/collection/summers_vocabulary_1.jpg">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="css/bootstrap_overrides.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/lib/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/lib/d3.min.js"></script>
+    <script src="js/art.js"></script>
+    
+  </head>
+
+  <body>
+    <!-- nav -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Site name and mobile toggle -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/index.html" class="navbar-brand"><img id="navSignature" src="/svg/kornbluth_signature_white.svg" alt="Kornbluth signature"></div></a>
+        <!-- Site map -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <!-- Home section -->
+            <li><a href="/index.html"> Home </a></li>
+            <!-- Art section -->
+            <li class="active"><a href="/art.html"> Art <span class="sr-only">(current)</span></a></li>
+            <!-- Artist section -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Artist <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/biography.html">Biography</a></li>
+                <li><a href="/statement.html">Statement</a></li>
+                <li><a href="/resume.html">Resume</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- /nav -->
+
+    <!-- content -->
+    <div class="container text-center dark-color-text">
+      <h1 id="art-header">Art</h4>
+      <p id="note">Click an image for more informaiton</p>
+      <hr id="art-hr">
+      <div class="art-gallery">
+        <ul id="art-gallery-ul" class="row">
+        </ul>
+      </div>
+      <div>
+        <div id="art-btn-counter">
+          <p class="light-color-text"></p>
+        </div>
+        <button id="more-art-btn" type="button" class="btn btn-default btn-sm" onclick="addArtToGallery()" title="Click to load more pieces">Load More</button>
+      </div>
+      <hr>
+    </div>
+    <!-- /content -->
+
+    <!-- footer-->
+    <footer class="footer text-center">
+        <ul class="dark-color-text">
+          <li><a href="/index.html">Home</a></li>
+          <li class="footer-pipe light-color-text">|</li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        <p id="crc" class="small light-color-text">Site designed and developed by <a class="light-color-text"href="mailto:colinrcummings@gmail.com" title="Email Colin">Colin Cummings</a></p>
+    </footer>
+    <!-- /footer -->
+
+    <!-- modal -->
+    <div class="modal fade" id="artModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="text-center"></h4>
+          </div>
+          <div class="modal-body">
+            <a class="custom-carousel carousel-control left" href="#" onclick="prevArt()"><i class="glyphicon glyphicon-chevron-left"></i></a>
+            <div id="art-img-container"></div>
+            <a class="custom-carousel carousel-control right" href="#" onclick="nextArt()"><i class="glyphicon glyphicon-chevron-right"></i></a>
+          </div>
+          <div class="modal-footer">
+            <p id="modal-footer-top" class="text-center"></p>
+            <p id="modal-footer-bottom" class="text-center"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /modal -->
+  </body>
+</html>

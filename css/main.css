@@ -1,0 +1,192 @@
+/* Global Formatting  */
+body {
+  padding-top: 50px;
+}
+
+
+/* Color Template Formatting  */
+.dark-color-text {
+  color: #323a45;
+} 
+.dark-color-text a:link,
+.dark-color-text a:hover,
+.dark-color-text a:visited,
+.dark-color-text a:active {
+  color: #323a45;
+}
+.light-color-text {
+  color: #4b5563;
+}
+.light-color-text a:link,
+.light-color-text a:hover,
+.light-color-text a:visited,
+.light-color-text a:active {
+  color: #4b5563;
+}
+
+
+/* Signature SVG Formatting */
+#navSignature {
+  margin: 0px;
+  height: 25px;
+
+}
+@media (min-width: 500px) {
+  #navSignature {
+    margin: -8px 0px 0px 0px;
+    height: 40px;
+  }
+}
+
+
+/* Art Note Formatting */
+#art-header {
+  margin-bottom: 0px
+}
+#art-hr {
+  margin-top: 0px
+}
+#note {
+  color: white;
+  font-style: italic;
+}
+
+
+/* Art Gallery Formatting */
+.art-gallery ul {         
+  padding: 0px;
+  margin: 0px;
+}
+.art-gallery ul li {     
+  list-style:none;
+  margin-bottom:10px;           
+}
+.art-gallery ul li img {
+  cursor: pointer;
+}
+.thumbnail-height {
+    display: block;
+    overflow: hidden;
+    background-size: cover;
+    height: 75px;
+    margin: 0 auto;
+}
+@media (min-width: 400px) {
+  .thumbnail-height {
+    height: 100px;
+  }
+}
+@media (min-width: 500px) {
+  .thumbnail-height {
+    height: 150px;
+  }
+}
+@media (min-width: 768px) {
+  .thumbnail-height {
+    height: 140px;
+  }
+}
+@media (min-width: 992px) {
+  .thumbnail-height {
+    height: 150px;
+  }
+}
+@media (min-width: 1200px) {
+  .thumbnail-height {
+    height: 175px;
+  }
+}
+
+
+/* Art Modal Formatting */
+.modal {
+  margin-top: 50px;
+}
+.modal-header h4 {
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.custom-carousel.carousel-control.left:link,
+.custom-carousel.carousel-control.left:visited,
+.custom-carousel.carousel-control.right:link,
+.custom-carousel.carousel-control.right:visited {
+  background-image:none;
+  color: #a2a2a2;
+}
+.custom-carousel.carousel-control.left:hover,
+.custom-carousel.carousel-control.right:hover {
+  color: #323a45;
+}
+.custom-carousel.carousel-control.left:active,
+.custom-carousel.carousel-control.right:active {
+  color: #a2a2a2;
+}
+#modal-img {
+  margin: 0 auto;
+  max-width: 80%;
+}
+.modal-footer {
+  margin: 0px;
+  padding: 0px;
+}
+@media screen and (max-width: 500px) {
+  .modal-footer {
+    font-size: 10px;
+  }
+}
+@media screen and (max-height: 400px) {
+  .modal-footer {
+    display: none !important;
+  }
+}
+#modal-footer-top {
+  margin: 10px 0px 0px 0px;
+  padding: 0px;
+}
+#modal-footer-bottom {
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+}
+
+
+/* Art Button Formatting */
+#art-btn-counter {
+  margin-top: 20px;
+  font-size: 12px;
+  font-style: italic;
+}
+#more-art-btn {
+  background-color: white;
+}
+#more-art-btn:hover {
+  color: white;
+  background-color: #323a45;
+}
+#more-art-btn:active {
+  color: white;
+  background-color: #a2a2a2;
+}
+#more-art-btn:focus {
+  outline:0;
+}
+
+
+/* Footer Formatting  */
+.footer ul {
+  margin-top: -10px;
+  padding: 0;
+}
+.footer li {
+  display: inline;
+}
+.footer-pipe {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#crc {
+  margin-bottom: 40px;
+}
+
+
+
+
