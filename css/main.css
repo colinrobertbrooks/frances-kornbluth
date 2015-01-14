@@ -186,7 +186,10 @@ body {
   background-color: white;
   outline:0;
 }
-
+.btn-filtered {
+  background-color: #a2a2a2;
+  color: white;
+}
 
 /* Footer Formatting  */
 .footer ul {

@@ -6,6 +6,7 @@ $(window).on("orientationchange", updateModalSize()); //need to test on a mobile
 //crossfilter objects
 var artCollectionCrossFilter;
 
+
 //crossfilter filters (currently 13; max of 32)
 var artMediumFilter;
 var artStatusFilter;
@@ -20,6 +21,7 @@ var tagRepresentationalFilter;
 var tagSeascapeFilter;
 var tagStillLifeFilter;
 var tagTondoFilter;
+
 
 //crossfilter accessors
 var artMediumAccessor = function(d) {
@@ -110,6 +112,9 @@ function filterArtMedium (selectedMedium) {
   d3.select('#medium-btn').text(selectedMedium + " ");
   d3.select('#medium-btn').append('span')
     .attr('class', 'caret');
+  //make button grey
+  d3.select('#medium-btn')
+    .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
   //remove all images from gallery
   d3.select('#art-gallery-ul')
     .selectAll('li')
@@ -132,6 +137,9 @@ function filterArtTag (selectedTag) {
   d3.select('#tag-btn').text(selectedTag + " ");
   d3.select('#tag-btn').append('span')
     .attr('class', 'caret');
+  //make button grey
+  d3.select('#tag-btn')
+    .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
   //remove all images from gallery
   d3.select('#art-gallery-ul')
     .selectAll('li')
@@ -203,6 +211,9 @@ function filterArtAvailability (selectedAvailability) {
   d3.select('#availability-btn').text(selectedAvailability + " ");
   d3.select('#availability-btn').append('span')
     .attr('class', 'caret');
+  //make button grey
+  d3.select('#availability-btn')
+    .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
   //remove all images from gallery
   d3.select('#art-gallery-ul')
     .selectAll('li')
@@ -223,18 +234,20 @@ function resetAllFilters() {
   artMediumFilter.filterAll();
   artStatusFilter.filterAll();    
   resetAllTagFilters();
-  //reset medium dropdown
-  d3.select('#medium-btn').text("Medium ");
-  d3.select('#medium-btn').append('span')
+  //vars for button resets
+  var buttons = ['#medium-btn', '#tag-btn', '#availability-btn'];
+  var buttonsText = ['Medium ', 'Tag ', 'Availability '];
+  //reset dropdown text
+  for (var i = buttons.length - 1; i >= 0; i--) {
+  d3.select(buttons[i]).text(buttonsText[i]);
+  d3.select(buttons[i]).append('span')
     .attr('class', 'caret');
-  //reset tag dropdown
-  d3.select('#tag-btn').text("Tag ");
-  d3.select('#tag-btn').append('span')
-    .attr('class', 'caret');
-  //reset availability dropdown
-  d3.select('#availability-btn').text("Availability ");
-  d3.select('#availability-btn').append('span')
-    .attr('class', 'caret');
+  }
+  //reset button color
+  for (var i = buttons.length - 1; i >= 0; i--) {
+    d3.select(buttons[i])
+      .attr('class', 'btn btn-default btn-sm dropdown-toggle');
+  }
   //remove all images from gallery
   d3.select('#art-gallery-ul')
     .selectAll('li')
