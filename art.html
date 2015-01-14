@@ -57,13 +57,30 @@
       <h1 id="art-header">Art</h4>
       <p id="note">Click an image for more informaiton</p>
       <hr id="art-hr">
+      <div class="btn-group">
+        <button type="button" id="medium-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Select Medium <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#" onclick="filterArtMedium('Acrylic')">Acrylic</a></li>
+          <li><a href="#" onclick="filterArtMedium('Collage')">Collage</a></li>
+          <li><a href="#" onclick="filterArtMedium('Ink')">Ink</a></li>
+          <li><a href="#" onclick="filterArtMedium('Mixed media')">Mixed Media</a></li>
+          <li><a href="#" onclick="filterArtMedium('Oil')">Oil</a></li>
+          <li><a href="#" onclick="filterArtMedium('Pastel')">Pastel</a></li>
+          <li><a href="#" onclick="filterArtMedium('Watercolor')">Watercolor</a></li>
+        </ul>
+      </div>
+      <button id="reset-btn" type="button" class="btn btn-default btn-sm" onclick="resetAllFilters()" title="Click reset selection" >Reset</button>
+      <hr id="art-hr">
       <div class="art-gallery">
         <ul id="art-gallery-ul" class="row">
         </ul>
       </div>
       <div>
         <div id="art-btn-counter">
-          <p class="light-color-text"></p>
+          <p id="art-btn-counter-top" class="light-color-text"></p>
+          <p id="art-btn-counter-bottom" class="light-color-text"></p>
         </div>
         <button id="more-art-btn" type="button" class="btn btn-default btn-sm" onclick="addArtToGallery()" title="Click to load more pieces">Load More</button>
       </div>

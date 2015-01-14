@@ -155,18 +155,34 @@ body {
   font-size: 12px;
   font-style: italic;
 }
+#art-btn-counter p{
+  margin: 0px 0px 5px 0px;
+  padding: 0px;
+}
+#medium-btn {
+  margin: -10px 0px 10px 0px;
+}
+#reset-btn {
+  margin: -10px 0px 10px 0px;
+}
 #more-art-btn {
-  background-color: white;
+  margin: 0 auto;
 }
+#medium-btn:hover,
+#reset-btn:hover,
 #more-art-btn:hover {
-  color: white;
-  background-color: #323a45;
-}
-#more-art-btn:active {
   color: white;
   background-color: #a2a2a2;
 }
+#reset-btn:active,
+#more-art-btn:active {
+  color: white;
+  background-color: #323a45;
+}
+#medium-btn:focus,
+#reset-btn:focus;
 #more-art-btn:focus {
+  background-color: white;
   outline:0;
 }
 
