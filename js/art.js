@@ -4,7 +4,6 @@ $(window).on("orientationchange", updateModalSize()); //need to test on a mobile
 
 
 //global vars
-var artCollection; //collection object
 var collectionLength; //length of collection object
 var artDisplayed; //count of pieces displayed in gallery
 var artRemaining; //count of pieces not displayed in gallery
@@ -13,10 +12,24 @@ var nextArtAddIndex; //index of the next piece to be loaded in the collection ob
 var currentArtImgIndex; //index of modal piece in collection object
 
 
-//load collection object, set global vars and add first 8 pieces to gallary
+//crossfilter vars
+var artCollectionCrossFilter; //collection CrossFilter object
+var artMediumFilter; //filters to which you add .filter() or .filterAll()
+var artMediumAccessor = function(d) { //accessor for artMediumFilter
+  return d.filterMedium;
+};
+//artMediumFilter.top(Infinity);   //everything in the artCollectionCrossfilter object
+//artMediumFilter.filter('Oil');   //filter to a medium
+//artMediumFilter.filterAll();     //clear filter
+
+
+//load collection object, set global & crossfilter vars and add first 8 pieces to gallary
 d3.csv('/data/artCollection.csv', function(data) {
-  artCollection = data;
-  collectionLength = artCollection.length;
+  //crossfilter vars
+  artCollectionCrossFilter = crossfilter(data);
+  artMediumFilter = artCollectionCrossFilter.dimension(artMediumAccessor);
+  //global vars
+  collectionLength = artCollectionCrossFilter.size();
   artDisplayed = 0;
   artRemaining = collectionLength;
   countArtAdds = 0;
@@ -28,6 +41,7 @@ d3.csv('/data/artCollection.csv', function(data) {
 
 //helper functions
 function addArtToGallery () {
+  var artCollection = artMediumFilter.top(Infinity);
   var artAdded = 0;
   //contingency in case the Load More Art button isn't removed correctly
   if(artDisplayed === collectionLength) {
@@ -109,6 +123,7 @@ function logGalleryStats (artAdded) {
 
 function updateModalHTML (elementID) {
   //html vars
+  var artCollection = artMediumFilter.top(Infinity);
   var artTitle = artCollection[elementID].title;       
   var artPath = artCollection[elementID].directory + artCollection[elementID].file;     
   var artMedium = artCollection[elementID].medium;

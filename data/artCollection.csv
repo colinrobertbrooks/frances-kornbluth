@@ -1,12 +1,12 @@
-index,directory,file,title,year,medium,dimensions,collection
-0,images/collection/,the_rush_of_summer.jpg,The Rush of Summer,,Oil on linen,"48 x 39.5""",Colin Cummings
-1,images/collection/,summers_vocabulary_1.jpg,Summer's Vocabulary #1,,Oil on linen,"45 x 43""",Colin Cummings
-2,images/collection/,november.jpg,November,,Oil on canvas,"41.5 x 35.5""",Colin Cummings
-3,images/collection/,red_rock_green_sea.jpg,"Red Rock, Green Sea",,Oil on board,"37 x 22.5""",Colin Cummings
-4,images/collection/,still_life.jpg,Still Life,,Oil on canvas,finished size unavailable,Colin Cummings
-5,images/collection/,requiem_for_charles.jpg, Requiem for Charles,,Oil on Linen,"49 x 47""",unknown
-6,images/collection/,pink_fog_diptych.jpg,Pink Fog Diptych,,Acrylic on paper,"20.2 x 20"" each",unknown
-7,images/collection/,ocean_ligtht_from_whitehead.jpg,Ocean Light from Whitehead,,Watercolor on Paper," 9.5 x 6""",unknown
-8,images/collection/,surf_and_fog.jpg,Surf and Fog,,Mixed media on paper,"11 x 16""",unknown
-9,images/collection/,at_whitehead_3.jpg,At Whitehead #3,,Mixed media on paper,finished size unavailable,unknown
-9,images/collection/,interior_with_daffodils.jpg,Interior with Daffodils,,Collage,"17.5 x 10.25""",unknown
+directory,file,title,year,medium,dimensions,collection,filterMedium
+images/collection/,the_rush_of_summer.jpg,The Rush of Summer,,Oil on linen,"48 x 39.5""",Colin Cummings,Oil
+images/collection/,summers_vocabulary_1.jpg,Summer's Vocabulary #1,,Oil on linen,"45 x 43""",Colin Cummings,Oil
+images/collection/,november.jpg,November,,Oil on canvas,"41.5 x 35.5""",Colin Cummings,Oil
+images/collection/,red_rock_green_sea.jpg,"Red Rock, Green Sea",,Oil on board,"37 x 22.5""",Colin Cummings,Oil
+images/collection/,still_life.jpg,Still Life,,Oil on canvas,finished size unavailable,Colin Cummings,Oil
+images/collection/,requiem_for_charles.jpg, Requiem for Charles,,Oil on Linen,"49 x 47""",unknown,Oil
+images/collection/,pink_fog_diptych.jpg,Pink Fog Diptych,,Acrylic on paper,"20.2 x 20"" each",unknown,Acrylic
+images/collection/,ocean_ligtht_from_whitehead.jpg,Ocean Light from Whitehead,,Watercolor on Paper," 9.5 x 6""",unknown,Watercolor
+images/collection/,surf_and_fog.jpg,Surf and Fog,,Mixed media on paper,"11 x 16""",unknown,Mixed media
+images/collection/,at_whitehead_3.jpg,At Whitehead #3,,Mixed media on paper,finished size unavailable,unknown,Mixed media
+images/collection/,interior_with_daffodils.jpg,Interior with Daffodils,,Collage,"17.5 x 10.25""",unknown,Collage
