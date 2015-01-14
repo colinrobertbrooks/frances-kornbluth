@@ -3,15 +3,63 @@ window.onresize = updateModalSize();
 $(window).on("orientationchange", updateModalSize()); //need to test on a mobile device
 
 
-//crossfilter vars
-var artCollectionCrossFilter; //collection CrossFilter object
+//crossfilter objects
+var artCollectionCrossFilter;
+
+//crossfilter filters (currently 13; max of 32)
 var artMediumFilter;
-var artCollectionFilter;
+var artStatusFilter;
+var tagAbstractFilter;
+var tagBlackAndWhiteFilter;
+var tagFigureFilter;
+var tagLandscapeFilter;
+var tagLetterFilter;
+var tagMonheganFilter;
+var tagPathFilter;
+var tagRepresentationalFilter;
+var tagSeascapeFilter;
+var tagStillLifeFilter;
+var tagTondoFilter;
+
+//crossfilter accessors
 var artMediumAccessor = function(d) {
   return d.filterMedium;
 };
-var artCollectionAccessor = function(d) {
-  return d.collection;
+var artStatusAccessor = function(d) {
+  return d.filterStatus;
+};
+var abstractAccessor = function(d) {
+  return d.tagAbstract;
+};
+var blackAndWhiteAccessor = function(d) {
+  return d.tagBlackAndWhite;
+};
+var figureAccessor = function(d) {
+  return d.tagFigure;
+};
+var landscapeAccessor = function(d) {
+  return d.tagLandscape;
+};
+var letterAccessor = function(d) {
+  return d.tagLetter;
+};
+var monheganAccessor = function(d) {
+  return d.tagMonhegan;
+};
+var pathAccessor = function(d) {
+  return d.tagPath;
+};
+var representationalAccessor = function(d) {
+  return d.tagRepresentational;
+};
+var seascapeAccessor = function(d) {
+  return d.tagSeascape;
+};
+var stillLifeAccessor = function(d) {
+  return d.tagStillLife;
+};
+var tondoAccessor = function(d) {
+  return d.tagTondo;
 };
 
 
@@ -27,12 +75,22 @@ var currentArtImgIndex; //index of modal piece in collection object
 
 //load collection object, set global & crossfilter vars and add first 8 pieces to gallary
 d3.csv('/data/artCollection.csv', function(data) {
-  //crossfilter vars
+  //update crossfilter vars
   artCollectionCrossFilter = crossfilter(data);
   artMediumFilter = artCollectionCrossFilter.dimension(artMediumAccessor);
-  artCollectionFilter = artCollectionCrossFilter.dimension(artCollectionAccessor);
+  artStatusFilter = artCollectionCrossFilter.dimension(artStatusAccessor);
+  tagAbstractFilter = artCollectionCrossFilter.dimension(abstractAccessor);
+  tagBlackAndWhiteFilter = artCollectionCrossFilter.dimension(blackAndWhiteAccessor);
+  tagFigureFilter = artCollectionCrossFilter.dimension(figureAccessor);
+  tagLandscapeFilter = artCollectionCrossFilter.dimension(landscapeAccessor);
+  tagLetterFilter = artCollectionCrossFilter.dimension(letterAccessor);
+  tagMonheganFilter = artCollectionCrossFilter.dimension(monheganAccessor);
+  tagPathFilter = artCollectionCrossFilter.dimension(pathAccessor);
+  tagRepresentationalFilter = artCollectionCrossFilter.dimension(representationalAccessor);
+  tagSeascapeFilter = artCollectionCrossFilter.dimension(seascapeAccessor);
+  tagStillLifeFilter = artCollectionCrossFilter.dimension(stillLifeAccessor);
+  tagTondoFilter = artCollectionCrossFilter.dimension(tondoAccessor);
   //setup gallery
-  artCollectionFilter.filter("Colin Cummings");
   resetAllFilters()
   showNote();
 });
@@ -45,11 +103,11 @@ function snapshotCollection () {
 }
 
 
-function filterArtMedium (filterName) {
+function filterArtMedium (selectedMedium) {
   //clear medium crossfilter
   artMediumFilter.filterAll();   
   //update dropdown button text
-  d3.select('#medium-btn').text(filterName + " ");
+  d3.select('#medium-btn').text(selectedMedium + " ");
   d3.select('#medium-btn').append('span')
     .attr('class', 'caret');
   //remove all images from gallery
@@ -57,7 +115,100 @@ function filterArtMedium (filterName) {
     .selectAll('li')
     .remove();
   //apply crossfilter
-  artMediumFilter.filter(filterName); 
+  artMediumFilter.filter(selectedMedium); 
+  //reset gallery
+  snapshotCollection();
+  artDisplayed = 0;
+  artRemaining = currentLength;
+  nextArtAddIndex = 0;
+  addArtToGallery();
+}
+
+
+function filterArtTag (selectedTag) {
+  //clear crossfilters
+  resetAllTagFilters();
+  //update dropdown button text
+  d3.select('#tag-btn').text(selectedTag + " ");
+  d3.select('#tag-btn').append('span')
+    .attr('class', 'caret');
+  //remove all images from gallery
+  d3.select('#art-gallery-ul')
+    .selectAll('li')
+    .remove();
+  //apply crossfilter
+    switch(selectedTag) {
+    case 'Abstract':
+        tagAbstractFilter.filter('x');
+        break;
+    case 'Black and White':
+        tagBlackAndWhiteFilter.filter('x');
+        break;
+    case 'Figure':
+        tagFigureFilter.filter('x');
+        break;
+    case 'Landscape':
+        tagLandscapeFilter.filter('x');
+        break;
+    case 'Letter':
+        tagLetterFilter.filter('x');
+        break;
+    case 'Monhegan':
+        tagMonheganFilter.filter('x');
+        break;
+    case 'Path':
+        tagPathFilter.filter('x');
+        break;
+    case 'Representational':
+        tagRepresentationalFilter.filter('x');
+        break;
+    case 'Seascape':
+        tagSeascapeFilter.filter('x');
+        break;
+    case 'Still Life':
+        tagStillLifeFilter.filter('x');
+        break;
+    case 'Tondo':
+        tagTondoFilter.filter('x');
+        break;
+  } 
+  //reset gallery
+  snapshotCollection();
+  artDisplayed = 0;
+  artRemaining = currentLength;
+  nextArtAddIndex = 0;
+  addArtToGallery();
+}
+
+
+function resetAllTagFilters () {
+  tagAbstractFilter.filterAll();
+  tagBlackAndWhiteFilter.filterAll();
+  tagFigureFilter.filterAll();
+  tagLandscapeFilter.filterAll();
+  tagLetterFilter.filterAll();
+  tagMonheganFilter.filterAll();
+  tagPathFilter.filterAll();
+  tagRepresentationalFilter.filterAll();
+  tagSeascapeFilter.filterAll();
+  tagStillLifeFilter.filterAll();
+  tagTondoFilter.filterAll();
+}
+
+
+function filterArtAvailability (selectedAvailability) {
+  //clear crossfilters
+  artStatusFilter.filterAll();  
+  //update dropdown button text
+  d3.select('#availability-btn').text(selectedAvailability + " ");
+  d3.select('#availability-btn').append('span')
+    .attr('class', 'caret');
+  //remove all images from gallery
+  d3.select('#art-gallery-ul')
+    .selectAll('li')
+    .remove();
+  //apply crossfilter
+  artStatusFilter.filter(selectedAvailability);
   //reset gallery
   snapshotCollection();
   artDisplayed = 0;
@@ -69,11 +220,20 @@ function filterArtMedium (filterName) {
 
 function resetAllFilters() {
   //clear all crossfilters
-  artMediumFilter.filterAll();   
-  artCollectionFilter.filterAll();
+  artMediumFilter.filterAll();
+  artStatusFilter.filterAll();    
+  resetAllTagFilters();
   //reset medium dropdown
-  d3.select('#medium-btn').text("Select Medium ");
+  d3.select('#medium-btn').text("Medium ");
   d3.select('#medium-btn').append('span')
+    .attr('class', 'caret');
+  //reset tag dropdown
+  d3.select('#tag-btn').text("Tag ");
+  d3.select('#tag-btn').append('span')
+    .attr('class', 'caret');
+  //reset availability dropdown
+  d3.select('#availability-btn').text("Availability ");
+  d3.select('#availability-btn').append('span')
     .attr('class', 'caret');
   //remove all images from gallery
   d3.select('#art-gallery-ul')
@@ -132,6 +292,8 @@ function addArtToGallery () {
   countArtAdds++;
   artDisplayed = artDisplayed + artAdded;
   artRemaining = currentLength - artDisplayed;
+  logGalleryStats(artAdded);
+  //update art counter
   if (currentLength === collectionLength) {
     d3.select('#art-btn-counter-top').text(artDisplayed + " of " + currentLength 
       + " pieces displayed");
@@ -146,7 +308,6 @@ function addArtToGallery () {
         collectionLength + " pieces match the selected criteria)");
     }
   }
-  logGalleryStats(artAdded);
   //remove Load More button if artRemaining is 0
   if(artRemaining === 0){
       d3.select('#more-art-btn').style('display','none');
@@ -189,7 +350,13 @@ function updateModalHTML (elementID) {
   var artPath = artCollection[elementID].directory + artCollection[elementID].file;     
   var artMedium = artCollection[elementID].medium;
   var artDimensions = artCollection[elementID].dimensions;
-  var artCollector = artCollection[elementID].collection;
+  var artStatus = artCollection[elementID].filterStatus;
+  var artStatusDisplay;
+    if (artStatus === "Available") {
+      artStatusDisplay = "Available: " + artCollection[elementID].seller;
+    } else {
+      artStatusDisplay = "Collection " + artCollection[elementID].ownership;
+    }
   //update modal html
   d3.select('.modal-header h4').text(artTitle);
   d3.select('#modal-img').remove();
@@ -199,7 +366,7 @@ function updateModalHTML (elementID) {
     .attr('class', 'img-responsive')
     .attr('src', artPath);
   d3.select('#modal-footer-top').text(artMedium + ', ' + artDimensions);
-  d3.select('#modal-footer-bottom').text('Collection ' + artCollector);
+  d3.select('#modal-footer-bottom').text(artStatusDisplay);
 }
 
 

@@ -59,17 +59,45 @@
       <hr id="art-hr">
       <div class="btn-group">
         <button type="button" id="medium-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          Select Medium <span class="caret"></span>
+          Medium <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#" onclick="filterArtMedium('Acrylic')">Acrylic</a></li>
           <li><a href="#" onclick="filterArtMedium('Collage')">Collage</a></li>
+          <li><a href="#" onclick="filterArtMedium('Construction')">Construction</a></li>
           <li><a href="#" onclick="filterArtMedium('Ink')">Ink</a></li>
           <li><a href="#" onclick="filterArtMedium('Mixed media')">Mixed Media</a></li>
           <li><a href="#" onclick="filterArtMedium('Monotype')">Monotype</a></li>
           <li><a href="#" onclick="filterArtMedium('Oil')">Oil</a></li>
           <li><a href="#" onclick="filterArtMedium('Pastel')">Pastel</a></li>
           <li><a href="#" onclick="filterArtMedium('Watercolor')">Watercolor</a></li>
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button type="button" id="tag-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Tag <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#" onclick="filterArtTag('Abstract')">Abstract</a></li>
+          <li><a href="#" onclick="filterArtTag('Black and White')">Black and White</a></li>
+          <li><a href="#" onclick="filterArtTag('Figure')">Figure</a></li>
+          <li><a href="#" onclick="filterArtTag('Landscape')">Landscape</a></li>
+          <li><a href="#" onclick="filterArtTag('Letter')">Letter</a></li>
+          <li><a href="#" onclick="filterArtTag('Monhegan')">Monhegan</a></li>
+          <li><a href="#" onclick="filterArtTag('Path')">Path</a></li>
+          <li><a href="#" onclick="filterArtTag('Representational')">Representational</a></li>
+          <li><a href="#" onclick="filterArtTag('Seascape')">Seascape</a></li>
+          <li><a href="#" onclick="filterArtTag('Still Life')">Still Life</a></li>
+          <li><a href="#" onclick="filterArtTag('Tondo')">Tondo</a></li>
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button type="button" id="availability-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Availability <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#" onclick="filterArtAvailability('Available')">Available</a></li>
+          <li><a href="#" onclick="filterArtAvailability('Not Available')">Not Available</a></li>
         </ul>
       </div>
       <button id="reset-btn" type="button" class="btn btn-default btn-sm" onclick="resetAllFilters()" title="Click reset selection" >Reset</button>

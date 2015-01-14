@@ -159,12 +159,13 @@ body {
   margin: 0px 0px 5px 0px;
   padding: 0px;
 }
-#medium-btn {
+#medium-btn,
+#reset-btn,
+#tag-btn,
+#availability-btn {
   margin: -10px 0px 10px 0px;
 }
-#reset-btn {
-  margin: -10px 0px 10px 0px;
-}
+
 #more-art-btn {
   margin: 0 auto;
 }
