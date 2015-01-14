@@ -138,7 +138,7 @@ function addArtToGallery () {
   } else {
     if (artDisplayed === 0) {
       d3.select('#art-btn-counter-top').text("No pieces match the selected criteria.");
-      d3.select('#art-btn-counter-bottom').text('');
+      d3.select('#art-btn-counter-bottom').text('(' + collectionLength + " pieces in the collection)");
     } else {
       d3.select('#art-btn-counter-top').text("Displaying " + artDisplayed + " pieces");
       d3.select('#art-btn-counter-bottom').text("(" + currentLength + " of " + 
