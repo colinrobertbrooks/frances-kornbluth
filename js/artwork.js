@@ -2,10 +2,17 @@
 window.onresize = updateModalSize();
 $(window).on("orientationchange", updateModalSize()); //need to test on a mobile device
 
+//global vars
+var collectionLength; //the length of the entire collection object
+var currentLength; //the length of the filtered collection object
+var countArtAdds = 0; //count of how many times the addArtToGalleryFunction has run
+var artDisplayed = 0; //count of pieces displayed in gallery
+var artRemaining = 0; //count of pieces not displayed in gallery
+var nextArtAddIndex = 0; //index of the next piece to be loaded into the gallery
+var currentArtImgIndex; //index of modal piece in collection object
 
 //crossfilter objects
 var artCollectionCrossFilter;
-
 
 //crossfilter filters (currently 13; max of 32)
 var artMediumFilter;
@@ -21,7 +28,6 @@ var tagRepresentationalFilter;
 var tagSeascapeFilter;
 var tagStillLifeFilter;
 var tagTondoFilter;
-
 
 //crossfilter accessors
 var artMediumAccessor = function(d) {
@@ -65,16 +71,6 @@ var tondoAccessor = function(d) {
 };
 
 
-//global vars
-var collectionLength; //the length of the entire collection object
-var currentLength; //the length of the filtered collection object
-var countArtAdds = 0; //count of how many times the addArtToGalleryFunction has run
-var artDisplayed = 0; //count of pieces displayed in gallery
-var artRemaining = 0; //count of pieces not displayed in gallery
-var nextArtAddIndex = 0; //index of the next piece to be loaded into the gallery
-var currentArtImgIndex; //index of modal piece in collection object
-
-
 //load collection object, set global & crossfilter vars and add first 8 pieces to gallary
 d3.csv('/data/artCollection.csv', function(data) {
   //update crossfilter vars
@@ -98,13 +94,7 @@ d3.csv('/data/artCollection.csv', function(data) {
 });
 
 
-//helper functions
-function snapshotCollection () {
-  collectionLength = artCollectionCrossFilter.size();
-  currentLength = artMediumFilter.top(Infinity).length;
-}
-
-
+//filter functions
 function filterArtMedium (selectedMedium) {
   //clear medium crossfilter
   artMediumFilter.filterAll();   
@@ -128,7 +118,6 @@ function filterArtMedium (selectedMedium) {
   nextArtAddIndex = 0;
   addArtToGallery();
 }
-
 
 function filterArtTag (selectedTag) {
   //clear crossfilters
@@ -188,7 +177,6 @@ function filterArtTag (selectedTag) {
   addArtToGallery();
 }
 
-
 function resetAllTagFilters () {
   tagAbstractFilter.filterAll();
   tagBlackAndWhiteFilter.filterAll();
@@ -202,7 +190,6 @@ function resetAllTagFilters () {
   tagStillLifeFilter.filterAll();
   tagTondoFilter.filterAll();
 }
-
 
 function filterArtAvailability (selectedAvailability) {
   //clear crossfilters
@@ -227,7 +214,6 @@ function filterArtAvailability (selectedAvailability) {
   nextArtAddIndex = 0;
   addArtToGallery();
 }
-
 
 function resetAllFilters() {
   //clear all crossfilters
@@ -263,9 +249,10 @@ function resetAllFilters() {
 }
 
 
+//gallery functions
 function addArtToGallery () {
   var artAdded = 0;
-  var artCollection = artMediumFilter.top(Infinity);
+  var artCollection = artMediumFilter.top(Infinity); 
   if (artRemaining <= 8) {
     for (var i= artRemaining; i > 0; i--) {
       var path = artCollection[nextArtAddIndex].directory + artCollection[nextArtAddIndex].file;
@@ -338,7 +325,7 @@ function logGalleryStats (artAdded) {
 
 }
 
-
+//modal functions
 function showArtModal (elementID) {
   //update global vars
   currentArtImgIndex = Number(elementID);
@@ -348,7 +335,6 @@ function showArtModal (elementID) {
   //show modal
   $('#artModal').modal();
 }
-
 
 function updateModalHTML (elementID) {
   //html vars
@@ -382,7 +368,6 @@ function updateModalHTML (elementID) {
   d3.select('#modal-footer-bottom').text(artStatusDisplay);
 }
 
-
 function updateModalSize () {
   var currentScreenHeight = $( window ).height();
   var modalContentMaxHeight = currentScreenHeight * .82;
@@ -390,7 +375,6 @@ function updateModalSize () {
   $('.modal-content').css('max-height', modalContentMaxHeight);
   $('#modal-img').css('max-height', modalImgMaxHeight);
 }
-
 
 function prevArt () {
   //update global vars
@@ -403,7 +387,6 @@ function prevArt () {
   updateModalHTML(currentArtImgIndex);
   updateModalSize();
 }
-
 
 function nextArt () {
   //update global vars
@@ -418,6 +401,12 @@ function nextArt () {
 }
 
 
+//helper functions
+function snapshotCollection () {
+  collectionLength = artCollectionCrossFilter.size();
+  currentLength = artMediumFilter.top(Infinity).length;
+}
+
 function showNote () {
   d3.selectAll("#note")
     .transition()
@@ -425,7 +414,6 @@ function showNote () {
     .style("color", "rgb(162,162,162)");
   setInterval(function () {hideNote();}, 1200);
 }
-
 
 function hideNote () {
   d3.selectAll("#note")
