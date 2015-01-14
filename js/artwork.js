@@ -32,6 +32,7 @@ d3.csv('/data/artCollection.csv', function(data) {
   artMediumFilter = artCollectionCrossFilter.dimension(artMediumAccessor);
   artCollectionFilter = artCollectionCrossFilter.dimension(artCollectionAccessor);
   //setup gallery
+  artCollectionFilter.filter("Colin Cummings");
   resetAllFilters()
   showNote();
 });
@@ -178,7 +179,13 @@ function showArtModal (elementID) {
 function updateModalHTML (elementID) {
   //html vars
   var artCollection = artMediumFilter.top(Infinity);
-  var artTitle = artCollection[elementID].title;       
+  var artYear = artCollection[elementID].year;
+  var artTitle 
+    if (artYear != "") {
+      artTitle = artCollection[elementID].title + " (" + artYear + ")";
+    } else {
+      artTitle = artCollection[elementID].title;
+    }     
   var artPath = artCollection[elementID].directory + artCollection[elementID].file;     
   var artMedium = artCollection[elementID].medium;
   var artDimensions = artCollection[elementID].dimensions;
