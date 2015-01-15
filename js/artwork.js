@@ -2,16 +2,18 @@
 window.onresize = updateModalSize();
 $(window).on("orientationchange", updateModalSize()); //need to test on a mobile device
 
-//global vars
-var randomizeCollection = 0; //randomize collection if value is 1; default is 0
+//global configs
+var randomizeCollection = 0; //controlled by randomizeConfig() with a default of non-random
 var artAddBatchSize = 12; //count of pieces to be added per instance of addArtToGalleryFunction
+
+//global vars
 var collectionLength; //the length of the entire collection object
 var currentCollection; //a snapshot of the filtered collection object
 var currentLength; //the length of the filtered collection object
-var countArtAdds = 0; //count of how many times the addArtToGalleryFunction has run
-var artDisplayed = 0; //count of pieces displayed in gallery
-var artRemaining = 0; //count of pieces not displayed in gallery
-var nextArtAddIndex = 0; //index of the next piece to be loaded into the gallery
+var countArtAdds; //count of how many times the addArtToGalleryFunction has run
+var artDisplayed; //count of pieces displayed in gallery
+var artRemaining; //count of pieces not displayed in gallery
+var nextArtAddIndex; //index of the next piece to be loaded into the gallery
 var currentArtImgIndex; //index of modal piece in collection object
 
 //crossfilter objects
@@ -321,7 +323,6 @@ function addArtToGallery () {
     } 
 }
 
-
 function logGalleryStats (artAdded) {
   console.log("###### Art Load #" + countArtAdds + " Stats ######");
   console.log("Pieces in collection object: " + collectionLength);
@@ -329,7 +330,6 @@ function logGalleryStats (artAdded) {
   console.log("Pieces currently being displayed:  " + artDisplayed);
   console.log("Pieces added to display in this load: " + artAdded);
   console.log("Pieces left to add to display: " + artRemaining);
-
 }
 
 //modal functions
