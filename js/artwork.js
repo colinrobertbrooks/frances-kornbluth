@@ -425,4 +425,13 @@ function hideNote () {
 }
 
 
-
+/////////////////////// 
+//////// TO DO //////// 
+/////////////////////// 
+// mobile solution fr filters 
+// add counts to dropdowns
+// trigger addArtToGallery if modal nextArt reaches end of loaded images 
+      //and more images remain in artRemaining
+// year dropdown or filter
+// search
+// collector function
