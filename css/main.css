@@ -24,7 +24,6 @@ body {
   color: #4b5563;
 }
 
-
 /* Signature SVG Formatting */
 #navSignature {
   margin: 0px;
@@ -39,7 +38,7 @@ body {
 }
 
 
-/* Art Note Formatting */
+/* Artwork Note Formatting */
 #art-header {
   margin-bottom: 0px
 }
@@ -52,7 +51,7 @@ body {
 }
 
 
-/* Art Gallery Formatting */
+/* Artwork Gallery Formatting */
 .art-gallery ul {         
   padding: 0px;
   margin: 0px;
@@ -98,7 +97,7 @@ body {
 }
 
 
-/* Art Modal Formatting */
+/* Artwork Modal Formatting */
 .modal {
   margin-top: 50px;
 }
@@ -149,7 +148,15 @@ body {
 }
 
 
-/* Art Button Formatting */
+/* Artwork Button Formatting */
+#random-checkbox {
+  margin: -5px 0px 5px 0px;
+  padding: 0px;
+  font-style: italic;
+}
+#more-art-btn {
+  margin: 0 auto;
+}
 #art-btn-counter {
   margin-top: 20px;
   font-size: 12px;
@@ -164,10 +171,6 @@ body {
 #tag-btn,
 #availability-btn {
   margin: -10px 0px 10px 0px;
-}
-
-#more-art-btn {
-  margin: 0 auto;
 }
 #medium-btn:hover,
 #reset-btn:hover,

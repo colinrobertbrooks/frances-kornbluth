@@ -3,7 +3,7 @@ window.onresize = updateModalSize();
 $(window).on("orientationchange", updateModalSize()); //need to test on a mobile device
 
 //global vars
-var randomizeCollection = 1; //randomize collection if value is 1
+var randomizeCollection = 0; //randomize collection if value is 1; default is 0
 var artAddBatchSize = 12; //count of pieces to be added per instance of addArtToGalleryFunction
 var collectionLength; //the length of the entire collection object
 var currentCollection; //a snapshot of the filtered collection object
@@ -421,6 +421,14 @@ function hideNote () {
     .transition()
     .duration(1900)
     .style("color", "rgb(255, 255, 255)");
+}
+
+function randomizeConfig () {
+  if (randomizeCollection === 0) {
+    randomizeCollection = 1;
+  } else {
+    randomizeCollection = 0;
+  }
 }
 
 function randomizeArray (array) {
