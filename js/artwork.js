@@ -6,6 +6,7 @@ $(window).on("orientationchange", updateModalSize()); //need to test on a mobile
 var randomizeCollection = 1; //randomize collection if value is 1
 var artAddBatchSize = 12; //count of pieces to be added per instance of addArtToGalleryFunction
 var collectionLength; //the length of the entire collection object
+var currentCollection; //a snapshot of the filtered collection object
 var currentLength; //the length of the filtered collection object
 var countArtAdds = 0; //count of how many times the addArtToGalleryFunction has run
 var artDisplayed = 0; //count of pieces displayed in gallery
@@ -96,6 +97,27 @@ d3.csv('/data/artCollection.csv', function(data) {
 });
 
 
+//collection functions
+function snapshotCollection () {
+  collectionLength = artCollectionCrossFilter.size();
+  currentLength = artMediumFilter.top(Infinity).length;
+  if (randomizeCollection === 1) {
+    currentCollection = artMediumFilter.top(Infinity);
+    currentCollection = randomizeArray(currentCollection);
+  } else {
+    currentCollection = artMediumFilter.top(Infinity);
+  }
+}
+
+function resetGallery () {
+  snapshotCollection();
+  artDisplayed = 0;
+  artRemaining = currentLength;
+  nextArtAddIndex = 0;
+  addArtToGallery();
+}
+
+
 //filter functions
 function filterArtMedium (selectedMedium) {
   //clear medium crossfilter
@@ -114,11 +136,7 @@ function filterArtMedium (selectedMedium) {
   //apply crossfilter
   artMediumFilter.filter(selectedMedium); 
   //reset gallery
-  snapshotCollection();
-  artDisplayed = 0;
-  artRemaining = currentLength;
-  nextArtAddIndex = 0;
-  addArtToGallery();
+  resetGallery();
 }
 
 function filterArtTag (selectedTag) {
@@ -136,7 +154,7 @@ function filterArtTag (selectedTag) {
     .selectAll('li')
     .remove();
   //apply crossfilter
-    switch(selectedTag) {
+  switch(selectedTag) {
     case 'Abstract':
         tagAbstractFilter.filter('x');
         break;
@@ -172,11 +190,7 @@ function filterArtTag (selectedTag) {
         break;
   } 
   //reset gallery
-  snapshotCollection();
-  artDisplayed = 0;
-  artRemaining = currentLength;
-  nextArtAddIndex = 0;
-  addArtToGallery();
+  resetGallery();
 }
 
 function resetAllTagFilters () {
@@ -210,11 +224,7 @@ function filterArtAvailability (selectedAvailability) {
   //apply crossfilter
   artStatusFilter.filter(selectedAvailability);
   //reset gallery
-  snapshotCollection();
-  artDisplayed = 0;
-  artRemaining = currentLength;
-  nextArtAddIndex = 0;
-  addArtToGallery();
+  resetGallery();
 }
 
 function resetAllFilters() {
@@ -243,21 +253,16 @@ function resetAllFilters() {
   //restore Load More button
   d3.select('#more-art-btn').style('display','block');
   //reset gallery
-  snapshotCollection();
-  artDisplayed = 0;
-  artRemaining = currentLength;
-  nextArtAddIndex = 0;
-  addArtToGallery();
+  resetGallery();
 }
 
 
 //gallery functions
 function addArtToGallery () {
   var artAdded = 0;
-  var artCollection = artMediumFilter.top(Infinity); 
   if (artRemaining <= artAddBatchSize) {
     for (var i= artRemaining; i > 0; i--) {
-      var path = artCollection[nextArtAddIndex].directory + artCollection[nextArtAddIndex].file;
+      var path = currentCollection[nextArtAddIndex].directory + currentCollection[nextArtAddIndex].file;
       d3.select('#art-gallery-ul')
         .append('li')
         .attr('id', 'li'+nextArtAddIndex)
@@ -267,14 +272,14 @@ function addArtToGallery () {
         .attr('id', nextArtAddIndex)
         .attr('class', 'img-thumbnail thumbnail-height')
         .attr('src', path)
-        .attr('title', artCollection[nextArtAddIndex].title)
+        .attr('title', currentCollection[nextArtAddIndex].title)
         .attr('onclick', 'showArtModal(this.id)');
       nextArtAddIndex++;
       artAdded++;
     }
   } else {
     for (var i = 0; i < artAddBatchSize ; i++) {
-      var path = artCollection[nextArtAddIndex].directory + artCollection[nextArtAddIndex].file;
+      var path = currentCollection[nextArtAddIndex].directory + currentCollection[nextArtAddIndex].file;
       d3.select('#art-gallery-ul')
         .append('li')
         .attr('id', 'li'+nextArtAddIndex)
@@ -284,7 +289,7 @@ function addArtToGallery () {
         .attr('id', nextArtAddIndex)
         .attr('class', 'img-thumbnail thumbnail-height')
         .attr('src', path)
-        .attr('title', artCollection[nextArtAddIndex].title)
+        .attr('title', currentCollection[nextArtAddIndex].title)
         .attr('onclick', 'showArtModal(this.id)');
       nextArtAddIndex++;
       artAdded++;
@@ -340,23 +345,22 @@ function showArtModal (elementID) {
 
 function updateModalHTML (elementID) {
   //html vars
-  var artCollection = artMediumFilter.top(Infinity);
-  var artYear = artCollection[elementID].year;
+  var artYear = currentCollection[elementID].year;
   var artTitle 
     if (artYear != "") {
-      artTitle = artCollection[elementID].title + " (" + artYear + ")";
+      artTitle = currentCollection[elementID].title + " (" + artYear + ")";
     } else {
-      artTitle = artCollection[elementID].title;
+      artTitle = currentCollection[elementID].title;
     }     
-  var artPath = artCollection[elementID].directory + artCollection[elementID].file;     
-  var artMedium = artCollection[elementID].medium;
-  var artDimensions = artCollection[elementID].dimensions;
-  var artStatus = artCollection[elementID].filterStatus;
+  var artPath = currentCollection[elementID].directory + currentCollection[elementID].file;     
+  var artMedium = currentCollection[elementID].medium;
+  var artDimensions = currentCollection[elementID].dimensions;
+  var artStatus = currentCollection[elementID].filterStatus;
   var artStatusDisplay;
     if (artStatus === "Available") {
-      artStatusDisplay = "Available: " + artCollection[elementID].seller;
+      artStatusDisplay = "Available: " + currentCollection[elementID].seller;
     } else {
-      artStatusDisplay = "Collection " + artCollection[elementID].ownership;
+      artStatusDisplay = "Collection " + currentCollection[elementID].ownership;
     }
   //update modal html
   d3.select('.modal-header h4').text(artTitle);
@@ -404,11 +408,6 @@ function nextArt () {
 
 
 //helper functions
-function snapshotCollection () {
-  collectionLength = artCollectionCrossFilter.size();
-  currentLength = artMediumFilter.top(Infinity).length;
-}
-
 function showNote () {
   d3.selectAll("#note")
     .transition()
@@ -422,6 +421,16 @@ function hideNote () {
     .transition()
     .duration(1900)
     .style("color", "rgb(255, 255, 255)");
+}
+
+function randomizeArray (array) {
+  for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+  return array;
 }
 
 
