@@ -3,6 +3,8 @@ window.onresize = updateModalSize();
 $(window).on("orientationchange", updateModalSize()); //need to test on a mobile device
 
 //global vars
+var randomizeCollection = 1; //randomize collection if value is 1
+var artAddBatchSize = 12; //count of pieces to be added per instance of addArtToGalleryFunction
 var collectionLength; //the length of the entire collection object
 var currentLength; //the length of the filtered collection object
 var countArtAdds = 0; //count of how many times the addArtToGalleryFunction has run
@@ -253,7 +255,7 @@ function resetAllFilters() {
 function addArtToGallery () {
   var artAdded = 0;
   var artCollection = artMediumFilter.top(Infinity); 
-  if (artRemaining <= 8) {
+  if (artRemaining <= artAddBatchSize) {
     for (var i= artRemaining; i > 0; i--) {
       var path = artCollection[nextArtAddIndex].directory + artCollection[nextArtAddIndex].file;
       d3.select('#art-gallery-ul')
@@ -271,7 +273,7 @@ function addArtToGallery () {
       artAdded++;
     }
   } else {
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < artAddBatchSize ; i++) {
       var path = artCollection[nextArtAddIndex].directory + artCollection[nextArtAddIndex].file;
       d3.select('#art-gallery-ul')
         .append('li')
