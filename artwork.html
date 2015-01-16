@@ -57,55 +57,79 @@
       <h1 id="art-header">Artwork</h4>
       <p id="note">Click an image for more informaiton</p>
       <hr id="art-hr">
-      <div class="btn-group">
-        <button type="button" id="medium-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Filter by medium" aria-expanded="false">
-          Medium <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#" onclick="filterArtMedium('Acrylic')">Acrylic</a></li>
-          <li><a href="#" onclick="filterArtMedium('Collage')">Collage</a></li>
-          <li><a href="#" onclick="filterArtMedium('Construction')">Construction</a></li>
-          <li><a href="#" onclick="filterArtMedium('Ink')">Ink</a></li>
-          <li><a href="#" onclick="filterArtMedium('Mixed media')">Mixed Media</a></li>
-          <li><a href="#" onclick="filterArtMedium('Monotype')">Monotype</a></li>
-          <li><a href="#" onclick="filterArtMedium('Oil')">Oil</a></li>
-          <li><a href="#" onclick="filterArtMedium('Pastel')">Pastel</a></li>
-          <li><a href="#" onclick="filterArtMedium('Watercolor')">Watercolor</a></li>
-        </ul>
+
+      <div class="row">
+        <div class="col-sm-3"></div>
+
+        <div class="col-sm-3 text-right">
+          <div id="title-search" class="input-group">
+            <input type="text" id="title-search-text" class="form-control form-sm" placeholder="Search by title...">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default btn-sm" onclick="filterArtTitle()">Search</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-sm-3 text-left">
+          <div class="btn-group">
+            <button type="button" id="medium-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Filter by medium" aria-expanded="false">
+              Medium <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#" onclick="filterArtMedium('Acrylic')">Acrylic</a></li>
+              <li><a href="#" onclick="filterArtMedium('Collage')">Collage</a></li>
+              <li><a href="#" onclick="filterArtMedium('Construction')">Construction</a></li>
+              <li><a href="#" onclick="filterArtMedium('Ink')">Ink</a></li>
+              <li><a href="#" onclick="filterArtMedium('Mixed media')">Mixed Media</a></li>
+              <li><a href="#" onclick="filterArtMedium('Monotype')">Monotype</a></li>
+              <li><a href="#" onclick="filterArtMedium('Oil')">Oil</a></li>
+              <li><a href="#" onclick="filterArtMedium('Pastel')">Pastel</a></li>
+              <li><a href="#" onclick="filterArtMedium('Watercolor')">Watercolor</a></li>
+            </ul>
+          </div>
+          <div class="btn-group">
+            <button type="button" id="tag-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Filter by tag" aria-expanded="false">
+              Tag <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#" onclick="filterArtTag('Abstract')">Abstract</a></li>
+              <li><a href="#" onclick="filterArtTag('Black and White')">Black and White</a></li>
+              <li><a href="#" onclick="filterArtTag('Figure')">Figure</a></li>
+              <li><a href="#" onclick="filterArtTag('Landscape')">Landscape</a></li>
+              <li><a href="#" onclick="filterArtTag('Letter')">Letter</a></li>
+              <li><a href="#" onclick="filterArtTag('Monhegan')">Monhegan</a></li>
+              <li><a href="#" onclick="filterArtTag('Path')">Path</a></li>
+              <li><a href="#" onclick="filterArtTag('Representational')">Representational</a></li>
+              <li><a href="#" onclick="filterArtTag('Seascape')">Seascape</a></li>
+              <li><a href="#" onclick="filterArtTag('Still Life')">Still Life</a></li>
+              <li><a href="#" onclick="filterArtTag('Tondo')">Tondo</a></li>
+            </ul>
+          </div>
+          <div class="btn-group">
+            <button type="button" id="availability-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"  title="Filter by availability" aria-expanded="false">
+              Availability <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#" onclick="filterArtAvailability('Available')">Available</a></li>
+              <li><a href="#" onclick="filterArtAvailability('Not Available')">Not Available</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-1"></div>
       </div>
-      <div class="btn-group">
-        <button type="button" id="tag-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Filter by tag" aria-expanded="false">
-          Tag <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#" onclick="filterArtTag('Abstract')">Abstract</a></li>
-          <li><a href="#" onclick="filterArtTag('Black and White')">Black and White</a></li>
-          <li><a href="#" onclick="filterArtTag('Figure')">Figure</a></li>
-          <li><a href="#" onclick="filterArtTag('Landscape')">Landscape</a></li>
-          <li><a href="#" onclick="filterArtTag('Letter')">Letter</a></li>
-          <li><a href="#" onclick="filterArtTag('Monhegan')">Monhegan</a></li>
-          <li><a href="#" onclick="filterArtTag('Path')">Path</a></li>
-          <li><a href="#" onclick="filterArtTag('Representational')">Representational</a></li>
-          <li><a href="#" onclick="filterArtTag('Seascape')">Seascape</a></li>
-          <li><a href="#" onclick="filterArtTag('Still Life')">Still Life</a></li>
-          <li><a href="#" onclick="filterArtTag('Tondo')">Tondo</a></li>
-        </ul>
+
+      <div class="row">
+        <div class="col-md-12">
+          <button id="reset-btn" type="button" class="btn btn-default btn-sm" onclick="resetAllFilters()" title="Click reset selection" >Reset</button>
+          <button id="mobile-btn" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#mobileInputModal">Mobile</button>
+          <div id="random-checkbox" class="checkbox">
+            <label class="text-muted">
+              <input type="checkbox" onclick="randomizeConfig()" checked>Randomize on reset
+            </label>
+          </div>
+        </div>
       </div>
-      <div class="btn-group">
-        <button type="button" id="availability-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"  title="Filter by availability" aria-expanded="false">
-          Availability <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#" onclick="filterArtAvailability('Available')">Available</a></li>
-          <li><a href="#" onclick="filterArtAvailability('Not Available')">Not Available</a></li>
-        </ul>
-      </div>
-      <button id="reset-btn" type="button" class="btn btn-default btn-sm" onclick="resetAllFilters()" title="Click reset selection" >Reset</button>
-      <div id="random-checkbox" class="checkbox">
-        <label class="text-muted">
-          <input type="checkbox" onclick="randomizeConfig()">Randomize on reset
-        </label>
-      </div>
+
       <hr id="art-hr">
       <div class="art-gallery">
         <ul id="art-gallery-ul" class="row">
@@ -149,6 +173,24 @@
           <div class="modal-footer">
             <p id="modal-footer-top" class="text-center"></p>
             <p id="modal-footer-bottom" class="text-center"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /modal -->
+
+    <!-- modal -->
+    <div class="modal fade" id="mobileInputModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="text-center">Configurations</h4>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+            
           </div>
         </div>
       </div>

@@ -149,8 +149,11 @@ body {
 
 
 /* Artwork Button Formatting */
+#reset-btn {
+  margin: 0px 0px 0px 0px;
+}
 #random-checkbox {
-  margin: -5px 0px 5px 0px;
+  margin: 5px 0px 5px 0px;
   padding: 0px;
   font-style: italic;
 }
@@ -166,11 +169,18 @@ body {
   margin: 0px 0px 5px 0px;
   padding: 0px;
 }
+#title-search,
 #medium-btn,
-#reset-btn,
 #tag-btn,
 #availability-btn {
   margin: -10px 0px 10px 0px;
+}
+.form-sm {
+  max-height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
 }
 #medium-btn:hover,
 #reset-btn:hover,

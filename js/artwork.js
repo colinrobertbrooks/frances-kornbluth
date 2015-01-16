@@ -3,7 +3,7 @@ window.onresize = updateModalSize(); //resizes the modal if the screen height ch
 $(window).on("orientationchange", updateModalSize()); //need to test on a mobile device
 
 //global configs
-var randomizeCollection = 0; //controlled by randomizeConfig() with a default of non-random
+var randomizeCollection = 1; //controlled by randomizeConfig() with a default of random
 var artAddBatchSize = 12; //count of pieces to be added per instance of addArtToGalleryFunction
 
 //global vars
@@ -16,14 +16,16 @@ var artRemaining; //count of pieces not displayed in gallery
 var nextArtAddIndex; //index of the next piece to be loaded into the gallery
 var currentArtImgIndex; //index of modal piece in collection object
 
-//crossfilter objects
+//crossfilter object
 var artCollectionCrossFilter;
 
-//crossfilter filters (currently 13; max of 32)
+//crossfilter filters (currently 14; max of 32)
+var artTitleFilter;
 var artMediumFilter;
 var artStatusFilter;
 var tagAbstractFilter;
 var tagBlackAndWhiteFilter;
+var tagDominicanRepublic
 var tagFigureFilter;
 var tagLandscapeFilter;
 var tagLetterFilter;
@@ -35,6 +37,9 @@ var tagStillLifeFilter;
 var tagTondoFilter;
 
 //crossfilter accessors
+var artTitleAccessor = function(d) {
+  return d.title;
+};
 var artMediumAccessor = function(d) {
   return d.filterMedium;
 };
@@ -80,6 +85,7 @@ var tondoAccessor = function(d) {
 d3.csv('/data/artCollection.csv', function(data) {
   //update crossfilter vars
   artCollectionCrossFilter = crossfilter(data);
+  artTitleFilter = artCollectionCrossFilter.dimension(artTitleAccessor);
   artMediumFilter = artCollectionCrossFilter.dimension(artMediumAccessor);
   artStatusFilter = artCollectionCrossFilter.dimension(artStatusAccessor);
   tagAbstractFilter = artCollectionCrossFilter.dimension(abstractAccessor);
@@ -111,16 +117,36 @@ function snapshotCollection () {
   }
 }
 
-function resetGallery () {
-  snapshotCollection();
-  artDisplayed = 0;
-  artRemaining = currentLength;
-  nextArtAddIndex = 0;
-  addArtToGallery();
-}
-
 
 //filter functions
+function filterArtTitle () {
+  var searchTitle = document.getElementById('title-search-text').value;
+  //clear title crossfilter
+  artTitleFilter.filterAll();  
+  //remove all images from gallery
+  removeArtFromGallery();
+  //apply crossfilter
+  artTitleFilter.filterFunction(function(d) {
+    pieceBeingSearched = d.toLowerCase();
+    searchTitle = searchTitle.toLowerCase();
+    if(pieceBeingSearched.search(searchTitle) > -1){
+      return pieceBeingSearched;
+    }
+  });
+  //reset gallery
+  resetGallery();
+}
+
+$(document).keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    var searchTitle = document.getElementById('title-search-text').value;
+    if(keycode == '13'){
+      if(searchTitle.length >= 1) {
+        filterArtTitle();
+      }
+    }
+});
+
 function filterArtMedium (selectedMedium) {
   //clear medium crossfilter
   artMediumFilter.filterAll();   
@@ -132,11 +158,27 @@ function filterArtMedium (selectedMedium) {
   d3.select('#medium-btn')
     .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
   //remove all images from gallery
-  d3.select('#art-gallery-ul')
-    .selectAll('li')
-    .remove();
+  removeArtFromGallery();
   //apply crossfilter
   artMediumFilter.filter(selectedMedium); 
+  //reset gallery
+  resetGallery();
+}
+
+function filterArtAvailability (selectedAvailability) {
+  //clear crossfilters
+  artStatusFilter.filterAll();  
+  //update dropdown button text
+  d3.select('#availability-btn').text(selectedAvailability + " ");
+  d3.select('#availability-btn').append('span')
+    .attr('class', 'caret');
+  //make button grey
+  d3.select('#availability-btn')
+    .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
+  //remove all images from gallery
+  removeArtFromGallery();
+  //apply crossfilter
+  artStatusFilter.filter(selectedAvailability);
   //reset gallery
   resetGallery();
 }
@@ -152,9 +194,7 @@ function filterArtTag (selectedTag) {
   d3.select('#tag-btn')
     .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
   //remove all images from gallery
-  d3.select('#art-gallery-ul')
-    .selectAll('li')
-    .remove();
+  removeArtFromGallery();
   //apply crossfilter
   switch(selectedTag) {
     case 'Abstract':
@@ -209,28 +249,9 @@ function resetAllTagFilters () {
   tagTondoFilter.filterAll();
 }
 
-function filterArtAvailability (selectedAvailability) {
-  //clear crossfilters
-  artStatusFilter.filterAll();  
-  //update dropdown button text
-  d3.select('#availability-btn').text(selectedAvailability + " ");
-  d3.select('#availability-btn').append('span')
-    .attr('class', 'caret');
-  //make button grey
-  d3.select('#availability-btn')
-    .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
-  //remove all images from gallery
-  d3.select('#art-gallery-ul')
-    .selectAll('li')
-    .remove();
-  //apply crossfilter
-  artStatusFilter.filter(selectedAvailability);
-  //reset gallery
-  resetGallery();
-}
-
 function resetAllFilters() {
   //clear all crossfilters
+  artTitleFilter.filterAll();
   artMediumFilter.filterAll();
   artStatusFilter.filterAll();    
   resetAllTagFilters();
@@ -249,9 +270,7 @@ function resetAllFilters() {
       .attr('class', 'btn btn-default btn-sm dropdown-toggle');
   }
   //remove all images from gallery
-  d3.select('#art-gallery-ul')
-    .selectAll('li')
-    .remove();
+  removeArtFromGallery();
   //restore Load More button
   d3.select('#more-art-btn').style('display','block');
   //reset gallery
@@ -323,6 +342,20 @@ function addArtToGallery () {
     } 
 }
 
+function removeArtFromGallery () {
+  d3.select('#art-gallery-ul')
+    .selectAll('li')
+    .remove();
+}
+
+function resetGallery () {
+  snapshotCollection();
+  artDisplayed = 0;
+  artRemaining = currentLength;
+  nextArtAddIndex = 0;
+  addArtToGallery();
+}
+
 function logGalleryStats (artAdded) {
   console.log("###### Art Load #" + countArtAdds + " Stats ######");
   console.log("Pieces in collection object: " + collectionLength);
@@ -331,6 +364,7 @@ function logGalleryStats (artAdded) {
   console.log("Pieces added to display in this load: " + artAdded);
   console.log("Pieces left to add to display: " + artRemaining);
 }
+
 
 //modal functions
 function showArtModal (elementID) {
@@ -457,11 +491,10 @@ function randomizeArray (array) {
 /////////////////////// 
 //////// TO DO //////// 
 /////////////////////// 
+// search
 // mobile solution fr filters 
-//refactor and abstract crossfilter stack
 //populate drop-down lists dynamically and add counts
 // trigger addArtToGallery if modal nextArt reaches end of loaded images 
       //and more images remain in artRemaining
-// year dropdown or filter
-// search
+// Decade dropdown
 // collector function
