@@ -19,13 +19,13 @@ var currentArtImgIndex; //index of modal piece in collection object
 //crossfilter object
 var artCollectionCrossFilter;
 
-//crossfilter filters (currently 14; max of 32)
+//crossfilter filters (currently 15; max of 32)
 var artTitleFilter;
 var artMediumFilter;
 var artStatusFilter;
 var tagAbstractFilter;
 var tagBlackAndWhiteFilter;
-var tagDominicanRepublic
+var tagDominicanRepublicFilter;
 var tagFigureFilter;
 var tagLandscapeFilter;
 var tagLetterFilter;
@@ -51,6 +51,9 @@ var abstractAccessor = function(d) {
 };
 var blackAndWhiteAccessor = function(d) {
   return d.tagBlackAndWhite;
+};
+var dominicanRepublicAccessor = function(d) {
+  return d.tagDominicanRepublic;
 };
 var figureAccessor = function(d) {
   return d.tagFigure;
@@ -90,6 +93,7 @@ d3.csv('/data/artCollection.csv', function(data) {
   artStatusFilter = artCollectionCrossFilter.dimension(artStatusAccessor);
   tagAbstractFilter = artCollectionCrossFilter.dimension(abstractAccessor);
   tagBlackAndWhiteFilter = artCollectionCrossFilter.dimension(blackAndWhiteAccessor);
+  tagDominicanRepublicFilter = artCollectionCrossFilter.dimension(dominicanRepublicAccessor);
   tagFigureFilter = artCollectionCrossFilter.dimension(figureAccessor);
   tagLandscapeFilter = artCollectionCrossFilter.dimension(landscapeAccessor);
   tagLetterFilter = artCollectionCrossFilter.dimension(letterAccessor);
@@ -203,6 +207,9 @@ function filterArtTag (selectedTag) {
     case 'Black and White':
         tagBlackAndWhiteFilter.filter('x');
         break;
+    case 'Dominican Republic':
+        tagDominicanRepublicFilter.filter('x');
+        break;
     case 'Figure':
         tagFigureFilter.filter('x');
         break;
@@ -238,6 +245,7 @@ function filterArtTag (selectedTag) {
 function resetAllTagFilters () {
   tagAbstractFilter.filterAll();
   tagBlackAndWhiteFilter.filterAll();
+  tagDominicanRepublicFilter.filterAll();
   tagFigureFilter.filterAll();
   tagLandscapeFilter.filterAll();
   tagLetterFilter.filterAll();
