@@ -365,16 +365,25 @@ function updateModalHTML (elementID) {
     .attr('class', 'img-responsive')
     .attr('src', artPath);
   d3.select('#modal-footer-top').text(artMedium + ', ' + artDimensions);
-    if (artStatus === "Available") {
-      d3.select('#modal-footer-bottom').text('Available: ');
-      d3.select('#modal-footer-bottom')
-        .append('a')
-        .attr('href', 'mailto:' + currentCollection[elementID].contact)
-        .attr('title', 'Email ' + currentCollection[elementID].seller)
-        .text(currentCollection[elementID].seller);
+  if (artStatus === "Available") {
+    var emailTitleMediumDimensions = artTitle + ' (' + artMedium + ', ' + artDimensions + ')';
+    var emailContacts;
+    if (currentCollection[elementID].contact === 'kornbluthart@gmail.com') {
+      emailContacts = currentCollection[elementID].contact;
     } else {
-      d3.select('#modal-footer-bottom').text("Collection " + currentCollection[elementID].ownership);
+      emailContacts = currentCollection[elementID].contact + '?cc=' + 'kornbluthart@gmail.com';
     }
+    d3.select('#modal-footer-bottom').text('Available: ');
+    d3.select('#modal-footer-bottom')
+      .append('a')
+      .attr('href', 'mailto:' + emailContacts + '&Subject=' + 'Inquiry: ' + emailTitleMediumDimensions + 
+        '&body=' + 'I am interested in ' + emailTitleMediumDimensions + 
+        ', which I found on franceskornbluth.com; please send more information.')
+      .attr('title', 'Click to email: ' + currentCollection[elementID].contact)
+      .text(currentCollection[elementID].seller);
+  } else {
+    d3.select('#modal-footer-bottom').text("Collection " + currentCollection[elementID].ownership);
+  }
 }
 
 function updateModalSize () {
