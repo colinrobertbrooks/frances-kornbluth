@@ -1,5 +1,5 @@
 //window events
-window.onresize = updateModalSize();
+window.onresize = updateModalSize(); //resizes the modal if the screen height changes
 $(window).on("orientationchange", updateModalSize()); //need to test on a mobile device
 
 //global configs
@@ -356,12 +356,6 @@ function updateModalHTML (elementID) {
   var artMedium = currentCollection[elementID].medium;
   var artDimensions = currentCollection[elementID].dimensions;
   var artStatus = currentCollection[elementID].filterStatus;
-  var artStatusDisplay;
-    if (artStatus === "Available") {
-      artStatusDisplay = "Available: " + currentCollection[elementID].seller;
-    } else {
-      artStatusDisplay = "Collection " + currentCollection[elementID].ownership;
-    }
   //update modal html
   d3.select('.modal-header h4').text(artTitle);
   d3.select('#modal-img').remove();
@@ -371,7 +365,16 @@ function updateModalHTML (elementID) {
     .attr('class', 'img-responsive')
     .attr('src', artPath);
   d3.select('#modal-footer-top').text(artMedium + ', ' + artDimensions);
-  d3.select('#modal-footer-bottom').text(artStatusDisplay);
+    if (artStatus === "Available") {
+      d3.select('#modal-footer-bottom').text('Available: ');
+      d3.select('#modal-footer-bottom')
+        .append('a')
+        .attr('href', 'mailto:' + currentCollection[elementID].contact)
+        .attr('title', 'Email ' + currentCollection[elementID].seller)
+        .text(currentCollection[elementID].seller);
+    } else {
+      d3.select('#modal-footer-bottom').text("Collection " + currentCollection[elementID].ownership);
+    }
 }
 
 function updateModalSize () {
@@ -446,7 +449,8 @@ function randomizeArray (array) {
 //////// TO DO //////// 
 /////////////////////// 
 // mobile solution fr filters 
-// add counts to dropdowns
+//refactor and abstract crossfilter stack
+//populate drop-down lists dynamically and add counts
 // trigger addArtToGallery if modal nextArt reaches end of loaded images 
       //and more images remain in artRemaining
 // year dropdown or filter
