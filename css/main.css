@@ -23,6 +23,10 @@ body {
 .light-color-text a:active {
   color: #4b5563;
 }
+.red-text {
+  color: red;
+}
+
 
 /* Signature SVG Formatting */
 #navSignature {
@@ -35,19 +39,6 @@ body {
     margin: -8px 0px 0px 0px;
     height: 40px;
   }
-}
-
-
-/* Artwork Note Formatting */
-#art-header {
-  margin-bottom: 0px
-}
-#art-hr {
-  margin-top: 0px
-}
-#note {
-  color: white;
-  font-style: italic;
 }
 
 
@@ -124,17 +115,17 @@ body {
   margin: 0 auto;
   max-width: 80%;
 }
-.modal-footer {
+#art-modal-footer {
   margin: 0px;
   padding: 0px;
 }
 @media screen and (max-width: 500px) {
-  .modal-footer {
+  #art-modal-footer {
     font-size: 10px;
   }
 }
 @media screen and (max-height: 400px) {
-  .modal-footer {
+  #art-modal-footer {
     display: none !important;
   }
 }
@@ -150,12 +141,22 @@ body {
 
 /* Artwork Button Formatting */
 #reset-btn {
-  margin: 0px 0px 0px 0px;
+  font-weight: bold;
+  color: #4b5563;
 }
 #random-checkbox {
-  margin: 5px 0px 5px 0px;
+  margin: 5px 0px -15px 0px;
   padding: 0px;
   font-style: italic;
+}
+#mobile-filters-btn {
+  margin: 0px;
+}
+#mobile-medium-btn,
+#mobile-decade-btn,
+#mobile-tag-btn,
+#mobile-availability-btn {
+  margin: 7px;
 }
 #more-art-btn {
   margin: 0 auto;
@@ -169,40 +170,43 @@ body {
   margin: 0px 0px 5px 0px;
   padding: 0px;
 }
-#title-search,
+#title-search-input {  
+  margin: -10px 0px 20px 0px;
+}
+#reset-btn,
 #medium-btn,
+#decade-btn,
 #tag-btn,
-#availability-btn {
-  margin: -10px 0px 10px 0px;
+#availability-btn,
+#mobile-filters-btn,
+#mobile-reset-btn {
+  margin: -10px 0px 0px 0px;
 }
-.form-sm {
-  max-height: 30px;
-  padding: 5px 10px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
-}
-#medium-btn:hover,
 #reset-btn:hover,
+#mobile-filters-btn:hover,
 #more-art-btn:hover {
   color: white;
   background-color: #a2a2a2;
 }
-#reset-btn:active,
-#more-art-btn:active {
-  color: white;
-  background-color: #323a45;
-}
-#medium-btn:focus,
-#reset-btn:focus;
+#reset-btn:focus,
 #more-art-btn:focus {
-  background-color: white;
-  outline:0;
+  background-color: #a2a2a2 !important;
+  color: white !important;
 }
 .btn-filtered {
   background-color: #a2a2a2;
   color: white;
 }
+
+
+/* Artwork Note Formatting */
+#note {
+  color: white;
+  font-style: italic;
+  margin: -15px 0px 5px 0px;
+  padding: 0px;
+}
+
 
 /* Footer Formatting  */
 .footer ul {

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Art | Kornbluth </title>
+    <title>Collection | Kornbluth </title>
     <link rel="shortcut icon" href="/images/collection/summers_vocabulary_1.jpg">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="css/bootstrap_overrides.css">
@@ -54,23 +54,21 @@
 
     <!-- content -->
     <div class="container text-center dark-color-text">
-      <h1 id="art-header">Artwork</h4>
-      <p id="note">Click an image for more informaiton</p>
+      <h1 id="art-header">Collection</h4>
       <hr id="art-hr">
 
       <div class="row">
-        <div class="col-sm-3"></div>
-
-        <div class="col-sm-3 text-right">
-          <div id="title-search" class="input-group">
-            <input type="text" id="title-search-text" class="form-control form-sm" placeholder="Search by title...">
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default btn-sm" onclick="filterArtTitle()">Search</button>
-            </span>
+        <div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
+        <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6 text-ceter">
+          <input type="text" id="title-search-input" class="form-control text-center" placeholder="Search collection by title..." title="Hit enter to submit">
           </div>
-        </div>
+        <div class="col-xs-1 col-sm-3 col-md-6 col-lg-3"></div>
+      </div>
 
-        <div class="col-sm-3 text-left">
+      <div class="row">
+        <div class="hidden-xs col-md-3 col-lg-3"></div>
+        <div class="hidden-xs col-sm-12 col-md-6 col-lg-6 text-ceter">
+
           <div class="btn-group">
             <button type="button" id="medium-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Filter by medium" aria-expanded="false">
               Medium <span class="caret"></span>
@@ -87,6 +85,24 @@
               <li><a href="#" onclick="filterArtMedium('Watercolor')">Watercolor</a></li>
             </ul>
           </div>
+
+           <div class="btn-group">
+            <button type="button" id="decade-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Filter by decade" aria-expanded="false">
+              Decade <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#" onclick="filterArtDecade('1940s')">1940s</a></li>
+              <li><a href="#" onclick="filterArtDecade('1950s')">1950s</a></li>
+              <li><a href="#" onclick="filterArtDecade('1960s')">1960s</a></li>
+              <li><a href="#" onclick="filterArtDecade('1970s')">1970s</a></li>
+              <li><a href="#" onclick="filterArtDecade('1980s')">1980s</a></li>
+              <li><a href="#" onclick="filterArtDecade('1990s')">1990s</a></li>
+              <li><a href="#" onclick="filterArtDecade('2000s')">2000s</a></li>
+              <li><a href="#" onclick="filterArtDecade('2010s')">2010s</a></li>
+              <li><a href="#" onclick="filterArtDecade('Unknown')">Unknown</a></li>
+            </ul>
+          </div>
+
           <div class="btn-group">
             <button type="button" id="tag-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="Filter by tag" aria-expanded="false">
               Tag <span class="caret"></span>
@@ -106,6 +122,7 @@
               <li><a href="#" onclick="filterArtTag('Tondo')">Tondo</a></li>
             </ul>
           </div>
+
           <div class="btn-group">
             <button type="button" id="availability-btn" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"  title="Filter by availability" aria-expanded="false">
               Availability <span class="caret"></span>
@@ -115,14 +132,13 @@
               <li><a href="#" onclick="filterArtAvailability('Not Available')">Not Available</a></li>
             </ul>
           </div>
+          <button id="reset-btn" type="button" class="btn btn-default btn-sm" onclick="resetAllFilters()" title="Click to reset selection" >Reset</button>
         </div>
-        <div class="col-sm-1"></div>
+        <div class="hidden-xs col-md-3 col-lg-3"></div>
       </div>
 
       <div class="row">
-        <div class="col-md-12">
-          <button id="reset-btn" type="button" class="btn btn-default btn-sm" onclick="resetAllFilters()" title="Click reset selection" >Reset</button>
-          <button id="mobile-btn" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#mobileInputModal">Mobile</button>
+        <div class="hidden-xs col-sm-12 col-md-12 col-lg-12">
           <div id="random-checkbox" class="checkbox">
             <label class="text-muted">
               <input type="checkbox" onclick="randomizeConfig()" checked>Randomize on reset
@@ -131,7 +147,15 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+          <button id="mobile-filters-btn" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#mobileFilterModal">Filter</button>
+          <button id="mobile-reset-btn" type="button" class="btn btn-default btn-sm" onclick="resetAllFilters()">Reset</button>
+        </div>
+      </div>
+
       <hr id="art-hr">
+      <p id="note">Click an image for more informaiton</p>
       <div class="art-gallery">
         <ul id="art-gallery-ul" class="row">
         </ul>
@@ -158,7 +182,7 @@
     </footer>
     <!-- /footer -->
 
-    <!-- modal -->
+    <!-- art modal -->
     <div class="modal fade" id="artModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -171,7 +195,7 @@
             <div id="art-img-container"></div>
             <a class="custom-carousel carousel-control right" href="#" onclick="nextArt()"><i class="glyphicon glyphicon-chevron-right"></i></a>
           </div>
-          <div class="modal-footer">
+          <div id="art-modal-footer" class="modal-footer">
             <p id="modal-footer-top" class="text-center"></p>
             <p id="modal-footer-bottom" class="text-center"></p>
           </div>
@@ -180,22 +204,97 @@
     </div>
     <!-- /modal -->
 
-    <!-- modal -->
-    <div class="modal fade" id="mobileInputModal" tabindex="-1" role="dialog">
+    <!-- mobile modal -->
+    <div class="modal fade" id="mobileFilterModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-          <h4 class="text-center">Configurations</h4>
+          <h4 class="text-center">Filters</h4>
           </div>
           <div class="modal-body">
+            <div class="form-horizontal text-center" role="form">
+
+            <div class="col-md-12">
+              <div class="btn-group">
+                <button type="button" id="mobile-medium-btn" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  Medium <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#" onclick="filterArtMedium('Acrylic')">Acrylic</a></li>
+                  <li><a href="#" onclick="filterArtMedium('Collage')">Collage</a></li>
+                  <li><a href="#" onclick="filterArtMedium('Construction')">Construction</a></li>
+                  <li><a href="#" onclick="filterArtMedium('Ink')">Ink</a></li>
+                  <li><a href="#" onclick="filterArtMedium('Mixed media')">Mixed Media</a></li>
+                  <li><a href="#" onclick="filterArtMedium('Monotype')">Monotype</a></li>
+                  <li><a href="#" onclick="filterArtMedium('Oil')">Oil</a></li>
+                  <li><a href="#" onclick="filterArtMedium('Pastel')">Pastel</a></li>
+                  <li><a href="#" onclick="filterArtMedium('Watercolor')">Watercolor</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+             <div class="btn-group">
+                <button type="button" id="mobile-decade-btn" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  Decade <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#" onclick="filterArtDecade('1940s')">1940s</a></li>
+                  <li><a href="#" onclick="filterArtDecade('1950s')">1950s</a></li>
+                  <li><a href="#" onclick="filterArtDecade('1960s')">1960s</a></li>
+                  <li><a href="#" onclick="filterArtDecade('1970s')">1970s</a></li>
+                  <li><a href="#" onclick="filterArtDecade('1980s')">1980s</a></li>
+                  <li><a href="#" onclick="filterArtDecade('1990s')">1990s</a></li>
+                  <li><a href="#" onclick="filterArtDecade('2000s')">2000s</a></li>
+                  <li><a href="#" onclick="filterArtDecade('2010s')">2010s</a></li>
+                  <li><a href="#" onclick="filterArtDecade('Unknown')">Unknown</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="btn-group">
+                <button type="button" id="mobile-tag-btn" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  Tag <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#" onclick="filterArtTag('Abstract')">Abstract</a></li>
+                  <li><a href="#" onclick="filterArtTag('Black and White')">Black and White</a></li>
+                  <li><a href="#" onclick="filterArtTag('Dominican Republic')">Dominican Republic</a></li>
+                  <li><a href="#" onclick="filterArtTag('Figure')">Figure</a></li>
+                  <li><a href="#" onclick="filterArtTag('Landscape')">Landscape</a></li>
+                  <li><a href="#" onclick="filterArtTag('Letter')">Letter</a></li>
+                  <li><a href="#" onclick="filterArtTag('Monhegan')">Monhegan</a></li>
+                  <li><a href="#" onclick="filterArtTag('Path')">Path</a></li>
+                  <li><a href="#" onclick="filterArtTag('Representational')">Representational</a></li>
+                  <li><a href="#" onclick="filterArtTag('Seascape')">Seascape</a></li>
+                  <li><a href="#" onclick="filterArtTag('Still Life')">Still Life</a></li>
+                  <li><a href="#" onclick="filterArtTag('Tondo')">Tondo</a></li>
+                </ul>
+              </div>
+            </div>
             
+            <div class="col-md-12">
+              <div class="btn-group">
+                <button type="button" id="mobile-availability-btn" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  Availability <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#" onclick="filterArtAvailability('Available')">Available</a></li>
+                  <li><a href="#" onclick="filterArtAvailability('Not Available')">Not Available</a></li>
+                </ul>
+              </div>
+            </div>
+
+            </div>
           </div>
-          <div class="modal-footer">
-            
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-md btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
     <!-- /modal -->
+
   </body>
 </html>

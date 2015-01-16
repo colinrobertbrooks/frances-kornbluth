@@ -122,28 +122,36 @@ function snapshotCollection () {
 }
 
 
-//filter functions
+//filter apply functions
 function filterArtTitle () {
-  var searchTitle = document.getElementById('title-search-text').value;
-  //clear title crossfilter
-  artTitleFilter.filterAll();  
-  //remove all images from gallery
-  removeArtFromGallery();
-  //apply crossfilter
-  artTitleFilter.filterFunction(function(d) {
-    pieceBeingSearched = d.toLowerCase();
-    searchTitle = searchTitle.toLowerCase();
-    if(pieceBeingSearched.search(searchTitle) > -1){
-      return pieceBeingSearched;
-    }
-  });
-  //reset gallery
-  resetGallery();
+  var searchTitle = document.getElementById('title-search-input').value;
+  if (searchTitle.length < 1) {
+    alert('Please enter a title to search for...');
+  } else {
+    //clear title crossfilter
+    artTitleFilter.filterAll();  
+    //make input grey
+    d3.select('#title-search-input')
+      .style('color','white')
+      .style('background-color', '#a2a2a2');
+    //remove all images from gallery
+    removeArtFromGallery();
+    //apply crossfilter
+    artTitleFilter.filterFunction(function(d) {
+      pieceBeingSearched = d.toLowerCase();
+      searchTitle = searchTitle.toLowerCase();
+      if(pieceBeingSearched.search(searchTitle) > -1){
+        return pieceBeingSearched;
+      }
+    });
+    //reset gallery
+    resetGallery();
+  }
 }
 
 $(document).keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
-    var searchTitle = document.getElementById('title-search-text').value;
+    var searchTitle = document.getElementById('title-search-input').value;
     if(keycode == '13'){
       if(searchTitle.length >= 1) {
         filterArtTitle();
@@ -242,6 +250,8 @@ function filterArtTag (selectedTag) {
   resetGallery();
 }
 
+
+//filter clear functions
 function resetAllTagFilters () {
   tagAbstractFilter.filterAll();
   tagBlackAndWhiteFilter.filterAll();
@@ -263,18 +273,23 @@ function resetAllFilters() {
   artMediumFilter.filterAll();
   artStatusFilter.filterAll();    
   resetAllTagFilters();
-  //vars for button resets
-  var buttons = ['#medium-btn', '#tag-btn', '#availability-btn'];
-  var buttonsText = ['Medium ', 'Tag ', 'Availability '];
+  //reset title search input
+  document.getElementById('title-search-input').value = '';
+  d3.select('#title-search-input')
+    .style('color','#4b5563')
+    .style('background-color', 'white');
+  //vars for dropdown resets
+  var dropdowns = ['#medium-btn', '#tag-btn', '#availability-btn'];
+  var dropdownsText = ['Medium ', 'Tag ', 'Availability '];
   //reset dropdown text
-  for (var i = buttons.length - 1; i >= 0; i--) {
-  d3.select(buttons[i]).text(buttonsText[i]);
-  d3.select(buttons[i]).append('span')
+  for (var i = dropdowns.length - 1; i >= 0; i--) {
+  d3.select(dropdowns[i]).text(dropdownsText[i]);
+  d3.select(dropdowns[i]).append('span')
     .attr('class', 'caret');
   }
-  //reset button color
-  for (var i = buttons.length - 1; i >= 0; i--) {
-    d3.select(buttons[i])
+  //reset dropdowns color
+  for (var i = dropdowns.length - 1; i >= 0; i--) {
+    d3.select(dropdowns[i])
       .attr('class', 'btn btn-default btn-sm dropdown-toggle');
   }
   //remove all images from gallery
@@ -331,17 +346,24 @@ function addArtToGallery () {
   logGalleryStats(artAdded);
   //update art counter
   if (currentLength === collectionLength) {
-    d3.select('#art-btn-counter-top').text(artDisplayed + " of " + currentLength 
-      + " pieces displayed");
-    d3.select('#art-btn-counter-bottom').text('');
+    d3.select('#art-btn-counter-top')
+      .text(artDisplayed + " of " + currentLength + " pieces displayed")
+      .attr('class','light-color-text');
+    d3.select('#art-btn-counter-bottom')
+      .text('');
   } else {
     if (artDisplayed === 0) {
-      d3.select('#art-btn-counter-top').text("No pieces match the selected criteria.");
-      d3.select('#art-btn-counter-bottom').text('(' + collectionLength + " pieces in the collection)");
+      d3.select('#art-btn-counter-top')
+        .text("No pieces match the selected criteria.")
+        .attr('class','red-text');
+      d3.select('#art-btn-counter-bottom')
+        .text('(' + collectionLength + " pieces in the collection)");
     } else {
-      d3.select('#art-btn-counter-top').text("Displaying " + artDisplayed + " pieces");
-      d3.select('#art-btn-counter-bottom').text("(" + currentLength + " of " + 
-        collectionLength + " pieces match the selected criteria)");
+      d3.select('#art-btn-counter-top')
+        .text("Displaying " + artDisplayed + " pieces")
+        .attr('class','light-color-text');
+      d3.select('#art-btn-counter-bottom')
+        .text("(" + currentLength + " of " + collectionLength + " pieces match the selected criteria)");
     }
   }
   //remove Load More button if artRemaining is 0
@@ -499,10 +521,7 @@ function randomizeArray (array) {
 /////////////////////// 
 //////// TO DO //////// 
 /////////////////////// 
-// search
+// Decade dropdown
 // mobile solution fr filters 
 //populate drop-down lists dynamically and add counts
-// trigger addArtToGallery if modal nextArt reaches end of loaded images 
-      //and more images remain in artRemaining
-// Decade dropdown
 // collector function
