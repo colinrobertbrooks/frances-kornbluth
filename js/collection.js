@@ -142,7 +142,7 @@ var tondoAccessor = function(d) {
 
 
 //load collection object, set global & crossfilter vars and add first 8 pieces to gallary
-d3.csv('/data/artCollection.csv', function(data) {
+d3.csv('/data/collection.csv', function(data) {
   //update crossfilter vars
   artCollectionCrossFilter = crossfilter(data);
   artTitleFilter = artCollectionCrossFilter.dimension(artTitleAccessor);
@@ -516,6 +516,9 @@ function addArtToGallery () {
       .attr('class','light-color-text');
     d3.select('#art-btn-counter-bottom')
       .text('');
+    d3.select('#art-btn-counter-modal')
+        .text("")
+        .attr('class','light-color-text');
   } else {
     if (artDisplayed === 0) {
       d3.select('#art-btn-counter-top')
