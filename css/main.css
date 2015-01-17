@@ -141,21 +141,18 @@ body {
 
 /* Artwork Button Formatting */
 #reset-btn {
-  font-weight: bold;
-  color: #4b5563;
+  font-weight: 600;
+  color: #a2a2a2;
 }
 #random-checkbox {
   margin: 5px 0px -15px 0px;
   padding: 0px;
   font-style: italic;
 }
-#mobile-filters-btn {
-  margin: 0px;
-}
-#mobile-medium-btn,
-#mobile-decade-btn,
-#mobile-tag-btn,
-#mobile-availability-btn {
+#medium-btn-mobi,
+#decade-btn-mobi,
+#tag-btn-mobi,
+#status-btn-mobi {
   margin: 7px;
 }
 #more-art-btn {
@@ -170,6 +167,11 @@ body {
   margin: 0px 0px 5px 0px;
   padding: 0px;
 }
+#art-btn-counter-modal {
+  margin: 7px 0px 0px 0px;
+  font-size: 13px;
+  font-style: italic;
+}
 #title-search-input {  
   margin: -10px 0px 20px 0px;
 }
@@ -177,13 +179,11 @@ body {
 #medium-btn,
 #decade-btn,
 #tag-btn,
-#availability-btn,
-#mobile-filters-btn,
-#mobile-reset-btn {
+#status-btn {
   margin: -10px 0px 0px 0px;
 }
 #reset-btn:hover,
-#mobile-filters-btn:hover,
+#filters-btn-mobi:hover,
 #more-art-btn:hover {
   color: white;
   background-color: #a2a2a2;

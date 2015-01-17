@@ -1,6 +1,5 @@
 //window events
 window.onresize = updateModalSize(); //resizes the modal if the screen height changes
-$(window).on("orientationchange", updateModalSize()); //need to test on a mobile device
 
 //global configs
 var randomizeCollection = 1; //controlled by randomizeConfig() with a default of random
@@ -10,19 +9,71 @@ var artAddBatchSize = 12; //count of pieces to be added per instance of addArtTo
 var collectionLength; //the length of the entire collection object
 var currentCollection; //a snapshot of the filtered collection object
 var currentLength; //the length of the filtered collection object
-var countArtAdds; //count of how many times the addArtToGalleryFunction has run
+var countArtAdds = 0; //count of how many times the addArtToGalleryFunction has run
 var artDisplayed; //count of pieces displayed in gallery
 var artRemaining; //count of pieces not displayed in gallery
 var nextArtAddIndex; //index of the next piece to be loaded into the gallery
 var currentArtImgIndex; //index of modal piece in collection object
 
+//dropdown maps
+var mediumButtons = ['#medium-btn','#medium-btn-mobi'];
+var mediumUls = ['#medium-ul', '#medium-ul-mobi'];
+var mediumMap = {
+  "Acrylic": "filterArtMedium('Acrylic')",
+  "Collage": "filterArtMedium('Collage')",
+  "Construction": "filterArtMedium('Construction')",
+  "Ink": "filterArtMedium('Ink')",
+  "Mixed Media": "filterArtMedium('Mixed Media')",
+  "Monotype": "filterArtMedium('Monotype')",
+  "Oil": "filterArtMedium('Oil')",
+  "Pastel": "filterArtMedium('Pastel')",
+  "Watercolor": "filterArtMedium('Watercolor')"
+};
+var decadeButtons = ['#decade-btn','#decade-btn-mobi'];
+var decadeUls = ['#decade-ul', '#decade-ul-mobi'];
+var decadeMap = {
+  "1940s": "filterArtDecade('1940s')",
+  "1950s": "filterArtDecade('1950s')",
+  "1960s": "filterArtDecade('1960s')",
+  "1970s": "filterArtDecade('1970s')",
+  "1980s": "filterArtDecade('1980s')",
+  "1990s": "filterArtDecade('1990s')",
+  "2000s": "filterArtDecade('2000s')",
+  "2010s": "filterArtDecade('2010s')",
+  "Unknown": "filterArtDecade('Unknown')"
+};
+var statusButtons = ['#status-btn','#status-btn-mobi'];
+var statusUls = ['#status-ul', '#status-ul-mobi'];
+var statusMap = {
+  "Available": "filterArtStatus('Available')",
+  "Not Available": "filterArtStatus('Not Available')"
+};
+var tagButtons = ['#tag-btn','#tag-btn-mobi'];
+var tagUls = ['#tag-ul', '#tag-ul-mobi'];
+var tagMap = {
+  "Abstract": "filterArtTag('Abstract')",
+  "Black and White": "filterArtTag('Black and White')",
+  "Dominican Republic": "filterArtTag('Dominican Republic')",
+  "Figure": "filterArtTag('Figure')",
+  "Landscape": "filterArtTag('Landscape')",
+  "Letter": "filterArtTag('Letter')",
+  "Monhegan": "filterArtTag('Monhegan')",
+  "Path": "filterArtTag('Path')",
+  "Representational": "filterArtTag('Representational')",
+  "Seascape": "filterArtTag('Seascape')",
+  "Still Life": "filterArtTag('Still Life')",
+  "Tondo": "filterArtTag('Tondo')"
+};
+
 //crossfilter object
 var artCollectionCrossFilter;
 
-//crossfilter filters (currently 15; max of 32)
+//crossfilter filters (currently 17; max of 32)
 var artTitleFilter;
-var artMediumFilter;
+var artDecadeFilter;
 var artStatusFilter;
+var artHolderFilter;
+var artMediumFilter;
 var tagAbstractFilter;
 var tagBlackAndWhiteFilter;
 var tagDominicanRepublicFilter;
@@ -40,11 +91,17 @@ var tagTondoFilter;
 var artTitleAccessor = function(d) {
   return d.title;
 };
-var artMediumAccessor = function(d) {
-  return d.filterMedium;
+var artDecadeAccessor = function(d) {
+  return d.decade;
 };
 var artStatusAccessor = function(d) {
-  return d.filterStatus;
+  return d.status;
+};
+var artHolderAccessor = function(d) {
+  return d.holder;
+};
+var artMediumAccessor = function(d) {
+  return d.filterMedium;
 };
 var abstractAccessor = function(d) {
   return d.tagAbstract;
@@ -89,8 +146,10 @@ d3.csv('/data/artCollection.csv', function(data) {
   //update crossfilter vars
   artCollectionCrossFilter = crossfilter(data);
   artTitleFilter = artCollectionCrossFilter.dimension(artTitleAccessor);
-  artMediumFilter = artCollectionCrossFilter.dimension(artMediumAccessor);
+  artDecadeFilter = artCollectionCrossFilter.dimension(artDecadeAccessor);
   artStatusFilter = artCollectionCrossFilter.dimension(artStatusAccessor);
+  artHolderFilter = artCollectionCrossFilter.dimension(artHolderAccessor);
+  artMediumFilter = artCollectionCrossFilter.dimension(artMediumAccessor);
   tagAbstractFilter = artCollectionCrossFilter.dimension(abstractAccessor);
   tagBlackAndWhiteFilter = artCollectionCrossFilter.dimension(blackAndWhiteAccessor);
   tagDominicanRepublicFilter = artCollectionCrossFilter.dimension(dominicanRepublicAccessor);
@@ -103,10 +162,93 @@ d3.csv('/data/artCollection.csv', function(data) {
   tagSeascapeFilter = artCollectionCrossFilter.dimension(seascapeAccessor);
   tagStillLifeFilter = artCollectionCrossFilter.dimension(stillLifeAccessor);
   tagTondoFilter = artCollectionCrossFilter.dimension(tondoAccessor);
+  //capture collection in a global var
+  //collection = artMediumFilter.top(Infinity);
   //setup gallery
   resetAllFilters()
   showNote();
 });
+
+
+//dropdown functions
+function populateAllDropdowns () {
+  populateDeskAndMobiDropdowns('mediumDropdowns', mediumUls, mediumMap);
+  populateDeskAndMobiDropdowns('decadeDropdowns', decadeUls, decadeMap);
+  populateDeskAndMobiDropdowns('statusDropdowns', statusUls, statusMap);
+  populateDeskAndMobiDropdowns('tagDropdowns', tagUls, tagMap);
+}
+
+function populateDeskAndMobiDropdowns (dropdownSet, dropdownUls, dropdownMap) {
+  var listTypes = ['std', 'mobi'];
+  var dropdownKeys = d3.keys(dropdownMap);
+  var dropdownValues = d3.values(dropdownMap);
+  var currentMediumMatchCount;
+  for (var i=0; i < dropdownUls.length; i++) {
+    d3.select(dropdownUls[i])
+      .selectAll('li')
+      .remove();
+    for (var j=0; j < dropdownKeys.length; j++) {
+      if (dropdownSet === 'mediumDropdowns') {
+        currentMediumMatchCount = currentCollection.filter(function(d){return d.filterMedium === dropdownKeys[j]}).length;
+      } else if (dropdownSet === 'decadeDropdowns') {
+        currentMediumMatchCount = currentCollection.filter(function(d){return d.decade === dropdownKeys[j]}).length;
+      } else if (dropdownSet === 'statusDropdowns') {
+        currentMediumMatchCount = currentCollection.filter(function(d){return d.status === dropdownKeys[j]}).length;
+      } else if (dropdownSet === 'tagDropdowns') {
+        switch(dropdownKeys[j]) {
+          case 'Abstract':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagAbstract === 'x'}).length;
+            break;
+          case 'Black and White':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagBlackAndWhite === 'x'}).length;
+            break;
+          case 'Dominican Republic':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagDominicanRepublic === 'x'}).length;
+            break;
+          case 'Figure':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagFigure === 'x'}).length;
+            break;
+          case 'Landscape':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagLandscape === 'x'}).length;
+            break;
+          case 'Letter':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagLetter === 'x'}).length;
+            break;
+          case 'Monhegan':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagMonhegan === 'x'}).length;
+            break;
+          case 'Path':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagPath === 'x'}).length;
+            break;
+          case 'Representational':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagRepresentational === 'x'}).length;
+            break;
+          case 'Seascape':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagSeascape === 'x'}).length;
+            break;
+          case 'Still Life':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagStillLife === 'x'}).length;
+            break;
+          case 'Tondo':
+            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagTondo === 'x'}).length;
+            break;
+        }
+      }
+      if (currentMediumMatchCount >0) {
+        d3.select(dropdownUls[i])
+          .append('li')
+          .attr('id', 'select'+dropdownKeys[j].replace(/\s+/g, '') + listTypes[i]);
+        d3.select('#'+'select'+dropdownKeys[j].replace(/\s+/g, '') + listTypes[i])
+          .append('a')
+          .attr('href','#')
+          .attr('onclick', dropdownValues[j])
+          .text(dropdownKeys[j] + ' ('+currentMediumMatchCount + ')');
+          dropdownText = dropdownKeys[j] + ' ('+currentMediumMatchCount + ')';
+      }
+      //could include dropdown selections with 0 here
+    }
+  }
+}
 
 
 //collection functions
@@ -145,7 +287,7 @@ function filterArtTitle () {
       }
     });
     //reset gallery
-    resetGallery();
+    resetDropdownsAndGallery();
   }
 }
 
@@ -159,52 +301,74 @@ $(document).keypress(function(event){
     }
 });
 
+function filterArtDecade (selectedDecade) {
+  //clear decade crossfilter
+  artDecadeFilter.filterAll();  
+  //update buttons
+  for (var i = 0; i < decadeButtons.length; i++) {
+    d3.select(decadeButtons[i]).text(selectedDecade + " ");
+    d3.select(decadeButtons[i]).append('span')
+      .attr('class', 'caret');
+    d3.select(decadeButtons[i])
+      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
+  }
+  //remove all images from gallery
+  removeArtFromGallery();
+  //apply crossfilter
+  artDecadeFilter.filter(selectedDecade);
+  //reset gallery
+  resetDropdownsAndGallery();  
+}
+
+function filterArtStatus (selectedStatus) {
+  //clear status crossfilter
+  artStatusFilter.filterAll();  
+  //update buttons
+  for (var i = 0; i < statusButtons.length; i++) {
+    d3.select(statusButtons[i]).text(selectedStatus + " ");
+    d3.select(statusButtons[i]).append('span')
+      .attr('class', 'caret');
+    d3.select(statusButtons[i])
+      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
+  }
+  //remove all images from gallery
+  removeArtFromGallery();
+  //apply crossfilter
+  artStatusFilter.filter(selectedStatus);
+  //reset gallery
+  resetDropdownsAndGallery();
+}
+
 function filterArtMedium (selectedMedium) {
   //clear medium crossfilter
   artMediumFilter.filterAll();   
-  //update dropdown button text
-  d3.select('#medium-btn').text(selectedMedium + " ");
-  d3.select('#medium-btn').append('span')
-    .attr('class', 'caret');
-  //make button grey
-  d3.select('#medium-btn')
-    .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
+  //update buttons
+  for (var i = 0; i < mediumButtons.length; i++) {
+    d3.select(mediumButtons[i]).text(selectedMedium + " ");
+    d3.select(mediumButtons[i]).append('span')
+      .attr('class', 'caret');
+    d3.select(mediumButtons[i])
+      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
+  }
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
   artMediumFilter.filter(selectedMedium); 
   //reset gallery
-  resetGallery();
-}
-
-function filterArtAvailability (selectedAvailability) {
-  //clear crossfilters
-  artStatusFilter.filterAll();  
-  //update dropdown button text
-  d3.select('#availability-btn').text(selectedAvailability + " ");
-  d3.select('#availability-btn').append('span')
-    .attr('class', 'caret');
-  //make button grey
-  d3.select('#availability-btn')
-    .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
-  //remove all images from gallery
-  removeArtFromGallery();
-  //apply crossfilter
-  artStatusFilter.filter(selectedAvailability);
-  //reset gallery
-  resetGallery();
+  resetDropdownsAndGallery();
 }
 
 function filterArtTag (selectedTag) {
-  //clear crossfilters
+  //clear all tag crossfilter
   resetAllTagFilters();
-  //update dropdown button text
-  d3.select('#tag-btn').text(selectedTag + " ");
-  d3.select('#tag-btn').append('span')
-    .attr('class', 'caret');
-  //make button grey
-  d3.select('#tag-btn')
-    .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
+  //update buttons
+  for (var i = 0; i < tagButtons.length; i++) {
+    d3.select(tagButtons[i]).text(selectedTag + " ");
+    d3.select(tagButtons[i]).append('span')
+      .attr('class', 'caret');
+    d3.select(tagButtons[i])
+      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
+  }
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
@@ -247,7 +411,7 @@ function filterArtTag (selectedTag) {
         break;
   } 
   //reset gallery
-  resetGallery();
+  resetDropdownsAndGallery();
 }
 
 
@@ -270,7 +434,9 @@ function resetAllTagFilters () {
 function resetAllFilters() {
   //clear all crossfilters
   artTitleFilter.filterAll();
+  artDecadeFilter.filterAll();
   artMediumFilter.filterAll();
+  //artHolderFilter.filterAll();
   artStatusFilter.filterAll();    
   resetAllTagFilters();
   //reset title search input
@@ -279,25 +445,24 @@ function resetAllFilters() {
     .style('color','#4b5563')
     .style('background-color', 'white');
   //vars for dropdown resets
-  var dropdowns = ['#medium-btn', '#tag-btn', '#availability-btn'];
-  var dropdownsText = ['Medium ', 'Tag ', 'Availability '];
-  //reset dropdown text
-  for (var i = dropdowns.length - 1; i >= 0; i--) {
-  d3.select(dropdowns[i]).text(dropdownsText[i]);
-  d3.select(dropdowns[i]).append('span')
+  var buttons = ['#medium-btn','#medium-btn-mobi','#decade-btn','#decade-btn-mobi','#tag-btn','#tag-btn-mobi','#status-btn','#status-btn-mobi'];
+  var buttonsText = ['Medium ','Medium ','Decade ','Decade ','Tag ','Tag ','Availability ','Availability '];
+  //reset buttons
+  for (var i = buttons.length - 1; i >= 0; i--) {
+  d3.select(buttons[i]).text(buttonsText[i]);
+  d3.select(buttons[i]).append('span')
     .attr('class', 'caret');
   }
-  //reset dropdowns color
-  for (var i = dropdowns.length - 1; i >= 0; i--) {
-    d3.select(dropdowns[i])
-      .attr('class', 'btn btn-default btn-sm dropdown-toggle');
+  for (var i = buttons.length - 1; i >= 0; i--) {
+    d3.select(buttons[i])
+      .attr('class', 'btn btn-default btn-md dropdown-toggle');
   }
   //remove all images from gallery
   removeArtFromGallery();
   //restore Load More button
   d3.select('#more-art-btn').style('display','block');
   //reset gallery
-  resetGallery();
+  resetDropdownsAndGallery();
 }
 
 
@@ -358,12 +523,17 @@ function addArtToGallery () {
         .attr('class','red-text');
       d3.select('#art-btn-counter-bottom')
         .text('(' + collectionLength + " pieces in the collection)");
+      d3.select('#art-btn-counter-modal')
+        .text("No pieces match the selected criteria.")
+        .attr('class','red-text');
     } else {
       d3.select('#art-btn-counter-top')
         .text("Displaying " + artDisplayed + " pieces")
         .attr('class','light-color-text');
       d3.select('#art-btn-counter-bottom')
         .text("(" + currentLength + " of " + collectionLength + " pieces match the selected criteria)");
+      d3.select('#art-btn-counter-modal')
+        .text(currentLength + " of " + collectionLength + " pieces match the selected criteria");
     }
   }
   //remove Load More button if artRemaining is 0
@@ -378,18 +548,19 @@ function removeArtFromGallery () {
     .remove();
 }
 
-function resetGallery () {
+function resetDropdownsAndGallery () {
   snapshotCollection();
   artDisplayed = 0;
   artRemaining = currentLength;
   nextArtAddIndex = 0;
+  populateAllDropdowns();
   addArtToGallery();
 }
 
 function logGalleryStats (artAdded) {
   console.log("###### Art Load #" + countArtAdds + " Stats ######");
   console.log("Pieces in collection object: " + collectionLength);
-  console.log("Pieces matching current filter :" + currentLength);
+  console.log("Pieces matching current filters: " + currentLength);
   console.log("Pieces currently being displayed:  " + artDisplayed);
   console.log("Pieces added to display in this load: " + artAdded);
   console.log("Pieces left to add to display: " + artRemaining);
@@ -419,7 +590,7 @@ function updateModalHTML (elementID) {
   var artPath = currentCollection[elementID].directory + currentCollection[elementID].file;     
   var artMedium = currentCollection[elementID].medium;
   var artDimensions = currentCollection[elementID].dimensions;
-  var artStatus = currentCollection[elementID].filterStatus;
+  var artStatus = currentCollection[elementID].status;
   //update modal html
   d3.select('.modal-header h4').text(artTitle);
   d3.select('#modal-img').remove();
@@ -444,9 +615,9 @@ function updateModalHTML (elementID) {
         '&body=' + 'I am interested in ' + emailTitleMediumDimensions + 
         ', which I found on franceskornbluth.com; please send more information.')
       .attr('title', 'Click to email: ' + currentCollection[elementID].contact)
-      .text(currentCollection[elementID].seller);
+      .text(currentCollection[elementID].holder);
   } else {
-    d3.select('#modal-footer-bottom').text("Collection " + currentCollection[elementID].ownership);
+    d3.select('#modal-footer-bottom').text("Collection " + currentCollection[elementID].holder);
   }
 }
 
@@ -516,12 +687,3 @@ function randomizeArray (array) {
   }
   return array;
 }
-
-
-/////////////////////// 
-//////// TO DO //////// 
-/////////////////////// 
-// Decade dropdown
-// mobile solution fr filters 
-//populate drop-down lists dynamically and add counts
-// collector function
