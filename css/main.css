@@ -242,7 +242,7 @@ body {
 
 
 /* Quotes Formatting */
-.quote-header {
+.section-header {
   margin: 0px 0px 15px 0px;
 }
 .quote-body {
@@ -265,9 +265,6 @@ body {
   line-height: 1.42857143;
   background-color: #fff;
   border: 1px solid #ddd;
-  -webkit-transition: all .2s ease-in-out;
-       -o-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
 }
 .timeline-list li {
   list-style: none;
@@ -280,6 +277,14 @@ body {
   margin: -10px 0px 0px 0px;
 }
 
+
+/* Contact Formatting  */
+#contact-glyphicon {
+  font-size: 150%;
+}
+#contact-hr {
+  margin-top: 10px;
+}
 
 
 /* Footer Formatting  */
