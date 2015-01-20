@@ -21,7 +21,6 @@ var mediumUls = ['#medium-ul', '#medium-ul-mobi'];
 var mediumMap = {
   "Acrylic": "filterArtMedium('Acrylic')",
   "Collage": "filterArtMedium('Collage')",
-  "Construction": "filterArtMedium('Construction')",
   "Ink": "filterArtMedium('Ink')",
   "Mixed Media": "filterArtMedium('Mixed Media')",
   "Monotype": "filterArtMedium('Monotype')",
@@ -29,10 +28,18 @@ var mediumMap = {
   "Pastel": "filterArtMedium('Pastel')",
   "Watercolor": "filterArtMedium('Watercolor')"
 };
+var sizeButtons = ['#size-btn','#size-btn-mobi'];
+var sizeUls = ['#size-ul', '#size-ul-mobi'];
+var sizeMap = {
+  "Small": "filterArtSize('Small')",
+  "Medium": "filterArtSize('Medium')",
+  "Large": "filterArtSize('Large')",
+  "Very Large": "filterArtSize('Very Large')",
+  "Unavailable": "filterArtSize('Unavailable')"
+};
 var decadeButtons = ['#decade-btn','#decade-btn-mobi'];
 var decadeUls = ['#decade-ul', '#decade-ul-mobi'];
 var decadeMap = {
-  "1940s": "filterArtDecade('1940s')",
   "1950s": "filterArtDecade('1950s')",
   "1960s": "filterArtDecade('1960s')",
   "1970s": "filterArtDecade('1970s')",
@@ -46,7 +53,8 @@ var statusButtons = ['#status-btn','#status-btn-mobi'];
 var statusUls = ['#status-ul', '#status-ul-mobi'];
 var statusMap = {
   "Available": "filterArtStatus('Available')",
-  "Not Available": "filterArtStatus('Not Available')"
+  "Private Collection": "filterArtStatus('Private')",
+  "Public Collection": "filterArtStatus('Public')",
 };
 var tagButtons = ['#tag-btn','#tag-btn-mobi'];
 var tagUls = ['#tag-ul', '#tag-ul-mobi'];
@@ -68,12 +76,13 @@ var tagMap = {
 //crossfilter object
 var artCollectionCrossFilter;
 
-//crossfilter filters (currently 17; max of 32)
+//crossfilter filters (currently 18; max of 32)
 var artTitleFilter;
 var artDecadeFilter;
+var artMediumFilter;
+var artSizeFilter;
 var artStatusFilter;
 var artHolderFilter;
-var artMediumFilter;
 var tagAbstractFilter;
 var tagBlackAndWhiteFilter;
 var tagDominicanRepublicFilter;
@@ -94,14 +103,17 @@ var artTitleAccessor = function(d) {
 var artDecadeAccessor = function(d) {
   return d.decade;
 };
+var artMediumAccessor = function(d) {
+  return d.filterMedium;
+};
+var artSizeAccessor = function(d) {
+  return d.filterSize;
+};
 var artStatusAccessor = function(d) {
   return d.status;
 };
 var artHolderAccessor = function(d) {
   return d.holder;
-};
-var artMediumAccessor = function(d) {
-  return d.filterMedium;
 };
 var abstractAccessor = function(d) {
   return d.tagAbstract;
@@ -143,13 +155,15 @@ var tondoAccessor = function(d) {
 
 //load collection object, set global & crossfilter vars and add first 8 pieces to gallary
 d3.csv('/data/collection.csv', function(data) {
-  //update crossfilter vars
+  //set crossfilter object
   artCollectionCrossFilter = crossfilter(data);
+  //update crossfilter vars
   artTitleFilter = artCollectionCrossFilter.dimension(artTitleAccessor);
   artDecadeFilter = artCollectionCrossFilter.dimension(artDecadeAccessor);
+  artMediumFilter = artCollectionCrossFilter.dimension(artMediumAccessor);
+  artSizeFilter = artCollectionCrossFilter.dimension(artSizeAccessor);
   artStatusFilter = artCollectionCrossFilter.dimension(artStatusAccessor);
   artHolderFilter = artCollectionCrossFilter.dimension(artHolderAccessor);
-  artMediumFilter = artCollectionCrossFilter.dimension(artMediumAccessor);
   tagAbstractFilter = artCollectionCrossFilter.dimension(abstractAccessor);
   tagBlackAndWhiteFilter = artCollectionCrossFilter.dimension(blackAndWhiteAccessor);
   tagDominicanRepublicFilter = artCollectionCrossFilter.dimension(dominicanRepublicAccessor);
@@ -162,8 +176,6 @@ d3.csv('/data/collection.csv', function(data) {
   tagSeascapeFilter = artCollectionCrossFilter.dimension(seascapeAccessor);
   tagStillLifeFilter = artCollectionCrossFilter.dimension(stillLifeAccessor);
   tagTondoFilter = artCollectionCrossFilter.dimension(tondoAccessor);
-  //capture collection in a global var
-  //collection = artMediumFilter.top(Infinity);
   //setup gallery
   resetAllFilters()
   showNote();
@@ -173,68 +185,78 @@ d3.csv('/data/collection.csv', function(data) {
 //dropdown functions
 function populateAllDropdowns () {
   populateDeskAndMobiDropdowns('mediumDropdowns', mediumUls, mediumMap);
+  populateDeskAndMobiDropdowns('sizeDropdowns', sizeUls, sizeMap);
   populateDeskAndMobiDropdowns('decadeDropdowns', decadeUls, decadeMap);
-  populateDeskAndMobiDropdowns('statusDropdowns', statusUls, statusMap);
   populateDeskAndMobiDropdowns('tagDropdowns', tagUls, tagMap);
+  populateDeskAndMobiDropdowns('statusDropdowns', statusUls, statusMap);
 }
 
 function populateDeskAndMobiDropdowns (dropdownSet, dropdownUls, dropdownMap) {
   var listTypes = ['std', 'mobi'];
   var dropdownKeys = d3.keys(dropdownMap);
   var dropdownValues = d3.values(dropdownMap);
-  var currentMediumMatchCount;
+  var currentMatchCount;
   for (var i=0; i < dropdownUls.length; i++) {
     d3.select(dropdownUls[i])
       .selectAll('li')
       .remove();
     for (var j=0; j < dropdownKeys.length; j++) {
-      if (dropdownSet === 'mediumDropdowns') {
-        currentMediumMatchCount = currentCollection.filter(function(d){return d.filterMedium === dropdownKeys[j]}).length;
-      } else if (dropdownSet === 'decadeDropdowns') {
-        currentMediumMatchCount = currentCollection.filter(function(d){return d.decade === dropdownKeys[j]}).length;
+      if (dropdownSet === 'decadeDropdowns') {
+        currentMatchCount = currentCollection.filter(function(d){return d.decade === dropdownKeys[j]}).length;
+      } else if (dropdownSet === 'mediumDropdowns') {
+        currentMatchCount = currentCollection.filter(function(d){return d.filterMedium === dropdownKeys[j]}).length;
+      } else if (dropdownSet === 'sizeDropdowns') {
+        currentMatchCount = currentCollection.filter(function(d){return d.filterSize === dropdownKeys[j]}).length;
       } else if (dropdownSet === 'statusDropdowns') {
-        currentMediumMatchCount = currentCollection.filter(function(d){return d.status === dropdownKeys[j]}).length;
+        //custom protocol due to text length and button wrapping issue
+        if (dropdownKeys[j] === "Private Collection") {
+          currentMatchCount = currentCollection.filter(function(d){return d.status === "Private"}).length;
+        } else if (dropdownKeys[j] === "Public Collection") {
+          currentMatchCount = currentCollection.filter(function(d){return d.status === "Public"}).length;
+        } else {
+          currentMatchCount = currentCollection.filter(function(d){return d.status === dropdownKeys[j]}).length;
+        }
       } else if (dropdownSet === 'tagDropdowns') {
         switch(dropdownKeys[j]) {
           case 'Abstract':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagAbstract === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagAbstract === 'x'}).length;
             break;
           case 'Black and White':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagBlackAndWhite === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagBlackAndWhite === 'x'}).length;
             break;
           case 'Dominican Republic':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagDominicanRepublic === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagDominicanRepublic === 'x'}).length;
             break;
           case 'Figure':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagFigure === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagFigure === 'x'}).length;
             break;
           case 'Landscape':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagLandscape === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagLandscape === 'x'}).length;
             break;
           case 'Letter':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagLetter === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagLetter === 'x'}).length;
             break;
           case 'Monhegan':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagMonhegan === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagMonhegan === 'x'}).length;
             break;
           case 'Path':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagPath === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagPath === 'x'}).length;
             break;
           case 'Representational':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagRepresentational === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagRepresentational === 'x'}).length;
             break;
           case 'Seascape':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagSeascape === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagSeascape === 'x'}).length;
             break;
           case 'Still Life':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagStillLife === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagStillLife === 'x'}).length;
             break;
           case 'Tondo':
-            currentMediumMatchCount = currentCollection.filter(function(d){return d.tagTondo === 'x'}).length;
+            currentMatchCount = currentCollection.filter(function(d){return d.tagTondo === 'x'}).length;
             break;
         }
       }
-      if (currentMediumMatchCount >0) {
+      if (currentMatchCount >0) {
         d3.select(dropdownUls[i])
           .append('li')
           .attr('id', 'select'+dropdownKeys[j].replace(/\s+/g, '') + listTypes[i]);
@@ -242,10 +264,17 @@ function populateDeskAndMobiDropdowns (dropdownSet, dropdownUls, dropdownMap) {
           .append('a')
           .attr('href','#')
           .attr('onclick', dropdownValues[j])
-          .text(dropdownKeys[j] + ' ('+currentMediumMatchCount + ')');
-          dropdownText = dropdownKeys[j] + ' ('+currentMediumMatchCount + ')';
+          .text(dropdownKeys[j] + ' ('+currentMatchCount + ')');
+      } else {
+        d3.select(dropdownUls[i])
+          .append('li')
+          .attr('id', 'select'+dropdownKeys[j].replace(/\s+/g, '') + listTypes[i]);
+        d3.select('#'+'select'+dropdownKeys[j].replace(/\s+/g, '') + listTypes[i])
+          .append('a')
+          .attr('href','#')
+          .attr('onclick', dropdownValues[j])
+          .text(dropdownKeys[j]);
       }
-      //could include dropdown selections with 0 here
     }
   }
 }
@@ -312,31 +341,15 @@ function filterArtDecade (selectedDecade) {
     d3.select(decadeButtons[i])
       .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
   }
+  d3.select('#filters-btn-mobi')
+    .attr('class','btn btn-default btn-md btn-filtered')
+    .text('Filters Applied')
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
   artDecadeFilter.filter(selectedDecade);
   //reset gallery
   resetDropdownsAndGallery();  
-}
-
-function filterArtStatus (selectedStatus) {
-  //clear status crossfilter
-  artStatusFilter.filterAll();  
-  //update buttons
-  for (var i = 0; i < statusButtons.length; i++) {
-    d3.select(statusButtons[i]).text(selectedStatus + " ");
-    d3.select(statusButtons[i]).append('span')
-      .attr('class', 'caret');
-    d3.select(statusButtons[i])
-      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
-  }
-  //remove all images from gallery
-  removeArtFromGallery();
-  //apply crossfilter
-  artStatusFilter.filter(selectedStatus);
-  //reset gallery
-  resetDropdownsAndGallery();
 }
 
 function filterArtMedium (selectedMedium) {
@@ -350,6 +363,9 @@ function filterArtMedium (selectedMedium) {
     d3.select(mediumButtons[i])
       .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
   }
+  d3.select('#filters-btn-mobi')
+    .attr('class','btn btn-default btn-md btn-filtered')
+    .text('Filters Applied')
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
@@ -357,6 +373,52 @@ function filterArtMedium (selectedMedium) {
   //reset gallery
   resetDropdownsAndGallery();
 }
+
+function filterArtSize (selectedSize) {
+  //clear medium crossfilter
+  artSizeFilter.filterAll();   
+  //update buttons
+  for (var i = 0; i < mediumButtons.length; i++) {
+    d3.select(sizeButtons[i]).text(selectedSize + " ");
+    d3.select(sizeButtons[i]).append('span')
+      .attr('class', 'caret');
+    d3.select(sizeButtons[i])
+      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
+  }
+  d3.select('#filters-btn-mobi')
+    .attr('class','btn btn-default btn-md btn-filtered')
+    .text('Filters Applied')
+  //remove all images from gallery
+  removeArtFromGallery();
+  //apply crossfilter
+  artSizeFilter.filter(selectedSize); 
+  //reset gallery
+  resetDropdownsAndGallery();
+}
+
+function filterArtStatus (selectedStatus) {
+  //clear status crossfilter
+  artStatusFilter.filterAll();  
+  //update buttons
+  for (var i = 0; i < statusButtons.length; i++) {
+    d3.select(statusButtons[i]).text(selectedStatus + " ");
+    d3.select(statusButtons[i]).append('span')
+      .attr('class', 'caret');
+    d3.select(statusButtons[i])
+      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
+  }
+  d3.select('#filters-btn-mobi')
+    .attr('class','btn btn-default btn-md btn-filtered')
+    .text('Filters Applied')
+  //remove all images from gallery
+  removeArtFromGallery();
+  //apply crossfilter
+  artStatusFilter.filter(selectedStatus);
+  //reset gallery
+  resetDropdownsAndGallery();
+}
+
+//filterArtHolder here
 
 function filterArtTag (selectedTag) {
   //clear all tag crossfilter
@@ -369,6 +431,9 @@ function filterArtTag (selectedTag) {
     d3.select(tagButtons[i])
       .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
   }
+  d3.select('#filters-btn-mobi')
+    .attr('class','btn btn-default btn-md btn-filtered')
+    .text('Filters Applied')
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
@@ -436,8 +501,9 @@ function resetAllFilters() {
   artTitleFilter.filterAll();
   artDecadeFilter.filterAll();
   artMediumFilter.filterAll();
+  artStatusFilter.filterAll();   
+  artSizeFilter.filterAll();
   //artHolderFilter.filterAll();
-  artStatusFilter.filterAll();    
   resetAllTagFilters();
   //reset title search input
   document.getElementById('title-search-input').value = '';
@@ -445,8 +511,8 @@ function resetAllFilters() {
     .style('color','#4b5563')
     .style('background-color', 'white');
   //vars for dropdown resets
-  var buttons = ['#medium-btn','#medium-btn-mobi','#decade-btn','#decade-btn-mobi','#tag-btn','#tag-btn-mobi','#status-btn','#status-btn-mobi'];
-  var buttonsText = ['Medium ','Medium ','Decade ','Decade ','Tag ','Tag ','Availability ','Availability '];
+  var buttons = ['#medium-btn','#medium-btn-mobi', '#size-btn','#size-btn-mobi', '#decade-btn','#decade-btn-mobi','#tag-btn','#tag-btn-mobi','#status-btn','#status-btn-mobi'];
+  var buttonsText = ['Medium ','Medium ','Size ','Size ','Decade ','Decade ','Tag ','Tag ','Status ','Status '];
   //reset buttons
   for (var i = buttons.length - 1; i >= 0; i--) {
   d3.select(buttons[i]).text(buttonsText[i]);
@@ -457,6 +523,9 @@ function resetAllFilters() {
     d3.select(buttons[i])
       .attr('class', 'btn btn-default btn-md dropdown-toggle');
   }
+  d3.select('#filters-btn-mobi')
+    .attr('class','btn btn-default btn-md')
+    .text('Filters')
   //remove all images from gallery
   removeArtFromGallery();
   //restore Load More button
@@ -466,7 +535,7 @@ function resetAllFilters() {
 }
 
 
-//gallery functions
+//gallery functions (DRY opportunity here)
 function addArtToGallery () {
   var artAdded = 0;
   if (artRemaining <= artAddBatchSize) {

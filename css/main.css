@@ -150,6 +150,7 @@ body {
   font-style: italic;
 }
 #medium-btn-mobi,
+#size-btn-mobi,
 #decade-btn-mobi,
 #tag-btn-mobi,
 #status-btn-mobi {
@@ -177,6 +178,7 @@ body {
 }
 #reset-btn,
 #medium-btn,
+#size-btn,
 #decade-btn,
 #tag-btn,
 #status-btn {

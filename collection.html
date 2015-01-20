@@ -80,7 +80,14 @@
             <ul id="medium-ul" class="dropdown-menu" role="menu">
             </ul>
           </div>
-           <div class="btn-group">
+          <div class="btn-group">
+            <button type="button" id="size-btn" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" title="Filter by size" aria-expanded="false">
+              Size <span class="caret"></span>
+            </button>
+            <ul id="size-ul" class="dropdown-menu" role="menu">
+            </ul>
+          </div>
+          <div class="btn-group">
             <button type="button" id="decade-btn" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" title="Filter by decade" aria-expanded="false">
               Decade <span class="caret"></span>
             </button>
@@ -95,8 +102,8 @@
             </ul>
           </div>
           <div class="btn-group">
-            <button type="button" id="status-btn" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown"  title="Filter by availability" aria-expanded="false">
-              Availability <span class="caret"></span>
+            <button type="button" id="status-btn" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown"  title="Filter by status" aria-expanded="false">
+              Status <span class="caret"></span>
             </button>
             <ul id="status-ul" class="dropdown-menu" role="menu">
             </ul>
@@ -116,7 +123,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-          <button id="filters-btn-mobi" type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#mobiFilterModal">Filter</button>
+          <button id="filters-btn-mobi" type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#mobiFilterModal">Filters</button>
           <button id="reset-btn-mobi" type="button" class="btn btn-default btn-md" onclick="resetAllFilters()">Reset</button>
         </div>
       </div>
@@ -191,6 +198,15 @@
                 </div>
               </div>
               <div class=" col-xs-sm col-sm-12 col-md-12 col-lg-12">
+                <div class="btn-group">
+                  <button type="button" id="size-btn-mobi" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Size <span class="caret"></span>
+                  </button>
+                  <ul id="size-ul-mobi" class="dropdown-menu" role="menu">
+                  </ul>
+                </div>
+              </div>
+              <div class=" col-xs-sm col-sm-12 col-md-12 col-lg-12">
                <div class="btn-group">
                   <button type="button" id="decade-btn-mobi" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     Decade <span class="caret"></span>
@@ -211,7 +227,7 @@
               <div class=" col-xs-sm col-sm-12 col-md-12 col-lg-12">
                 <div class="btn-group">
                   <button type="button" id="status-btn-mobi" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    Availability <span class="caret"></span>
+                    Status <span class="caret"></span>
                   </button>
                   <ul id="status-ul-mobi" class="dropdown-menu" role="menu">
                   </ul>
