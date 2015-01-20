@@ -42,7 +42,7 @@ body {
 }
 
 
-/* Artwork Gallery Formatting */
+/* Collection Gallery Formatting */
 .art-gallery ul {         
   padding: 0px;
   margin: 0px;
@@ -88,7 +88,7 @@ body {
 }
 
 
-/* Artwork Modal Formatting */
+/* Collection Modal Formatting */
 .modal {
   margin-top: 50px;
 }
@@ -139,7 +139,7 @@ body {
 }
 
 
-/* Artwork Button Formatting */
+/* Collection Button Formatting */
 #reset-btn {
   font-weight: 600;
   color: #a2a2a2;
@@ -199,13 +199,87 @@ body {
 }
 
 
-/* Artwork Note Formatting */
+/* Collection Note Formatting */
 #note {
   color: white;
   font-style: italic;
   margin: -15px 0px 5px 0px;
   padding: 0px;
 }
+
+
+/* Books Formatting */
+#featureList {
+  margin: 10px 0px 0px 0px;
+}
+#featureList li {
+  list-style: none;
+  line-height: 160%;
+}
+.bookTitle {
+  margin: 10px 0px 15px 0px;
+}
+.bookTitleMobi {
+  margin: 0px 0px 20px 0px;
+  display:none;
+}
+@media (max-width: 767px) {
+  #explorationsImg {
+    max-width: 60%;
+  }
+  .bookTitle {
+    display: none;
+  }
+  .bookTitleMobi {
+    display: block;
+  }
+}
+@media (max-width: 480px) {
+  #explorationsImg {
+    max-width: 100%;
+  }
+}
+
+
+/* Quotes Formatting */
+.quote-header {
+  margin: 0px 0px 15px 0px;
+}
+.quote-body {
+  margin: 0px;
+}
+.quote-credit {
+  margin: 5px 0px 15px 0px;
+}
+
+
+/* Timeline Formatting */
+.decade-img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px; 
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-transition: all .2s ease-in-out;
+       -o-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+.timeline-list li {
+  list-style: none;
+}
+.timeline-art{
+  max-height: 125px;
+  margin: 10px;
+}
+.timeline-art-subtitle {
+  margin: -10px 0px 0px 0px;
+}
+
 
 
 /* Footer Formatting  */
