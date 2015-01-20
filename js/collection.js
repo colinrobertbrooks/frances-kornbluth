@@ -611,7 +611,9 @@ function addArtToGallery () {
   //remove Load More button if artRemaining is 0
   if(artRemaining === 0){
       d3.select('#more-art-btn').style('display','none');
-    } 
+    } else {
+      d3.select('#more-art-btn').style('display','block');
+    }
 }
 
 function removeArtFromGallery () {
