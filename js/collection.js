@@ -528,8 +528,6 @@ function resetAllFilters() {
     .text('Filters')
   //remove all images from gallery
   removeArtFromGallery();
-  //restore Load More button
-  d3.select('#more-art-btn').style('display','block');
   //reset gallery
   resetDropdownsAndGallery();
 }

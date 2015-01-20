@@ -23,6 +23,12 @@ body {
 .light-color-text a:active {
   color: #4b5563;
 }
+.white-text a:link,
+.white-text a:hover,
+.white-text a:visited,
+.white-text a:active {
+  color: #ffffff;
+}
 .red-text {
   color: red;
 }
@@ -39,6 +45,40 @@ body {
     margin: -8px 0px 0px 0px;
     height: 40px;
   }
+}
+
+
+/* Index Formatting */
+.grey-theme {
+  background-color: #323a45;
+}
+.grey-theme hr {
+  display: block; height: 1px;
+  border: 0; border-top: 1px solid #4b5563;
+  margin: 1em 0; padding: 0;
+}
+.grey-theme h3 {
+  color: #f5f5f5;
+}
+.grey-theme h4 {
+  margin: 0px 0px 10px 0px;
+}
+.grey-theme h4 a {
+  color: grey;
+}
+.grey-theme h4 a:hover {
+  color: #ffffff;
+}
+.grey-theme p, #crc a {
+  color: grey;
+}
+.grey-theme .large-text {
+  font-size: 15px;
+  font-weight: 300;
+  color: #ffffff;
+}
+#index-bottom-hr {
+  margin: 0px 0px 20px 0px;
 }
 
 

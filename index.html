@@ -13,7 +13,7 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </head>
 
-  <body>
+  <body class="grey-theme">
     <!-- nav -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -31,15 +31,6 @@
           <ul class="nav navbar-nav navbar-right">
             <!-- Home section -->
             <li class="active"><a href="#"> Home <span class="sr-only">(current)</span></a></li>
-            <!-- Artwork section -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Artwork <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="/collection.html">Collection</a></li>
-                <li><a href="/reviews.html">Reviews</a></li>
-                <li><a href="/books.html">Books</a></li>
-              </ul>
-            </li>
             <!-- Artist section -->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Artist <span class="caret"></span></a>
@@ -48,6 +39,15 @@
                 <li><a href="/timeline.html">Timeline</a></li>
                 <li><a href="/statements.html">Statements</a></li>
                 <li><a href="/quotes.html">Quotes</a></li>
+              </ul>
+            </li>
+            <!-- Artwork section -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Artwork <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/collection.html">Collection</a></li>
+                <li><a href="/reviews.html">Reviews</a></li>
+                <li><a href="/books.html">Books</a></li>
               </ul>
             </li>
           </ul>
@@ -90,28 +90,48 @@
     <!-- /carousel -->
     <!-- content -->
     <div class="container">
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-          <br>
-          <h4 class="text-center dark-color-text">Welcome to franceskornbluth.com</h4>
+
+      <div class="row text-center">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <hr>
+          <h3>Artist</h3>
+          <p class="large-text">Frances Kornbluth (1920 - 2014) was an Abstract Expressionist painter who worked in New York City, Northeastern Connecticut and Monhegan Island, Maine. Her teachers and mentors included Reuben Tam, William Kienbusch and Robert Richenburg.</p>
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <hr>
+          <h3>Artwork</h3>
+          <p class="large-text">Frances Kornbluth's body of work spans seven decades and can be found in the collecitons of the Chrysler Museum of Art, the Colby College Museum of Art, the Hudson River Museum and the Monhegan Museum.</p>
+        </div> 
       </div>
+      <hr>
+      <div class="row text-center">
+        <div class="col-sm-3 col-md-3 col-lg-3"></div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+          <h4><a href="/biography.html">Biography</span title="Read the biography"></a></h4>
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+          <h4><a href="/timeline.html">Timeline</span title="Read the timeline"></a></h4>
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+          <h4><a href="/collection.html">Collection</span title="Explore the collection"></a></h4>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3"></div>
+
+      </div>
+      <hr id="index-bottom-hr">
     </div>
-    <hr>
     <!-- /content -->
     
     <!-- footer-->
-    <footer class="footer text-center">
-        <ul class="dark-color-text">
+    <footer class="footer white-text text-center">
+        <ul>
           <li><a href="#">Home <span class="sr-only">(current)</a></li>
           <li class="footer-pipe light-color-text">|</li>
           <li><a href="/contact.html">Contact</span></a></li>
           <li class="footer-pipe light-color-text">|</li>
           <li><a href="/copyright.html">Copyright</span></a></li>
         </ul>
-        <p id="crc" class="small light-color-text">Site designed and developed by <a class="light-color-text"href="mailto:colinrcummings@gmail.com" title="Email Colin">Colin Cummings</a></p>
+        <p id="crc" class="small">Site designed and developed by <a href="mailto:colinrcummings@gmail.com" title="Email Colin">Colin Cummings</a></p>
     </footer>
     <!-- /footer -->
   </body>
