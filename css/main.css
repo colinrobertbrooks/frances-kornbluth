@@ -243,6 +243,8 @@ body {
 }
 
 
+/* Reviews Formatting */
+
 /* Quotes Formatting */
 .section-header {
   margin: 0px 0px 15px 0px;
@@ -253,7 +255,10 @@ body {
 .quote-credit {
   margin: 5px 0px 15px 0px;
 }
-
+.reviews-art{
+  max-height: 250px;
+  margin: 0px 0px 10px 0px;
+}
 
 /* Timeline Formatting */
 .decade-img {
@@ -276,7 +281,7 @@ body {
   margin: 10px;
 }
 .timeline-art-subtitle {
-  margin: -10px 0px 0px 0px;
+  margin: -10px 0px 10px 0px;
 }
 
 
