@@ -85,6 +85,52 @@ body {
 }
 
 
+/* Timeline Formatting */
+.decade-img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px; 
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.timeline-list li {
+  list-style: none;
+}
+.timeline-art{
+  max-height: 125px;
+  margin: 10px;
+}
+.timeline-art-subtitle {
+  margin: -10px 0px 10px 0px;
+}
+@media screen and (max-height: 500px) {
+  ul.timeline-list {
+  padding: 0px;
+  }
+}
+
+
+/* Quotes Formatting */
+.section-header {
+  margin: 0px 0px 15px 0px;
+}
+.quote-body {
+  margin: 0px;
+}
+.quote-credit {
+  margin: 5px 0px 15px 0px;
+}
+.reviews-art{
+  max-height: 250px;
+  margin: 0px 0px 10px 0px;
+}
+
+
 /* Collection Gallery Formatting */
 .art-gallery ul {         
   padding: 0px;
@@ -288,48 +334,6 @@ body {
   #explorationsImg {
     max-width: 100%;
   }
-}
-
-
-/* Reviews Formatting */
-
-/* Quotes Formatting */
-.section-header {
-  margin: 0px 0px 15px 0px;
-}
-.quote-body {
-  margin: 0px;
-}
-.quote-credit {
-  margin: 5px 0px 15px 0px;
-}
-.reviews-art{
-  max-height: 250px;
-  margin: 0px 0px 10px 0px;
-}
-
-/* Timeline Formatting */
-.decade-img {
-  height: 100px;
-  width: 100px;
-  border-radius: 50px; 
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
-  padding: 4px;
-  line-height: 1.42857143;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-.timeline-list li {
-  list-style: none;
-}
-.timeline-art{
-  max-height: 125px;
-  margin: 10px;
-}
-.timeline-art-subtitle {
-  margin: -10px 0px 10px 0px;
 }
 
 

@@ -311,12 +311,15 @@ function filterArtTitle () {
     artTitleFilter.filterFunction(function(d) {
       pieceBeingSearched = d.toLowerCase();
       searchTitle = searchTitle.toLowerCase();
+      searchTitle = searchTitle.trim();
       if(pieceBeingSearched.search(searchTitle) > -1){
         return pieceBeingSearched;
       }
     });
     //reset gallery
     resetDropdownsAndGallery();
+    //close mobile keyboard
+    document.activeElement.blur();
   }
 }
 
@@ -676,14 +679,14 @@ function updateModalHTML (elementID) {
     var emailTitleMediumDimensions = artTitle + ' (' + artMedium + ', ' + artDimensions + ')';
     var emailContacts;
     if (currentCollection[elementID].contact === 'kornbluthart@gmail.com') {
-      emailContacts = currentCollection[elementID].contact;
+      emailContacts = currentCollection[elementID].contact + '?';
     } else {
-      emailContacts = currentCollection[elementID].contact + '?cc=' + 'kornbluthart@gmail.com';
+      emailContacts = currentCollection[elementID].contact + '?cc=' + 'kornbluthart@gmail.com' + '&';
     }
     d3.select('#modal-footer-bottom').text('Available: ');
     d3.select('#modal-footer-bottom')
       .append('a')
-      .attr('href', 'mailto:' + emailContacts + '&Subject=' + 'Inquiry: ' + emailTitleMediumDimensions + 
+      .attr('href', 'mailto:' + emailContacts + 'Subject=' + 'Inquiry: ' + emailTitleMediumDimensions + 
         '&body=' + 'I am interested in ' + emailTitleMediumDimensions + 
         ', which I found on franceskornbluth.com; please send more information.')
       .attr('title', 'Click to email: ' + currentCollection[elementID].contact)
