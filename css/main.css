@@ -36,11 +36,17 @@ body {
 
 /* Signature SVG Formatting */
 #navSignature {
-  margin: 0px;
-  height: 25px;
+  margin: 2px 0px 0px 0px;
+  height: 23px;
 
 }
 @media (min-width: 500px) {
+  #navSignature {
+    margin: -4px 0px 0px 0px;
+    height: 30px;
+  }
+}
+@media (min-width: 769px) {
   #navSignature {
     margin: -8px 0px 0px 0px;
     height: 40px;
