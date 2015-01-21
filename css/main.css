@@ -110,7 +110,7 @@ body {
 }
 @media screen and (max-height: 500px) {
   ul.timeline-list {
-  padding: 0px;
+  padding-left: 10px;
   }
 }
 
