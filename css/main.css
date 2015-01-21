@@ -69,7 +69,7 @@ body {
 .grey-theme h4 a:hover {
   color: #ffffff;
 }
-.grey-theme p, #crc a {
+.grey-theme p, .grey-theme #crc a {
   color: grey;
 }
 .grey-theme .large-text {
@@ -77,8 +77,11 @@ body {
   font-weight: 300;
   color: #ffffff;
 }
+.index-links {
+  padding: 10px 0px 10px 0px;
+}
 #index-bottom-hr {
-  margin: 0px 0px 20px 0px;
+  margin: 5px 0px 20px 0px;
 }
 
 
@@ -159,16 +162,13 @@ body {
   margin: 0px;
   padding: 0px;
 }
-@media screen and (max-width: 500px) {
-  #art-modal-footer {
-    font-size: 10px;
+#medium-btn-mobi,
+  #size-btn-mobi,
+  #decade-btn-mobi,
+  #tag-btn-mobi,
+  #status-btn-mobi {
+    margin: 3px;
   }
-}
-@media screen and (max-height: 400px) {
-  #art-modal-footer {
-    display: none !important;
-  }
-}
 #modal-footer-top {
   margin: 10px 0px 0px 0px;
   padding: 0px;
@@ -176,6 +176,21 @@ body {
 #modal-footer-bottom {
   margin: 0px 0px 10px 0px;
   padding: 0px;
+}
+@media screen and (max-height: 500px) {
+  .modal-header {
+    padding: 7px 10px 10px 10px;
+  }
+  .modal-body {
+    padding: 5px 10px 5px 10px;
+  } 
+  .modal-footer {
+    padding: 10px;
+    font-size: 10px;
+  } 
+  #modal-img {
+    max-height: 170px;
+  }
 }
 
 
@@ -188,13 +203,6 @@ body {
   margin: 5px 0px -15px 0px;
   padding: 0px;
   font-style: italic;
-}
-#medium-btn-mobi,
-#size-btn-mobi,
-#decade-btn-mobi,
-#tag-btn-mobi,
-#status-btn-mobi {
-  margin: 7px;
 }
 #more-art-btn {
   margin: 0 auto;
@@ -349,7 +357,3 @@ body {
 #crc {
   margin-bottom: 40px;
 }
-
-
-
-
