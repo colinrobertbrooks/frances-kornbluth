@@ -92,17 +92,22 @@ body {
 
 
 /* Timeline Formatting */
+#decade-divider-top {
+  margin-bottom: 25px;
+}
+.decade-divider {
+  margin-bottom: 30px;
+}
 .decade-img {
-  height: 100px;
-  width: 100px;
-  border-radius: 50px; 
+  height: 110px;
+  width: 110px;
+  border-radius: 55px; 
   display: inline-block;
   max-width: 100%;
   height: auto;
-  padding: 4px;
-  line-height: 1.42857143;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  padding: 1px;
+  background-color: #a2a2a2;
+  border: 1px solid #eee;
 }
 .timeline-list li {
   list-style: none;
@@ -131,9 +136,25 @@ body {
 .quote-credit {
   margin: 5px 0px 15px 0px;
 }
-.reviews-art{
-  max-height: 250px;
+
+.reviews-art, .reviews-art-horizontal {
   margin: 0px 0px 10px 0px;
+  max-height: 230px;
+}
+@media (min-width: 500px) {
+  .reviews-art-horizontal{
+    max-height: 145px;
+  }
+}
+@media (min-width: 992px) {
+  .reviews-art-horizontal{
+    max-height: 190px;
+  }
+}
+@media (min-width: 1200px) {
+  .reviews-art-horizontal{
+    max-height: 230px;
+  }
 }
 
 
