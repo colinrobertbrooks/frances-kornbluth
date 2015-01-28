@@ -47,7 +47,7 @@ var decadeMap = {
   "1990s": "filterArtDecade('1990s')",
   "2000s": "filterArtDecade('2000s')",
   "2010s": "filterArtDecade('2010s')",
-  "Unknown": "filterArtDecade('Unknown')"
+  "Undated": "filterArtDecade('Undated')"
 };
 var statusButtons = ['#status-btn','#status-btn-mobi'];
 var statusUls = ['#status-ul', '#status-ul-mobi'];
@@ -55,6 +55,7 @@ var statusMap = {
   "Available": "filterArtStatus('Available')",
   "Private Collection": "filterArtStatus('Private')",
   "Public Collection": "filterArtStatus('Public')",
+  "Unknown Collection": "filterArtStatus('Unknown')"
 };
 var tagButtons = ['#tag-btn','#tag-btn-mobi'];
 var tagUls = ['#tag-ul', '#tag-ul-mobi'];
@@ -213,6 +214,8 @@ function populateDeskAndMobiDropdowns (dropdownSet, dropdownUls, dropdownMap) {
           currentMatchCount = currentCollection.filter(function(d){return d.status === "Private"}).length;
         } else if (dropdownKeys[j] === "Public Collection") {
           currentMatchCount = currentCollection.filter(function(d){return d.status === "Public"}).length;
+        } else if (dropdownKeys[j] === "Unknown Collection") {
+          currentMatchCount = currentCollection.filter(function(d){return d.status === "Unknown"}).length;
         } else {
           currentMatchCount = currentCollection.filter(function(d){return d.status === dropdownKeys[j]}).length;
         }

@@ -183,14 +183,16 @@
     <div class="modal fade" id="mobiFilterModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-          <h4 class="text-center">Collection Filters</h4>
+          <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 id="mobi-filter-title">Collection Filters</h4>
+          <p id="art-btn-counter-modal" class="light-color-text"></p>
           </div>
           <div class="modal-body">
             <div class="row text-center" role="form">
               <div class=" col-xs-sm col-sm-12 col-md-12 col-lg-12">
                 <div class="btn-group">
-                  <button type="button" id="medium-btn-mobi" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <button type="button" id="medium-btn-mobi" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     Medium <span class="caret"></span>
                   </button>
                   <ul id="medium-ul-mobi" class="dropdown-menu" role="menu">
@@ -199,7 +201,7 @@
               </div>
               <div class=" col-xs-sm col-sm-12 col-md-12 col-lg-12">
                 <div class="btn-group">
-                  <button type="button" id="size-btn-mobi" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <button type="button" id="size-btn-mobi" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     Size <span class="caret"></span>
                   </button>
                   <ul id="size-ul-mobi" class="dropdown-menu" role="menu">
@@ -208,7 +210,7 @@
               </div>
               <div class=" col-xs-sm col-sm-12 col-md-12 col-lg-12">
                <div class="btn-group">
-                  <button type="button" id="decade-btn-mobi" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <button type="button" id="decade-btn-mobi" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     Decade <span class="caret"></span>
                   </button>
                   <ul id="decade-ul-mobi" class="dropdown-menu" role="menu">
@@ -217,7 +219,7 @@
               </div>
               <div class=" col-xs-sm col-sm-12 col-md-12 col-lg-12">
                 <div class="btn-group">
-                  <button type="button" id="tag-btn-mobi" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <button type="button" id="tag-btn-mobi" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     Tag <span class="caret"></span>
                   </button>
                   <ul id="tag-ul-mobi" class="dropdown-menu" role="menu">
@@ -226,19 +228,17 @@
               </div>
               <div class=" col-xs-sm col-sm-12 col-md-12 col-lg-12">
                 <div class="btn-group">
-                  <button type="button" id="status-btn-mobi" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <button type="button" id="status-btn-mobi" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     Status <span class="caret"></span>
                   </button>
                   <ul id="status-ul-mobi" class="dropdown-menu" role="menu">
                   </ul>
                 </div>
               </div>
-              <p id="art-btn-counter-modal" class="light-color-text"></p>
             </div>
           </div>
           <div class="modal-footer text-center">
-            <button id="reset-btn-mobi" type="button" class="btn btn-default btn-md" onclick="resetAllFilters()">Reset</button>
-            <button type="button" class="btn btn-md btn-default" data-dismiss="modal">Close</button>
+            <button id="reset-btn-mobi" type="button" class="btn btn-default btn-sm" onclick="resetAllFilters()">Reset</button>
           </div>
         </div>
       </div>

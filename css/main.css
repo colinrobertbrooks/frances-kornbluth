@@ -237,9 +237,13 @@ body {
     padding: 5px 10px 5px 10px;
   } 
   .modal-footer {
-    padding: 10px;
+    padding: 5px;
     font-size: 10px;
   } 
+  #mobi-filter-title {
+    margin-top: 4px;
+    padding: 0px;
+  }
   #modal-img {
     max-height: 170px;
   }
@@ -260,7 +264,7 @@ body {
   margin: 0 auto;
 }
 #art-btn-counter {
-  margin-top: 20px;
+  margin-top: 0px;
   font-size: 12px;
   font-style: italic;
 }
@@ -269,8 +273,8 @@ body {
   padding: 0px;
 }
 #art-btn-counter-modal {
-  margin: 7px 0px 0px 0px;
-  font-size: 13px;
+  margin: 2px 0px -5px 0px;
+  font-size: 12px;
   font-style: italic;
 }
 #title-search-input {  
