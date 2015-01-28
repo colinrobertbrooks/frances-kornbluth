@@ -734,7 +734,7 @@ function nextArt () {
 
 //helper functions
 function showNote () {
-  d3.selectAll("#note")
+  d3.selectAll("#collection-note")
     .transition()
     .duration(1600)
     .style("color", "rgb(162,162,162)");
@@ -742,7 +742,7 @@ function showNote () {
 }
 
 function hideNote () {
-  d3.selectAll("#note")
+  d3.selectAll("#collection-note")
     .transition()
     .duration(1900)
     .style("color", "rgb(255, 255, 255)");

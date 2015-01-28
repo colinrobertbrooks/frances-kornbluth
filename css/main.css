@@ -326,15 +326,6 @@ body {
 }
 
 
-/* Collection Note Formatting */
-#note {
-  color: white;
-  font-style: italic;
-  margin: -15px 0px 5px 0px;
-  padding: 0px;
-}
-
-
 /* Books Formatting */
 #featureList {
   margin: 10px 0px 0px 0px;
@@ -374,6 +365,21 @@ body {
 }
 #contact-hr {
   margin-top: 10px;
+}
+
+
+/* Collection and Contact Note Formatting */
+.note {
+  color: white;
+  font-style: italic;
+}
+#collection-note {
+  margin: -15px 0px 5px 0px;
+  padding: 0px;
+}
+#contact-note {
+  margin: -3px 0px -3px 0px;
+  padding: 0px;
 }
 
 
