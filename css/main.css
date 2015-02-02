@@ -241,13 +241,13 @@ body {
   #decade-btn-mobi,
   #tag-btn-mobi,
   #status-btn-mobi {
-    margin: 3px;
+    margin: 2px;
   }
-#modal-footer-top {
+#art-modal-footer-top {
   margin: 10px 0px 0px 0px;
   padding: 0px;
 }
-#modal-footer-bottom {
+#art-modal-footer-bottom {
   margin: 0px 0px 10px 0px;
   padding: 0px;
 }
@@ -255,19 +255,21 @@ body {
   .modal-header {
     padding: 7px 10px 10px 10px;
   }
+  .modal-header h4 {
+    font-size: 14px;
+  }
   .modal-body {
     padding: 5px 10px 5px 10px;
   } 
   .modal-footer {
-    padding: 5px;
+    padding: 2px;
     font-size: 10px;
   } 
-  #mobi-filter-title {
-    margin-top: 4px;
-    padding: 0px;
-  }
   #modal-img {
-    max-height: 170px;
+    max-height: 160px;
+  }
+  #reset-btn-mobi {
+    margin: 2px;
   }
 }
 
@@ -296,19 +298,21 @@ body {
 }
 #art-btn-counter-modal {
   margin: 2px 0px -5px 0px;
-  font-size: 12px;
+  font-size: 11px;
   font-style: italic;
 }
 #title-search-input {  
-  margin: -10px 0px 20px 0px;
+  margin: -10px 0px 0px 0px;
 }
 #reset-btn,
 #medium-btn,
 #size-btn,
 #decade-btn,
 #tag-btn,
-#status-btn {
-  margin: -10px 0px 0px 0px;
+#status-btn,
+#filters-btn-mobi,
+#reset-btn-mobi {
+  margin: 7px 0px 0px 0px;
 }
 #reset-btn:hover,
 #filters-btn-mobi:hover,

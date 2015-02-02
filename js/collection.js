@@ -340,16 +340,7 @@ function filterArtDecade (selectedDecade) {
   //clear decade crossfilter
   artDecadeFilter.filterAll();  
   //update buttons
-  for (var i = 0; i < decadeButtons.length; i++) {
-    d3.select(decadeButtons[i]).text(selectedDecade + " ");
-    d3.select(decadeButtons[i]).append('span')
-      .attr('class', 'caret');
-    d3.select(decadeButtons[i])
-      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
-  }
-  d3.select('#filters-btn-mobi')
-    .attr('class','btn btn-default btn-md btn-filtered')
-    .text('Filters Applied')
+  updateButtons(decadeButtons, selectedDecade)
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
@@ -362,16 +353,7 @@ function filterArtMedium (selectedMedium) {
   //clear medium crossfilter
   artMediumFilter.filterAll();   
   //update buttons
-  for (var i = 0; i < mediumButtons.length; i++) {
-    d3.select(mediumButtons[i]).text(selectedMedium + " ");
-    d3.select(mediumButtons[i]).append('span')
-      .attr('class', 'caret');
-    d3.select(mediumButtons[i])
-      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
-  }
-  d3.select('#filters-btn-mobi')
-    .attr('class','btn btn-default btn-md btn-filtered')
-    .text('Filters Applied')
+  updateButtons(mediumButtons, selectedMedium)
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
@@ -384,16 +366,7 @@ function filterArtSize (selectedSize) {
   //clear medium crossfilter
   artSizeFilter.filterAll();   
   //update buttons
-  for (var i = 0; i < mediumButtons.length; i++) {
-    d3.select(sizeButtons[i]).text(selectedSize + " ");
-    d3.select(sizeButtons[i]).append('span')
-      .attr('class', 'caret');
-    d3.select(sizeButtons[i])
-      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
-  }
-  d3.select('#filters-btn-mobi')
-    .attr('class','btn btn-default btn-md btn-filtered')
-    .text('Filters Applied')
+  updateButtons(sizeButtons, selectedSize)
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
@@ -406,16 +379,7 @@ function filterArtStatus (selectedStatus) {
   //clear status crossfilter
   artStatusFilter.filterAll();  
   //update buttons
-  for (var i = 0; i < statusButtons.length; i++) {
-    d3.select(statusButtons[i]).text(selectedStatus + " ");
-    d3.select(statusButtons[i]).append('span')
-      .attr('class', 'caret');
-    d3.select(statusButtons[i])
-      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
-  }
-  d3.select('#filters-btn-mobi')
-    .attr('class','btn btn-default btn-md btn-filtered')
-    .text('Filters Applied')
+  updateButtons(statusButtons, selectedStatus)
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
@@ -430,16 +394,7 @@ function filterArtTag (selectedTag) {
   //clear all tag crossfilter
   resetAllTagFilters();
   //update buttons
-  for (var i = 0; i < tagButtons.length; i++) {
-    d3.select(tagButtons[i]).text(selectedTag + " ");
-    d3.select(tagButtons[i]).append('span')
-      .attr('class', 'caret');
-    d3.select(tagButtons[i])
-      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
-  }
-  d3.select('#filters-btn-mobi')
-    .attr('class','btn btn-default btn-md btn-filtered')
-    .text('Filters Applied')
+  updateButtons(tagButtons, selectedTag)
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
@@ -485,6 +440,24 @@ function filterArtTag (selectedTag) {
   resetDropdownsAndGallery();
 }
 
+function updateButtons (buttonArr, selection) {
+  //update buttons
+  for (var i = 0; i < buttonArr.length; i++) {
+    d3.select(buttonArr[i]).text(selection + " ");
+    d3.select(buttonArr[i]).append('span')
+      .attr('class', 'caret');
+    if (buttonArr[i].search("mobi") > 0) {
+      d3.select(buttonArr[i])
+      .attr('class', 'btn btn-default btn-sm dropdown-toggle btn-filtered');
+    } else {
+      d3.select(buttonArr[i])
+      .attr('class', 'btn btn-default btn-md dropdown-toggle btn-filtered');
+    }
+  }
+  d3.select('#filters-btn-mobi')
+    .attr('class','btn btn-default btn-md btn-filtered')
+    .text('Filters Applied')
+}
 
 //filter clear functions
 function resetAllTagFilters () {
@@ -526,8 +499,13 @@ function resetAllFilters() {
     .attr('class', 'caret');
   }
   for (var i = buttons.length - 1; i >= 0; i--) {
-    d3.select(buttons[i])
-      .attr('class', 'btn btn-default btn-md dropdown-toggle');
+    if (buttons[i].search("mobi") > 0) {
+      d3.select(buttons[i])
+        .attr('class', 'btn btn-default btn-sm dropdown-toggle');
+    } else {
+      d3.select(buttons[i])
+        .attr('class', 'btn btn-default btn-md dropdown-toggle');
+    }
   }
   d3.select('#filters-btn-mobi')
     .attr('class','btn btn-default btn-md')
@@ -603,9 +581,15 @@ function addArtToGallery () {
         .text("No pieces match the selected criteria.")
         .attr('class','red-text');
     } else {
-      d3.select('#art-btn-counter-top')
+      if (artDisplayed === 1) {
+        d3.select('#art-btn-counter-top')
+        .text("Displaying " + artDisplayed + " piece")
+        .attr('class','light-color-text');
+      } else {
+        d3.select('#art-btn-counter-top')
         .text("Displaying " + artDisplayed + " pieces")
         .attr('class','light-color-text');
+      }
       d3.select('#art-btn-counter-bottom')
         .text("(" + currentLength + " of " + collectionLength + " pieces match the selected criteria)");
       d3.select('#art-btn-counter-modal')
@@ -677,7 +661,7 @@ function updateModalHTML (elementID) {
     .attr('id', 'modal-img')
     .attr('class', 'img-responsive')
     .attr('src', artPath);
-  d3.select('#modal-footer-top').text(artMedium + ', ' + artDimensions);
+  d3.select('#art-modal-footer-top').text(artMedium + ', ' + artDimensions);
   if (artStatus === "Available") {
     var emailTitleMediumDimensions = artTitle + ' (' + artMedium + ', ' + artDimensions + ')';
     var emailContacts;
@@ -686,8 +670,8 @@ function updateModalHTML (elementID) {
     } else {
       emailContacts = currentCollection[elementID].contact + '?cc=' + 'kornbluthart@gmail.com' + '&';
     }
-    d3.select('#modal-footer-bottom').text('Available: ');
-    d3.select('#modal-footer-bottom')
+    d3.select('#art-modal-footer-bottom').text('Available: ');
+    d3.select('#art-modal-footer-bottom')
       .append('a')
       .attr('href', 'mailto:' + emailContacts + 'Subject=' + 'Inquiry: ' + emailTitleMediumDimensions + 
         '&body=' + 'I am interested in ' + emailTitleMediumDimensions + 
@@ -695,7 +679,7 @@ function updateModalHTML (elementID) {
       .attr('title', 'Click to email: ' + currentCollection[elementID].contact)
       .text(currentCollection[elementID].holder);
   } else {
-    d3.select('#modal-footer-bottom').text("Collection " + currentCollection[elementID].holder);
+    d3.select('#art-modal-footer-bottom').text("Collection " + currentCollection[elementID].holder);
   }
 }
 
@@ -703,7 +687,7 @@ function updateModalSize () {
   var currentScreenHeight = $( window ).height();
   var modalContentMaxHeight = currentScreenHeight * .82;
   var modalImgMaxHeight = currentScreenHeight * .5;
-  $('.modal-content').css('max-height', modalContentMaxHeight);
+  $('#modal-content').css('max-height', modalContentMaxHeight);
   $('#modal-img').css('max-height', modalImgMaxHeight);
 }
 
