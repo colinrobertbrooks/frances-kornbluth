@@ -67,13 +67,14 @@ body {
   color: #f5f5f5;
 }
 .grey-theme h4 {
-  margin: 0px 0px 10px 0px;
+  margin: 5px 0px 5px 0px;
 }
-.grey-theme h4 a {
+.grey-theme a {
   color: grey;
 }
-.grey-theme h4 a:hover {
+.grey-theme a:hover {
   color: #ffffff;
+  text-decoration: none;
 }
 .grey-theme p, .grey-theme #crc a {
   color: grey;
@@ -86,8 +87,8 @@ body {
 .index-links {
   padding: 10px 0px 10px 0px;
 }
-#index-bottom-hr {
-  margin: 5px 0px 20px 0px;
+#index-footer {
+  margin-top: 10px;
 }
 
 
