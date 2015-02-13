@@ -69,10 +69,3 @@
     background-color: #4b5563;
   }
 }
-
-
-/* Home Carousel Formatting  */
-.carousel img {
-  min-width: 100%;
-  max-height: 450px;
-}
