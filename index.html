@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="js/lib/jquery-2.1.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/lib/d3.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/fkGoogleAnalytics.js"></script>
   </head>
 
   <body class="grey-theme">
@@ -91,61 +94,54 @@
     <!-- content -->
     <div class="container">
 
-      <div class="row text-center">
-
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-          <hr>
-          <h3>Artist</h3>
-          <p class="large-text">Frances Kornbluth (1920 - 2014) was an Abstract Expressionist painter who worked in New York City, Northeastern Connecticut and Monhegan Island, Maine. Her teachers and mentors included Reuben Tam, William Kienbusch and Robert Richenburg.</p>
-
-          <div class="row">
-            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-            <div class="col-xs-5 hidden-sm hidden-md hidden-lg">
-              <h4><a href="/biography.html" title="Read the biography">Biography</a></h4>
-            </div>
-            <div class="col-xs-5 hidden-sm hidden-md hidden-lg">
-              <h4><a href="/timeline.html" title="View the timeline">Timeline</a></h4>
-            </div>
-            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-          </div>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-          <hr>
-          <h3>Artwork</h3>
-          <p class="large-text">Frances Kornbluth's body of work spans seven decades and can be found in the collecitons of the Chrysler Museum of Art, the Colby College Museum of Art, the Hudson River Museum and the Monhegan Museum.</p>
-        </div> 
-
-      </div>
-
-      <div class="row text-center">
-
-        <div class="hidden-xs col-sm-6 col-md-6">
-          <div class="row">
-            <div class="col-sm-1 col-md-3"></div>
-            <div class="col-sm-5 col-md-3">
-              <h4><a href="/biography.html" title="Read the biography">Biography</a></h4>
-            </div>
-            <div class="col-sm-5 col-md-3">
-              <h4><a href="/timeline.html" title="View the timeline">Timeline</a></h4>
-            </div>
-            <div class="col-sm-1 col-md-3"></div>
-          </div>
-          <hr>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-6">
-          <div class="row">
-            <div class="col-md-12">
-              <h4><a href="/collection.html" title="Explore the collection">Collection</a></h4>
+        <div class="row text-center">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h2>Artist</h2>
+            <hr>
+            <p class="large-text">Frances Kornbluth (1920 - 2014) was an Abstract Expressionist painter who worked in New York City, Northeastern Connecticut and Monhegan Island, Maine. Her teachers and mentors included Reuben Tam, William Kienbusch and Robert Richenburg.</p>
+            <div class="row text-center">
+              <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
+                <a class="btn btn-md btn-grey" type="button" href="/biography.html" title="Read the biography">Biography</a>
+              </div>
+              <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
+                <a class="btn btn-md btn-grey" type="button" href="/timeline.html" title="View the timeline">Timeline</a>
+              </div>
             </div>
           </div>
-          <hr>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h2>Artwork</h2>
+            <hr>
+            <p class="large-text">Frances Kornbluth's body of work spans seven decades and can be found in the collecitons of the Chrysler Museum of Art, the Colby College Museum of Art, the Hudson River Museum and the Monhegan Museum. <span id="allCount"></span> examples can be viewed in the online collection, <span id="availCount"></span> of which are currently available.</p>
+          </div>
         </div>
 
-      </div>
+        <div class="row text-center">
+          <div class="hidden-xs col-sm-6 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-sm-1 col-md-2"></div>
+              <div class="col-sm-5 col-md-4">
+                <a class="btn btn-md btn-grey" type="button" href="/biography.html" title="Read the biography">Biography</a>
+              </div>
+              <div class="col-sm-5 col-md-4">
+                <a class="btn btn-md btn-grey" type="button" href="/timeline.html" title="View the timeline">Timeline</a>
+              </div>
+              <div class="col-sm-1 col-md-2"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <a class="btn btn-md btn-grey" type="button" href="/collection.html" title="Explore the online collection">Collection</a>
+          </div>
+        </div>
 
+        <div class="row text-center">
+          <div class="hidden-xs col-sm-6 col-md-6 col-lg-6">
+            <hr>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <hr>
+          </div>
+        </div>
+      
     </div>
     <!-- /content -->
     
