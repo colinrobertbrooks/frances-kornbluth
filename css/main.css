@@ -312,6 +312,9 @@ h1 {
 
 
 /* Collection Button Formatting */
+#title-search-input {  
+  margin: -10px 0px 0px 0px;
+}
 #reset-btn {
   font-weight: 600;
   color: #a2a2a2;
@@ -338,8 +341,9 @@ h1 {
   font-size: 11px;
   font-style: italic;
 }
-#title-search-input {  
-  margin: -10px 0px 0px 0px;
+#addArtLink{
+  margin: 15px 0px -5px 0px;
+  font-size: 12px;
 }
 #reset-btn,
 #medium-btn,
