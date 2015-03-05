@@ -87,33 +87,38 @@ h1 {
 #img0 {
   background-repeat: no-repeat;
   background-position: center top;
+  z-index: -1;
 }
 #img1 {
   background-repeat: no-repeat;
   background-position: center top;
+  z-index: -1;
 }
 #img2 {
   background-repeat: no-repeat;
   background-position: center top;
+  z-index: -1;
 }
 #img3 {
   background-repeat: no-repeat;
   background-position: center top;
+  z-index: -1;
 }
 #img4 {
   background-repeat: no-repeat;
   background-position: center top;
+  z-index: -1;
 }
 #wirtalla-vis {
-  color: grey;
+  color: gray;
+  font-size: 11px;
   font-style: italic;
-  font-size: 14px;
-  margin: 10px 0px -20px 0px;
+  padding-top: 5px;
 }
 #wirtalla-vis a:hover,
 #wirtalla-vis a:visited,
 #wirtalla-vis a:active {
-  color: grey;
+  color: gray;
 }
 
 
