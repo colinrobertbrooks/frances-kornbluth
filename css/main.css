@@ -221,6 +221,13 @@ h1 {
   }
 }
 
+/* Statements Formatting */
+#wordCloud {
+  margin: 0 auto;
+  margin-top: -15px;
+  max-height: 475px;
+}
+
 
 /* Quotes Formatting */
 .section-header {
