@@ -39,8 +39,8 @@ h1 {
 
 /* Signature SVG Formatting */
 #navSignature {
-  margin: 2px 0px 0px 0px;
-  height: 23px;
+  margin: 0px 0px 0px -8px;
+  height: 22px;
 
 }
 @media (min-width: 500px) {
@@ -496,6 +496,12 @@ h1 {
 #contact-note {
   margin: -3px 0px -3px 0px;
   padding: 0px;
+}
+.anchor {
+  display: block;
+  position: relative;
+  top: -63px;
+  visibility: hidden;
 }
 
 
