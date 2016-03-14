@@ -1,4 +1,4 @@
-/* Navbar Formatting  */
+/* navbar colors  http://work.smarchal.com/twbscolor/scss/323a454b5563a2a2a2ffffff0 */
 .navbar {
     margin: 0;
     border: 0;
@@ -9,7 +9,6 @@
 .dropdown-menu .active a:hover {
   background-color: #323a45;
 }
-/* http://twbscolor.smarchal.com/scss?bd=323a45&bh=4b5563&cd=b4b7c6&ch=ffffff */
 .navbar-default {
   background-color: #323a45;
   border-radius: 0px;

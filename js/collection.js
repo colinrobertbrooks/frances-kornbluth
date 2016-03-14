@@ -303,7 +303,7 @@ function filterArtTitle () {
     alert('Please enter a title to search for...');
   } else {
     //clear title crossfilter
-    artTitleFilter.filterAll();  
+    artTitleFilter.filterAll();
     //make input grey
     d3.select('#title-search-input')
       .style('color','white')
@@ -338,7 +338,7 @@ $(document).keypress(function(event){
 
 function filterArtDecade (selectedDecade) {
   //clear decade crossfilter
-  artDecadeFilter.filterAll();  
+  artDecadeFilter.filterAll();
   //update buttons
   updateButtons(decadeButtons, selectedDecade)
   //remove all images from gallery
@@ -346,38 +346,38 @@ function filterArtDecade (selectedDecade) {
   //apply crossfilter
   artDecadeFilter.filter(selectedDecade);
   //reset gallery
-  resetDropdownsAndGallery();  
+  resetDropdownsAndGallery();
 }
 
 function filterArtMedium (selectedMedium) {
   //clear medium crossfilter
-  artMediumFilter.filterAll();   
+  artMediumFilter.filterAll();
   //update buttons
   updateButtons(mediumButtons, selectedMedium)
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
-  artMediumFilter.filter(selectedMedium); 
+  artMediumFilter.filter(selectedMedium);
   //reset gallery
   resetDropdownsAndGallery();
 }
 
 function filterArtSize (selectedSize) {
   //clear medium crossfilter
-  artSizeFilter.filterAll();   
+  artSizeFilter.filterAll();
   //update buttons
   updateButtons(sizeButtons, selectedSize)
   //remove all images from gallery
   removeArtFromGallery();
   //apply crossfilter
-  artSizeFilter.filter(selectedSize); 
+  artSizeFilter.filter(selectedSize);
   //reset gallery
   resetDropdownsAndGallery();
 }
 
 function filterArtStatus (selectedStatus) {
   //clear status crossfilter
-  artStatusFilter.filterAll();  
+  artStatusFilter.filterAll();
   //update buttons
   updateButtons(statusButtons, selectedStatus)
   //remove all images from gallery
@@ -435,7 +435,7 @@ function filterArtTag (selectedTag) {
     case 'Tondo':
         tagTondoFilter.filter('x');
         break;
-  } 
+  }
   //reset gallery
   resetDropdownsAndGallery();
 }
@@ -480,7 +480,7 @@ function resetAllFilters() {
   artTitleFilter.filterAll();
   artDecadeFilter.filterAll();
   artMediumFilter.filterAll();
-  artStatusFilter.filterAll();   
+  artStatusFilter.filterAll();
   artSizeFilter.filterAll();
   //artHolderFilter.filterAll();
   resetAllTagFilters();
@@ -643,13 +643,13 @@ function showArtModal (elementID) {
 function updateModalHTML (elementID) {
   //html vars
   var artYear = currentCollection[elementID].year;
-  var artTitle 
+  var artTitle
     if (artYear != "") {
       artTitle = currentCollection[elementID].title + " (" + artYear + ")";
     } else {
       artTitle = currentCollection[elementID].title;
-    }     
-  var artPath = currentCollection[elementID].directory + currentCollection[elementID].file;     
+    }
+  var artPath = currentCollection[elementID].directory + currentCollection[elementID].file;
   var artMedium = currentCollection[elementID].medium;
   var artDimensions = currentCollection[elementID].dimensions;
   var artStatus = currentCollection[elementID].status;
@@ -673,8 +673,8 @@ function updateModalHTML (elementID) {
     d3.select('#art-modal-footer-bottom').text('Available: ');
     d3.select('#art-modal-footer-bottom')
       .append('a')
-      .attr('href', 'mailto:' + emailContacts + 'Subject=' + 'Inquiry: ' + emailTitleMediumDimensions + 
-        '&body=' + 'I am interested in ' + emailTitleMediumDimensions + 
+      .attr('href', 'mailto:' + emailContacts + 'Subject=' + 'Inquiry: ' + emailTitleMediumDimensions +
+        '&body=' + 'I am interested in ' + emailTitleMediumDimensions +
         ', which I found on franceskornbluth.com; please send more information.')
       .attr('title', 'Click to email: ' + currentCollection[elementID].contact)
       .text(currentCollection[elementID].holder);

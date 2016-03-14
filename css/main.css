@@ -58,7 +58,6 @@ h1 {
 
 
 /* Index Carousel Formatting  */
-
 #img0,
 #img1,
 #img2,
@@ -123,6 +122,13 @@ h1 {
 
 
 /* Index Formatting */
+#show-alert {
+  margin-bottom: 0px;
+}
+.alert-warning-a,
+.alert-warning-a:hover {
+  color: #8a6d3b !important;
+}
 .grey-theme {
   background-color: #323a45;
 }
