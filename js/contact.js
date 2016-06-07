@@ -3,7 +3,7 @@ window.onload = function() {
 };
 
 
-d3.csv('/data/collection.csv', function(data) {
+d3.csv('/frances_kornbluth/data/collection.csv', function(data) {
   var availableArt = data.filter(function(d){return d.status === "Available"}).length;
   d3.select('#availCount').text(availableArt);
 });
