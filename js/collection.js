@@ -155,7 +155,7 @@ var tondoAccessor = function(d) {
 
 
 //load collection object, set global & crossfilter vars and add first 8 pieces to gallary
-d3.csv('/frances_kornbluth/data/collection.csv', function(data) {
+d3.csv('/data/collection.csv', function(data) {
   //set crossfilter object
   artCollectionCrossFilter = crossfilter(data);
   //update crossfilter vars
