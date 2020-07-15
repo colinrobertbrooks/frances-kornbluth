@@ -10,6 +10,8 @@
     "browser": true
   },
   "rules": {
-    "import/no-extraneous-dependencies": "off"
+    "@typescript-eslint/interface-name-prefix": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off"
   }
 }
