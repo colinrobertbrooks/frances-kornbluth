@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "colinrcummings",
+    "colinrcummings/typescript",
+    "colinrcummings/jest",
+    "colinrcummings/prettier",
+    "colinrcummings/prettier/react"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": "off"
+  }
+}
