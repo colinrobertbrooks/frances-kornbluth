@@ -1,6 +1,6 @@
 import React from 'react';
-import { Navbar } from '../navigation';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
+import Header from './Header';
 
 interface IPageLayoutProps {
   documentTitle?: string;
@@ -17,7 +17,7 @@ export const PageLayout: React.FC<IPageLayoutProps> = ({
 
   return (
     <>
-      <Navbar />
+      <Header />
       <main>
         <h1>{heading}</h1>
         {children}
