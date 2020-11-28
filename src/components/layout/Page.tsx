@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'reactstrap';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
 
 interface IPageProps {
@@ -15,9 +16,9 @@ export const Page: React.FC<IPageProps> = ({
   useScrollToTopOnMount();
 
   return (
-    <main>
+    <Container tag="main" className="mt-3">
       <h1>{heading}</h1>
       {children}
-    </main>
+    </Container>
   );
 };

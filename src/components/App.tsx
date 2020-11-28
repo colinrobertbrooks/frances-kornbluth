@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Header } from './layout';
+import { Header, Footer } from './layout';
 import {
   Biography,
   Books,
@@ -15,6 +15,7 @@ import {
   Wanted,
   NotFound,
 } from './pages';
+import { Url } from '../constants';
 
 const App: React.FC = () => {
   return (
@@ -22,43 +23,48 @@ const App: React.FC = () => {
       <>
         <Header />
         <Switch>
-          <Route path="/biography">
-            <Biography />
-          </Route>
-          <Route path="/books">
-            <Books />
-          </Route>
-          <Route path="/collection">
-            <Collection />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/copyright">
-            <Copyright />
-          </Route>
-          <Route exact path="/">
+          <Route exact path={Url.HomePage}>
             <Home />
           </Route>
-          <Route path="/quotes">
-            <Quotes />
+          {/* artist */}
+          <Route path={Url.BiographyPage}>
+            <Biography />
           </Route>
-          <Route path="/reviews">
-            <Reviews />
-          </Route>
-          <Route path="/statements">
-            <Statements />
-          </Route>
-          <Route path="/timeline">
+          <Route path={Url.TimelinePage}>
             <Timeline />
           </Route>
-          <Route path="/wanted">
+          <Route path={Url.StatementsPage}>
+            <Statements />
+          </Route>
+          <Route path={Url.QuotesPage}>
+            <Quotes />
+          </Route>
+          {/* artwork */}
+          <Route path={Url.CollectionPage}>
+            <Collection />
+          </Route>
+          <Route path={Url.ReviewsPage}>
+            <Reviews />
+          </Route>
+          <Route path={Url.BooksPage}>
+            <Books />
+          </Route>
+          {/* footer */}
+          <Route path={Url.ContactPage}>
+            <Contact />
+          </Route>
+          <Route path={Url.CopyrightPage}>
+            <Copyright />
+          </Route>
+          <Route path={Url.WantedPage}>
             <Wanted />
           </Route>
+          {/* errors */}
           <Route path="*">
             <NotFound />
           </Route>
         </Switch>
+        <Footer />
       </>
     </Router>
   );
