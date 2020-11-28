@@ -2,23 +2,23 @@
 
 ## Setup
 
-`$ yarn`
+`$ npm install`
 
 ## Development
 
-`$ yarn start`
+`$ npm start`
 
 ## Test
 
-`$ yarn test`
+`$ npm test`
 
 ## Build
 
-`$ yarn build`
+`$ npm run build`
 
 ## Deploy
 
-`$ yarn deploy`
+`$ npm run deploy`
 
 ## Boilerplate
 
