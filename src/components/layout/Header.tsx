@@ -13,6 +13,8 @@ import {
 } from 'reactstrap';
 import styled from 'styled-components';
 import { Url } from '../../constants';
+import { colors } from '../../styles';
+import { FrancesKornbluthSvg } from '../svg';
 
 // TODO: style
 export const Header: React.FC = () => {
@@ -20,12 +22,15 @@ export const Header: React.FC = () => {
   const toggleCollapse = (): void => setCollapseIsOpen(!collapseIsOpen);
 
   return (
-    <header>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand tag={Link} to={Url.HomePage}>
-          Frances Kornbluth
-        </NavbarBrand>
-        <NavbarToggler onClick={toggleCollapse} />
+    <Element>
+      <Navbar expand="md">
+        <div className="d-flex justify-content-between w-100">
+          <NavbarBrand tag={Link} to={Url.HomePage} className="my-auto p-0">
+            <FrancesKornbluthSvg fill={colors.darkGray} maxWidth={286} />
+          </NavbarBrand>
+          <NavbarToggler onClick={toggleCollapse} />
+        </div>
+
         <Collapse isOpen={collapseIsOpen} navbar>
           <Nav className="ml-auto" navbar>
             <UncontrolledDropdown nav inNavbar>
@@ -68,8 +73,21 @@ export const Header: React.FC = () => {
           </Nav>
         </Collapse>
       </Navbar>
-    </header>
+    </Element>
   );
 };
+
+const Element = styled.header`
+  background: ${colors.white};
+  border-bottom: 1px solid ${colors.lightGray};
+
+  .navbar-toggler {
+    border-color: ${colors.lightGray};
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(196, 204, 204)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+`;
 
 const DropdownItemNavLink = styled(DropdownItem).attrs({ tag: NavLink })``;

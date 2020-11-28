@@ -3,21 +3,25 @@ import { Container } from 'reactstrap';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
 
 interface IPageProps {
-  documentTitle?: string;
-  heading: string;
+  className?: string;
+  heading?: string;
+  fluid?: boolean;
 }
 
 export const Page: React.FC<IPageProps> = ({
-  documentTitle,
+  className = 'mt-3',
   heading,
+  fluid = false,
   children,
 }) => {
-  useDocumentTitle(`${documentTitle || heading} | Frances Kornbluth`);
+  useDocumentTitle(
+    heading ? `${heading} | Frances Kornbluth` : 'Frances Kornbluth'
+  );
   useScrollToTopOnMount();
 
   return (
-    <Container tag="main" className="mt-3">
-      <h1>{heading}</h1>
+    <Container tag="main" className={className} fluid={fluid}>
+      {heading && <h1>{heading}</h1>}
       {children}
     </Container>
   );
