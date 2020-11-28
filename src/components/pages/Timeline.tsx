@@ -1,8 +1,8 @@
 import React from 'react';
-import { PageLayout } from '../layout';
+import { Page } from '../layout';
 
 export const Timeline: React.FC = () => (
-  <PageLayout heading="Timeline">
+  <Page heading="Timeline">
     <p>TODO</p>
-  </PageLayout>
+  </Page>
 );

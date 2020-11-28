@@ -1,8 +1,8 @@
 import React from 'react';
-import { PageLayout } from '../layout';
+import { Page } from '../layout';
 
 export const Copyright: React.FC = () => (
-  <PageLayout heading="Copyright">
+  <Page heading="Copyright">
     <p>TODO</p>
-  </PageLayout>
+  </Page>
 );

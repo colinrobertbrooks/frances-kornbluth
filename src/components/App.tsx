@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Header } from './layout';
 import {
   Biography,
   Books,
@@ -12,13 +13,14 @@ import {
   Statements,
   Timeline,
   Wanted,
+  NotFound,
 } from './pages';
 
-// TODO: 404
 const App: React.FC = () => {
   return (
     <Router>
-      <div>
+      <>
+        <Header />
         <Switch>
           <Route path="/biography">
             <Biography />
@@ -35,7 +37,7 @@ const App: React.FC = () => {
           <Route path="/copyright">
             <Copyright />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route path="/quotes">
@@ -53,8 +55,11 @@ const App: React.FC = () => {
           <Route path="/wanted">
             <Wanted />
           </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
         </Switch>
-      </div>
+      </>
     </Router>
   );
 };

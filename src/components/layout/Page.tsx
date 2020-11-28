@@ -1,13 +1,12 @@
 import React from 'react';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
-import Header from './Header';
 
-interface IPageLayoutProps {
+interface IPageProps {
   documentTitle?: string;
   heading: string;
 }
 
-export const PageLayout: React.FC<IPageLayoutProps> = ({
+export const Page: React.FC<IPageProps> = ({
   documentTitle,
   heading,
   children,
@@ -16,12 +15,9 @@ export const PageLayout: React.FC<IPageLayoutProps> = ({
   useScrollToTopOnMount();
 
   return (
-    <>
-      <Header />
-      <main>
-        <h1>{heading}</h1>
-        {children}
-      </main>
-    </>
+    <main>
+      <h1>{heading}</h1>
+      {children}
+    </main>
   );
 };

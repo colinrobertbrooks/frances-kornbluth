@@ -1,8 +1,8 @@
 import React from 'react';
-import { PageLayout } from '../layout';
+import { Page } from '../layout';
 
 export const Contact: React.FC = () => (
-  <PageLayout heading="Contact">
+  <Page heading="Contact">
     <p>TODO</p>
-  </PageLayout>
+  </Page>
 );

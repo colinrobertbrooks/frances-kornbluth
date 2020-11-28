@@ -4,6 +4,7 @@ export * from './Collection';
 export * from './Contact';
 export * from './Copyright';
 export * from './Home';
+export * from './NotFound';
 export * from './Quotes';
 export * from './Reviews';
 export * from './Statements';

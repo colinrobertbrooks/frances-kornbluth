@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { PageLayout } from '../layout';
+import { Page } from '../layout';
 import { getCollection } from '../../api';
 
 export const Collection: React.FC = () => {
@@ -13,8 +13,8 @@ export const Collection: React.FC = () => {
   }, []);
 
   return (
-    <PageLayout heading="Collection">
+    <Page heading="Collection">
       <p>TODO</p>
-    </PageLayout>
+    </Page>
   );
 };

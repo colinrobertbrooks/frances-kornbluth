@@ -1,8 +1,8 @@
 import React from 'react';
-import { PageLayout } from '../layout';
+import { Page } from '../layout';
 
 export const Statements: React.FC = () => (
-  <PageLayout heading="Statements">
+  <Page heading="Statements">
     <p>TODO</p>
-  </PageLayout>
+  </Page>
 );

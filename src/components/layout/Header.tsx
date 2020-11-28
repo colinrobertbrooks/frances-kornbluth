@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header: React.FC = () => (
+export const Header: React.FC = () => (
   <header>
     <nav>
       <ul>
@@ -16,5 +16,3 @@ const Header: React.FC = () => (
     </nav>
   </header>
 );
-
-export default Header;
