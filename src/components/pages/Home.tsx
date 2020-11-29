@@ -3,9 +3,11 @@ import { Container, Row, Col } from 'reactstrap';
 import styled, { keyframes } from 'styled-components';
 import backgroundImageUrl from '../../assets/jpg/home_background.jpg';
 import { NAVBAR_HEIGHT_PX } from '../../constants';
-import { colors } from '../../styles';
+import { colors, media } from '../../styles';
 import { Page } from '../layout';
 import { RocksSeaAndSkySvg } from '../svg';
+import artistImgSrc from '../../assets/jpg/home_artist.jpg';
+import artworkImgSrc from '../../assets/jpg/home_artwork.jpg';
 
 export const Home: React.FC = () => (
   <Page className="position-relative p-0" fluid>
@@ -18,10 +20,23 @@ export const Home: React.FC = () => (
           </SvgWrapper>
         </Col>
         <Col md={6} className="text-center">
-          <Section>Artist</Section>
+          <ArtImg src={artistImgSrc} />
+
+          <p>
+            Frances Kornbluth (1920 - 2014) was an Abstract Expressionist
+            painter who worked in New York City, Northeastern Connecticut and on
+            Monhegan Island off the coast of Maine. Her teachers and mentors
+            included Reuben Tam, William Kienbusch and Robert Richenburg.
+          </p>
         </Col>
         <Col md={6} className="text-center">
-          <Section>Artwork</Section>
+          <ArtImg src={artworkImgSrc} />
+          <p>
+            Frances Kornbluth's body of work spans seven decades and can be
+            found in public collections, including the Portland Museum of Art,
+            the Chrysler Museum of Art, the Colby College Museum of Art, the
+            Hudson River Museum and the Monhegan Museum.
+          </p>
         </Col>
       </Row>
     </Container>
@@ -40,7 +55,7 @@ const Background = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   height: calc((100vh - ${NAVBAR_HEIGHT_PX}px) * 0.8);
-  mask-image: linear-gradient(to top, transparent 10%, #fdfdfc 90%);
+  mask-image: linear-gradient(to top, transparent 10%, #fdfdfc 80%);
   opacity: 0.9;
   position: absolute;
   width: 100vw;
@@ -48,13 +63,22 @@ const Background = styled.div`
 `;
 
 const SvgWrapper = styled.div`
-  min-height: calc((100vh - ${NAVBAR_HEIGHT_PX}px) * 0.5);
+  min-height: 175px;
+
+  ${media.md`
+    min-height: 350px;
+  `}
 `;
 
-const Section = styled.div`
+const ArtImg = styled.img.attrs({ className: 'mb-4' })`
   background: ${colors.white};
   border: 1px solid ${colors.lightGray};
-  border-radius: 4px;
-`;
+  border-radius: 50%;
+  height: 125px;
+  width: 125px;
 
-// const SectionImg = styled.image``;
+  ${media.md`
+      height: 200px;
+      width: 200px;
+  `}
+`;

@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import { Url } from '../../constants';
+import { colors, media } from '../../styles';
 
-// TODO: style, fixed on desktop only, copyright, social, creator,
+// TODO: style, copyright, social
 export const Footer: React.FC = () => (
   <Element>
-    <Container className="text-center">
-      <ul className="list-inline">
+    <Container className="text-center p-2">
+      <ul className="list-inline m-0">
         <li className="list-inline-item">
           <Link to={Url.HomePage}>Home</Link>
         </li>
@@ -25,8 +26,12 @@ export const Footer: React.FC = () => (
   </Element>
 );
 
-const Element = styled.footer`
-  bottom: 0;
-  position: absolute;
+const Element = styled.footer.attrs({ className: 'mt-5 mt-md-0' })`
+  border-top: 1px solid ${colors.lightGray};
   width: 100%;
+
+  ${media.md`
+    bottom: 0;
+    position: absolute;
+  `};
 `;
