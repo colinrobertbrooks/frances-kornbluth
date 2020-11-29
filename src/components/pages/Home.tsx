@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import backgroundImageUrl from '../../assets/jpg/home_background.jpg';
 import { NAVBAR_HEIGHT_PX } from '../../constants';
 import { colors } from '../../styles';
@@ -28,7 +28,13 @@ export const Home: React.FC = () => (
   </Page>
 );
 
+const backgroundFadeIn = keyframes`
+  from { opacity: 0; }
+  to   { opacity: 0.9; }
+`;
+
 const Background = styled.div`
+  animation: ${backgroundFadeIn} 300ms;
   background-image: url('${backgroundImageUrl}');
   background-position: center;
   background-repeat: no-repeat;
