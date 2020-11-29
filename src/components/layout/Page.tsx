@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'reactstrap';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
+import { Heading } from '../styled';
 
 interface IPageProps {
   className?: string;
@@ -9,7 +10,7 @@ interface IPageProps {
 }
 
 export const Page: React.FC<IPageProps> = ({
-  className = 'mt-3',
+  className = 'mt-4',
   heading,
   fluid = false,
   children,
@@ -21,7 +22,7 @@ export const Page: React.FC<IPageProps> = ({
 
   return (
     <Container tag="main" className={className} fluid={fluid}>
-      {heading && <h1>{heading}</h1>}
+      {heading && <Heading>{heading}</Heading>}
       {children}
     </Container>
   );

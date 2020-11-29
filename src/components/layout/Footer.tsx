@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import { Url } from '../../constants';
-import { colors, media } from '../../styles';
+import { colors, media, typography } from '../../styles';
 
 // TODO: style, copyright, social
 export const Footer: React.FC = () => (
@@ -26,11 +26,12 @@ export const Footer: React.FC = () => (
   </Element>
 );
 
-const Element = styled.footer.attrs({ className: 'mt-5 mt-md-0' })`
+const Element = styled.footer.attrs({ className: 'mt-5 mt-lg-0' })`
   border-top: 1px solid ${colors.lightGray};
+  font-family: ${typography.default};
   width: 100%;
 
-  ${media.md`
+  ${media.lg`
     bottom: 0;
     position: absolute;
   `};

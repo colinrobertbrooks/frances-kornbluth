@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 import styled from 'styled-components';
 import { Url } from '../../constants';
-import { colors } from '../../styles';
+import { colors, typography } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
 
 // TODO: style
@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
                 Artwork
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Available Artwork</DropdownItem>
+                <DropdownItem>Available Art</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItemNavLink to={Url.CollectionPage}>
                   Collection
@@ -80,6 +80,7 @@ export const Header: React.FC = () => {
 const Element = styled.header`
   background: ${colors.white};
   border-bottom: 1px solid ${colors.lightGray};
+  font-family: ${typography.default};
 
   .navbar-toggler {
     border-color: ${colors.lightGray};
