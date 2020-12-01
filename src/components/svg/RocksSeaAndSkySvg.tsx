@@ -14,6 +14,7 @@ export const RocksSeaAndSkySvg: React.FC<IRockSeaAndSkySvgProps> = ({
     height="649.000000pt"
     viewBox="0 0 2621.000000 649.000000"
     style={{ width: '100%', maxWidth, height: 'auto' }}
+    aria-hidden="true"
   >
     <g
       transform="translate(0.000000,649.000000) scale(0.100000,-0.100000)"

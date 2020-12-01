@@ -26,14 +26,18 @@ export const Header: React.FC = () => {
     <Element>
       <Navbar expand="md">
         <div className="d-flex justify-content-between w-100">
-          <NavbarBrand tag={Link} to={Url.HomePage} className="my-auto p-0">
+          <NavbarBrand
+            tag={Link}
+            to={Url.HomePage}
+            aria-label="Frances Kornbluth"
+            className="my-auto p-0"
+          >
             <BrandSvgWrapper>
               <FrancesKornbluthSvg fill={colors.darkGray} maxWidth={286} />
             </BrandSvgWrapper>
           </NavbarBrand>
           <NavbarToggler onClick={toggleCollapse} />
         </div>
-
         <Collapse isOpen={collapseIsOpen} navbar>
           <Nav className="ml-auto" navbar>
             <UncontrolledDropdown nav inNavbar>

@@ -9,19 +9,19 @@ import { colors, media, typography } from '../../styles';
 export const Footer: React.FC = () => (
   <Element>
     <Container className="text-center p-2">
-      <ul className="list-inline m-0">
-        <li className="list-inline-item">
+      <div role="list" className="list-inline m-0">
+        <div role="listitem" className="list-inline-item">
           <Link to={Url.HomePage}>Home</Link>
-        </li>
-        <li className="list-inline-item">|</li>
-        <li className="list-inline-item">
+        </div>
+        <div className="list-inline-item">|</div>
+        <div role="listitem" className="list-inline-item">
           <Link to={Url.CopyrightPage}>Copyright</Link>
-        </li>
-        <li className="list-inline-item">|</li>
-        <li className="list-inline-item">
+        </div>
+        <div className="list-inline-item">|</div>
+        <div role="listitem" className="list-inline-item">
           <Link to={Url.ContactPage}>Contact</Link>
-        </li>
-      </ul>
+        </div>
+      </div>
     </Container>
   </Element>
 );

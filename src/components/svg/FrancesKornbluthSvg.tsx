@@ -15,6 +15,7 @@ export const FrancesKornbluthSvg: React.FC<FrancesKornbluthSvg> = ({
     viewBox="0 0 2585.000000 340.000000"
     preserveAspectRatio="xMidYMid meet"
     style={{ width: '100%', maxWidth, height: 'auto' }}
+    aria-hidden="true"
   >
     <g
       transform="translate(0.000000,340.000000) scale(0.100000,-0.100000)"
