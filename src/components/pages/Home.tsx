@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import styled, { keyframes } from 'styled-components';
 import backgroundImageUrl from '../../assets/jpg/home_background.jpg';
@@ -30,23 +29,18 @@ export const Home: React.FC = () => (
             included Reuben Tam, William Kienbusch and Robert Richenburg.
           </Paragraph>
           <Row>
-            <Col xl={3} />
-            <Col sm={6} xl={3}>
-              <OutlineButton
-                tag={Link}
-                to={Url.BiographyPage}
-                block
-                className="mb-3 mb-md-0"
-              >
+            <Col xl={2} />
+            <Col sm={6} xl={4}>
+              <Button to={Url.BiographyPage} className="mb-3 mb-md-0" block>
                 Biography
-              </OutlineButton>
+              </Button>
             </Col>
-            <Col sm={6} xl={3}>
-              <OutlineButton tag={Link} to={Url.TimelinePage} block>
+            <Col sm={6} xl={4}>
+              <Button to={Url.TimelinePage} block>
                 Timeline
-              </OutlineButton>
+              </Button>
             </Col>
-            <Col xl={3} />
+            <Col xl={2} />
           </Row>
         </Col>
         <Col md={6} className="text-center">
@@ -60,19 +54,14 @@ export const Home: React.FC = () => (
           <Row>
             <Col xl={2} />
             <Col sm={6} xl={4}>
-              <OutlineButton
-                tag={Link}
-                to={Url.CollectionPage}
-                block
-                className="mb-3 mb-md-0"
-              >
+              <Button to={Url.CollectionPage} className="mb-3 mb-md-0" block>
                 Collection
-              </OutlineButton>
+              </Button>
             </Col>
             <Col sm={6} xl={4}>
-              <OutlineButton onClick={() => alert('TODO')} block>
+              <Button onClick={() => alert('TODO')} block>
                 Available Art
-              </OutlineButton>
+              </Button>
             </Col>
             <Col xl={2} />
           </Row>
@@ -120,4 +109,8 @@ const ArtImg = styled.img.attrs({ className: 'mb-4' })`
       height: 200px;
       width: 200px;
   `}
+`;
+
+const Button = styled(OutlineButton)`
+  min-width: 160px;
 `;
