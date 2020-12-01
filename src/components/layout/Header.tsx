@@ -12,7 +12,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import styled from 'styled-components';
-import { parseToRgb, rgb, rgba } from 'polished';
+import { rgba } from 'polished';
 import { Url } from '../../constants';
 import { colors, typography } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
@@ -94,8 +94,9 @@ const Element = styled.header`
   }
 
   .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='${rgb(
-      parseToRgb(colors.lightGray)
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='${rgba(
+      colors.lightGray,
+      1
     )}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
 `;
