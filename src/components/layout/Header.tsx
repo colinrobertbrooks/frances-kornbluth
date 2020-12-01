@@ -12,6 +12,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import styled from 'styled-components';
+import { parseToRgb, rgb, rgba } from 'polished';
 import { Url } from '../../constants';
 import { colors, typography } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
@@ -26,7 +27,9 @@ export const Header: React.FC = () => {
       <Navbar expand="md">
         <div className="d-flex justify-content-between w-100">
           <NavbarBrand tag={Link} to={Url.HomePage} className="my-auto p-0">
-            <FrancesKornbluthSvg fill={colors.darkGray} maxWidth={286} />
+            <BrandSvgWrapper>
+              <FrancesKornbluthSvg fill={colors.darkGray} maxWidth={286} />
+            </BrandSvgWrapper>
           </NavbarBrand>
           <NavbarToggler onClick={toggleCollapse} />
         </div>
@@ -87,7 +90,15 @@ const Element = styled.header`
   }
 
   .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(196, 204, 204)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='${rgb(
+      parseToRgb(colors.lightGray)
+    )}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+`;
+
+const BrandSvgWrapper = styled.div`
+  svg {
+    filter: drop-shadow(2px 2px 1px ${rgba(colors.blue, 0.3)});
   }
 `;
 

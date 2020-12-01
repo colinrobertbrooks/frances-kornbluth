@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import styled, { keyframes } from 'styled-components';
+import { rgba } from 'polished';
 import backgroundImageUrl from '../../assets/jpg/home_background.jpg';
 import artistImgSrc from '../../assets/jpg/home_artist.jpg';
 import artworkImgSrc from '../../assets/jpg/home_artwork.jpg';
@@ -17,7 +18,7 @@ export const Home: React.FC = () => (
       <Row>
         <Col md={12}>
           <SvgWrapper className="d-flex">
-            <RocksSeaAndSkySvg fill={colors.darkGray} />
+            <RocksSeaAndSkySvg fill={colors.brown} />
           </SvgWrapper>
         </Col>
         <Col md={6} className="text-center mb-5 mb-md-0">
@@ -71,13 +72,14 @@ export const Home: React.FC = () => (
   </Page>
 );
 
-const backgroundFadeIn = keyframes`
+const backgroundImageFadeIn = keyframes`
   from { opacity: 0; }
   to   { opacity: 0.9; }
 `;
 
 const Background = styled.div`
-  animation: ${backgroundFadeIn} 300ms;
+  animation: ${backgroundImageFadeIn} 350ms;
+  animation-timing-function: ease-in;
   background-image: url('${backgroundImageUrl}');
   background-position: center;
   background-repeat: no-repeat;
@@ -96,6 +98,10 @@ const SvgWrapper = styled.div`
   ${media.md`
     min-height: 350px;
   `}
+
+  svg {
+    filter: drop-shadow(3px 3px 2px ${rgba(colors.darkBlue, 0.3)});
+  }
 `;
 
 const ArtImg = styled.img.attrs({ className: 'mb-4' })`
