@@ -12,12 +12,12 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import styled from 'styled-components';
-import { rgba } from 'polished';
+import { lighten, rgba } from 'polished';
 import { Url } from '../../constants';
 import { colors, typography } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
 
-// TODO: style
+// WIP: style
 export const Header: React.FC = () => {
   const [collapseIsOpen, setCollapseIsOpen] = useState<boolean>(false);
   const toggleCollapse = (): void => setCollapseIsOpen(!collapseIsOpen);
@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
             className="my-auto p-0"
           >
             <BrandSvgWrapper>
-              <FrancesKornbluthSvg fill={colors.darkGray} maxWidth={286} />
+              <FrancesKornbluthSvg fill={colors.gray} maxWidth={286} />
             </BrandSvgWrapper>
           </NavbarBrand>
           <NavbarToggler onClick={toggleCollapse} />
@@ -89,6 +89,32 @@ const Element = styled.header`
   border-bottom: 1px solid ${colors.lightGray};
   font-family: ${typography.default};
 
+  .nav-link {
+    color: ${colors.gray};
+
+    &:after {
+      color: ${colors.lightGray};
+    }
+
+    &:focus,
+    &:hover {
+      color: ${colors.darkGray};
+
+      &:after {
+        color: ${colors.gray};
+      }
+    }
+  }
+
+  .dropdown-item {
+    color: ${colors.darkGray};
+
+    &:focus,
+    &:hover {
+      background-color: ${lighten(0.12, colors.lightRed)};
+    }
+  }
+
   .navbar-toggler {
     border-color: ${colors.lightGray};
   }
@@ -103,7 +129,7 @@ const Element = styled.header`
 
 const BrandSvgWrapper = styled.div`
   svg {
-    filter: drop-shadow(2px 2px 1px ${rgba(colors.blue, 0.3)});
+    filter: drop-shadow(2px 2px 1px ${rgba(colors.lightRed, 0.24)});
   }
 `;
 

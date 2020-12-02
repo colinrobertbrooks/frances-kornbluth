@@ -100,7 +100,7 @@ const SvgWrapper = styled.div`
   `}
 
   svg {
-    filter: drop-shadow(3px 3px 2px ${rgba(colors.darkBlue, 0.3)});
+    filter: drop-shadow(3px 3px 2px ${rgba(colors.white, 0.55)});
   }
 `;
 

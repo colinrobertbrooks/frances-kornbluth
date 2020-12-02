@@ -6,9 +6,9 @@ export const colors = {
   darkGray: '#3d3e3b',
   black: '#0c0a08',
 
-  // https://coolors.co/d2bca4-ab9784-847163
-  lightBrown: '#d2bca4', // from "The Rush of Summer"
-  brown: '#ab9784', // blend of `lightBrown` and `darkBrown
+  // https://coolors.co/e3d9c8-c9b493-847163
+  lightBrown: '#e3d9c8', // blend of `white` and `brown`
+  brown: '#c9b493', // from "Rocks, Sea and Sky"
   darkBrown: '#847163', // from "November"
 
   // https://coolors.co/e4c4b4-db8375-d24136
@@ -21,8 +21,8 @@ export const colors = {
   green: '#5c8c6c', // from "Summer's Vocabulary #1"
   darkGreen: '#33523e', // from "Summer's Vocabulary #1"
 
-  // https://coolors.co/c6deea-8cbcd4-5790bd
-  lightBlue: '#c6deea', // blend of `white` and `blue`
-  blue: '#8cbcd4', // from "Rocks, Sea and Sky"
-  darkBlue: '#5790bd', // from "Rocks, Sea and Sky"
+  // https://coolors.co/8cbcd4-5790bd-12599c
+  lightBlue: '#8cbcd4', // from "Rocks, Sea and Sky"
+  blue: '#5790bd', // from "Rocks, Sea and Sky"
+  darkBlue: '#12599c', // from untitled watercolor
 };
