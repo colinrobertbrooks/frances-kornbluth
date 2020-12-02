@@ -19,3 +19,12 @@ export enum Url {
   CopyrightPage = '/copyright',
   WantedPage = '/wanted',
 }
+
+export const artistUrls = [
+  Url.BiographyPage,
+  Url.TimelinePage,
+  Url.StatementsPage,
+  Url.QuotesPage,
+];
+
+export const artworkUrls = [Url.CollectionPage, Url.ReviewsPage, Url.BooksPage];

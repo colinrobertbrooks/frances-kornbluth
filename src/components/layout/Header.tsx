@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -13,14 +13,19 @@ import {
 } from 'reactstrap';
 import styled from 'styled-components';
 import { lighten, rgba } from 'polished';
-import { Url } from '../../constants';
-import { colors, typography } from '../../styles';
+import { Url, artistUrls, artworkUrls } from '../../constants';
+import { colors, typography, getRems } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
 
-// WIP: style
 export const Header: React.FC = () => {
+  // navbar toggler
   const [collapseIsOpen, setCollapseIsOpen] = useState<boolean>(false);
   const toggleCollapse = (): void => setCollapseIsOpen(!collapseIsOpen);
+
+  // dropdown toggles
+  const location = useLocation();
+  const isArtistUrl = artistUrls.includes(location.pathname as Url);
+  const isArtworkUrl = artworkUrls.includes(location.pathname as Url);
 
   return (
     <Element>
@@ -41,7 +46,12 @@ export const Header: React.FC = () => {
         <Collapse isOpen={collapseIsOpen} navbar>
           <Nav className="ml-auto" navbar>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
+              <DropdownToggle
+                nav
+                caret
+                className={isArtistUrl ? 'active' : undefined}
+                style={{ minWidth: '84px' }}
+              >
                 Artist
               </DropdownToggle>
               <DropdownMenu right>
@@ -60,11 +70,18 @@ export const Header: React.FC = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
+              <DropdownToggle
+                nav
+                caret
+                className={isArtworkUrl ? 'active' : undefined}
+                style={{ minWidth: '107px' }}
+              >
                 Artwork
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Available Art</DropdownItem>
+                <DropdownItem onClick={() => alert('TODO')}>
+                  Available Art
+                </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItemNavLink to={Url.CollectionPage}>
                   Collection
@@ -89,8 +106,20 @@ const Element = styled.header`
   border-bottom: 1px solid ${colors.lightGray};
   font-family: ${typography.default};
 
-  .nav-link {
+  * {
+    transition: 0.2s;
+  }
+
+  .navbar-brand:focus,
+  .dropdown-toggle:focus,
+  .dropdown-item:focus,
+  .navbar-toggler:focus {
+    outline: ${lighten(0.06, colors.lightRed)} auto 1px;
+  }
+
+  .dropdown-toggle {
     color: ${colors.gray};
+    letter-spacing: ${getRems(2)};
 
     &:after {
       color: ${colors.lightGray};
@@ -104,14 +133,44 @@ const Element = styled.header`
         color: ${colors.gray};
       }
     }
+
+    &.active {
+      color: ${lighten(0.12, colors.darkGray)};
+      font-weight: 600;
+      text-shadow: 1px 1px ${lighten(0.12, colors.lightRed)};
+
+      &:after {
+        color: ${colors.lightRed};
+      }
+
+      &:focus,
+      &:hover {
+        color: ${colors.darkGray};
+
+        &:after {
+          color: ${colors.red};
+        }
+      }
+    }
   }
 
   .dropdown-item {
     color: ${colors.darkGray};
+    letter-spacing: ${getRems(1)};
 
-    &:focus,
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: ${lighten(0.12, colors.lightRed)};
+    }
+
+    &.active {
+      background-color: ${colors.lightRed};
+      font-weight: 600;
+
+      &:hover,
+      &:focus {
+        background-color: ${lighten(0.03, colors.lightRed)};
+      }
     }
   }
 
@@ -121,7 +180,7 @@ const Element = styled.header`
 
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='${rgba(
-      colors.lightGray,
+      colors.gray,
       1
     )}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
