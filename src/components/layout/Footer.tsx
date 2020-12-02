@@ -26,13 +26,16 @@ export const Footer: React.FC = () => (
   </Element>
 );
 
-const Element = styled.footer.attrs({ className: 'mt-5 mt-lg-0' })`
+const Element = styled.footer`
+  background-color: ${colors.white};
   border-top: 1px solid ${colors.lightGray};
   font-family: ${typography.default};
+  margin-top: 48px;
   width: 100%;
 
   ${media.lg`
     bottom: 0;
-    position: absolute;
-  `};
+    margin-top: 0;
+    position: fixed;
+  `}
 `;
