@@ -14,7 +14,7 @@ import {
 import styled from 'styled-components';
 import { lighten, rgba } from 'polished';
 import { Url, artistUrls, artworkUrls } from '../../constants';
-import { colors, typography, getRems } from '../../styles';
+import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
 
 export const Header: React.FC = () => {
@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
             className="my-auto p-0"
           >
             <BrandSvgWrapper>
-              <FrancesKornbluthSvg fill={colors.gray} maxWidth={286} />
+              <FrancesKornbluthSvg fill={colors.darkGray} maxWidth={286} />
             </BrandSvgWrapper>
           </NavbarBrand>
           <NavbarToggler onClick={toggleCollapse} />
@@ -102,8 +102,8 @@ export const Header: React.FC = () => {
 };
 
 const Element = styled.header`
-  background: ${colors.white};
-  border-bottom: 1px solid ${colors.lightGray};
+  background-color: ${colors.trueWhite};
+  border-bottom: 1px solid ${colors.border};
   font-family: ${typography.default};
 
   * {
@@ -114,7 +114,7 @@ const Element = styled.header`
   .dropdown-toggle:focus,
   .dropdown-item:focus,
   .navbar-toggler:focus {
-    outline: ${lighten(0.06, colors.lightRed)} auto 1px;
+    ${focusOutlineCSS}
   }
 
   .dropdown-toggle {
@@ -125,8 +125,8 @@ const Element = styled.header`
       color: ${colors.lightGray};
     }
 
-    &:focus,
-    &:hover {
+    &:hover,
+    &:focus {
       color: ${colors.darkGray};
 
       &:after {
@@ -135,7 +135,7 @@ const Element = styled.header`
     }
 
     &.active {
-      color: ${lighten(0.12, colors.darkGray)};
+      color: ${colors.darkGray};
       font-weight: 600;
       text-shadow: 1px 1px ${lighten(0.12, colors.lightRed)};
 
@@ -143,8 +143,8 @@ const Element = styled.header`
         color: ${colors.lightRed};
       }
 
-      &:focus,
-      &:hover {
+      &:hover,
+      &:focus {
         color: ${colors.darkGray};
 
         &:after {
@@ -174,8 +174,16 @@ const Element = styled.header`
     }
   }
 
+  .dropdown-menu {
+    border-color: ${colors.border};
+  }
+
+  .dropdown-divider {
+    border-top-color: ${lighten(0.06, colors.border)};
+  }
+
   .navbar-toggler {
-    border-color: ${colors.lightGray};
+    border-color: ${colors.border};
   }
 
   .navbar-toggler-icon {
@@ -188,7 +196,7 @@ const Element = styled.header`
 
 const BrandSvgWrapper = styled.div`
   svg {
-    filter: drop-shadow(2px 2px 1px ${rgba(colors.lightRed, 0.24)});
+    filter: drop-shadow(2px 2px 1px ${rgba(colors.lightGray, 0.12)});
   }
 `;
 
