@@ -19,7 +19,7 @@ export const Copyright: React.FC = () => (
           express permission for all other uses of content.
         </Paragraph>
         <Paragraph>
-          Visit the <Link to={Url.ContactPage}>contact page</Link> for more
+          Visit our <Link to={Url.ContactPage}>contact page</Link> for more
           information.
         </Paragraph>
       </Col>
