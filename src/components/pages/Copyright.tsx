@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Page } from '../layout';
+import { Link, Url } from '../router';
 import { Row, Col, Heading, Paragraph } from '../styled';
-import { Url } from '../../constants';
 
 export const Copyright: React.FC = () => (
   <Page title="Copyright">
