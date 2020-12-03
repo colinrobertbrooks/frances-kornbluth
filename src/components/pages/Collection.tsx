@@ -13,7 +13,7 @@ export const Collection: React.FC = () => {
   }, []);
 
   return (
-    <Page heading="Collection">
+    <Page title="Collection">
       <p>TODO</p>
     </Page>
   );

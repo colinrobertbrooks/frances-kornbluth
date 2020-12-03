@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -13,8 +12,15 @@ import {
 } from 'reactstrap';
 import styled from 'styled-components';
 import { lighten, rgba } from 'polished';
-import { Url, artistUrls, artworkUrls } from '../../constants';
 import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
+import {
+  Link,
+  NavLink,
+  useLocation,
+  Url,
+  artistUrls,
+  artworkUrls,
+} from '../router';
 import { FrancesKornbluthSvg } from '../svg';
 
 export const Header: React.FC = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Page } from '../layout';
 
 export const Statements: React.FC = () => (
-  <Page heading="Statements">
+  <Page title="Statements">
     <p>TODO</p>
   </Page>
 );

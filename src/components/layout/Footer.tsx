@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
-import { Url, ExternalUrl } from '../../constants';
 import {
   colors,
   focusOutlineCSS,
@@ -10,6 +8,7 @@ import {
   media,
   typography,
 } from '../../styles';
+import { Link, Url, ExternalUrl } from '../router';
 import { FacebookSvg, InstagramSvg } from '../svg';
 
 export const Footer: React.FC = () => (
