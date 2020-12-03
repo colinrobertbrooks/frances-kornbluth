@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Page } from '../layout';
 import { getCollection } from '../../api';
 
+// TODO: move fetch to context
 export const Collection: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {

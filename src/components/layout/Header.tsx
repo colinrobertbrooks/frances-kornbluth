@@ -23,6 +23,7 @@ import {
 } from '../router';
 import { FrancesKornbluthSvg } from '../svg';
 
+// TODO: fixed; close collapse on route change
 export const Header: React.FC = () => {
   // navbar toggler
   const [collapseIsOpen, setCollapseIsOpen] = useState<boolean>(false);
