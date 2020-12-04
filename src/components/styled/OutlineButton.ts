@@ -35,7 +35,7 @@ interface IOutlineButtonProps {
 }
 
 export const OutlineButton = styled(Button).attrs(
-  ({ color = 'darkGray', to, ...restProps }) => ({
+  ({ theme, color = 'darkGray', to, ...restProps }) => ({
     color,
     outline: true,
     tag: to ? Link : undefined,
