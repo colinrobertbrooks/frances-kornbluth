@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'reactstrap';
 import {
   colors,
   focusOutlineCSS,
+  FOOTER_MARGIN_TOP_PX,
   getRems,
-  media,
   typography,
 } from '../../styles';
 import { Link, Url, ExternalUrl } from '../router';
@@ -57,14 +57,8 @@ const Element = styled.footer`
   background-color: ${colors.trueWhite};
   border-top: 1px solid ${colors.border};
   font-family: ${typography.default};
-  margin-top: 48px;
+  margin-top: ${FOOTER_MARGIN_TOP_PX}px;
   width: 100%;
-
-  ${media.lg`
-    bottom: 0;
-    margin-top: 0;
-    position: fixed;
-  `}
 `;
 
 const linkCSS = css`

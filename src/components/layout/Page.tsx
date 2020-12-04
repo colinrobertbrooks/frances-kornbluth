@@ -1,6 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
+import {
+  NAVBAR_HEIGHT_PX,
+  FOOTER_MARGIN_TOP_PX,
+  FOOTER_MIN_HEIGHT_PX,
+  media,
+} from '../../styles';
+
+const DEFAULT_CLASS_NAME = 'mt-4';
 
 interface IPageProps {
   className?: string;
@@ -9,7 +18,7 @@ interface IPageProps {
 }
 
 export const Page: React.FC<IPageProps> = ({
-  className = 'mt-4',
+  className = DEFAULT_CLASS_NAME,
   title,
   fluid = false,
   children,
@@ -20,8 +29,24 @@ export const Page: React.FC<IPageProps> = ({
   useScrollToTopOnMount();
 
   return (
-    <Container tag="main" className={className} fluid={fluid}>
+    <Main className={className} fluid={fluid}>
       {children}
-    </Container>
+    </Main>
   );
 };
+
+const Main = styled(Container).attrs({ tag: 'main' })`
+  ${media.lg`
+    min-height: calc(
+      100vh -
+      ${({ className }: { className: string }) => {
+        const marginTop = className === DEFAULT_CLASS_NAME ? 24 : 0;
+        return (
+          NAVBAR_HEIGHT_PX +
+          marginTop +
+          FOOTER_MARGIN_TOP_PX +
+          FOOTER_MIN_HEIGHT_PX
+        );
+      }}px);
+  `}
+`;
