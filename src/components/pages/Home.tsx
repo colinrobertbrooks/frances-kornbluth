@@ -2,9 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import styled, { keyframes } from 'styled-components';
 import { rgba } from 'polished';
-import backgroundImageUrl from '../../assets/jpg/home_background.jpg';
-import artistImgSrc from '../../assets/jpg/home_artist.jpg';
-import artworkImgSrc from '../../assets/jpg/home_artwork.jpg';
+import { artistImg, artworkImg, backgroundImg } from '../../assets/pages/home';
 import { Url } from '../../constants';
 import { NAVBAR_HEIGHT_PX, colors, media } from '../../styles';
 import { Page } from '../layout';
@@ -22,7 +20,7 @@ export const Home: React.FC = () => (
           </SvgWrapper>
         </Col>
         <Col md={6} className="text-center mb-5 mb-md-0">
-          <ArtImg src={artistImgSrc} alt="Artist" />
+          <ArtImg src={artistImg} alt="Artist" />
           <Paragraph className="mb-4">
             Frances Kornbluth (1920 - 2014) was an Abstract Expressionist
             painter who worked in New York City, Northeastern Connecticut and on
@@ -45,7 +43,7 @@ export const Home: React.FC = () => (
           </Row>
         </Col>
         <Col md={6} className="text-center">
-          <ArtImg src={artworkImgSrc} alt="Artwork" />
+          <ArtImg src={artworkImg} alt="Artwork" />
           <Paragraph className="mb-4">
             Frances Kornbluth&#39;s body of work spans seven decades and can be
             found in public collections, including the Chrysler Museum of Art,
@@ -80,7 +78,7 @@ const backgroundImageFadeIn = keyframes`
 const Background = styled.div`
   animation: ${backgroundImageFadeIn} 350ms;
   animation-timing-function: ease-in;
-  background-image: url('${backgroundImageUrl}');
+  background-image: url('${backgroundImg}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
