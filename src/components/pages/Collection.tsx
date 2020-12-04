@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Page } from '../layout';
 import { getCollection } from '../../api';
+import { Page } from '../layout';
+import { Row, Col, Heading, Paragraph } from '../styled';
 
 // TODO: move fetch to context
 export const Collection: React.FC = () => {
@@ -15,7 +16,12 @@ export const Collection: React.FC = () => {
 
   return (
     <Page title="Collection">
-      <p>TODO</p>
+      <Row>
+        <Col md={12}>
+          <Heading className="mb-3">Collection</Heading>
+          <Paragraph>TODO</Paragraph>
+        </Col>
+      </Row>
     </Page>
   );
 };
