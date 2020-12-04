@@ -25,6 +25,10 @@ export const Footer: React.FC = () => (
             </PageLinkListItem>
             <PageLinkListItemDivider />
             <PageLinkListItem>
+              <PageLink to={Url.AccessibilityPage}>Accessibility</PageLink>
+            </PageLinkListItem>
+            <PageLinkListItemDivider />
+            <PageLinkListItem>
               <PageLink to={Url.ContactPage}>Contact</PageLink>
             </PageLinkListItem>
           </PageLinkList>

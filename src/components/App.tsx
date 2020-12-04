@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header, Footer } from './layout';
 import {
+  Accessibility,
   Biography,
   Books,
   Collection,
@@ -50,6 +51,9 @@ const App: React.FC = () => (
         {/* footer */}
         <Route path={Url.ContactPage}>
           <Contact />
+        </Route>
+        <Route path={Url.AccessibilityPage}>
+          <Accessibility />
         </Route>
         <Route path={Url.CopyrightPage}>
           <Copyright />

@@ -28,6 +28,7 @@ export enum Url {
   // footer
   ContactPage = '/contact',
   CopyrightPage = '/copyright',
+  AccessibilityPage = '/accessibility',
   WantedPage = '/wanted',
 }
 
