@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Container } from 'reactstrap';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
 import {
   NAVBAR_HEIGHT_PX,
@@ -8,6 +6,7 @@ import {
   FOOTER_MIN_HEIGHT_PX,
   media,
 } from '../../styles';
+import { styled, Container } from '../styled';
 
 const DEFAULT_CLASS_NAME = 'mt-4';
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Page } from '../layout';
 import { Link, Url } from '../router';
 import {
+  styled,
   Row,
   Col,
   Heading,

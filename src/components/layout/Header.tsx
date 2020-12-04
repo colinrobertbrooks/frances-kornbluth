@@ -10,8 +10,6 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import styled from 'styled-components';
-import { lighten, rgba } from 'polished';
 import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 import {
   Link,
@@ -21,6 +19,7 @@ import {
   artistUrls,
   artworkUrls,
 } from '../router';
+import { styled, lighten, rgba } from '../styled';
 import { FrancesKornbluthSvg } from '../svg';
 
 // TODO: fixed; close collapse on route change

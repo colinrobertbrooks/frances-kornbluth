@@ -1,3 +1,4 @@
+export * from './Accessibility';
 export * from './Biography';
 export * from './Books';
 export * from './Collection';

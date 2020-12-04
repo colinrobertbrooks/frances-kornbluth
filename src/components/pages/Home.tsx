@@ -1,12 +1,18 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
-import styled, { keyframes } from 'styled-components';
-import { rgba } from 'polished';
 import { artistImg, artworkImg, backgroundImg } from '../../assets/pages/home';
-import { Url } from '../../constants';
 import { NAVBAR_HEIGHT_PX, colors, media } from '../../styles';
 import { Page } from '../layout';
-import { Paragraph, OutlineButton } from '../styled';
+import { Url } from '../router';
+import {
+  styled,
+  keyframes,
+  rgba,
+  Container,
+  Row,
+  Col,
+  Paragraph,
+  OutlineButton,
+} from '../styled';
 import { RocksSeaAndSkySvg } from '../svg';
 
 export const Home: React.FC = () => (
