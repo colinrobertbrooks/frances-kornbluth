@@ -26,7 +26,7 @@ export const Page: React.FC<IPageProps> = ({
   useScrollToTopOnMount();
 
   return (
-    <Main className={className} fluid={fluid}>
+    <Main id="main" className={className} fluid={fluid}>
       {children}
     </Main>
   );

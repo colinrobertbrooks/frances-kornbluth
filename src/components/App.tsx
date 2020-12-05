@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer } from './layout';
+import { SkipToMain, Header, Footer } from './layout';
 import {
   Accessibility,
   Biography,
@@ -17,9 +17,11 @@ import {
 } from './pages';
 import { Router, Switch, Route, Url } from './router';
 
+// TODO: lazy
 const App: React.FC = () => (
   <Router>
     <>
+      <SkipToMain />
       <Header />
       <Switch>
         <Route exact path={Url.HomePage}>

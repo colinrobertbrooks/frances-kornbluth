@@ -22,7 +22,7 @@ import {
 import { styled, lighten, rgba } from '../styled';
 import { FrancesKornbluthSvg } from '../svg';
 
-// TODO: skip to main; close collapse on route change
+// close collapse on route change
 export const Header: React.FC = () => {
   // navbar toggler
   const [collapseIsOpen, setCollapseIsOpen] = useState<boolean>(false);
