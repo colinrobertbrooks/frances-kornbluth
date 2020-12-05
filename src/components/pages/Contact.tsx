@@ -15,13 +15,13 @@ import {
 export const Contact: React.FC = () => (
   <Page title="Contact">
     <Row>
-      <Col md={8}>
+      <Col md={9}>
         <H1>Contact</H1>
       </Col>
-      <StickyCol md={4} className="text-md-right">
+      <StickyCol md={3} className="text-md-center">
         <ContactButton>Contact Us</ContactButton>
       </StickyCol>
-      <Col md={10}>
+      <Col md={9}>
         <Divider />
         <H2>Acquisitions</H2>
         <Paragraph>
@@ -69,20 +69,26 @@ export const Contact: React.FC = () => (
           information.
         </Paragraph>
       </Col>
+      <Col md={3} />
     </Row>
   </Page>
 );
 
-const H1 = styled(Heading).attrs({ className: 'mb-md-3' })``;
+const H1 = styled(Heading).attrs({ className: 'mb-0' })``;
 
-const H2 = styled(Heading).attrs({ as: 'h2', color: 'gray' })``;
+const H2 = styled(Heading).attrs({
+  as: 'h2',
+  color: 'gray',
+  className: 'mb-3',
+})``;
 
-const Divider = styled(HorizontalRule).attrs({ className: 'mb-4' })``;
+const Divider = styled(HorizontalRule).attrs({ className: 'my-4' })``;
 
 const StickyCol = styled(Col)`
   ${media.md`
     position: sticky;
     top: ${NAVBAR_HEIGHT_PX + 24}px;
+    z-index: 999;
   `}
 `;
 
