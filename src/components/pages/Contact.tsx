@@ -74,7 +74,7 @@ export const Contact: React.FC = () => (
   </Page>
 );
 
-const H1 = styled(Heading).attrs({ className: 'mb-0' })``;
+const H1 = styled(Heading).attrs({ className: 'mb-2 m-md-0' })``;
 
 const H2 = styled(Heading).attrs({
   as: 'h2',
@@ -87,7 +87,7 @@ const Divider = styled(HorizontalRule).attrs({ className: 'my-4' })``;
 const StickyCol = styled(Col)`
   ${media.md`
     position: sticky;
-    top: ${NAVBAR_HEIGHT_PX + 24}px;
+    top: ${NAVBAR_HEIGHT_PX + 26}px;
     z-index: 999;
   `}
 `;
