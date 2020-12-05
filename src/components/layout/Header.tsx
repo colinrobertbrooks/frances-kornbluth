@@ -22,7 +22,7 @@ import {
 import { styled, lighten, rgba } from '../styled';
 import { FrancesKornbluthSvg } from '../svg';
 
-// TODO: skip to main; fixed; close collapse on route change
+// TODO: skip to main; close collapse on route change
 export const Header: React.FC = () => {
   // navbar toggler
   const [collapseIsOpen, setCollapseIsOpen] = useState<boolean>(false);
@@ -111,6 +111,10 @@ const Element = styled.header`
   background-color: ${colors.trueWhite};
   border-bottom: 1px solid ${colors.border};
   font-family: ${typography.default};
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 
   * {
     transition: 0.2s;
