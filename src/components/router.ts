@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,11 +9,6 @@ import {
 } from 'react-router-dom';
 
 export { Router, Switch, Route, Link, NavLink, useLocation };
-
-export enum ExternalUrl {
-  Facebook = 'https://www.facebook.com/franceskornbluth',
-  Instagram = 'https://www.instagram.com/franceskornbluth',
-}
 
 export enum Url {
   HomePage = '/',
@@ -40,3 +36,13 @@ export const artistUrls = [
 ];
 
 export const artworkUrls = [Url.CollectionPage, Url.ReviewsPage, Url.BooksPage];
+
+export const ExternalLink = styled.a.attrs({
+  target: '_blank',
+  rel: 'noopener noreferrer',
+})``;
+
+export enum ExternalUrl {
+  Facebook = 'https://www.facebook.com/franceskornbluth',
+  Instagram = 'https://www.instagram.com/franceskornbluth',
+}
