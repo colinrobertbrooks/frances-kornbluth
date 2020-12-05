@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const FacebookSvg: React.FC = (props) => (
-  <div className="d-flex">
+  <div className="d-flex w-100">
     <svg
       aria-hidden="true"
       focusable="false"

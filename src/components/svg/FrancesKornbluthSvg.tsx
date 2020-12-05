@@ -9,7 +9,7 @@ export const FrancesKornbluthSvg: React.FC<FrancesKornbluthSvg> = ({
   fill,
   maxWidth,
 }) => (
-  <div className="d-flex">
+  <div className="d-flex w-100">
     <svg
       width="2585.000000pt"
       height="340.000000pt"

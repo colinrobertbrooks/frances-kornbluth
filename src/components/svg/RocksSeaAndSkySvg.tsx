@@ -9,7 +9,7 @@ export const RocksSeaAndSkySvg: React.FC<IRockSeaAndSkySvgProps> = ({
   fill,
   maxWidth,
 }) => (
-  <div className="d-flex">
+  <div className="d-flex w-100">
     <svg
       width="2621.000000pt"
       height="649.000000pt"
