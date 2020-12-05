@@ -1,4 +1,5 @@
 import React from 'react';
+import { media, NAVBAR_HEIGHT_PX } from '../../styles';
 import { Page } from '../layout';
 import { Link, Url } from '../router';
 import {
@@ -17,9 +18,9 @@ export const Contact: React.FC = () => (
       <Col md={8}>
         <H1>Contact</H1>
       </Col>
-      <Col md={4} className="text-md-right">
+      <StickyCol md={4} className="text-md-right">
         <ContactButton>Contact Us</ContactButton>
-      </Col>
+      </StickyCol>
       <Col md={10}>
         <Divider />
         <H2>Acquisitions</H2>
@@ -78,7 +79,13 @@ const H2 = styled(Heading).attrs({ as: 'h2', color: 'gray' })``;
 
 const Divider = styled(HorizontalRule).attrs({ className: 'mb-4' })``;
 
-// TODO: style
+const StickyCol = styled(Col)`
+  ${media.md`
+    position: sticky;
+    top: ${NAVBAR_HEIGHT_PX + 24}px;
+  `}
+`;
+
 const ContactButton = styled(OutlineButton).attrs({
   className: 'my-2 mt-md-1',
   href: 'mailto:kornbluthart@gmail.com',
