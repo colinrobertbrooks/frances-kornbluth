@@ -7,7 +7,7 @@ import {
   typography,
 } from '../../styles';
 import { styled, css, Container, Row, Col } from '../styled';
-import { Link, Url, ExternalUrl } from '../router';
+import { Link, Url, ExternalLink, ExternalUrl } from '../router';
 import { FacebookSvg, InstagramSvg } from '../svg';
 
 export const Footer: React.FC = () => (
@@ -66,6 +66,7 @@ const Element = styled.footer`
 
 const linkCSS = css`
   color: ${colors.gray};
+  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -115,10 +116,7 @@ const InstagramIcon = styled(InstagramSvg)`
   ${socialIconCSS}
 `;
 
-const SocialLink = styled.a.attrs({
-  target: '_blank',
-  rel: 'noopener noreferrer',
-})`
+const SocialLink = styled(ExternalLink)`
   ${linkCSS}
   cursor: pointer;
   display: inline-block;
