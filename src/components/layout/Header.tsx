@@ -86,7 +86,7 @@ export const Header: React.FC = () => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem onClick={() => alert('TODO')}>
-                  Available Art
+                  Available Artwork
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItemNavLink to={Url.CollectionPage}>

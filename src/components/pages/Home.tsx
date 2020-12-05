@@ -65,7 +65,7 @@ export const Home: React.FC = () => (
             </Col>
             <Col sm={6} xl={4}>
               <Button onClick={() => alert('TODO')} block>
-                Available Art
+                Available Artwork
               </Button>
             </Col>
             <Col xl={2} />
@@ -122,5 +122,5 @@ const ArtImg = styled.img.attrs({ className: 'mb-4' })`
 `;
 
 const Button = styled(OutlineButton)`
-  min-width: 160px;
+  min-width: 164px;
 `;

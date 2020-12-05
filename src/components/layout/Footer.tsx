@@ -66,7 +66,6 @@ const Element = styled.footer`
 
 const linkCSS = css`
   color: ${colors.gray};
-  cursor: pointer;
 
   &:hover,
   &:focus {

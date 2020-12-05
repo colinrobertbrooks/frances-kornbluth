@@ -25,7 +25,7 @@ export const Contact: React.FC = () => (
         <Divider />
         <H2>Acquisitions</H2>
         <Paragraph>
-          Available art can be viewed by clicking here (TODO). Additional
+          Available artwork can be viewed by clicking here (TODO). Additional
           artwork may be available; please contact us if you are looking for
           something specific. We are happy to assist collectors and institutions
           in selecting pieces of a particular medium, size, period or series.
@@ -47,8 +47,8 @@ export const Contact: React.FC = () => (
         <Divider />
         <H2>Consignments</H2>
         <Paragraph>
-          To have your Frances Kornbluth artwork added to the available art page
-          (TODO), please follow the instructions under additions, also
+          To have your Frances Kornbluth artwork added to the available artwork
+          page (TODO), please follow the instructions under additions, also
           indicating that you would like to sell the piece. We will contact you
           to discuss consignment terms.
         </Paragraph>
