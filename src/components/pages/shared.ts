@@ -52,14 +52,14 @@ export const ArtworkImg = styled.img.attrs({
   margin: 0 auto;
 `;
 
-export const ArtworkName = styled.span.attrs({ className: 'mb-1' })`
+export const ArtworkName = styled.span`
   color: ${colors.darkGray};
   display: block;
   font-weight: 600;
   text-align: center;
 `;
 
-export const ArtworkInfo = styled.span.attrs({ className: 'mb-4' })`
+export const ArtworkInfo = styled.span.attrs({ className: 'small mb-4' })`
   color: ${colors.gray};
   display: block;
   font-style: italic;
