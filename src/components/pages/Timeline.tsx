@@ -19,7 +19,7 @@ import {
   artist2000s,
   artist2010s,
 } from '../../assets/pages/timeline';
-import { colors } from '../../styles';
+import { colors, media } from '../../styles';
 import { Link, Url } from '../router';
 import {
   Page,
@@ -438,6 +438,11 @@ const DecadeImg = styled.img.attrs({ className: 'mb-3' })`
   margin: 0 auto;
   height: 125px;
   width: 125px;
+
+  ${media.md`
+    height: 150px;
+    width: 150px;
+  `}
 `;
 
 const DecadeHeading = styled(Heading).attrs({
