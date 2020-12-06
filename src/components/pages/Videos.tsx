@@ -8,7 +8,7 @@ export const Videos: React.FC = () => (
     <Row>
       <Col md={12} className="h-100">
         <Heading className="mb-3">Videos</Heading>
-        <Paragraph as="h2" color="gray">
+        <Paragraph as="h2" color="gray" className="text-center">
           2012 interview for &quot;The Women Artists of Monhegan Island&quot;
         </Paragraph>
         <VideoWrapper>

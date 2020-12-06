@@ -131,4 +131,5 @@ const H1 = styled(Heading).attrs({ className: 'mb-3' })``;
 const H2 = styled(Heading).attrs({
   as: 'H2',
   color: 'gray',
+  className: 'text-center',
 })``;
