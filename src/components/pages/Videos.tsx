@@ -7,7 +7,7 @@ export const Videos: React.FC = () => (
       <Col md={12}>
         <H1>Videos</H1>
         <Paragraph as="h2" color="gray">
-          2012 interview for &quot;The Women Artists of Monhegan Island&quot;
+          Interview for <i>The Women Artists of Monhegan Island</i> (2012)
         </Paragraph>
         <VideoWrapper>
           <Video
