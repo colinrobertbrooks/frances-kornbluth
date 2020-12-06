@@ -42,7 +42,7 @@ export const Quotes: React.FC = () => (
           year now, when summer comes, it seems like it gets more difficult to
           move everything here. But that&apos;s also a very positive thing for
           working, because it&apos;s not easy to escape; you become your own
-          prisoner. I come here to work, and it&apos;s never failed me. &quot;
+          prisoner. I come here to work, and it&apos;s never failed me.&quot;
         </Quote>
         <Source>- Islands Magazine (1989)</Source>
         <Quote>
