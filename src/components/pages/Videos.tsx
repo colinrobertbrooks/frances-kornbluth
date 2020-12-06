@@ -4,9 +4,9 @@ import { styled, Page, Row, Col, H1, Paragraph } from './shared';
 export const Videos: React.FC = () => (
   <Page title="Videos">
     <Row>
-      <Col md={12} className="h-100">
+      <Col md={12}>
         <H1>Videos</H1>
-        <Paragraph as="h2" color="gray" className="text-center">
+        <Paragraph as="h2" color="gray">
           2012 interview for &quot;The Women Artists of Monhegan Island&quot;
         </Paragraph>
         <VideoWrapper>
