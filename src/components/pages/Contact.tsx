@@ -13,6 +13,7 @@ import {
   OutlineButton,
 } from './shared';
 
+// TODO: style button
 export const Contact: React.FC = () => (
   <Page title="Contact">
     <Row>
