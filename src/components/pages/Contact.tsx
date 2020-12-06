@@ -87,6 +87,6 @@ const StickyCol = styled(Col)`
 `;
 
 const ContactButton = styled(OutlineButton).attrs({
-  className: 'my-2 mt-md-1',
+  className: 'd-block d-md-inline my-2 mt-md-1',
   href: 'mailto:kornbluthart@gmail.com',
 })``;
