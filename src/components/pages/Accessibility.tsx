@@ -18,6 +18,12 @@ export const Accessibility: React.FC = () => (
           , or have any suggestions on accessibility improvements, please{' '}
           <Link to={Url.ContactPage}>contact us</Link>.
         </Paragraph>
+        <Paragraph color="gray" className="font-italic">
+          <small>
+            Late in life, Frances developed macular degeneration and utilized
+            assistive technology.
+          </small>
+        </Paragraph>
       </Col>
     </Row>
   </Page>
