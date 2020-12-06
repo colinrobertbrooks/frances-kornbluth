@@ -13,6 +13,7 @@ import {
   Reviews,
   Statements,
   Timeline,
+  Videos,
   Wanted,
   NotFound,
 } from './pages';
@@ -42,6 +43,9 @@ const App: React.FC = () => (
           </Route>
           <Route path={Url.QuotesPage}>
             <Quotes />
+          </Route>
+          <Route path={Url.VideosPage}>
+            <Videos />
           </Route>
           {/* artwork */}
           <Route path={Url.CollectionPage}>

@@ -10,4 +10,5 @@ export * from './Quotes';
 export * from './Reviews';
 export * from './Statements';
 export * from './Timeline';
+export * from './Videos';
 export * from './Wanted';

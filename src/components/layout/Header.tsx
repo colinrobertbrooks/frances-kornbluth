@@ -73,6 +73,9 @@ export const Header: React.FC = () => {
                 <DropdownItemNavLink to={Url.QuotesPage}>
                   Quotes
                 </DropdownItemNavLink>
+                <DropdownItemNavLink to={Url.VideosPage}>
+                  Videos
+                </DropdownItemNavLink>
               </DropdownMenu>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>

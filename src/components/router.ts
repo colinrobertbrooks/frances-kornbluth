@@ -17,6 +17,7 @@ export enum Url {
   TimelinePage = '/timeline',
   StatementsPage = '/statements',
   QuotesPage = '/quotes',
+  VideosPage = '/videos',
   // artwork
   CollectionPage = '/collection',
   ReviewsPage = '/reviews',
