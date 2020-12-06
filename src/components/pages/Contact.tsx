@@ -19,7 +19,7 @@ export const Contact: React.FC = () => (
       <Col md={9}>
         <H1>Contact</H1>
       </Col>
-      <StickyCol md={3} className="text-md-center">
+      <StickyCol md={3} className="text-center">
         <ContactButton>Contact Us</ContactButton>
       </StickyCol>
       <Col md={9}>
