@@ -9,6 +9,7 @@ export const Biography: React.FC = () => (
       <Col md={12}>
         <H1>Biography</H1>
         <Artwork
+          className="mb-4"
           src={selfPortraitImg}
           name="Self Portrait"
           medium="Watercolor on paper"
@@ -58,9 +59,9 @@ export const Biography: React.FC = () => (
           Women Artists, a charter member of the National Museum of Women in the
           Arts and a member of Women Artists of Monhegan Island.
         </Paragraph>
-        <Paragraph>
-          See the <Link to={Url.TimelinePage}>timeline page</Link> for more
-          details.
+        <Paragraph className="text-center">
+          See more details on the{' '}
+          <Link to={Url.TimelinePage}>timeline page</Link> .
         </Paragraph>
       </Col>
     </Row>

@@ -23,6 +23,7 @@ export const Quotes: React.FC = () => (
         <Divider />
         <H2>Monhegan Island</H2>
         <Artwork
+          className="my-4"
           src={changingLightMonheganIcePondImg}
           name="Changing Light, Monhegan Ice Pond"
           medium="Acrylic on linen"
@@ -53,6 +54,7 @@ export const Quotes: React.FC = () => (
         <Divider />
         <H2>Dominican Republic</H2>
         <Artwork
+          className="my-4"
           src={altosTwilightImg}
           name="Altos Twilight"
           medium="Collage on handmade paper"

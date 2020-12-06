@@ -1,6 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  novemberImg,
+  summersVocabulary1Img,
+  theLampImg,
+  rocksSeaAndSkyImg,
+  islandPath2Img,
+  changingLightMonheganIcePondImg,
+  genisisImg,
+  winterLandscapeImg,
+} from '../../assets/artwork';
+import {
   artist1950s,
   artist1960s,
   artist1970s,
@@ -10,7 +20,18 @@ import {
   artist2010s,
 } from '../../assets/pages/timeline';
 import { colors } from '../../styles';
-import { Page, Row, Col, Divider, Heading, H1, Span } from './shared';
+import { Link, Url } from '../router';
+import {
+  Page,
+  Row,
+  Col,
+  Divider,
+  Heading,
+  H1,
+  Span,
+  Paragraph,
+  Artwork,
+} from './shared';
 
 export const Timeline: React.FC = () => (
   <Page title="Timeline">
@@ -63,6 +84,27 @@ export const Timeline: React.FC = () => (
               }
             />
           </MilestonesWrapper>
+          <Row className="mt-3">
+            <Col md={1} />
+            <Col sm={6} md={5}>
+              <Artwork
+                className="mb-3 m-md-0"
+                src={novemberImg}
+                name="November"
+                medium="Oil on canvas"
+                dimensions='41.5 x 35.5"'
+              />
+            </Col>
+            <Col sm={6} md={5}>
+              <Artwork
+                src={summersVocabulary1Img}
+                name="Summer's Vocabulary #1"
+                medium="Oil on linen"
+                dimensions='45 x 43"'
+              />
+            </Col>
+            <Col md={1} />
+          </Row>
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
@@ -141,6 +183,27 @@ export const Timeline: React.FC = () => (
               event="Moved from Merrick, NY to North Grosvenordale, CT"
             />
           </MilestonesWrapper>
+          <Row className="mt-3">
+            <Col md={1} />
+            <Col sm={6} md={5}>
+              <Artwork
+                className="mb-3 m-md-0"
+                src={theLampImg}
+                name="The Lamp"
+                medium="Ink wash on paper"
+                dimensions='23.6 x 18.5"'
+              />
+            </Col>
+            <Col sm={6} md={5}>
+              <Artwork
+                src={rocksSeaAndSkyImg}
+                name="Rocks, Sea and Sky"
+                medium="Watercolor on paper"
+                dimensions='19 x 16"'
+              />
+            </Col>
+            <Col md={1} />
+          </Row>
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
@@ -182,6 +245,16 @@ export const Timeline: React.FC = () => (
               }
             />
           </MilestonesWrapper>
+          <Row className="mt-3">
+            <Col md={12}>
+              <Artwork
+                src={islandPath2Img}
+                name="Island Path #2"
+                medium="Oil on canvas"
+                dimensions='46 x 42"'
+              />
+            </Col>
+          </Row>
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
@@ -212,6 +285,16 @@ export const Timeline: React.FC = () => (
               }
             />
           </MilestonesWrapper>
+          <Row className="mt-3">
+            <Col md={12}>
+              <Artwork
+                src={changingLightMonheganIcePondImg}
+                name="Changing Light, Monhegan Ice Pond"
+                medium="Acrylic on linen"
+                dimensions='59 x 43"'
+              />
+            </Col>
+          </Row>
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
@@ -314,7 +397,32 @@ export const Timeline: React.FC = () => (
               event="Died on May 26 in Dayville, CT at the age of 93"
             />
           </MilestonesWrapper>
+          <Row className="mt-3">
+            <Col md={2} />
+            <Col sm={6} md={4}>
+              <Artwork
+                className="mb-3 m-md-0"
+                src={genisisImg}
+                name="Genesis"
+                medium="Collage on paper"
+                dimensions='20" diameter'
+              />
+            </Col>
+            <Col sm={6} md={4}>
+              <Artwork
+                src={winterLandscapeImg}
+                name="Winter Landscape"
+                medium="Collage on paper"
+                dimensions='22 x 30"'
+              />
+            </Col>
+            <Col md={2} />
+          </Row>
         </DecadeWrapper>
+        <Paragraph className="mt-4 text-center">
+          See more artwork on the{' '}
+          <Link to={Url.CollectionPage}>collection page</Link>.
+        </Paragraph>
       </Col>
     </Row>
   </Page>
