@@ -1,25 +1,19 @@
 import React from 'react';
 import { selfPortraitImg } from '../../assets/artwork';
 import { Link, Url } from '../router';
-import {
-  Page,
-  Row,
-  Col,
-  H1,
-  Paragraph,
-  ArtworkImg,
-  ArtworkName,
-  ArtworkInfo,
-} from './shared';
+import { Page, Row, Col, H1, Paragraph, Artwork } from './shared';
 
 export const Biography: React.FC = () => (
   <Page title="Biography">
     <Row>
       <Col md={12}>
         <H1>Biography</H1>
-        <ArtworkImg src={selfPortraitImg} alt="Self Portrait" />
-        <ArtworkName>&quot;Self Portrait&quot;</ArtworkName>
-        <ArtworkInfo>Watercolor on paper (14 x 19&quot;)</ArtworkInfo>
+        <Artwork
+          src={selfPortraitImg}
+          name="Self Portrait"
+          medium="Watercolor on paper"
+          dimensions='14 x 19"'
+        />
         <Paragraph>
           Frances Kornbluth was born in New York City on July 26, 1920. As a
           child, Kornbluth developed a passion for the piano, and graduated from

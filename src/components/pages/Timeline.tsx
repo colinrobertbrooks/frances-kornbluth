@@ -33,19 +33,34 @@ export const Timeline: React.FC = () => (
             />
             <Milestone
               year="1958"
-              event=" Brooklyn and Long Island Artists exhibition at the Brooklyn Museum"
+              event="Brooklyn and Long Island Artists exhibition at the Brooklyn Museum"
             />
             <Milestone
               year="1958"
-              event='M. Grumbacher Prize from the National Society of Painters in Casein for "Shelter Island Shore"'
+              event={
+                <>
+                  M. Grumbacher Prize from the National Society of Painters in
+                  Casein for <i>Shelter Island Shore</i>
+                </>
+              }
             />
             <Milestone
               year="1958"
-              event='Honorable Mention (Oil) at the New York City Center Gallery for "November"'
+              event={
+                <>
+                  Honorable Mention (Oil) at the New York City Center Gallery
+                  for <i>November</i>
+                </>
+              }
             />
             <Milestone
               year="1959"
-              event={`Honorable Mention (Oil) at the New York City Center Gallery for "Summer's Vocabulary #1"`}
+              event={
+                <>
+                  Honorable Mention (Oil) at the New York City Center Gallery
+                  for <i>Summer&apos;s Vocabulary #1</i>
+                </>
+              }
             />
           </MilestonesWrapper>
         </DecadeWrapper>
@@ -56,7 +71,12 @@ export const Timeline: React.FC = () => (
           <MilestonesWrapper>
             <Milestone
               year="1960"
-              event='First Prize (Oil) at the New York City Center Gallery for "Ocean Song #2"'
+              event={
+                <>
+                  First Prize (Oil) at the New York City Center Gallery for{' '}
+                  <i>Ocean Song #2</i>
+                </>
+              }
             />
             <Milestone
               year="1961"
@@ -64,15 +84,31 @@ export const Timeline: React.FC = () => (
             />
             <Milestone
               year="1961"
-              event='First Prize, 12th Annual Long Island Artists exhibition at Hofstra College for "Still Life/Interior"'
+              event={
+                <>
+                  First Prize, 12th Annual Long Island Artists exhibition at
+                  Hofstra College for <i>Still Life/Interior</i>
+                </>
+              }
             />
             <Milestone
               year="1961"
-              event={`Special Mention Award, Norfolk Museum's American Drawing Annual XVIII for "The Lamp"`}
+              event={
+                <>
+                  Special Mention Award, Norfolk Museum&apos;s American Drawing
+                  Annual XVIII for <i>The Lamp</i>
+                </>
+              }
             />
             <Milestone
               year="1961"
-              event='Medal of Honor and Catherine and Henry J. Gainsman Prize (Watercolor) from the National Association of Women Artists for "Rock, Sea and Sky"'
+              event={
+                <>
+                  Medal of Honor and Catherine and Henry J. Gainsman Prize
+                  (Watercolor) from the National Association of Women Artists
+                  for <i>Rocks, Sea and Sky</i>
+                </>
+              }
             />
             <Milestone
               year="1962"
@@ -92,7 +128,13 @@ export const Timeline: React.FC = () => (
             />
             <Milestone
               year="1968"
-              event='Medal of Honor and the Elizabeth R. Fulda Memorial Prize (Oil) from the National Association of Women Artists for "Rising Landscape"'
+              event={
+                <>
+                  Medal of Honor and the Elizabeth R. Fulda Memorial Prize (Oil)
+                  from the National Association of Women Artists for{' '}
+                  <i>Rising Landscape</i>
+                </>
+              }
             />
             <Milestone
               year="1969"
@@ -123,11 +165,21 @@ export const Timeline: React.FC = () => (
             />
             <Milestone
               year="1975"
-              event='Charles Woodbury Memorial Prize (Watercolor) from the National Association of Women Artists for "Cove Wind"'
+              event={
+                <>
+                  Charles Woodbury Memorial Prize (Watercolor) from the National
+                  Association of Women Artists for <i>Cove Wind</i>
+                </>
+              }
             />
             <Milestone
               year="1977"
-              event='Helen Henningsen Memorial Prize (Oil) from the National Association of Women Artists for "Island Path #2"'
+              event={
+                <>
+                  Helen Henningsen Memorial Prize (Oil) from the National
+                  Association of Women Artists for <i>Island Path #2</i>
+                </>
+              }
             />
           </MilestonesWrapper>
         </DecadeWrapper>
@@ -138,7 +190,13 @@ export const Timeline: React.FC = () => (
           <MilestonesWrapper>
             <Milestone
               year="1982"
-              event='Elizabeth Morse Genius Foundation Prize (Works on Paper) from the National Association of Women Artists for "Window to the Sea"'
+              event={
+                <>
+                  Elizabeth Morse Genius Foundation Prize (Works on Paper) from
+                  the National Association of Women Artists for{' '}
+                  <i>Window to the Sea</i>
+                </>
+              }
             />
             <Milestone
               year="1985"
@@ -146,7 +204,12 @@ export const Timeline: React.FC = () => (
             />
             <Milestone
               year="1989"
-              event='John Carl Georgo Memorial Award from the National Association of Women Artists for "Changing Light, Monhegan Ice Pond"'
+              event={
+                <>
+                  John Carl Georgo Memorial Award from the National Association
+                  of Women Artists for <i>Changing Light, Monhegan Ice Pond</i>
+                </>
+              }
             />
           </MilestonesWrapper>
         </DecadeWrapper>
@@ -157,7 +220,12 @@ export const Timeline: React.FC = () => (
           <MilestonesWrapper>
             <Milestone
               year="1992"
-              event='Miriam E. Halpern Memorial Award (Works on Paper) from the National Association of Women Artists for "Rosebud #3"'
+              event={
+                <>
+                  Miriam E. Halpern Memorial Award (Works on Paper) from the
+                  National Association of Women Artists for <i>Rosebud #3</i>
+                </>
+              }
             />
             <Milestone
               year="1996"
@@ -180,7 +248,12 @@ export const Timeline: React.FC = () => (
             />
             <Milestone
               year="2000"
-              event='First Prize (Painting), 57th Annual Connecticut Artists exhibition at the Slater Memorial Museum for "November"'
+              event={
+                <>
+                  First Prize (Painting), 57th Annual Connecticut Artists
+                  exhibition at the Slater Memorial Museum for <i>November</i>
+                </>
+              }
             />
             <Milestone
               year="2001"
@@ -215,7 +288,12 @@ export const Timeline: React.FC = () => (
             />
             <Milestone
               year="2010"
-              event='Miriam E. Halpern Memorial Award (Works on Paper) from the National Association of Women Artists for "Genesis"'
+              event={
+                <>
+                  Miriam E. Halpern Memorial Award (Works on Paper) from the
+                  National Association of Women Artists for <i>Genesis</i>
+                </>
+              }
             />
             <Milestone year="2013" event="Last summer on Monhegan Island" />
             <Milestone
@@ -224,7 +302,12 @@ export const Timeline: React.FC = () => (
             />
             <Milestone
               year="2013"
-              event='Best Work on Paper, 69th Annual Connecticut Artists Exhibition at the Slater Memorial Museum for "Winter Landscape"'
+              event={
+                <>
+                  Best Work on Paper, 69th Annual Connecticut Artists Exhibition
+                  at the Slater Memorial Museum for <i>Winter Landscape</i>
+                </>
+              }
             />
             <Milestone
               year="2014"
@@ -269,7 +352,13 @@ const MilestoneYear = styled(Span)`
   font-weight: 600;
 `;
 
-const Milestone = ({ year, event }: { year: string; event: string }) => (
+const Milestone = ({
+  year,
+  event,
+}: {
+  year: string;
+  event: string | React.ReactNode;
+}) => (
   <div className="mb-1" style={{ maxWidth: 775 }}>
     <MilestoneYear>{year}:</MilestoneYear> <Span>{event}</Span>
   </div>

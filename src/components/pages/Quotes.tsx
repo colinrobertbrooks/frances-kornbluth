@@ -12,9 +12,7 @@ import {
   H1,
   H2,
   Paragraph,
-  ArtworkImg,
-  ArtworkName,
-  ArtworkInfo,
+  Artwork,
 } from './shared';
 
 export const Quotes: React.FC = () => (
@@ -24,12 +22,12 @@ export const Quotes: React.FC = () => (
         <H1>Quotes</H1>
         <Divider />
         <H2>Monhegan Island</H2>
-        <ArtworkImg
+        <Artwork
           src={changingLightMonheganIcePondImg}
-          alt="Changing Light, Monhegan Ice Pond"
+          name="Changing Light, Monhegan Ice Pond"
+          medium="Acrylic on linen"
+          dimensions='59 x 43"'
         />
-        <ArtworkName>&quot;Changing Light, Monhegan Ice Pond&quot;</ArtworkName>
-        <ArtworkInfo>Acrylic on linen (59 x 43&quot;)</ArtworkInfo>
         <Quote>
           &quot;I&apos;ve been coming here for 32 years. It was seductive at
           first, because everywhere you look is a scene. But as a landscape
@@ -54,9 +52,12 @@ export const Quotes: React.FC = () => (
         <Source>- Monhegan, The Artists&apos; Island (1995)</Source>
         <Divider />
         <H2>Dominican Republic</H2>
-        <ArtworkImg src={altosTwilightImg} alt="Altos Twilight" />
-        <ArtworkName>&quot;Altos Twilight&quot;</ArtworkName>
-        <ArtworkInfo>Collage on handmade paper (24&quot; diameter)</ArtworkInfo>
+        <Artwork
+          src={altosTwilightImg}
+          name="Altos Twilight"
+          medium="Collage on handmade paper"
+          dimensions='24" diameter'
+        />
         <Quote>
           &quot;Working at Altos de Chavon has reawakened feelings of being part
           of the natural world, my perceptions of the elements, visual and

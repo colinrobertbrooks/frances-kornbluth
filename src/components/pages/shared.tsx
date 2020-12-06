@@ -1,3 +1,4 @@
+import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { lighten, rgba } from 'polished';
 import { Container, Row, Col } from 'reactstrap';
@@ -50,7 +51,7 @@ export { OutlineButton };
 /*
  *  artwork
  */
-export const ArtworkImg = styled.img.attrs({
+const ArtworkImg = styled.img.attrs({
   className: 'img-thumbnail mt-4 mb-2',
 })`
   display: block;
@@ -58,16 +59,32 @@ export const ArtworkImg = styled.img.attrs({
   margin: 0 auto;
 `;
 
-export const ArtworkName = styled.span`
+const ArtworkName = styled.span`
   color: ${colors.darkGray};
-  display: block;
-  font-weight: 600;
-  text-align: center;
-`;
-
-export const ArtworkInfo = styled.span.attrs({ className: 'small mb-4' })`
-  color: ${colors.gray};
   display: block;
   font-style: italic;
   text-align: center;
 `;
+
+const ArtworkInfo = styled.span.attrs({ className: 'small mb-4' })`
+  color: ${colors.gray};
+  display: block;
+  text-align: center;
+`;
+
+interface IArtworkProps {
+  src: string;
+  name: string;
+  medium: string;
+  dimensions: string;
+}
+
+export const Artwork = ({ src, name, medium, dimensions }: IArtworkProps) => (
+  <>
+    <ArtworkImg src={src} alt={name} />
+    <ArtworkName>{name}</ArtworkName>
+    <ArtworkInfo>
+      {medium}, {dimensions}
+    </ArtworkInfo>
+  </>
+);
