@@ -1,6 +1,6 @@
 import altosTwilightImg from './altos-twilight.jpg';
 import changingLightMonheganIcePondImg from './changing-light-monhegan-ice-pond.jpg';
-import genisisImg from './genisis.jpg';
+import genesisImg from './genesis.jpg';
 import islandPath2Img from './island-path-2.jpg';
 import novemberImg from './november.jpg';
 import rocksSeaAndSkyImg from './rocks-sea-and-sky.jpg';
@@ -12,7 +12,7 @@ import winterLandscapeImg from './winter-landscape.jpg';
 export {
   altosTwilightImg,
   changingLightMonheganIcePondImg,
-  genisisImg,
+  genesisImg,
   islandPath2Img,
   novemberImg,
   rocksSeaAndSkyImg,

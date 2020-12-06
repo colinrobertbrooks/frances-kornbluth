@@ -7,7 +7,7 @@ import {
   rocksSeaAndSkyImg,
   islandPath2Img,
   changingLightMonheganIcePondImg,
-  genisisImg,
+  genesisImg,
   winterLandscapeImg,
 } from '../../assets/artwork';
 import {
@@ -402,7 +402,7 @@ export const Timeline: React.FC = () => (
             <Col sm={6} md={4}>
               <Artwork
                 className="mb-3 m-md-0"
-                src={genisisImg}
+                src={genesisImg}
                 name="Genesis"
                 medium="Collage on paper"
                 dimensions='20" diameter'
