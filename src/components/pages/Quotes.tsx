@@ -1,14 +1,105 @@
 import React from 'react';
+import styled from 'styled-components';
+import {
+  changingLightMonheganIcePondImg,
+  altosTwilightImg,
+} from '../../assets/pages/quotes';
+import { colors } from '../../styles';
+
 import { Page } from '../layout';
-import { Row, Col, Heading, Paragraph } from '../styled';
+import { Row, Col, Heading, HorizontalRule, Paragraph } from '../styled';
 
 export const Quotes: React.FC = () => (
   <Page title="Quotes">
     <Row>
       <Col md={12}>
-        <Heading>Quotes</Heading>
-        <Paragraph>TODO</Paragraph>
+        <H1>Quotes</H1>
+        <Divider />
+        <H2>Monhegan Island</H2>
+        <ArtworkImg
+          src={changingLightMonheganIcePondImg}
+          alt="Changing Light, Monhegan Ice Pond"
+        />
+        <ArtworkName>&quot;Changing Light, Monhegan Ice Pond&quot;</ArtworkName>
+        <ArtworkInfo>Acrylic on linen (59 x 43&quot;)</ArtworkInfo>
+        <Quote>
+          &quot;I&apos;ve been coming here for 32 years. It was seductive at
+          first, because everywhere you look is a scene. But as a landscape
+          painter, you have to go past all that. It&apos;s like a marriage;
+          it&apos;s later that you find the real meaning of things... I&apos;ve
+          always loved the ocean, for as long as I can remember. My house
+          overlooks the water. The power of the sea, the tides, the light
+          becomes so much a part of your daily existence that when you look out,
+          it&apos;s not a scene anymore; it&apos;s part of your life... Each
+          year now, when summer comes, it seems like it gets more difficult to
+          move everything here. But that&apos;s also a very positive thing for
+          working, because it&apos;s not easy to escape; you become your own
+          prisoner. I come here to work, and it&apos;s never failed me. &quot;
+        </Quote>
+        <Source>- Islands Magazine (1989)</Source>
+        <Quote>
+          &quot;I first came to Monhegan in 1957 and was struck by the openness
+          of space, light and the purity of its natural forms. My growth is
+          vitally connected to the island. Being here every summer continues to
+          enhance my power to see, to feel and to make art.&quot;
+        </Quote>
+        <Source>- Monhegan, The Artists&apos; Island (1995)</Source>
+        <Divider />
+        <H2>Dominican Republic</H2>
+        <ArtworkImg src={altosTwilightImg} alt="Altos Twilight" />
+        <ArtworkName>&quot;Altos Twilight&quot;</ArtworkName>
+        <ArtworkInfo>Collage on handmade paper (24&quot; diameter)</ArtworkInfo>
+        <Quote>
+          &quot;Working at Altos de Chavon has reawakened feelings of being part
+          of the natural world, my perceptions of the elements, visual and
+          otherwise, and a heightened sense of growth and change in the
+          environment.&quot;
+        </Quote>
+        <Source>- Artists In Residence, Altos de Chavon (1985)</Source>
+        <Quote>
+          &quot;In the Dominican Republic I got a sense of how intense and
+          powerful an environment can be. It was a world of feelings and I had a
+          passion for the place. I felt a need to work and I felt effective by
+          defining my experience.&quot;
+        </Quote>
+        <Source>- The Observer Patriot (1990)</Source>
       </Col>
     </Row>
   </Page>
 );
+
+const H1 = styled(Heading).attrs({ className: 'mb-3' })``;
+
+const H2 = styled(Heading).attrs({
+  as: 'H2',
+  color: 'gray',
+  className: 'text-center',
+})``;
+
+const Divider = styled(HorizontalRule).attrs({ className: 'my-4' })``;
+
+const ArtworkImg = styled.img.attrs({ className: 'img-thumbnail mt-4 mb-2' })`
+  display: block;
+  max-height: 250px;
+  margin: 0 auto;
+`;
+
+const ArtworkName = styled.span.attrs({ className: 'mb-1' })`
+  color: ${colors.darkGray};
+  display: block;
+  font-weight: 600;
+  text-align: center;
+`;
+
+const ArtworkInfo = styled.span.attrs({ className: 'mb-4' })`
+  color: ${colors.gray};
+  display: block;
+  font-style: italic;
+  text-align: center;
+`;
+
+const Quote = styled(Paragraph).attrs({ className: 'pl-2' })``;
+
+const Source = styled(Paragraph).attrs({ className: 'pl-4 mb-4' })`
+  font-weight: 700;
+`;
