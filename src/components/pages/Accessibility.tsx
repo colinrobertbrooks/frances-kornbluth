@@ -1,13 +1,12 @@
 import React from 'react';
-import { Page } from '../layout';
 import { Link, Url, ExternalLink } from '../router';
-import { Row, Col, Heading, Paragraph } from '../styled';
+import { Page, Row, Col, H1, Paragraph } from './shared';
 
 export const Accessibility: React.FC = () => (
   <Page title="Accessibility">
     <Row>
       <Col md={12}>
-        <Heading className="mb-3">Accessibility</Heading>
+        <H1>Accessibility</H1>
         <Paragraph>
           We are committed to making the information on our website accessible
           to all visitors, including people with disabilities. If you encounter

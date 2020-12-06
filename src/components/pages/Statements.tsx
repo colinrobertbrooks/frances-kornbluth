@@ -1,7 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Page } from '../layout';
-import { Row, Col, Heading, Paragraph } from '../styled';
+import { Page, Row, Col, H1, H2, Paragraph } from './shared';
 
 export const Statements: React.FC = () => (
   <Page title="Statements">
@@ -125,11 +123,3 @@ export const Statements: React.FC = () => (
     </Row>
   </Page>
 );
-
-const H1 = styled(Heading).attrs({ className: 'mb-3' })``;
-
-const H2 = styled(Heading).attrs({
-  as: 'H2',
-  color: 'gray',
-  className: 'text-center',
-})``;

@@ -1,13 +1,12 @@
 import React from 'react';
-import { Page } from '../layout';
 import { Link, Url } from '../router';
-import { Row, Col, Heading, Paragraph } from '../styled';
+import { Page, Row, Col, H1, Paragraph } from './shared';
 
 export const Copyright: React.FC = () => (
   <Page title="Copyright">
     <Row>
       <Col md={12}>
-        <Heading className="mb-3">Copyright</Heading>
+        <H1>Copyright</H1>
         <Paragraph>
           All photos on this website are copyrighted material and all rights are
           reserved. The content of this site is for personal and/or educational

@@ -3,6 +3,7 @@ import { artistImg, artworkImg, backgroundImg } from '../../assets/pages/home';
 import { NAVBAR_HEIGHT_PX, colors, media } from '../../styles';
 import { Page } from '../layout';
 import { Url } from '../router';
+import { RocksSeaAndSkySvg } from '../svg';
 import {
   styled,
   keyframes,
@@ -12,8 +13,7 @@ import {
   Col,
   Paragraph,
   OutlineButton,
-} from '../styled';
-import { RocksSeaAndSkySvg } from '../svg';
+} from './shared';
 
 export const Home: React.FC = () => (
   <Page className="position-relative p-0" fluid>

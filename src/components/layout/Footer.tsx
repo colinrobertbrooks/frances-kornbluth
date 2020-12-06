@@ -1,4 +1,6 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
+import { Container, Row, Col } from 'reactstrap';
 import {
   colors,
   focusOutlineCSS,
@@ -6,7 +8,6 @@ import {
   getRems,
   typography,
 } from '../../styles';
-import { styled, css, Container, Row, Col } from '../styled';
 import { Link, Url, ExternalLink, ExternalUrl } from '../router';
 import { FacebookSvg, InstagramSvg } from '../svg';
 

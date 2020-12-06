@@ -1,13 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Page } from '../layout';
-import { Row, Col, Heading, Paragraph } from '../styled';
+import { styled, Page, Row, Col, H1, Paragraph } from './shared';
 
 export const Videos: React.FC = () => (
   <Page title="Videos">
     <Row>
       <Col md={12} className="h-100">
-        <Heading className="mb-3">Videos</Heading>
+        <H1>Videos</H1>
         <Paragraph as="h2" color="gray" className="text-center">
           2012 interview for &quot;The Women Artists of Monhegan Island&quot;
         </Paragraph>

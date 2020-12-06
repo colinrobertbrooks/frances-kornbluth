@@ -1,16 +1,17 @@
 import React from 'react';
 import { media, NAVBAR_HEIGHT_PX } from '../../styles';
-import { Page } from '../layout';
 import { Link, Url } from '../router';
 import {
   styled,
+  Page,
   Row,
   Col,
+  Divider,
   Heading,
-  HorizontalRule,
+  H2,
   Paragraph,
   OutlineButton,
-} from '../styled';
+} from './shared';
 
 export const Contact: React.FC = () => (
   <Page title="Contact">
@@ -75,14 +76,6 @@ export const Contact: React.FC = () => (
 );
 
 const H1 = styled(Heading).attrs({ className: 'mb-2 m-md-0' })``;
-
-const H2 = styled(Heading).attrs({
-  as: 'h2',
-  color: 'gray',
-  className: 'mb-3',
-})``;
-
-const Divider = styled(HorizontalRule).attrs({ className: 'my-4' })``;
 
 const StickyCol = styled(Col)`
   ${media.md`

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import { lighten, rgba } from 'polished';
 import {
   Collapse,
   Navbar,
@@ -19,7 +21,6 @@ import {
   artistUrls,
   artworkUrls,
 } from '../router';
-import { styled, lighten, rgba } from '../styled';
 import { FrancesKornbluthSvg } from '../svg';
 
 // close collapse on route change

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { getCollection } from '../../api';
-import { Page } from '../layout';
-import { Row, Col, Heading, Paragraph } from '../styled';
+import { Page, Row, Col, H1, Paragraph } from './shared';
 
 // TODO: move fetch to context
 export const Collection: React.FC = () => {
@@ -18,7 +17,7 @@ export const Collection: React.FC = () => {
     <Page title="Collection">
       <Row>
         <Col md={12}>
-          <Heading className="mb-3">Collection</Heading>
+          <H1>Collection</H1>
           <Paragraph>TODO</Paragraph>
         </Col>
       </Row>

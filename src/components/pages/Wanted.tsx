@@ -1,12 +1,11 @@
 import React from 'react';
-import { Page } from '../layout';
-import { Row, Col, Heading, Paragraph } from '../styled';
+import { Page, Row, Col, H1, Paragraph } from './shared';
 
 export const Wanted: React.FC = () => (
   <Page title="Wanted">
     <Row>
       <Col md={12}>
-        <Heading className="mb-3">Wanted</Heading>
+        <H1>Wanted</H1>
         <Paragraph>TODO</Paragraph>
       </Col>
     </Row>

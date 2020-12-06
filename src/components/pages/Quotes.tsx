@@ -1,13 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
 import {
   changingLightMonheganIcePondImg,
   altosTwilightImg,
 } from '../../assets/pages/quotes';
-import { colors } from '../../styles';
-
-import { Page } from '../layout';
-import { Row, Col, Heading, HorizontalRule, Paragraph } from '../styled';
+import {
+  styled,
+  Page,
+  Row,
+  Col,
+  Divider,
+  H1,
+  H2,
+  Paragraph,
+  ArtworkImg,
+  ArtworkName,
+  ArtworkInfo,
+} from './shared';
 
 export const Quotes: React.FC = () => (
   <Page title="Quotes">
@@ -67,36 +75,6 @@ export const Quotes: React.FC = () => (
     </Row>
   </Page>
 );
-
-const H1 = styled(Heading).attrs({ className: 'mb-3' })``;
-
-const H2 = styled(Heading).attrs({
-  as: 'H2',
-  color: 'gray',
-  className: 'text-center',
-})``;
-
-const Divider = styled(HorizontalRule).attrs({ className: 'my-4' })``;
-
-const ArtworkImg = styled.img.attrs({ className: 'img-thumbnail mt-4 mb-2' })`
-  display: block;
-  max-height: 250px;
-  margin: 0 auto;
-`;
-
-const ArtworkName = styled.span.attrs({ className: 'mb-1' })`
-  color: ${colors.darkGray};
-  display: block;
-  font-weight: 600;
-  text-align: center;
-`;
-
-const ArtworkInfo = styled.span.attrs({ className: 'mb-4' })`
-  color: ${colors.gray};
-  display: block;
-  font-style: italic;
-  text-align: center;
-`;
 
 const Quote = styled(Paragraph).attrs({ className: 'pl-2' })``;
 
