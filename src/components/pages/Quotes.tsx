@@ -2,7 +2,7 @@ import React from 'react';
 import {
   changingLightMonheganIcePondImg,
   altosTwilightImg,
-} from '../../assets/pages/quotes';
+} from '../../assets/artwork';
 import {
   styled,
   Page,

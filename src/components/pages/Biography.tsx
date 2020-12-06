@@ -1,5 +1,5 @@
 import React from 'react';
-import { selfPortraitImg } from '../../assets/pages/biography';
+import { selfPortraitImg } from '../../assets/artwork';
 import { Link, Url } from '../router';
 import {
   Page,
