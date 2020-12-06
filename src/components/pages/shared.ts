@@ -3,7 +3,13 @@ import { lighten, rgba } from 'polished';
 import { Container, Row, Col } from 'reactstrap';
 import { colors } from '../../styles';
 import { Page } from '../layout';
-import { HorizontalRule, Heading, Paragraph, OutlineButton } from '../styled';
+import {
+  HorizontalRule,
+  Heading,
+  Paragraph,
+  Span,
+  OutlineButton,
+} from '../styled';
 
 /*
  *  styled
@@ -26,7 +32,7 @@ export const Divider = styled(HorizontalRule).attrs({ className: 'my-4' })``;
 /*
  *  typography
  */
-export { Heading, Paragraph };
+export { Heading, Paragraph, Span };
 
 export const H1 = styled(Heading).attrs({ className: 'mb-3' })``;
 
