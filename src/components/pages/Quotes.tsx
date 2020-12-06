@@ -6,7 +6,7 @@ export const Quotes: React.FC = () => (
   <Page title="Quotes">
     <Row>
       <Col md={12}>
-        <Heading className="mb-3">Quotes</Heading>
+        <Heading>Quotes</Heading>
         <Paragraph>TODO</Paragraph>
       </Col>
     </Row>
