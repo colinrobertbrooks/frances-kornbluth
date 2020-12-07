@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useCollectionContext } from '../../contexts';
-import { Page, Row, Col, H1, Paragraph } from './shared';
+import { media } from '../../styles';
+import { styled, Page, Row, Col, H1, Paragraph } from './shared';
 
 // WIP
 export const Collection: React.FC = () => {
@@ -28,8 +29,8 @@ export const Collection: React.FC = () => {
             return (
               <Row>
                 {collection.map(({ id, img, name }) => (
-                  <Col md={3} key={id}>
-                    <img className="img-thumbnail" src={img} alt={name} />
+                  <Col sm={6} md={4} lg={3} key={id}>
+                    <Artwork src={img} alt={name} />
                   </Col>
                 ))}
               </Row>
@@ -40,3 +41,26 @@ export const Collection: React.FC = () => {
     </Page>
   );
 };
+
+const Artwork = styled.img.attrs({ className: 'img-thumbnail mb-3' })`
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  transition: all 250ms;
+
+  ${media.sm`
+    height: 150px;
+  `}
+
+  ${media.md`
+    height: 140px;
+  `}
+
+  ${media.lg`
+    height: 150px;
+  `}
+
+  ${media.xl`
+    height: 175px;
+  `}
+`;
