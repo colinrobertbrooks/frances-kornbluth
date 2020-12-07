@@ -17,6 +17,8 @@ export const FrancesKornbluthSvg: React.FC<FrancesKornbluthSvg> = ({
       preserveAspectRatio="xMidYMid meet"
       style={{ width: '100%', maxWidth, height: 'auto' }}
       aria-hidden="true"
+      focusable="false"
+      role="img"
     >
       <g
         transform="translate(0.000000,340.000000) scale(0.100000,-0.100000)"

@@ -3,11 +3,11 @@ import React from 'react';
 export const FacebookSvg: React.FC = (props) => (
   <div className="d-flex w-100">
     <svg
+      viewBox="0 0 512 512"
+      xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       focusable="false"
       role="img"
-      viewBox="0 0 512 512"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
