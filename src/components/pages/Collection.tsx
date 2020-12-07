@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useCollectionContext } from '../../contexts';
-import { media } from '../../styles';
-import { styled, Page, Row, Col, H1, Paragraph } from './shared';
+import { colors, media } from '../../styles';
+import { LoaderSvg } from '../svg';
+import { styled, Page, Row, Col, H1 } from './shared';
 
 // WIP
 export const Collection: React.FC = () => {
@@ -22,9 +23,7 @@ export const Collection: React.FC = () => {
         <Col md={12}>
           <H1>Collection</H1>
           {(() => {
-            if (collectionIsLoading || !collection) {
-              return <Paragraph>Loading...</Paragraph>;
-            }
+            if (collectionIsLoading || !collection) return <Loader />;
 
             return (
               <Row>
@@ -41,6 +40,12 @@ export const Collection: React.FC = () => {
     </Page>
   );
 };
+
+const Loader = styled(LoaderSvg).attrs({
+  fill: colors.lightRed,
+})`
+  margin: 0 auto;
+`;
 
 const Artwork = styled.img.attrs({ className: 'img-thumbnail mb-3' })`
   display: block;
