@@ -1,7 +1,9 @@
 export const colors = {
   trueWhite: '#fff',
-  border: '#dbdbdb',
   trueBlack: '#000',
+
+  body: '#fcfcfc',
+  border: '#dbdbdb',
 
   // https://coolors.co/fdfdfc-c4cccc-818584-3d3e3b-0c0a08
   white: '#fdfdfc',

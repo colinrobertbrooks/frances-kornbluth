@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { NAVBAR_HEIGHT_PX, MIN_SCREEN_WIDTH_PX } from './constants';
+import { colors } from './colors';
 
 export const GlobalStyles = createGlobalStyle`
   #root {
@@ -8,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: #fcfcfc;
+    background-color: ${colors.body};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
