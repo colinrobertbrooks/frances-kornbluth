@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useCollectionContext } from '../../contexts';
+import { useIntersectionObserver } from '../../hooks';
 import { colors, media } from '../../styles';
 import { LoaderSvg } from '../svg';
 import { styled, Page, Row, Col, H1 } from './shared';
@@ -17,6 +18,28 @@ export const Collection: React.FC = () => {
     if (!collectionIsLoading && !collection) loadCollection();
   }, [collectionIsLoading, collection, loadCollection]);
 
+  /*
+   *  infinite scrolling
+   */
+  const initialDisplayCount = 24; // TODO: base on screen size
+  const incrementDisplayCount = 8; // TODO: base on screen size
+
+  const [displayCount, setDisplayCount] = useState<number>(initialDisplayCount);
+  const displayTrackerRef = useRef(null);
+
+  const [displayTrackerIsVisible] = useIntersectionObserver({
+    elementRef: displayTrackerRef,
+  });
+
+  useEffect(() => {
+    // increment display count as user scrolls
+    if (!collectionIsLoading && displayTrackerIsVisible) {
+      setDisplayCount(
+        (currentDisplayCount) => currentDisplayCount + incrementDisplayCount
+      );
+    }
+  }, [collectionIsLoading, displayTrackerIsVisible]);
+
   return (
     <Page title="Collection">
       <Row>
@@ -27,7 +50,7 @@ export const Collection: React.FC = () => {
 
             return (
               <Row>
-                {collection.map(({ id, img, name }) => (
+                {collection.slice(0, displayCount).map(({ id, img, name }) => (
                   <Col sm={6} md={4} lg={3} key={id}>
                     <Artwork src={img} alt={name} />
                   </Col>
@@ -35,6 +58,7 @@ export const Collection: React.FC = () => {
               </Row>
             );
           })()}
+          <div ref={displayTrackerRef} />
         </Col>
       </Row>
     </Page>
