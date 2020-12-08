@@ -23,3 +23,21 @@ export const media = {
     }
   `,
 };
+
+export const getCurrentMedia = (windowWidth: number): string => {
+  const breakpointValues = Object.values(breakpoints);
+  let currentMedia = 'xs';
+
+  breakpointValues.some((value, idx) => {
+    const nextValue = breakpointValues[idx + 1] || Infinity;
+
+    if (windowWidth >= value && windowWidth < nextValue) {
+      currentMedia = Object.keys(breakpoints)[idx];
+      return true;
+    }
+
+    return false;
+  });
+
+  return currentMedia;
+};
