@@ -1,5 +1,5 @@
 import React from 'react';
-import { media, NAVBAR_HEIGHT_PX } from '../../styles';
+import { media, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX } from '../../styles';
 import { Link, Url } from '../router';
 import {
   styled,
@@ -81,7 +81,7 @@ const H1 = styled(Heading).attrs({ className: 'mb-2 m-md-0' })``;
 const StickyCol = styled(Col)`
   ${media.md`
     position: sticky;
-    top: ${NAVBAR_HEIGHT_PX + 26}px;
+    top: ${HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX + 14}px;
     z-index: 999;
   `}
 `;

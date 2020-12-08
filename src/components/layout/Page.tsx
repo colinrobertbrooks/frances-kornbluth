@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
 import {
-  NAVBAR_HEIGHT_PX,
+  HEADER_HEIGHT_PX,
   FOOTER_MARGIN_TOP_PX,
   FOOTER_MIN_HEIGHT_PX,
   media,
 } from '../../styles';
+import { MainAnchor } from './skip-to-main';
 
 interface IPageProps {
   className?: string;
@@ -27,18 +28,19 @@ export const Page: React.FC<IPageProps> = ({
   useScrollToTopOnMount();
 
   return (
-    <Main id="main" className={className} fluid={fluid}>
+    <Main className={className} fluid={fluid}>
+      <MainAnchor />
       {children}
     </Main>
   );
 };
 
 const Main = styled(Container).attrs({ tag: 'main' })`
-  margin-top: ${NAVBAR_HEIGHT_PX}px;
+  margin-top: ${HEADER_HEIGHT_PX}px;
 
   ${media.lg`
     min-height: calc(100vh - ${
-      NAVBAR_HEIGHT_PX + FOOTER_MARGIN_TOP_PX + FOOTER_MIN_HEIGHT_PX
+      HEADER_HEIGHT_PX + FOOTER_MARGIN_TOP_PX + FOOTER_MIN_HEIGHT_PX
     }px);
   `}
 `;

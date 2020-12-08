@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import { NAVBAR_HEIGHT_PX, MIN_SCREEN_WIDTH_PX } from './constants';
+import { MIN_SCREEN_WIDTH_PX, HEADER_HEIGHT_PX } from './constants';
 import { colors } from './colors';
 
 export const GlobalStyles = createGlobalStyle`
   #root {
-    height: calc(100% - ${NAVBAR_HEIGHT_PX}px);
+    height: calc(100% - ${HEADER_HEIGHT_PX}px);
     min-width: ${MIN_SCREEN_WIDTH_PX}px;
   }
 

@@ -5,7 +5,15 @@ import {
   useWindowSize,
   useIntersectionObserver,
 } from '../../hooks';
-import { colors, media, getCurrentMedia, NAVBAR_HEIGHT_PX } from '../../styles';
+import {
+  colors,
+  media,
+  getCurrentMedia,
+  HEADER_HEIGHT_PX,
+  MAIN_PADDING_TOP_PX,
+  H1_HEIGHT_PX,
+  H1_MARGIN_BOTTOM_PX,
+} from '../../styles';
 import { LoaderSvg } from '../svg';
 import { styled, Page, Row, Col, H1 } from './shared';
 
@@ -42,13 +50,9 @@ const getArtworkCols = (windowSize: IWindowSize): number => {
 };
 
 const getAvailableDisplayHeight = (windowSize: IWindowSize): number => {
-  const MAIN_PADDING_PX = 24;
-  const H1_HEIGHT_PX = 48;
-  const H1_MARGIN_BOTTOM = 24;
-  return (
-    windowSize.height -
-    (NAVBAR_HEIGHT_PX + MAIN_PADDING_PX + H1_HEIGHT_PX + H1_MARGIN_BOTTOM)
-  );
+  const above =
+    HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX + H1_HEIGHT_PX + H1_MARGIN_BOTTOM_PX;
+  return windowSize.height - above;
 };
 
 const getInitialDisplayCount = (windowSize: IWindowSize): number => {

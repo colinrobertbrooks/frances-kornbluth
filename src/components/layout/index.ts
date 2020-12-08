@@ -1,4 +1,4 @@
 export * from './Footer';
 export * from './Header';
 export * from './Page';
-export * from './SkipToMain';
+export { SkipToMain } from './skip-to-main';

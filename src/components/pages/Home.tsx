@@ -1,6 +1,6 @@
 import React from 'react';
 import { artistImg, artworkImg, backgroundImg } from '../../assets/pages/home';
-import { NAVBAR_HEIGHT_PX, colors, media } from '../../styles';
+import { HEADER_HEIGHT_PX, colors, media } from '../../styles';
 import { Page } from '../layout';
 import { Url } from '../router';
 import { RocksSeaAndSkySvg } from '../svg';
@@ -88,7 +88,7 @@ const Background = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc((100vh - ${NAVBAR_HEIGHT_PX}px) * 0.8);
+  height: calc((100vh - ${HEADER_HEIGHT_PX}px) * 0.8);
   mask-image: linear-gradient(to top, transparent 10%, #fdfdfc 80%);
   opacity: 0.9;
   position: absolute;

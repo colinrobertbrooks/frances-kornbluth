@@ -1,5 +1,12 @@
 import styled, { css } from 'styled-components';
-import { colors, typography, focusOutlineCSS, srOnlyCSS } from '../../styles';
+import {
+  colors,
+  typography,
+  focusOutlineCSS,
+  srOnlyCSS,
+  HEADER_HEIGHT_PX,
+  MAIN_PADDING_TOP_PX,
+} from '../../styles';
 
 const resetCSS = css`
   clip: auto;
@@ -40,5 +47,16 @@ export const SkipToMain = styled.a.attrs({
     ${resetCSS}
     ${positionCSS}
     ${styleCSS}
+  }
+`;
+
+export const MainAnchor = styled.span.attrs({ id: 'main' })`
+  &:before {
+    content: '';
+    display: block;
+    height: ${HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX}px;
+    margin-top: -${HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX}px;
+    pointer-events: none;
+    visibility: hidden;
   }
 `;
