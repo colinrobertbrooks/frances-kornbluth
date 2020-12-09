@@ -34,12 +34,17 @@ export const Books: React.FC = () => (
             <BookInfo>55 color illustrations</BookInfo>
             <BookInfo>8.5 x 8.5&quot;</BookInfo>
             <BookInfo className="mb-3">softcover</BookInfo>
-            <OutlineButton
-              className="d-block d-md-inline"
-              href="mailto:kornbluthart@gmail.com?subject=Explorations by Maire McArdle&body=I want to purchase a copy of Explorations by Maire McArdle."
-            >
-              Purchase
-            </OutlineButton>
+            <Paragraph className="mb-3">
+              <i>$20 each plus shipping</i>
+            </Paragraph>
+            <div className="d-flex">
+              <OutlineButton
+                className="d-block d-md-inline"
+                href="mailto:kornbluthart@gmail.com?subject=Explorations by Maire McArdle&body=I want to purchase a copy of Explorations by Maire McArdle."
+              >
+                Purchase
+              </OutlineButton>
+            </div>
           </Col>
           <Col md={2} />
         </Row>
