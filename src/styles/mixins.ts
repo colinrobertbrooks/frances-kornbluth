@@ -21,3 +21,15 @@ export const srOnlyCSS = css`
   white-space: nowrap;
   width: 1px;
 `;
+
+/*
+ *  resets
+ */
+export const unstyledButtonCSS = css`
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+`;

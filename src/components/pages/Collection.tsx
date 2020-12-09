@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Modal as ReactstrapModal } from 'reactstrap';
 import { useCollectionContext } from '../../contexts';
 import {
   IWindowSize,
@@ -9,6 +10,8 @@ import {
   colors,
   media,
   getCurrentMedia,
+  unstyledButtonCSS,
+  focusOutlineCSS,
   HEADER_HEIGHT_PX,
   MAIN_PADDING_TOP_PX,
   H1_HEIGHT_PX,
@@ -17,11 +20,11 @@ import {
 import { LoaderSvg } from '../svg';
 import { styled, Page, Row, Col, H1 } from './shared';
 
-type ArtworkConfig = {
+type MediaConfig = {
   [key: string]: number;
 };
 
-const artworkHeightConfig: ArtworkConfig = {
+const listItemHeightConfig: MediaConfig = {
   xs: 200,
   sm: 150,
   md: 140,
@@ -29,7 +32,7 @@ const artworkHeightConfig: ArtworkConfig = {
   xl: 175,
 };
 
-const artworkColConfig: ArtworkConfig = {
+const listColConfig: MediaConfig = {
   xs: 12,
   sm: 6,
   md: 4,
@@ -37,36 +40,37 @@ const artworkColConfig: ArtworkConfig = {
   xl: 3,
 };
 
-const ARTWORK_MARGIN_BOTTOM_PX = 16; // mb-3
+const LIST_ITEM_MARGIN_BOTTOM_PX = 16; // mb-3
 
-const getArtworkHeigh = (windowSize: IWindowSize): number => {
+const getListItemHeigh = (windowSize: IWindowSize): number => {
   const currentMedia = getCurrentMedia(windowSize.width);
-  return artworkHeightConfig[currentMedia] + ARTWORK_MARGIN_BOTTOM_PX;
+  return listItemHeightConfig[currentMedia] + LIST_ITEM_MARGIN_BOTTOM_PX;
 };
 
-const getArtworkCols = (windowSize: IWindowSize): number => {
+const getListColsPerRow = (windowSize: IWindowSize): number => {
   const currentMedia = getCurrentMedia(windowSize.width);
-  return 12 / artworkColConfig[currentMedia];
+  return 12 / listColConfig[currentMedia];
 };
 
-const getAvailableDisplayHeight = (windowSize: IWindowSize): number => {
+const getListDisplayHeight = (windowSize: IWindowSize): number => {
   const above =
     HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX + H1_HEIGHT_PX + H1_MARGIN_BOTTOM_PX;
   return windowSize.height - above;
 };
 
-const getInitialDisplayCount = (windowSize: IWindowSize): number => {
-  const availableDisplayHeight = getAvailableDisplayHeight(windowSize);
-  const artworkHeight = getArtworkHeigh(windowSize);
+const getInitialListItemCount = (windowSize: IWindowSize): number => {
+  const listDisplayHeight = getListDisplayHeight(windowSize);
+  const listItemHeight = getListItemHeigh(windowSize);
   const bufferRows = 2;
-  const rows = Math.ceil(availableDisplayHeight / artworkHeight) + bufferRows;
-  const cols = getArtworkCols(windowSize);
-  return rows * cols;
+  const rowCount = Math.ceil(listDisplayHeight / listItemHeight) + bufferRows;
+  const colsPerRow = getListColsPerRow(windowSize);
+  return rowCount * colsPerRow;
 };
 
-const getDisplayCountIncrement = (windowSize: IWindowSize): number => {
-  const cols = getArtworkCols(windowSize);
-  return cols * 2;
+const getListItemCountIncrement = (windowSize: IWindowSize): number => {
+  const colsPerRow = getListColsPerRow(windowSize);
+  const incrementRows = 2;
+  return colsPerRow * incrementRows;
 };
 
 // WIP
@@ -86,70 +90,94 @@ export const Collection: React.FC = () => {
   }, [collectionIsLoading, collection, loadCollection]);
 
   /*
-   *  infinite scrolling
+   *  infinite scrolling list
    */
   const windowSize = useWindowSize();
-  const initialDisplayCount = useMemo(
-    () => getInitialDisplayCount(windowSize),
+  const initialListItemCount = useMemo(
+    () => getInitialListItemCount(windowSize),
     [windowSize]
   );
-  const displayCountIncrement = useMemo(
-    () => getDisplayCountIncrement(windowSize),
+  const listItemCountIncrement = useMemo(
+    () => getListItemCountIncrement(windowSize),
     [windowSize]
   );
 
-  const [displayCount, setDisplayCount] = useState<number>(initialDisplayCount);
+  const [listItemCount, setListItemCount] = useState<number>(
+    initialListItemCount
+  );
 
-  const displayTrackerRef = useRef(null);
-  const [displayTrackerIsVisible] = useIntersectionObserver({
-    elementRef: displayTrackerRef,
+  const listDisplayTracker = useRef(null);
+  const [listDisplayTrackerIsVisible] = useIntersectionObserver({
+    elementRef: listDisplayTracker,
   });
 
   useEffect(() => {
-    // increment display count as user scrolls
-    if (!collectionIsLoading && displayTrackerIsVisible) {
-      setDisplayCount(
-        (currentDisplayCount) => currentDisplayCount + displayCountIncrement
+    // increment list item count as user scrolls
+    if (!collectionIsLoading && listDisplayTrackerIsVisible) {
+      setListItemCount(
+        (currentListItemCount) => currentListItemCount + listItemCountIncrement
       );
     }
-  }, [collectionIsLoading, displayTrackerIsVisible, displayCountIncrement]);
+  }, [
+    collectionIsLoading,
+    listDisplayTrackerIsVisible,
+    listItemCountIncrement,
+  ]);
 
   useEffect(() => {
     // guard against resizing to a bigger screen breaking infinite scroll
-    if (displayCount < initialDisplayCount) {
-      setDisplayCount(initialDisplayCount);
+    if (listItemCount < initialListItemCount) {
+      setListItemCount(initialListItemCount);
     }
-  }, [initialDisplayCount, displayCount]);
+  }, [initialListItemCount, listItemCount]);
+
+  /*
+   *  artwork modal
+   */
+  const [modalRecordId, setModalRecordId] = useState<number | null>(null);
 
   return (
-    <Page title="Collection">
-      <Row>
-        <Col md={12}>
-          <H1>Collection</H1>
-          {(() => {
-            if (collectionIsLoading || !collection) return <Loader />;
+    <>
+      <Page title="Collection">
+        <Row>
+          <Col md={12}>
+            <H1>Collection</H1>
+            {(() => {
+              if (collectionIsLoading || !collection) return <Loader />;
 
-            return (
-              <Row>
-                {collection.slice(0, displayCount).map(({ id, img, name }) => (
-                  <Col
-                    key={id}
-                    xs={artworkColConfig.xs}
-                    sm={artworkColConfig.sm}
-                    md={artworkColConfig.md}
-                    lg={artworkColConfig.lg}
-                    xl={artworkColConfig.xl}
-                  >
-                    <ArtworkImg src={img} alt={name} />
-                  </Col>
-                ))}
-              </Row>
-            );
-          })()}
-          <div ref={displayTrackerRef} />
-        </Col>
-      </Row>
-    </Page>
+              return (
+                <Row>
+                  {collection
+                    .slice(0, listItemCount)
+                    .map(({ id, img, name }) => (
+                      <Col
+                        key={id}
+                        xs={listColConfig.xs}
+                        sm={listColConfig.sm}
+                        md={listColConfig.md}
+                        lg={listColConfig.lg}
+                        xl={listColConfig.xl}
+                      >
+                        <ModalToggle
+                          aria-label={`${name} (Click for more details)`}
+                          onClick={() => setModalRecordId(id)}
+                        >
+                          <ListItemImg src={img} alt={name} title={name} />
+                        </ModalToggle>
+                      </Col>
+                    ))}
+                </Row>
+              );
+            })()}
+            <div ref={listDisplayTracker} />
+          </Col>
+        </Row>
+      </Page>
+      <Modal
+        recordId={modalRecordId}
+        handleClose={() => setModalRecordId(null)}
+      />
+    </>
   );
 };
 
@@ -159,26 +187,81 @@ const Loader = styled(LoaderSvg).attrs({
   margin: 0 auto;
 `;
 
-const ArtworkImg = styled.img.attrs({ className: 'img-thumbnail' })`
+const ModalToggle = styled.button`
+  ${unstyledButtonCSS}
+  border-radius: 4px;
   display: block;
-  height: ${artworkHeightConfig.xs}px;
   margin: 0 auto;
-  margin-bottom: ${ARTWORK_MARGIN_BOTTOM_PX}px;
+  margin-bottom: ${LIST_ITEM_MARGIN_BOTTOM_PX}px;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus {
+    ${focusOutlineCSS}
+  }
+`;
+
+const ListItemImg = styled.img.attrs({ className: 'img-thumbnail' })`
+  height: ${listItemHeightConfig.xs}px;
   transition: all 250ms;
 
   ${media.sm`
-    height: ${artworkHeightConfig.sm}px;
+    height: ${listItemHeightConfig.sm}px;
   `}
 
   ${media.md`
-    height: ${artworkHeightConfig.md}px;
+    height: ${listItemHeightConfig.md}px;
   `}
 
   ${media.lg`
-    height: ${artworkHeightConfig.lg}px;
+    height: ${listItemHeightConfig.lg}px;
   `}
 
   ${media.xl`
-    height: ${artworkHeightConfig.xl}px;
+    height: ${listItemHeightConfig.xl}px;
   `}
 `;
+
+interface IArtworkModalProps {
+  recordId: number | null;
+  handleClose: () => void;
+}
+
+const Modal = ({ recordId, handleClose }: IArtworkModalProps) => {
+  const { getCollectionRecord } = useCollectionContext();
+  const record = recordId ? getCollectionRecord(recordId) : undefined;
+  const recordIdIsInvalid = recordId && !record;
+
+  useEffect(() => {
+    // guard against invalid recordId
+    if (recordIdIsInvalid) handleClose();
+  }, [recordIdIsInvalid, handleClose]);
+
+  return (
+    <ReactstrapModal isOpen={!!recordId} centered>
+      {(() => {
+        if (!record) return null;
+
+        const { name, img } = record;
+
+        return (
+          <div className="p-4 text-center">
+            <h2>{name}</h2>
+            <img
+              src={img}
+              alt={name}
+              className="d-block img-thumbnail mb-2 mx-auto"
+              style={{ maxHeight: '80vh' }}
+            />
+            <button type="button" onClick={handleClose}>
+              Close
+            </button>
+          </div>
+        );
+      })()}
+    </ReactstrapModal>
+  );
+};

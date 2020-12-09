@@ -8,12 +8,14 @@ interface ICollectionContext {
   collectionIsLoading: boolean;
   collection: Collection;
   loadCollection: () => void;
+  getCollectionRecord: (id: number) => ICollectionRecord | undefined;
 }
 
 const CollectionContext = createContext<ICollectionContext>({
   collectionIsLoading: false,
   collection: null,
   loadCollection: () => undefined,
+  getCollectionRecord: () => undefined,
 });
 
 export const CollectionProvider: React.FC = ({ children }) => {
@@ -33,12 +35,16 @@ export const CollectionProvider: React.FC = ({ children }) => {
     }
   };
 
+  const getCollectionRecord = (id: number): ICollectionRecord | undefined =>
+    collection?.find((c) => c.id === id);
+
   return (
     <CollectionContext.Provider
       value={{
         collectionIsLoading,
         collection,
         loadCollection,
+        getCollectionRecord,
       }}
     >
       {children}
