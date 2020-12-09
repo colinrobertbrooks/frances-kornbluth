@@ -13,7 +13,7 @@ import { FacebookSvg, InstagramSvg } from '../svg';
 
 export const Footer: React.FC = () => (
   <Element>
-    <Container className="pt-2 pb-2 pb-lg-1">
+    <Container className="py-2 pb-lg-1">
       <Row>
         <Col lg={6} className="mb-3 m-lg-0 text-center">
           <PageLinkList>
