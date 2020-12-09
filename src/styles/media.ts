@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types */
 import { css } from 'styled-components';
 import { breakpoints } from './breakpoints';
 

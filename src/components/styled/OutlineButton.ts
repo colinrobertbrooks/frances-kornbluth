@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import { colors, typography } from '../../styles';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const outlineButtonColors: any = {
   darkGray: {
     base: {
@@ -35,6 +36,7 @@ interface IOutlineButtonProps {
 }
 
 export const OutlineButton = styled(Button).attrs(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ theme, color = 'darkGray', to, ...restProps }) => ({
     color,
     outline: true,
