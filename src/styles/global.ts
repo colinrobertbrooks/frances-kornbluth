@@ -13,4 +13,18 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  .modal {
+    align-items: center;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .modal-dialog {
+    margin: 0;
+    margin-top: ${HEADER_HEIGHT_PX}px;
+    margin-right: 8px;
+    margin-left: 8px;
+    max-width: none;
+  }
 `;

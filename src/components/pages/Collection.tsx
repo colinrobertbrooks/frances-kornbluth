@@ -234,6 +234,28 @@ interface IArtworkModalProps {
   handleClose: () => void;
 }
 
+const ModalOuter = styled(ReactstrapModal)``;
+
+const ModalInner = styled.div`
+  padding: 24px 12px;
+  text-align: center;
+
+  ${media.md`
+    padding: 24px 32px;
+  `}
+
+  ${media.lg`
+    padding: 32px 72px;
+  `}
+`;
+
+const ModalImg = styled.img.attrs({ className: 'img-thumbnail' })`
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 16px; // mb-3
+  max-height: calc(100vh - ${HEADER_HEIGHT_PX + 200}px);
+`;
+
 const Modal = ({ recordId, handleClose }: IArtworkModalProps) => {
   const { getCollectionRecord } = useCollectionContext();
   const record = recordId ? getCollectionRecord(recordId) : undefined;
@@ -245,27 +267,22 @@ const Modal = ({ recordId, handleClose }: IArtworkModalProps) => {
   }, [recordIdIsInvalid, handleClose]);
 
   return (
-    <ReactstrapModal isOpen={!!recordId} centered>
+    <ModalOuter isOpen={!!recordId}>
       {(() => {
         if (!record) return null;
 
         const { name, minImgSrc } = record;
 
         return (
-          <div className="p-4 text-center">
+          <ModalInner>
             <h2>{name}</h2>
-            <img
-              src={minImgSrc}
-              alt={name}
-              className="d-block img-thumbnail mb-2 mx-auto"
-              style={{ maxHeight: '80vh' }}
-            />
+            <ModalImg src={minImgSrc} alt={name} />
             <button type="button" onClick={handleClose}>
               Close
             </button>
-          </div>
+          </ModalInner>
         );
       })()}
-    </ReactstrapModal>
+    </ModalOuter>
   );
 };
