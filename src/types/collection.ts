@@ -1,11 +1,14 @@
 export interface ICollectionGoogleSheetRow {
+  gsx$showonwebsite: {
+    $t: string;
+  };
   gsx$id: {
     $t: string;
   };
   gsx$name: {
     $t: string;
   };
-  gsx$minimgurl: {
+  gsx$minimgsrc: {
     $t: string;
   };
 }
@@ -13,5 +16,5 @@ export interface ICollectionGoogleSheetRow {
 export interface ICollectionRecord {
   id: number;
   name: string;
-  img: string;
+  minImgSrc: string;
 }

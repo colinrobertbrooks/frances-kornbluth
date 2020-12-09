@@ -4,11 +4,13 @@ import { ICollectionGoogleSheetRow, ICollectionRecord } from '../types';
 const deserializeCollection = (
   entry: ICollectionGoogleSheetRow[]
 ): ICollectionRecord[] =>
-  entry.map(({ gsx$id, gsx$name, gsx$minimgurl }) => ({
-    id: Number(gsx$id.$t),
-    name: gsx$name.$t ? gsx$name.$t : 'Untitled',
-    img: gsx$minimgurl.$t,
-  }));
+  entry
+    .filter(({ gsx$showonwebsite }) => gsx$showonwebsite.$t)
+    .map(({ gsx$id, gsx$name, gsx$minimgsrc }) => ({
+      id: Number(gsx$id.$t),
+      name: gsx$name.$t ? gsx$name.$t : 'Untitled',
+      minImgSrc: gsx$minimgsrc.$t,
+    }));
 
 export const getCollection = async (): Promise<any> => {
   try {

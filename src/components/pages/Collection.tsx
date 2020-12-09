@@ -149,7 +149,7 @@ export const Collection: React.FC = () => {
                 <Row>
                   {collection
                     .slice(0, listItemCount)
-                    .map(({ id, img, name }) => (
+                    .map(({ id, minImgSrc, name }) => (
                       <Col
                         key={id}
                         xs={listColConfig.xs}
@@ -162,7 +162,11 @@ export const Collection: React.FC = () => {
                           aria-label={`${name} (Click for more details)`}
                           onClick={() => setModalRecordId(id)}
                         >
-                          <ListItemImg src={img} alt={name} title={name} />
+                          <ListItemImg
+                            src={minImgSrc}
+                            alt={name}
+                            title={name}
+                          />
                         </ModalToggle>
                       </Col>
                     ))}
@@ -245,13 +249,13 @@ const Modal = ({ recordId, handleClose }: IArtworkModalProps) => {
       {(() => {
         if (!record) return null;
 
-        const { name, img } = record;
+        const { name, minImgSrc } = record;
 
         return (
           <div className="p-4 text-center">
             <h2>{name}</h2>
             <img
-              src={img}
+              src={minImgSrc}
               alt={name}
               className="d-block img-thumbnail mb-2 mx-auto"
               style={{ maxHeight: '80vh' }}
