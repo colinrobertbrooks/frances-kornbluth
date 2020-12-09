@@ -1,7 +1,7 @@
 import React from 'react';
 import { CollectionProvider } from '../contexts';
 import { GlobalStyles } from '../styles';
-import { SkipToMain, Header, Footer } from './layout';
+import { Header, Footer } from './layout';
 import {
   Accessibility,
   Biography,
@@ -26,7 +26,6 @@ const App: React.FC = () => (
     <GlobalStyles />
     <Router>
       <CollectionProvider>
-        <SkipToMain />
         <Header />
         <Switch>
           <Route exact path={Url.HomePage}>

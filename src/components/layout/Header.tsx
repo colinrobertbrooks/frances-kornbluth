@@ -22,6 +22,7 @@ import {
   artworkUrls,
 } from '../router';
 import { FrancesKornbluthSvg } from '../svg';
+import { SkipToMain } from './skip-to-main';
 
 // close collapse on route change
 export const Header: React.FC = () => {
@@ -38,6 +39,7 @@ export const Header: React.FC = () => {
     <Element>
       <Navbar expand="md">
         <div className="d-flex justify-content-between w-100">
+          <SkipToMain />
           <NavbarBrand
             tag={Link}
             to={Url.HomePage}
