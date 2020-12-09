@@ -42,5 +42,9 @@ const Main = styled(Container).attrs({ tag: 'main' })`
     min-height: calc(100vh - ${
       HEADER_HEIGHT_PX + FOOTER_MARGIN_TOP_PX + FOOTER_MIN_HEIGHT_PX
     }px);
+
+    &.home-page {
+      min-height: calc(100vh - ${HEADER_HEIGHT_PX + 10}px);
+    }
   `}
 `;

@@ -16,7 +16,7 @@ import {
 } from './shared';
 
 export const Home: React.FC = () => (
-  <Page className="position-relative p-0" fluid>
+  <Page className="position-relative p-0 home-page" fluid>
     <Background />
     <Container>
       <Row>
