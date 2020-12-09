@@ -257,17 +257,23 @@ const ModalImg = styled.img.attrs({ className: 'img-thumbnail' })`
 `;
 
 const Modal = ({ recordId, handleClose }: IArtworkModalProps) => {
-  const { getCollectionRecord } = useCollectionContext();
+  const { collectionIsLoading, getCollectionRecord } = useCollectionContext();
   const record = recordId ? getCollectionRecord(recordId) : undefined;
-  const recordIdIsInvalid = recordId && !record;
+  const recordIdIsValid = recordId && record;
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    // guard against invalid recordId
-    if (recordIdIsInvalid) handleClose();
-  }, [recordIdIsInvalid, handleClose]);
+    // derive modal visibility based on record
+    if (!collectionIsLoading && recordId && recordIdIsValid) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  }, [collectionIsLoading, recordId, recordIdIsValid]);
 
   return (
-    <ModalOuter isOpen={!!recordId}>
+    <ModalOuter isOpen={isOpen}>
       {(() => {
         if (!record) return null;
 
