@@ -31,13 +31,13 @@ export const Wanted: React.FC = () => (
             unavailable
           </ListItem>
           <ListItem>
-            <i>Rosebud #3 </i>(1985) — collage on paper, 22 x 30"
+            <i>Rosebud #3 </i>(1985) — collage on paper, 22 x 30&quot;
           </ListItem>
           <ListItem>
-            <i>Ritual (1986)</i> — collage on paper, 12 x 16"
+            <i>Ritual (1986)</i> — collage on paper, 12 x 16&quot;
           </ListItem>
           <ListItem>
-            <i>Transition #2</i> (1987) — collage on paper, 22 x 30"
+            <i>Transition #2</i> (1987) — collage on paper, 22 x 30&quot;
           </ListItem>
         </List>
         <Paragraph>
