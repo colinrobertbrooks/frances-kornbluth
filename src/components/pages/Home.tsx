@@ -108,7 +108,10 @@ const SvgWrapper = styled.div`
   }
 `;
 
-const ArtImg = styled.img.attrs({ className: 'mb-4' })`
+const ArtImg = styled.img.attrs(({ alt }) => ({
+  className: 'mb-4',
+  title: alt,
+}))`
   background: ${colors.white};
   border: 1px solid ${colors.lightGray};
   border-radius: 50%;

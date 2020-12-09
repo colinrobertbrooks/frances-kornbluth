@@ -94,7 +94,7 @@ export const Artwork = ({
   dimensions,
 }: IArtworkProps): JSX.Element => (
   <div className={className}>
-    <ArtworkImg src={src} alt={name} />
+    <ArtworkImg src={src} alt={name} title={name} />
     <ArtworkName>{name}</ArtworkName>
     <ArtworkInfo>
       {medium}, {dimensions}

@@ -430,7 +430,10 @@ export const Timeline: React.FC = () => (
 
 const DecadeWrapper = styled.div.attrs({ className: 'py-2' })``;
 
-const DecadeImg = styled.img.attrs({ className: 'mb-3' })`
+const DecadeImg = styled.img.attrs(({ alt }) => ({
+  className: 'mb-3',
+  title: alt,
+}))`
   background: ${colors.white};
   border: 1px solid ${colors.lightGray};
   border-radius: 50%;

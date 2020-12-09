@@ -48,7 +48,10 @@ export const Books: React.FC = () => (
   </Page>
 );
 
-const Book = styled.img.attrs({ className: 'img-thumbnail mb-3 mb-md-0' })``;
+const Book = styled.img.attrs(({ alt }) => ({
+  className: 'img-thumbnail mb-3 mb-md-0',
+  title: alt,
+}))``;
 
 const BookInfo = styled(Span).attrs({ color: 'gray' })`
   display: block;
