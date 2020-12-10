@@ -104,10 +104,20 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
               <h2>{name}</h2>
             </Header>
             <Body>
-              <CarouselButton previous onClick={handlePrevious}>
+              <CarouselButton
+                previous
+                aria-label="Go to previous artwork"
+                title="Previous"
+                onClick={handlePrevious}
+              >
                 {'<'}
               </CarouselButton>
-              <CarouselButton next onClick={handleNext}>
+              <CarouselButton
+                next
+                aria-label="Go to next artwork"
+                title="Next"
+                onClick={handleNext}
+              >
                 {'>'}
               </CarouselButton>
               <Img src={minImgSrc} alt={name} />
