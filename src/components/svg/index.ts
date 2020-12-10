@@ -1,5 +1,10 @@
-export * from './FacebookSvg';
+// kornbluth
 export * from './FrancesKornbluthSvg';
-export * from './LoaderSvg';
-export * from './InstagramSvg';
 export * from './RocksSeaAndSkySvg';
+
+// social
+export * from './FacebookSvg';
+export * from './InstagramSvg';
+
+// other
+export * from './SpinnerSvg';
