@@ -90,7 +90,7 @@ export const Timeline: React.FC = () => (
               <Artwork
                 className="mb-3 m-md-0"
                 src={novemberImg}
-                name="November"
+                title="November"
                 medium="Oil on canvas"
                 dimensions='41.5 x 35.5"'
               />
@@ -98,7 +98,7 @@ export const Timeline: React.FC = () => (
             <Col sm={6} md={5}>
               <Artwork
                 src={summersVocabulary1Img}
-                name="Summer's Vocabulary #1"
+                title="Summer's Vocabulary #1"
                 medium="Oil on linen"
                 dimensions='45 x 43"'
               />
@@ -189,7 +189,7 @@ export const Timeline: React.FC = () => (
               <Artwork
                 className="mb-3 m-md-0"
                 src={theLampImg}
-                name="The Lamp"
+                title="The Lamp"
                 medium="Ink wash on paper"
                 dimensions='23.6 x 18.5"'
               />
@@ -197,7 +197,7 @@ export const Timeline: React.FC = () => (
             <Col sm={6} md={5}>
               <Artwork
                 src={rocksSeaAndSkyImg}
-                name="Rocks, Sea and Sky"
+                title="Rocks, Sea and Sky"
                 medium="Watercolor on paper"
                 dimensions='19 x 16"'
               />
@@ -249,7 +249,7 @@ export const Timeline: React.FC = () => (
             <Col md={12}>
               <Artwork
                 src={islandPath2Img}
-                name="Island Path #2"
+                title="Island Path #2"
                 medium="Oil on canvas"
                 dimensions='46 x 42"'
               />
@@ -289,7 +289,7 @@ export const Timeline: React.FC = () => (
             <Col md={12}>
               <Artwork
                 src={changingLightMonheganIcePondImg}
-                name="Changing Light, Monhegan Ice Pond"
+                title="Changing Light, Monhegan Ice Pond"
                 medium="Acrylic on linen"
                 dimensions='59 x 43"'
               />
@@ -403,7 +403,7 @@ export const Timeline: React.FC = () => (
               <Artwork
                 className="mb-3 m-md-0"
                 src={genesisImg}
-                name="Genesis"
+                title="Genesis"
                 medium="Collage on paper"
                 dimensions='20" diameter'
               />
@@ -411,7 +411,7 @@ export const Timeline: React.FC = () => (
             <Col sm={6} md={4}>
               <Artwork
                 src={winterLandscapeImg}
-                name="Winter Landscape"
+                title="Winter Landscape"
                 medium="Collage on paper"
                 dimensions='22 x 30"'
               />

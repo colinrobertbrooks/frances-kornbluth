@@ -25,7 +25,7 @@ export const Quotes: React.FC = () => (
         <Artwork
           className="my-4"
           src={changingLightMonheganIcePondImg}
-          name="Changing Light, Monhegan Ice Pond"
+          title="Changing Light, Monhegan Ice Pond"
           medium="Acrylic on linen"
           dimensions='59 x 43"'
         />
@@ -56,7 +56,7 @@ export const Quotes: React.FC = () => (
         <Artwork
           className="my-4"
           src={altosTwilightImg}
-          name="Altos Twilight"
+          title="Altos Twilight"
           medium="Collage on handmade paper"
           dimensions='24" diameter'
         />

@@ -100,7 +100,7 @@ const List: React.FC<IListProps> = ({ records, onItemClick }) => {
   return (
     <>
       <Row>
-        {records.slice(0, listItemCount).map(({ id, name, minImgSrc }) => (
+        {records.slice(0, listItemCount).map(({ id, title, minImgSrc }) => (
           <Col
             key={id}
             xs={listColConfig.xs}
@@ -110,10 +110,10 @@ const List: React.FC<IListProps> = ({ records, onItemClick }) => {
             xl={listColConfig.xl}
           >
             <ListItemButton
-              aria-label={`${name} (Click for more details)`}
+              aria-label={`${title} (Click for more details)`}
               onClick={() => onItemClick(id)}
             >
-              <ListItemImg src={minImgSrc} alt={name} title={name} />
+              <ListItemImg src={minImgSrc} alt={title} title={title} />
             </ListItemButton>
           </Col>
         ))}

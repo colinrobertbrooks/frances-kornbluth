@@ -63,7 +63,7 @@ const ArtworkImg = styled.img.attrs({
   margin: 0 auto;
 `;
 
-const ArtworkName = styled.span`
+const ArtworkTitle = styled.span`
   color: ${colors.darkGray};
   display: block;
   font-family: ${typography.default};
@@ -81,7 +81,7 @@ const ArtworkInfo = styled.span.attrs({ className: 'small' })`
 interface IArtworkProps {
   className?: string;
   src: string;
-  name: string;
+  title: string;
   medium: string;
   dimensions: string;
 }
@@ -89,13 +89,13 @@ interface IArtworkProps {
 export const Artwork = ({
   className,
   src,
-  name,
+  title,
   medium,
   dimensions,
 }: IArtworkProps): JSX.Element => (
   <div className={className}>
-    <ArtworkImg src={src} alt={name} title={name} />
-    <ArtworkName>{name}</ArtworkName>
+    <ArtworkImg src={src} alt={title} title={title} />
+    <ArtworkTitle>{title}</ArtworkTitle>
     <ArtworkInfo>
       {medium}, {dimensions}
     </ArtworkInfo>

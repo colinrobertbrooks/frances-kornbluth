@@ -6,9 +6,9 @@ const deserializeCollection = (
 ): ICollectionRecord[] =>
   entry
     .filter(({ gsx$showonwebsite }) => gsx$showonwebsite.$t)
-    .map(({ gsx$id, gsx$name, gsx$minimgsrc }) => ({
+    .map(({ gsx$id, gsx$title, gsx$minimgsrc }) => ({
       id: Number(gsx$id.$t),
-      name: gsx$name.$t ? gsx$name.$t : 'Untitled',
+      title: gsx$title.$t ? gsx$title.$t : 'Untitled',
       minImgSrc: gsx$minimgsrc.$t,
     }));
 

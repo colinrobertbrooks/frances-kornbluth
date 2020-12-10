@@ -11,7 +11,7 @@ export const Biography: React.FC = () => (
         <Artwork
           className="mb-4"
           src={selfPortraitImg}
-          name="Self Portrait"
+          title="Self Portrait"
           medium="Watercolor on paper"
           dimensions='14 x 19"'
         />

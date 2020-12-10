@@ -98,13 +98,13 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
       {(() => {
         if (!record) return null;
 
-        const { name, minImgSrc } = record;
+        const { title, minImgSrc } = record;
 
         return (
           <>
             <Header>
               <Close onClick={closeModal} />
-              <h2>{name}</h2>
+              <Title>{title}</Title>
             </Header>
             <Body>
               <CarouselButton
@@ -123,7 +123,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
               >
                 <NextIcon />
               </CarouselButton>
-              <Img src={minImgSrc} alt={name} />
+              <Img src={minImgSrc} alt={title} />
             </Body>
             <Footer />
           </>
@@ -304,5 +304,10 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
   max-height: calc(100vh - ${HEADER_HEIGHT_PX + 200}px);
   user-select: none;
 `;
+
+/*
+ *  typography
+ */
+const Title = styled.h2``;
 
 export default Modal;

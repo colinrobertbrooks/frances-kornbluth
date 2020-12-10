@@ -25,7 +25,7 @@ export const Reviews: React.FC = () => (
         <Artwork
           className="mt-5 mb-4"
           src={pathClearingImg}
-          name="Path Clearing"
+          title="Path Clearing"
           medium="Oil on canvas"
           dimensions='24 x 24"'
         />
@@ -44,7 +44,7 @@ export const Reviews: React.FC = () => (
         <Artwork
           className="mt-5 mb-4"
           src={lobsterCoveSuite2Img}
-          name="Lobster Cove Suite #2"
+          title="Lobster Cove Suite #2"
           medium="Acrylic on canvas"
           dimensions='67 x 48.5"'
         />
@@ -68,7 +68,7 @@ export const Reviews: React.FC = () => (
             <Artwork
               className="mb-3 m-lg-0"
               src={winterLandscapeImg}
-              name="Winter Landscape"
+              title="Winter Landscape"
               medium="Collage on paper"
               dimensions='22 x 30"'
             />
@@ -76,7 +76,7 @@ export const Reviews: React.FC = () => (
           <Col lg={5}>
             <Artwork
               src={germinationImg}
-              name="Germination"
+              title="Germination"
               medium="Acrylic on handmade paper"
               dimensions='28 x 42"'
             />

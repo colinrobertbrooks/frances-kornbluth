@@ -5,7 +5,7 @@ export interface ICollectionGoogleSheetRow {
   gsx$id: {
     $t: string;
   };
-  gsx$name: {
+  gsx$title: {
     $t: string;
   };
   gsx$minimgsrc: {
@@ -15,6 +15,6 @@ export interface ICollectionGoogleSheetRow {
 
 export interface ICollectionRecord {
   id: number;
-  name: string;
+  title: string;
   minImgSrc: string;
 }
