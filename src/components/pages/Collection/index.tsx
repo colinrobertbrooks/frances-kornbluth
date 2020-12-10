@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useQueryParam, NumberParam } from 'use-query-params';
 import { useCollectionContext } from '../../../contexts';
 import { Page, Row, Col, H1 } from '../shared';
 import Loader from './Loader';
@@ -7,7 +8,6 @@ import Modal from './Modal';
 
 /*
  *  TODO:
- *    - open id in querystring (w/ invalid handling)
  *    - filter (name & tags)
  *    - count
  *    - back to top
@@ -31,7 +31,7 @@ export const Collection: React.FC = () => {
   /*
    *  modal
    */
-  const [modalRecordId, setModalRecordId] = useState<number | null>(null);
+  const [modalRecordId, setModalRecordId] = useQueryParam('id', NumberParam);
 
   return (
     <>

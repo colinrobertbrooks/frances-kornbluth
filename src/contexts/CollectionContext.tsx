@@ -31,7 +31,7 @@ export const CollectionProvider: React.FC = ({ children }) => {
       setCollection(loadedCollection);
       setCollectionIsLoading(false);
     } catch (error) {
-      // TODO: handle
+      // TODO: alert
     }
   };
 

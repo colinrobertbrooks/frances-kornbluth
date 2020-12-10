@@ -23,7 +23,7 @@ import { styled, css } from '../shared';
 
 interface IModalProps {
   records: ICollectionRecord[];
-  recordId: number | null;
+  recordId: number | null | undefined;
   setRecordId: (nextRecordId: number | null) => void;
 }
 
@@ -48,7 +48,13 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
     } else {
       setModalIsOpen(false);
     }
-  }, [recordId, recordIdIsValid]);
+
+    // clear invalid recordId
+    if (recordId && !recordIdIsValid) {
+      setRecordId(null);
+      // TODO: alert
+    }
+  }, [recordId, recordIdIsValid, setRecordId]);
 
   const escapeWasPressed = useKeyPress('Escape');
   useEffect(() => {
