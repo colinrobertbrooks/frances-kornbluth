@@ -2,15 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Modal as ReactstrapModal } from 'reactstrap';
 import { useCollectionContext } from '../../../contexts';
 import { useKeyPress } from '../../../hooks';
-import { media, focusOutlineCSS, HEADER_HEIGHT_PX } from '../../../styles';
+import {
+  media,
+  focusOutlineCSS,
+  HEADER_HEIGHT_PX,
+  unstyledButtonCSS,
+} from '../../../styles';
 import { ICollectionRecord } from '../../../types';
 import { styled } from '../shared';
 
 /*
  *  TODO:
- *    - style next/previous buttons
  *    - layout (style header; add additional attributes)
  *    - available & inquire
+ *    - focus close button on open
  *    - make current record visible in list and return focus to it on close
  */
 interface IModalProps {
@@ -86,47 +91,115 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
   }, [modalIsOpen, rightArrowWasPressed]);
 
   return (
-    <ModalOuter isOpen={modalIsOpen}>
+    <Wrapper isOpen={modalIsOpen}>
       {(() => {
         if (!record) return null;
 
         const { name, minImgSrc } = record;
 
         return (
-          <ModalInner>
-            <ModalClose onClick={closeModal} />
-            <h2>{name}</h2>
-            <ModalImg src={minImgSrc} alt={name} />
-            <button type="button" onClick={handlePrevious}>
-              Previous
-            </button>
-            <button type="button" onClick={handleNext}>
-              Next
-            </button>
-          </ModalInner>
+          <>
+            <Header>
+              <Close onClick={closeModal} />
+              <h2>{name}</h2>
+            </Header>
+            <Body>
+              <CarouselButton previous onClick={handlePrevious}>
+                {'<'}
+              </CarouselButton>
+              <CarouselButton next onClick={handleNext}>
+                {'>'}
+              </CarouselButton>
+              <Img src={minImgSrc} alt={name} />
+            </Body>
+            <Footer />
+          </>
         );
       })()}
-    </ModalOuter>
+    </Wrapper>
   );
 };
 
-const ModalOuter = styled(ReactstrapModal)``;
+/*
+ *  padding
+ */
+const xPadding = {
+  xs: 32,
+  md: 32,
+  lg: 72,
+};
 
-const ModalInner = styled.div`
-  padding: 24px 12px;
+const yPadding = {
+  xs: 24,
+  md: 24,
+  lg: 32,
+};
+
+/*
+ *  layout
+ */
+const Wrapper = styled(ReactstrapModal)``;
+
+const Header = styled.div`
+  padding-top ${yPadding.xs}px;
+  padding-left: ${xPadding.xs}px;
+  padding-right: ${xPadding.xs}px;
   position: relative;
   text-align: center;
 
   ${media.md`
-    padding: 24px 32px;
+    padding-top: ${xPadding.md}px;
+    padding-left: ${xPadding.md}px;
+    padding-right: ${xPadding.md}px;
   `}
 
   ${media.lg`
-    padding: 32px 72px;
+    padding-top ${yPadding.lg}px;
+    padding-left: ${xPadding.lg}px;
+    padding-right: ${xPadding.lg}px;
   `}
 `;
 
-const ModalClose = styled.button.attrs({
+const Body = styled.div`
+  padding-left: ${xPadding.xs}px;
+  padding-right: ${xPadding.xs}px;
+  position: relative;
+
+  ${media.md`
+  padding-left: ${xPadding.md}px;
+  padding-right: ${xPadding.md}px;
+`}
+
+  ${media.lg`
+  padding-left: ${xPadding.lg}px;
+  padding-right: ${xPadding.lg}px;
+`}
+`;
+
+const Footer = styled.div`
+  padding-left: ${xPadding.xs}px;
+  padding-bottom ${yPadding.xs}px;
+  padding-right: ${xPadding.xs}px;
+
+
+  ${media.md`
+    padding-left: ${xPadding.md}px;
+    padding-bottom: ${xPadding.md}px;
+    padding-right: ${xPadding.md}px;
+  `}
+
+  ${media.lg`
+    padding-left: ${xPadding.lg}px;
+    padding-bottom ${yPadding.lg}px;
+    padding-right: ${xPadding.lg}px;
+  `}
+`;
+
+/*
+ *  close
+ */
+// TODO: icon, styling
+const Close = styled.button.attrs({
   'aria-label': 'Close modal',
   className: 'close',
   children: 'x',
@@ -150,10 +223,45 @@ const ModalClose = styled.button.attrs({
   }
 `;
 
-const ModalImg = styled.img.attrs({ className: 'img-thumbnail' })`
+/*
+ *  carousel
+ */
+// TODO: icons, styling
+const CarouselButton = styled.button<{ previous?: boolean; next?: boolean }>`
+  ${unstyledButtonCSS}
+  position: absolute;
+  height: 100%;
+  top: 0;
+  width: ${xPadding.xs - 2}px;
+
+  ${media.md`
+    width: ${xPadding.md - 2}px;
+  `}
+
+  ${media.lg`
+    width: ${xPadding.lg - 2}px;
+  `}
+
+  &:focus {
+    ${focusOutlineCSS}
+  }
+
+  ${({ previous }) =>
+    previous &&
+    `
+      left: 2px;
+    `}
+
+  ${({ next }) =>
+    next &&
+    `
+      right: 2px;
+    `}
+`;
+
+const Img = styled.img.attrs({ className: 'img-thumbnail' })`
   display: block;
   margin: 0 auto;
-  margin-bottom: 16px; // mb-3
   max-height: calc(100vh - ${HEADER_HEIGHT_PX + 200}px);
 `;
 
