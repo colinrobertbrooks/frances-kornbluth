@@ -30,7 +30,7 @@ export const Collection: React.FC = () => {
   /*
    *  modal
    */
-  const [modalRecordId, setModalRecordId] = useState<number | null>(null);
+  const [modalRecordId, setModalRecordId] = useState<number | null>(3);
 
   return (
     <>

@@ -7,9 +7,12 @@ import {
   focusOutlineCSS,
   HEADER_HEIGHT_PX,
   unstyledButtonCSS,
+  getRems,
+  colors,
 } from '../../../styles';
 import { ICollectionRecord } from '../../../types';
-import { styled } from '../shared';
+import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
+import { styled, css } from '../shared';
 
 /*
  *  TODO:
@@ -110,7 +113,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
                 title="Previous"
                 onClick={handlePrevious}
               >
-                {'<'}
+                <PreviousIcon />
               </CarouselButton>
               <CarouselButton
                 next
@@ -118,7 +121,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
                 title="Next"
                 onClick={handleNext}
               >
-                {'>'}
+                <NextIcon />
               </CarouselButton>
               <Img src={minImgSrc} alt={name} />
             </Body>
@@ -208,24 +211,33 @@ const Footer = styled.div`
 /*
  *  close
  */
-// TODO: icon, styling
+const CloseIcon = styled(TimesSvg)`
+  height: ${getRems(20)};
+`;
+
 const Close = styled.button.attrs({
   'aria-label': 'Close modal',
-  className: 'close',
-  children: 'x',
+  children: <CloseIcon />,
   title: 'Close',
 })`
-  padding: 4px 8px !important;
+  ${unstyledButtonCSS}
+  color: ${colors.lightGray};
+  padding: 5px 10px;
   position: absolute;
   right: 0;
   top: 0;
 
+  &:hover,
+  &:focus {
+    color: ${colors.darkGray};
+  }
+
   ${media.md`
-    padding: 6px 12px !important;
+    padding: 8px 12px;
   `}
 
   ${media.lg`
-    padding: 10px 20px !important;
+    padding: 12px 18px;
   `}
 
   &:focus {
@@ -236,13 +248,30 @@ const Close = styled.button.attrs({
 /*
  *  carousel
  */
-// TODO: icons, styling
+const carouselIconCSS = css`
+  height: ${getRems(20)};
+`;
+
+const PreviousIcon = styled(ChevronLeftSvg)`
+  ${carouselIconCSS}
+`;
+
+const NextIcon = styled(ChevronRightSvg)`
+  ${carouselIconCSS}
+`;
+
 const CarouselButton = styled.button<{ previous?: boolean; next?: boolean }>`
   ${unstyledButtonCSS}
+  color: ${colors.lightGray};
   position: absolute;
   height: 100%;
   top: 0;
   width: ${xPadding.xs - 2}px;
+
+  &:hover,
+  &:focus {
+    color: ${colors.darkGray};
+  }
 
   ${media.md`
     width: ${xPadding.md - 2}px;
