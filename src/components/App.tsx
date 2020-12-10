@@ -25,6 +25,7 @@ import { Router, Switch, Route, Url } from './router';
  *    - gtm
  *    - lazy
  */
+
 const App: React.FC = () => (
   <>
     <GlobalStyles />

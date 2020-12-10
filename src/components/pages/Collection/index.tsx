@@ -7,11 +7,12 @@ import Modal from './Modal';
 
 /*
  *  TODO:
- *    - id in querystring (including initial & invalid handling)
+ *    - open id in querystring (w/ invalid handling)
  *    - filter (name & tags)
  *    - count
  *    - back to top
  */
+
 export const Collection: React.FC = () => {
   /*
    *  collection
@@ -30,7 +31,7 @@ export const Collection: React.FC = () => {
   /*
    *  modal
    */
-  const [modalRecordId, setModalRecordId] = useState<number | null>(3);
+  const [modalRecordId, setModalRecordId] = useState<number | null>(null);
 
   return (
     <>

@@ -16,11 +16,11 @@ import { styled, css } from '../shared';
 
 /*
  *  TODO:
- *    - layout (style header; add additional attributes)
+ *    - content (style header; add additional attributes)
  *    - available & inquire
- *    - focus close button on open
- *    - make current record visible in list and return focus to it on close
+ *    - return focus back to last open item on modal close
  */
+
 interface IModalProps {
   records: ICollectionRecord[];
   recordId: number | null;
