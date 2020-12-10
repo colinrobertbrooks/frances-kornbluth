@@ -238,6 +238,7 @@ const ModalOuter = styled(ReactstrapModal)``;
 
 const ModalInner = styled.div`
   padding: 24px 12px;
+  position: relative;
   text-align: center;
 
   ${media.md`
@@ -246,6 +247,26 @@ const ModalInner = styled.div`
 
   ${media.lg`
     padding: 32px 72px;
+  `}
+`;
+
+const ModalClose = styled.button.attrs({
+  'aria-label': 'Close modal',
+  className: 'close',
+  children: 'x',
+  title: 'Close',
+})`
+  padding: 4px 8px !important;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  ${media.md`
+  padding: 6px 12px !important;
+`}
+
+  ${media.lg`
+    padding: 10px 20px !important;
   `}
 `;
 
@@ -281,11 +302,9 @@ const Modal = ({ recordId, handleClose }: IArtworkModalProps) => {
 
         return (
           <ModalInner>
+            <ModalClose onClick={handleClose} />
             <h2>{name}</h2>
             <ModalImg src={minImgSrc} alt={name} />
-            <button type="button" onClick={handleClose}>
-              Close
-            </button>
           </ModalInner>
         );
       })()}
