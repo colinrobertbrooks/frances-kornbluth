@@ -5,6 +5,13 @@ import Loader from './Loader';
 import List from './List';
 import Modal from './Modal';
 
+/*
+ *  TODO:
+ *    - id in querystring (including initial & invalid handling)
+ *    - filter (name & tags)
+ *    - count
+ *    - back to top
+ */
 export const Collection: React.FC = () => {
   /*
    *  collection
@@ -43,8 +50,9 @@ export const Collection: React.FC = () => {
                     }
                   />
                   <Modal
+                    records={collection}
                     recordId={modalRecordId}
-                    handleClose={() => setModalRecordId(null)}
+                    setRecordId={setModalRecordId}
                   />
                 </>
               );

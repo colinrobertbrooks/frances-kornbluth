@@ -20,7 +20,11 @@ import {
 } from './pages';
 import { Router, Switch, Route, Url } from './router';
 
-// TODO: lazy
+/*
+ *  TODO
+ *    - gtm
+ *    - lazy
+ */
 const App: React.FC = () => (
   <>
     <GlobalStyles />

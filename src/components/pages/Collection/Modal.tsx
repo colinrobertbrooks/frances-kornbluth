@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Modal as ReactstrapModal } from 'reactstrap';
 import { useCollectionContext } from '../../../contexts';
-import { media, HEADER_HEIGHT_PX } from '../../../styles';
+import { useKeyPress } from '../../../hooks';
+import { media, focusOutlineCSS, HEADER_HEIGHT_PX } from '../../../styles';
+import { ICollectionRecord } from '../../../types';
 import { styled } from '../shared';
 
+/*
+ *  TODO:
+ *    - style next/previous buttons
+ *    - layout (style header; add additional attributes)
+ *    - available & inquire
+ *    - make current record visible in list and return focus to it on close
+ */
 interface IModalProps {
+  records: ICollectionRecord[];
   recordId: number | null;
-  handleClose: () => void;
+  setRecordId: (nextRecordId: number | null) => void;
 }
 
-const Modal: React.FC<IModalProps> = ({ recordId, handleClose }) => {
+const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
   /*
    *  record
    */
@@ -20,19 +30,63 @@ const Modal: React.FC<IModalProps> = ({ recordId, handleClose }) => {
   /*
    *  visibility
    */
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const closeModal = () => setRecordId(null);
 
   useEffect(() => {
     // derive modal visibility based on record
     if (recordId && recordIdIsValid) {
-      setIsOpen(true);
+      setModalIsOpen(true);
     } else {
-      setIsOpen(false);
+      setModalIsOpen(false);
     }
   }, [recordId, recordIdIsValid]);
 
+  const escapeWasPressed = useKeyPress('Escape');
+  useEffect(() => {
+    if (modalIsOpen && escapeWasPressed) closeModal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalIsOpen, escapeWasPressed]);
+
+  /*
+   *  carousel
+   */
+  const getIdx = (id: number) => records.map((r) => r.id).indexOf(id);
+
+  const handlePrevious = () => {
+    if (!recordId) return;
+    const idx = getIdx(recordId);
+    if (idx === 0) {
+      setRecordId(records[records.length - 1].id);
+    } else {
+      setRecordId(records[idx - 1].id);
+    }
+  };
+
+  const handleNext = () => {
+    if (!recordId) return;
+    const idx = getIdx(recordId);
+    if (idx === records.length - 1) {
+      setRecordId(records[0].id);
+    } else {
+      setRecordId(records[idx + 1].id);
+    }
+  };
+
+  const leftArrowWasPressed = useKeyPress('ArrowLeft');
+  useEffect(() => {
+    if (modalIsOpen && leftArrowWasPressed) handlePrevious();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalIsOpen, leftArrowWasPressed]);
+
+  const rightArrowWasPressed = useKeyPress('ArrowRight');
+  useEffect(() => {
+    if (modalIsOpen && rightArrowWasPressed) handleNext();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalIsOpen, rightArrowWasPressed]);
+
   return (
-    <ModalOuter isOpen={isOpen}>
+    <ModalOuter isOpen={modalIsOpen}>
       {(() => {
         if (!record) return null;
 
@@ -40,9 +94,15 @@ const Modal: React.FC<IModalProps> = ({ recordId, handleClose }) => {
 
         return (
           <ModalInner>
-            <ModalClose onClick={handleClose} />
+            <ModalClose onClick={closeModal} />
             <h2>{name}</h2>
             <ModalImg src={minImgSrc} alt={name} />
+            <button type="button" onClick={handlePrevious}>
+              Previous
+            </button>
+            <button type="button" onClick={handleNext}>
+              Next
+            </button>
           </ModalInner>
         );
       })()}
@@ -78,12 +138,16 @@ const ModalClose = styled.button.attrs({
   top: 0;
 
   ${media.md`
-  padding: 6px 12px !important;
-`}
+    padding: 6px 12px !important;
+  `}
 
   ${media.lg`
     padding: 10px 20px !important;
   `}
+
+  &:focus {
+    ${focusOutlineCSS}
+  }
 `;
 
 const ModalImg = styled.img.attrs({ className: 'img-thumbnail' })`
