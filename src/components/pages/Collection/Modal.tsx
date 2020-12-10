@@ -263,6 +263,7 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
   display: block;
   margin: 0 auto;
   max-height: calc(100vh - ${HEADER_HEIGHT_PX + 200}px);
+  user-select: none;
 `;
 
 export default Modal;
