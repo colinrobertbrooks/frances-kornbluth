@@ -26,5 +26,6 @@ export const GlobalStyles = createGlobalStyle`
     margin-right: 8px;
     margin-left: 8px;
     max-width: none;
+    min-width: 304px;
   }
 `;
