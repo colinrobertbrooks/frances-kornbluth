@@ -17,6 +17,7 @@ import {
   H1_HEIGHT_PX,
   H1_MARGIN_BOTTOM_PX,
 } from '../../styles';
+import { ICollectionRecord } from '../../types';
 import { LoaderSvg } from '../svg';
 import { styled, Page, Row, Col, H1 } from './shared';
 
@@ -90,7 +91,7 @@ export const Collection: React.FC = () => {
   }, [collectionIsLoading, collection, loadCollection]);
 
   /*
-   *  infinite scrolling list
+   *  list infinite scrolling
    */
   const windowSize = useWindowSize();
   const initialListItemCount = useMemo(
@@ -107,22 +108,18 @@ export const Collection: React.FC = () => {
   );
 
   const listDisplayTracker = useRef(null);
-  const [listDisplayTrackerIsVisible] = useIntersectionObserver({
+  const [listBottomTrackerIsVisible] = useIntersectionObserver({
     elementRef: listDisplayTracker,
   });
 
   useEffect(() => {
     // increment list item count as user scrolls
-    if (!collectionIsLoading && listDisplayTrackerIsVisible) {
+    if (!collectionIsLoading && listBottomTrackerIsVisible) {
       setListItemCount(
         (currentListItemCount) => currentListItemCount + listItemCountIncrement
       );
     }
-  }, [
-    collectionIsLoading,
-    listDisplayTrackerIsVisible,
-    listItemCountIncrement,
-  ]);
+  }, [collectionIsLoading, listBottomTrackerIsVisible, listItemCountIncrement]);
 
   useEffect(() => {
     // guard against resizing to a bigger screen breaking infinite scroll
@@ -132,7 +129,7 @@ export const Collection: React.FC = () => {
   }, [initialListItemCount, listItemCount]);
 
   /*
-   *  artwork modal
+   *  modal
    */
   const [modalRecordId, setModalRecordId] = useState<number | null>(null);
 
@@ -146,31 +143,14 @@ export const Collection: React.FC = () => {
               if (collectionIsLoading || !collection) return <Loader />;
 
               return (
-                <Row>
-                  {collection
-                    .slice(0, listItemCount)
-                    .map(({ id, minImgSrc, name }) => (
-                      <Col
-                        key={id}
-                        xs={listColConfig.xs}
-                        sm={listColConfig.sm}
-                        md={listColConfig.md}
-                        lg={listColConfig.lg}
-                        xl={listColConfig.xl}
-                      >
-                        <ModalToggle
-                          aria-label={`${name} (Click for more details)`}
-                          onClick={() => setModalRecordId(id)}
-                        >
-                          <ListItemImg
-                            src={minImgSrc}
-                            alt={name}
-                            title={name}
-                          />
-                        </ModalToggle>
-                      </Col>
-                    ))}
-                </Row>
+                <List>
+                  {collection.slice(0, listItemCount).map((record) => (
+                    <ListItem
+                      record={record}
+                      onClick={() => setModalRecordId(record.id)}
+                    />
+                  ))}
+                </List>
               );
             })()}
             <div ref={listDisplayTracker} />
@@ -185,13 +165,21 @@ export const Collection: React.FC = () => {
   );
 };
 
+/*
+ *  loader
+ */
 const Loader = styled(LoaderSvg).attrs({
   fill: colors.lightRed,
 })`
   margin: 0 auto;
 `;
 
-const ModalToggle = styled.button`
+/*
+ *  list
+ */
+const List = styled(Row)``;
+
+const ListItemButton = styled.button`
   ${unstyledButtonCSS}
   border-radius: 4px;
   display: block;
@@ -229,11 +217,35 @@ const ListItemImg = styled.img.attrs({ className: 'img-thumbnail' })`
   `}
 `;
 
-interface IArtworkModalProps {
-  recordId: number | null;
-  handleClose: () => void;
+interface IListItemProps {
+  record: ICollectionRecord;
+  onClick: () => void;
 }
 
+const ListItem = ({ record, onClick }: IListItemProps) => {
+  const { id, name, minImgSrc } = record;
+  return (
+    <Col
+      key={id}
+      xs={listColConfig.xs}
+      sm={listColConfig.sm}
+      md={listColConfig.md}
+      lg={listColConfig.lg}
+      xl={listColConfig.xl}
+    >
+      <ListItemButton
+        aria-label={`${name} (Click for more details)`}
+        onClick={onClick}
+      >
+        <ListItemImg src={minImgSrc} alt={name} title={name} />
+      </ListItemButton>
+    </Col>
+  );
+};
+
+/*
+ *  modal
+ */
 const ModalOuter = styled(ReactstrapModal)``;
 
 const ModalInner = styled.div`
@@ -277,7 +289,12 @@ const ModalImg = styled.img.attrs({ className: 'img-thumbnail' })`
   max-height: calc(100vh - ${HEADER_HEIGHT_PX + 200}px);
 `;
 
-const Modal = ({ recordId, handleClose }: IArtworkModalProps) => {
+interface IModalProps {
+  recordId: number | null;
+  handleClose: () => void;
+}
+
+const Modal = ({ recordId, handleClose }: IModalProps) => {
   const { collectionIsLoading, getCollectionRecord } = useCollectionContext();
   const record = recordId ? getCollectionRecord(recordId) : undefined;
   const recordIdIsValid = recordId && record;
