@@ -34,7 +34,7 @@ export const Books: React.FC = () => (
             <BookInfo>55 color illustrations</BookInfo>
             <BookInfo>8.5 x 8.5&quot;</BookInfo>
             <BookInfo className="mb-3">softcover</BookInfo>
-            <Paragraph className="mb-3">
+            <Paragraph className="mb-3" color="darkGray">
               <i>$20 each plus shipping</i>
             </Paragraph>
             <div className="d-flex">

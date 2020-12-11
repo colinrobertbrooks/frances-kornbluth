@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 
 interface IParagraphProps {
-  color?: 'black' | 'gray';
+  color?: 'black' | 'darkGray' | 'gray';
 }
 
 export const Paragraph = styled.p<IParagraphProps>`
