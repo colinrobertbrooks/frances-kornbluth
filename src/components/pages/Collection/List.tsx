@@ -76,9 +76,9 @@ const List: React.FC<IListProps> = ({ records, onItemClick }) => {
     initialListItemCount
   );
 
-  const listDisplayTracker = useRef(null);
+  const listBottomTracker = useRef(null);
   const [listBottomTrackerIsVisible] = useIntersectionObserver({
-    elementRef: listDisplayTracker,
+    elementRef: listBottomTracker,
   });
 
   useEffect(() => {
@@ -118,7 +118,7 @@ const List: React.FC<IListProps> = ({ records, onItemClick }) => {
           </Col>
         ))}
       </Row>
-      <div ref={listDisplayTracker} />
+      <div ref={listBottomTracker} />
     </>
   );
 };
