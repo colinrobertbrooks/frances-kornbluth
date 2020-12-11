@@ -1,22 +1,36 @@
 import { adapter } from './utils';
-import { $T, ICollectionGoogleSheetRow, ICollectionRecord } from '../types';
-
-const $tAccessor = (gsx$any: $T): string => gsx$any.$t;
+import { ISerializedCollectionRecord, ICollectionRecord } from '../types';
 
 const deserializeCollection = (
-  entry: ICollectionGoogleSheetRow[]
+  entry: ISerializedCollectionRecord[]
 ): ICollectionRecord[] =>
   entry
     .filter(({ gsx$showonwebsite }) => gsx$showonwebsite.$t)
-    .map(({ gsx$id, gsx$title, gsx$minimgsrc }) => {
-      const title$t = $tAccessor(gsx$title);
+    .map(
+      ({
+        gsx$id,
+        gsx$title,
+        gsx$minimgsrc,
+        gsx$year,
+        gsx$medium,
+        gsx$dimensions,
+        gsx$status,
+        gsx$holder,
+      }) => {
+        const title = gsx$title.$t;
 
-      return {
-        id: Number($tAccessor(gsx$id)),
-        title: title$t || 'Untitled',
-        minImgSrc: $tAccessor(gsx$minimgsrc),
-      };
-    });
+        return {
+          id: Number(gsx$id.$t),
+          title: title || 'Untitled',
+          minImgSrc: gsx$minimgsrc.$t,
+          year: Number(gsx$year.$t),
+          medium: gsx$medium.$t,
+          dimensions: gsx$dimensions.$t,
+          status: gsx$status.$t,
+          holder: gsx$holder.$t,
+        };
+      }
+    );
 
 export const getCollection = async (): Promise<ICollectionRecord[]> => {
   try {
