@@ -1,16 +1,22 @@
 import { adapter } from './utils';
-import { ICollectionGoogleSheetRow, ICollectionRecord } from '../types';
+import { $T, ICollectionGoogleSheetRow, ICollectionRecord } from '../types';
+
+const $tAccessor = (gsx$any: $T): string => gsx$any.$t;
 
 const deserializeCollection = (
   entry: ICollectionGoogleSheetRow[]
 ): ICollectionRecord[] =>
   entry
     .filter(({ gsx$showonwebsite }) => gsx$showonwebsite.$t)
-    .map(({ gsx$id, gsx$title, gsx$minimgsrc }) => ({
-      id: Number(gsx$id.$t),
-      title: gsx$title.$t ? gsx$title.$t : 'Untitled',
-      minImgSrc: gsx$minimgsrc.$t,
-    }));
+    .map(({ gsx$id, gsx$title, gsx$minimgsrc }) => {
+      const title$t = $tAccessor(gsx$title);
+
+      return {
+        id: Number($tAccessor(gsx$id)),
+        title: title$t || 'Untitled',
+        minImgSrc: $tAccessor(gsx$minimgsrc),
+      };
+    });
 
 export const getCollection = async (): Promise<ICollectionRecord[]> => {
   try {

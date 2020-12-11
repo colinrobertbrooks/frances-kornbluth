@@ -1,16 +1,12 @@
+export type $T = {
+  $t: string;
+};
+
 export interface ICollectionGoogleSheetRow {
-  gsx$showonwebsite: {
-    $t: string;
-  };
-  gsx$id: {
-    $t: string;
-  };
-  gsx$title: {
-    $t: string;
-  };
-  gsx$minimgsrc: {
-    $t: string;
-  };
+  gsx$showonwebsite: $T;
+  gsx$id: $T;
+  gsx$title: $T;
+  gsx$minimgsrc: $T;
 }
 
 export interface ICollectionRecord {
