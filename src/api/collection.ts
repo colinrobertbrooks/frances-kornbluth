@@ -17,17 +17,20 @@ const deserializeCollection = (
         gsx$status,
         gsx$holder,
       }) => {
-        const title = gsx$title.$t;
+        const title = gsx$title.$t || 'Untitled';
+        const year = gsx$year.$t ? Number(gsx$year.$t) : null;
+        const dimensions = gsx$dimensions.$t || 'finished size unavailable';
+        const holder = gsx$holder.$t || null;
 
         return {
           id: Number(gsx$id.$t),
-          title: title || 'Untitled',
+          title,
           minImgSrc: gsx$minimgsrc.$t,
-          year: Number(gsx$year.$t),
+          year,
           medium: gsx$medium.$t,
-          dimensions: gsx$dimensions.$t,
+          dimensions,
           status: gsx$status.$t,
-          holder: gsx$holder.$t,
+          holder,
         };
       }
     );

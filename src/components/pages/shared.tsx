@@ -68,6 +68,7 @@ const ArtworkTitle = styled.span`
   display: block;
   font-family: ${typography.default};
   font-style: italic;
+  font-weight: 600;
   text-align: center;
 `;
 

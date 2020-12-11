@@ -25,9 +25,9 @@ export interface ICollectionRecord {
   id: number;
   title: string;
   minImgSrc: string;
-  year: number;
+  year: number | null;
   medium: string;
-  dimensions: string;
+  dimensions: string | null;
   status: Status;
-  holder: string;
+  holder: string | null;
 }

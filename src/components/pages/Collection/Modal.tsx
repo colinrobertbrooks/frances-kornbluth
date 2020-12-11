@@ -9,15 +9,16 @@ import {
   unstyledButtonCSS,
   getRems,
   colors,
+  typography,
 } from '../../../styles';
-import { ICollectionRecord } from '../../../types';
+import { ICollectionRecord, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
 import { styled, css } from '../shared';
 
 /*
  *  TODO:
- *    - content (style header; add additional attributes)
  *    - available & inquire
+ *    - index + 1 of records.length
  *    - return focus back to last open item on modal close
  */
 
@@ -104,13 +105,16 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
       {(() => {
         if (!record) return null;
 
-        const { title, minImgSrc } = record;
+        const { title, year, minImgSrc, medium, dimensions } = record;
 
         return (
           <>
             <Header>
               <Close onClick={closeModal} />
-              <Title>{title}</Title>
+              <Title>
+                {title}
+                {year && <Year>({year})</Year>}
+              </Title>
             </Header>
             <Body>
               <CarouselButton
@@ -131,7 +135,12 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
               </CarouselButton>
               <Img src={minImgSrc} alt={title} />
             </Body>
-            <Footer />
+            <Footer>
+              <Sub>
+                {medium}, {dimensions}
+              </Sub>
+              <CollectionStatus record={record} />
+            </Footer>
           </>
         );
       })()}
@@ -162,6 +171,7 @@ const Wrapper = styled(ReactstrapModal)``;
 const Header = styled.div`
   padding-top ${yPadding.xs}px;
   padding-left: ${xPadding.xs}px;
+  padding-bottom: 12px;
   padding-right: ${xPadding.xs}px;
   position: relative;
   text-align: center;
@@ -196,20 +206,22 @@ const Body = styled.div`
 `;
 
 const Footer = styled.div`
+  padding-top: 6px;
   padding-left: ${xPadding.xs}px;
-  padding-bottom ${yPadding.xs}px;
+  padding-bottom ${yPadding.xs * 0.6}px;
   padding-right: ${xPadding.xs}px;
+  text-align: center;
 
 
   ${media.md`
     padding-left: ${xPadding.md}px;
-    padding-bottom: ${xPadding.md}px;
+    padding-bottom: ${xPadding.md * 0.6}px;
     padding-right: ${xPadding.md}px;
   `}
 
   ${media.lg`
     padding-left: ${xPadding.lg}px;
-    padding-bottom ${yPadding.lg}px;
+    padding-bottom ${yPadding.lg * 0.6}px;
     padding-right: ${xPadding.lg}px;
   `}
 `;
@@ -314,6 +326,51 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
 /*
  *  typography
  */
-const Title = styled.h2``;
+const Year = styled.span`
+  color: ${colors.gray};
+
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 6px;
+`;
+
+const Title = styled.h2`
+  color: ${colors.darkGray};
+  font-family: ${typography.default};
+  font-size: ${getRems(22)};
+  font-style: italic;
+  font-weight: 600;
+  margin: 0;
+`;
+
+const Sub = styled.span`
+  color: ${colors.gray};
+  display: block;
+  font-family: ${typography.default};
+`;
+
+interface IStatusProps {
+  record: ICollectionRecord;
+}
+
+const CollectionStatus: React.FC<IStatusProps> = ({ record }) => {
+  switch (record.status) {
+    case Status.Available: {
+      return (
+        <div className="mt-2">
+          <button type="button" onClick={() => alert('TODO')}>
+            Inquire
+          </button>
+        </div>
+      );
+    }
+    case Status.Private:
+      return <Sub>Collection of {record.holder}</Sub>;
+    case Status.Public:
+      return <Sub>Collection of the {record.holder}</Sub>;
+    default:
+      return <Sub>Collection unknown</Sub>;
+  }
+};
 
 export default Modal;
