@@ -10,4 +10,5 @@ export const Heading = styled.h1<IHeadingProps>`
   font-family: ${typography.heading};
   font-weight: 500;
   letter-spacing: ${getRems(2)};
+  margin: 0;
 `;

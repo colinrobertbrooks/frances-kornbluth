@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
 import { useCollectionContext } from '../../../contexts';
-import { Page, Row, Col, H1 } from '../shared';
+import { Page, Row, Col, Heading } from '../shared';
 import Loader from './Loader';
+import { SlideProvider, SlideToggle, Slide } from './slide';
+import Filters from './Filters';
 import List from './List';
 import Modal from './Modal';
 
@@ -34,33 +36,43 @@ export const Collection: React.FC = () => {
   const [modalRecordId, setModalRecordId] = useQueryParam('id', NumberParam);
 
   return (
-    <>
-      <Page title="Collection">
-        <Row>
-          <Col md={12}>
-            <H1>Collection</H1>
-            {(() => {
-              if (collectionIsLoading || !collection) return <Loader />;
-
+    <Page title="Collection">
+      <Row>
+        <Col md={12}>
+          {(() => {
+            if (collectionIsLoading || !collection)
               return (
                 <>
-                  <List
-                    records={collection}
-                    onItemClick={(nextModalRecordId: number) =>
-                      setModalRecordId(nextModalRecordId)
-                    }
-                  />
-                  <Modal
-                    records={collection}
-                    recordId={modalRecordId}
-                    setRecordId={setModalRecordId}
-                  />
+                  <Heading className="mb-4">Collection</Heading>
+                  <Loader />
                 </>
               );
-            })()}
-          </Col>
-        </Row>
-      </Page>
-    </>
+
+            return (
+              <SlideProvider>
+                <div className="d-flex align-items-center mb-4">
+                  <Heading className="mb-0">Collection</Heading>
+                  <SlideToggle />
+                </div>
+                <Slide>
+                  <Filters />
+                </Slide>
+                <List
+                  records={collection}
+                  onItemClick={(nextModalRecordId: number) =>
+                    setModalRecordId(nextModalRecordId)
+                  }
+                />
+                <Modal
+                  records={collection}
+                  recordId={modalRecordId}
+                  setRecordId={setModalRecordId}
+                />
+              </SlideProvider>
+            );
+          })()}
+        </Col>
+      </Row>
+    </Page>
   );
 };

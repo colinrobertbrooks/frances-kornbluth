@@ -78,7 +78,7 @@ export const Home: React.FC = () => (
 
 const backgroundImageFadeIn = keyframes`
   from { opacity: 0; }
-  to   { opacity: 0.9; }
+  to { opacity: 0.9; }
 `;
 
 const Background = styled.div`
