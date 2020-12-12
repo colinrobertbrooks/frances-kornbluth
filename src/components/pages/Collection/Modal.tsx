@@ -22,10 +22,12 @@ import { styled, css } from '../shared';
  *    - return focus back to last open item on modal close
  */
 
+type QueryId = number | null | undefined;
+
 interface IModalProps {
   records: ICollectionRecord[];
-  recordId: number | null | undefined;
-  setRecordId: (nextRecordId: number | null) => void;
+  recordId: QueryId;
+  setRecordId: (nextRecordId: QueryId) => void;
 }
 
 const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {

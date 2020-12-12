@@ -1,3 +1,5 @@
+import { FormGroup } from 'reactstrap';
+
 // layout
 export * from './HorizontalRule';
 
@@ -11,4 +13,6 @@ export * from './Label';
 export * from './OutlineButton';
 
 // forms
+export { FormGroup };
 export * from './Input';
+export * from './Select';

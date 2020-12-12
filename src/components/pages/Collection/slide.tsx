@@ -75,7 +75,7 @@ export const SlideProvider: React.FC<{ lockBodyScrollWhenOpen?: boolean }> = ({
       setIsOpen(true);
       if (closeRef.current) closeRef.current.focus();
     },
-    isOpening ? SLIDE_ANIMATION_MS - 1 : null
+    isOpening ? SLIDE_ANIMATION_MS : null
   );
   useTimeout(
     () => {
@@ -84,7 +84,7 @@ export const SlideProvider: React.FC<{ lockBodyScrollWhenOpen?: boolean }> = ({
       if (toggleRef.current && shouldFocusToggleOnClose)
         toggleRef.current.focus();
     },
-    isClosing ? SLIDE_ANIMATION_MS - 1 : null
+    isClosing ? SLIDE_ANIMATION_MS : null
   );
 
   const open = () => {
@@ -290,6 +290,15 @@ const SlideElement = styled.div.attrs({ role: 'dialog' })<{
 
   ${media.md`
     width: 320px;
+  `}
+
+  // prevents react-select flicker on close
+  ${({ isClosing }) =>
+    isClosing &&
+    `
+      * {
+        display: none;
+      }
   `}
 `;
 

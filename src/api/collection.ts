@@ -1,5 +1,24 @@
 import { adapter } from './utils';
-import { ISerializedCollectionRecord, ICollectionRecord } from '../types';
+import {
+  ISerializedCollectionRecord,
+  ICollectionRecord,
+  MediumGroup,
+} from '../types';
+
+const deriveMediumGroup = (medium: string): MediumGroup => {
+  const lowercaseMedium = medium.toLowerCase();
+  if (lowercaseMedium.includes('acrylic')) return MediumGroup.Acrylic;
+  if (lowercaseMedium.includes('charcoal')) return MediumGroup.Charcoal;
+  if (lowercaseMedium.includes('collage')) return MediumGroup.Collage;
+  if (lowercaseMedium.includes('ink')) return MediumGroup.Ink;
+  if (lowercaseMedium.includes('mixed media'))
+    return MediumGroup['Mixed Media'];
+  if (lowercaseMedium.includes('monotype')) return MediumGroup.Monotype;
+  if (lowercaseMedium.includes('oil')) return MediumGroup.Oil;
+  if (lowercaseMedium.includes('pastel')) return MediumGroup.Pastel;
+  if (lowercaseMedium.includes('watercolor')) return MediumGroup.Watercolor;
+  return MediumGroup.Unknown;
+};
 
 const deserializeCollection = (
   entry: ISerializedCollectionRecord[]
@@ -19,6 +38,7 @@ const deserializeCollection = (
       }) => {
         const title = gsx$title.$t || 'Untitled';
         const year = gsx$year.$t ? Number(gsx$year.$t) : null;
+        const medium = gsx$medium.$t;
         const dimensions = gsx$dimensions.$t || 'finished size unavailable';
         const holder = gsx$holder.$t || null;
 
@@ -27,7 +47,8 @@ const deserializeCollection = (
           title,
           minImgSrc: gsx$minimgsrc.$t,
           year,
-          medium: gsx$medium.$t,
+          medium,
+          mediumGroup: deriveMediumGroup(medium),
           dimensions,
           status: gsx$status.$t,
           holder,

@@ -1,6 +1,15 @@
-type $T<T = string> = {
-  $t: T;
-};
+export enum MediumGroup {
+  Acrylic = 'Acrylic',
+  Charcoal = 'Charcoal',
+  Collage = 'Collage',
+  Ink = 'Ink',
+  'Mixed Media' = 'MixedMedia',
+  Monotype = 'Monotype',
+  Oil = 'Oil',
+  Pastel = 'Pastel',
+  Watercolor = 'Watercolor',
+  Unknown = 'Unknown',
+}
 
 export enum Status {
   Available = 'Available',
@@ -15,10 +24,15 @@ export interface ICollectionRecord {
   minImgSrc: string;
   year: number | null;
   medium: string;
+  mediumGroup: MediumGroup;
   dimensions: string | null;
   status: Status;
   holder: string | null;
 }
+
+type $T<T = string> = {
+  $t: T;
+};
 
 export interface ISerializedCollectionRecord {
   gsx$showonwebsite: $T;

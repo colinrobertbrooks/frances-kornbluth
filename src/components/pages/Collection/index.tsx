@@ -13,6 +13,7 @@ import { FilterSvg } from '../../svg';
 /*
  *  TODO:
  *    - back to top
+ *    - indicate filters are applied
  *    - reset filter button if no records
  */
 
@@ -39,7 +40,9 @@ export const Collection: React.FC = () => {
   /*
    *  filters
    */
-  const { filteredCollection, filterProps } = useFilterState(collection || []);
+  const { filters, filteredCollection, filterProps } = useFilterState(
+    collection || []
+  );
 
   /*
    *  modal
@@ -74,7 +77,11 @@ export const Collection: React.FC = () => {
                   </Count>
                 </HeadingWrapper>
                 <Slide closeLabel="Close filters">
-                  <Filters {...filterProps} />
+                  <Filters
+                    collection={collection}
+                    filters={filters}
+                    {...filterProps}
+                  />
                 </Slide>
                 <List
                   records={filteredCollection}
