@@ -9,5 +9,6 @@ export * from './InstagramSvg';
 // other
 export * from './ChevronLeftSvg';
 export * from './ChevronRightSvg';
+export * from './FilterSvg';
 export * from './SpinnerSvg';
 export * from './TimesSvg';

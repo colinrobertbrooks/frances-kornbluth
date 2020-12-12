@@ -236,7 +236,7 @@ const CloseIcon = styled(TimesSvg)`
 const Close = styled.button.attrs({
   'aria-label': 'Close modal',
   children: <CloseIcon />,
-  title: 'Close',
+  title: 'Close modal',
 })`
   ${unstyledButtonCSS}
   color: ${colors.lightGray};

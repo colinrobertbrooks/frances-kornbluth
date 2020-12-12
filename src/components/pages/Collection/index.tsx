@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
 import { useCollectionContext } from '../../../contexts';
-import { Page, Row, Col, Heading } from '../shared';
+import { Page, Row, Col, Heading, styled } from '../shared';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import Filters from './Filters';
 import List from './List';
 import Modal from './Modal';
+import { FilterSvg } from '../../svg';
+import { getRems } from '../../../styles';
 
 /*
  *  TODO:
@@ -52,9 +54,14 @@ export const Collection: React.FC = () => {
               <SlideProvider>
                 <div className="d-flex align-items-center mb-4">
                   <Heading className="mb-0">Collection</Heading>
-                  <SlideToggle />
+                  <SlideToggle
+                    openLabel="Open filters"
+                    closeLabel="Close filters"
+                  >
+                    <FilterIcon />
+                  </SlideToggle>
                 </div>
-                <Slide>
+                <Slide closeLabel="Close filters">
                   <Filters />
                 </Slide>
                 <List
@@ -76,3 +83,7 @@ export const Collection: React.FC = () => {
     </Page>
   );
 };
+
+const FilterIcon = styled(FilterSvg)`
+  height: ${getRems(22)};
+`;
