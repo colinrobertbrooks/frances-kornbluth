@@ -19,5 +19,3 @@ export const FOOTER_MIN_HEIGHT_PX = 43;
  *  typography
  */
 export const BASE_FONT_SIZE_PX = 16;
-export const H1_HEIGHT_PX = 48;
-export const H1_MARGIN_BOTTOM_PX = 24; // mb-4

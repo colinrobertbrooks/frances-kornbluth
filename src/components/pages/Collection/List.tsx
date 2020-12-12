@@ -11,14 +11,13 @@ import {
   focusOutlineCSS,
   HEADER_HEIGHT_PX,
   MAIN_PADDING_TOP_PX,
-  H1_HEIGHT_PX,
-  H1_MARGIN_BOTTOM_PX,
 } from '../../../styles';
 import { ICollectionRecord } from '../../../types';
 import { styled, Row, Col } from '../shared';
 import {
   listItemHeightConfig,
   listColConfig,
+  HEADING_WRAPPER_HEIGHT_PX,
   LIST_ITEM_MARGIN_BOTTOM_PX,
 } from './constants';
 
@@ -37,7 +36,7 @@ const getListColsPerRow = (windowSize: IWindowSize): number => {
 
 const getListDisplayHeight = (windowSize: IWindowSize): number => {
   const above =
-    HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX + H1_HEIGHT_PX + H1_MARGIN_BOTTOM_PX;
+    HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX + HEADING_WRAPPER_HEIGHT_PX;
   return windowSize.height - above;
 };
 
