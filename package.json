@@ -20,11 +20,13 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.5.3",
+    "focus-trap-react": "^8.3.2",
     "polished": "^4.0.5",
     "query-string": "^6.13.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+    "react-select": "^3.1.1",
     "reactstrap": "^8.7.1",
     "styled-components": "^5.2.1",
     "use-query-params": "^1.1.9"
@@ -38,6 +40,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "@types/react-select": "^3.0.28",
     "@types/reactstrap": "^8.7.2",
     "@types/styled-components": "^5.1.4",
     "cross-env": "^7.0.2",

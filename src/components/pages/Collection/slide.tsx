@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useRef } from 'react';
-import { useTimeout } from '../../../hooks';
+import FocusTrap from 'focus-trap-react';
+import { useTimeout, useOutsideClick } from '../../../hooks';
 import {
   colors,
   focusOutlineCSS,
@@ -16,9 +17,9 @@ const SLIDE_ANIMATION_MS = 300;
 /*
  *  context
  */
-// TODO: focus management
 interface ISlideContext {
   toggleRef: React.RefObject<HTMLButtonElement>;
+  slideRef: React.RefObject<HTMLDivElement>;
   closeRef: React.RefObject<HTMLButtonElement>;
   isOpening: boolean;
   isOpen: boolean;
@@ -30,6 +31,7 @@ interface ISlideContext {
 
 const SlideContext = createContext<ISlideContext>({
   toggleRef: React.createRef(),
+  slideRef: React.createRef(),
   closeRef: React.createRef(),
   isOpening: false,
   isOpen: false,
@@ -44,7 +46,11 @@ export const SlideProvider: React.FC = ({ children }) => {
    *  focus management
    */
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const slideRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const [shouldFocusToggleOnClose, setShouldFocusToggleOnClose] = useState(
+    true
+  );
 
   /*
    *  visibility
@@ -66,7 +72,8 @@ export const SlideProvider: React.FC = ({ children }) => {
     () => {
       setIsClosing(false);
       setIsClosed(true);
-      if (toggleRef.current) toggleRef.current.focus();
+      if (toggleRef.current && shouldFocusToggleOnClose)
+        toggleRef.current.focus();
     },
     isClosing ? SLIDE_ANIMATION_MS - 1 : null
   );
@@ -78,17 +85,23 @@ export const SlideProvider: React.FC = ({ children }) => {
     setIsClosed(false);
   };
 
-  const close = () => {
+  const close = (manageFocus = true) => {
+    setShouldFocusToggleOnClose(manageFocus);
     setIsOpening(false);
     setIsOpen(false);
     setIsClosing(true);
     setIsClosed(false);
   };
 
+  useOutsideClick(slideRef, () => {
+    if (isOpen) close(false);
+  });
+
   return (
     <SlideContext.Provider
       value={{
         toggleRef,
+        slideRef,
         closeRef,
         isOpening,
         isOpen,
@@ -153,13 +166,13 @@ const ToggleElement = styled.button`
 /*
  *  slide
  */
-// TODO: focus trap
 interface ISlideProps {
   closeLabel: string;
 }
 
 export const Slide: React.FC<ISlideProps> = ({ closeLabel, children }) => {
   const {
+    slideRef,
     closeRef,
     isOpening,
     isOpen,
@@ -169,21 +182,24 @@ export const Slide: React.FC<ISlideProps> = ({ closeLabel, children }) => {
   } = useSlideContext();
 
   return (
-    <SlideElement
-      isOpening={isOpening}
-      isOpen={isOpen}
-      isClosing={isClosing}
-      isClosed={isClosed}
-    >
-      <Close
-        ref={closeRef}
-        aria-label={closeLabel}
-        title={closeLabel}
-        disabled={isClosing}
-        onClick={close}
-      />
-      {children}
-    </SlideElement>
+    <FocusTrap active={isOpen}>
+      <SlideElement
+        ref={slideRef}
+        isOpening={isOpening}
+        isOpen={isOpen}
+        isClosing={isClosing}
+        isClosed={isClosed}
+      >
+        <Close
+          ref={closeRef}
+          aria-label={closeLabel}
+          title={closeLabel}
+          disabled={isClosing}
+          onClick={close}
+        />
+        {children}
+      </SlideElement>
+    </FocusTrap>
   );
 };
 
@@ -207,7 +223,7 @@ const slideOutRight = keyframes`
   }
 `;
 
-const SlideElement = styled.div<{
+const SlideElement = styled.div.attrs({ role: 'dialog' })<{
   isOpening: boolean;
   isOpen: boolean;
   isClosing: boolean;
