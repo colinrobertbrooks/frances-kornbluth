@@ -129,7 +129,11 @@ export const SlideProvider: React.FC<{ lockBodyScrollWhenOpen?: boolean }> = ({
         isOpen,
         isClosing,
         isClosed,
-        toggle: isOpening || isOpen ? close : open,
+        toggle: () => {
+          if (isOpen) close();
+          if (isClosed) open();
+          return undefined;
+        },
         close,
       }}
     >
