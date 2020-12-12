@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useRef, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import FocusTrap from 'focus-trap-react';
 import { useTimeout, useOutsideClick } from '../../../hooks';
 import {
@@ -41,7 +47,10 @@ const SlideContext = createContext<ISlideContext>({
   close: () => undefined,
 });
 
-export const SlideProvider: React.FC = ({ children }) => {
+export const SlideProvider: React.FC<{ lockBodyScroll?: boolean }> = ({
+  lockBodyScroll = false,
+  children,
+}) => {
   /*
    *  focus management
    */
@@ -96,6 +105,19 @@ export const SlideProvider: React.FC = ({ children }) => {
   useOutsideClick(slideRef, () => {
     if (isOpen) close(false);
   });
+
+  /*
+   *  body scroll lock
+   */
+  useLayoutEffect(() => {
+    if (lockBodyScroll) {
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+  }, [lockBodyScroll, isOpen]);
 
   return (
     <SlideContext.Provider
@@ -242,7 +264,9 @@ const SlideElement = styled.div.attrs({ role: 'dialog' })<{
   }};
   background-color: ${colors.trueWhite};
   border-left: 1px solid ${colors.border};
-  height: 100%;
+  height: calc(100vh - ${HEADER_HEIGHT_PX}px);
+  overflow: scroll;
+  overscroll-behavior: contain;
   position: fixed;
   padding: 34px 8px;
   right: 0;
