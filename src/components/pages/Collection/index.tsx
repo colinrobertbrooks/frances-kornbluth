@@ -1,20 +1,25 @@
 import React, { useEffect } from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
 import { useCollectionContext } from '../../../contexts';
-import { styled, Page, Row, Col, Heading, Paragraph } from '../shared';
+import { getRems } from '../../../styles';
+import { styled, Page, Row, Col, Heading, Paragraph, Span } from '../shared';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
 import List from './List';
 import Modal from './Modal';
 import { FilterSvg } from '../../svg';
-import { getRems } from '../../../styles';
 
 /*
  *  TODO:
- *    - count
  *    - back to top
+ *    - reset filter button if no records
  */
+
+const getCountText = (all: number, filtered: number): string => {
+  if (all === filtered) return `${all} pieces`;
+  return `${filtered} of ${all} pieces`;
+};
 
 export const Collection: React.FC = () => {
   /*
@@ -56,7 +61,7 @@ export const Collection: React.FC = () => {
 
             return (
               <SlideProvider>
-                <div className="d-flex align-items-center mb-4">
+                <HeadingWrapper>
                   <Heading className="mb-0">Collection</Heading>
                   <SlideToggle
                     openLabel="Open filters"
@@ -64,7 +69,10 @@ export const Collection: React.FC = () => {
                   >
                     <FilterIcon />
                   </SlideToggle>
-                </div>
+                  <Count>
+                    {getCountText(collection.length, filteredCollection.length)}
+                  </Count>
+                </HeadingWrapper>
                 <Slide closeLabel="Close filters">
                   <Filters {...filterProps} />
                 </Slide>
@@ -73,10 +81,9 @@ export const Collection: React.FC = () => {
                   onRecordClick={(nextModalRecordId) =>
                     setModalRecordId(nextModalRecordId)
                   }
-                  // TODO: reset filters button
                   noRecords={
                     <Paragraph color="gray" className="text-center">
-                      No artwork matches your current filter selections.
+                      No pieces matches your current filter selections.
                     </Paragraph>
                   }
                 />
@@ -93,6 +100,20 @@ export const Collection: React.FC = () => {
     </Page>
   );
 };
+
+const HeadingWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  margin-bottom: 28px; // mb-4 + mb-1
+  position: relative;
+`;
+
+const Count = styled(Span).attrs({ color: 'gray' })`
+  font-size: ${getRems(14)};
+  left: 4px;
+  position: absolute;
+  top: 44px;
+`;
 
 const FilterIcon = styled(FilterSvg)`
   height: ${getRems(22)};
