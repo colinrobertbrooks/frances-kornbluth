@@ -65,9 +65,9 @@ export const SlideProvider: React.FC<{ lockBodyScrollWhenOpen?: boolean }> = ({
    *  visibility
    */
   const [isOpening, setIsOpening] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
-  const [isClosed, setIsClosed] = useState(true);
+  const [isClosed, setIsClosed] = useState(false);
 
   useTimeout(
     () => {
