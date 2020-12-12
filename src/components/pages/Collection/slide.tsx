@@ -228,7 +228,7 @@ const SlideElement = styled.div<{
   border-left: 1px solid ${colors.border};
   height: 100%;
   position: fixed;
-  padding: 30px 8px;
+  padding: 34px 8px;
   right: 0;
   top: ${HEADER_HEIGHT_PX}px;
   width: 100vw;

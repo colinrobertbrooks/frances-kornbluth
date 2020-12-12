@@ -22,6 +22,9 @@ import {
   LIST_ITEM_MARGIN_BOTTOM_PX,
 } from './constants';
 
+/*
+ *  methods
+ */
 const getListItemHeigh = (windowSize: IWindowSize): number => {
   const currentMedia = getCurrentMedia(windowSize.width);
   return listItemHeightConfig[currentMedia] + LIST_ITEM_MARGIN_BOTTOM_PX;
@@ -53,12 +56,16 @@ const getListItemCountIncrement = (windowSize: IWindowSize): number => {
   return colsPerRow * incrementRows;
 };
 
+/*
+ *  component
+ */
 interface IListProps {
   records: ICollectionRecord[];
-  onItemClick: (id: number) => void;
+  onRecordClick: (id: number) => void;
+  noRecords: JSX.Element;
 }
 
-const List: React.FC<IListProps> = ({ records, onItemClick }) => {
+const List: React.FC<IListProps> = ({ records, onRecordClick, noRecords }) => {
   /*
    *   infinite scrolling
    */
@@ -71,7 +78,6 @@ const List: React.FC<IListProps> = ({ records, onItemClick }) => {
     () => getListItemCountIncrement(windowSize),
     [windowSize]
   );
-
   const [listItemCount, setListItemCount] = useState<number>(
     initialListItemCount
   );
@@ -97,26 +103,39 @@ const List: React.FC<IListProps> = ({ records, onItemClick }) => {
     }
   }, [initialListItemCount, listItemCount]);
 
+  useEffect(() => {
+    // reset list item count if record count drops below list item count
+    if (records.length < listItemCount) {
+      setListItemCount(initialListItemCount);
+    }
+  }, [records, initialListItemCount, listItemCount]);
+
   return (
     <>
       <Row>
-        {records.slice(0, listItemCount).map(({ id, title, minImgSrc }) => (
-          <Col
-            key={id}
-            xs={listColConfig.xs}
-            sm={listColConfig.sm}
-            md={listColConfig.md}
-            lg={listColConfig.lg}
-            xl={listColConfig.xl}
-          >
-            <ListItemButton
-              aria-label={`${title} (Click for more details)`}
-              onClick={() => onItemClick(id)}
-            >
-              <ListItemImg src={minImgSrc} alt={title} title={title} />
-            </ListItemButton>
-          </Col>
-        ))}
+        {!records.length ? (
+          <Col md={12}>{noRecords}</Col>
+        ) : (
+          <>
+            {records.slice(0, listItemCount).map(({ id, title, minImgSrc }) => (
+              <Col
+                key={id}
+                xs={listColConfig.xs}
+                sm={listColConfig.sm}
+                md={listColConfig.md}
+                lg={listColConfig.lg}
+                xl={listColConfig.xl}
+              >
+                <ListItemButton
+                  aria-label={`${title} (Click for more details)`}
+                  onClick={() => onRecordClick(id)}
+                >
+                  <ListItemImg src={minImgSrc} alt={title} title={title} />
+                </ListItemButton>
+              </Col>
+            ))}
+          </>
+        )}
       </Row>
       <div ref={listBottomTracker} />
     </>
