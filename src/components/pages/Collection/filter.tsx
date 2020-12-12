@@ -144,9 +144,10 @@ export const Filters: React.FC<IFiltersProps> = ({
         <Label htmlFor="title-input">Title</Label>
         <Input
           id="title-input"
-          placeholder="search by title"
+          placeholder="enter title"
           value={title || ''}
           onChange={(event) => setTitle(event.target.value)}
+          spellCheck={false}
         />
       </FormGroup>
       <FormGroup>
