@@ -47,8 +47,8 @@ const SlideContext = createContext<ISlideContext>({
   close: () => undefined,
 });
 
-export const SlideProvider: React.FC<{ lockBodyScroll?: boolean }> = ({
-  lockBodyScroll = false,
+export const SlideProvider: React.FC<{ lockBodyScrollWhenOpen?: boolean }> = ({
+  lockBodyScrollWhenOpen = false,
   children,
 }) => {
   /*
@@ -110,14 +110,14 @@ export const SlideProvider: React.FC<{ lockBodyScroll?: boolean }> = ({
    *  body scroll lock
    */
   useLayoutEffect(() => {
-    if (lockBodyScroll) {
+    if (lockBodyScrollWhenOpen) {
       if (isOpen) {
         document.body.style.overflow = 'hidden';
       } else {
         document.body.style.overflow = '';
       }
     }
-  }, [lockBodyScroll, isOpen]);
+  }, [lockBodyScrollWhenOpen, isOpen]);
 
   return (
     <SlideContext.Provider
@@ -204,7 +204,12 @@ export const Slide: React.FC<ISlideProps> = ({ closeLabel, children }) => {
   } = useSlideContext();
 
   return (
-    <FocusTrap active={isOpen}>
+    <FocusTrap
+      active={isOpen}
+      focusTrapOptions={{
+        returnFocusOnDeactivate: false,
+      }}
+    >
       <SlideElement
         ref={slideRef}
         isOpening={isOpening}
