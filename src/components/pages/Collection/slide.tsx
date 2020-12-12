@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useRef } from 'react';
+import React, { createContext, useContext, useRef, useState } from 'react';
 import FocusTrap from 'focus-trap-react';
 import { useTimeout, useOutsideClick } from '../../../hooks';
 import {

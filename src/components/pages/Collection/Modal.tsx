@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Modal as ReactstrapModal } from 'reactstrap';
+import React, { useEffect, useRef, useState } from 'react';
+import { Modal as ReactstrapModal, ModalProps } from 'reactstrap';
 import { useCollectionContext } from '../../../contexts';
 import { useKeyPress } from '../../../hooks';
 import {
@@ -39,15 +39,15 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
   /*
    *  visibility
    */
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const closeModal = () => setRecordId(null);
 
   useEffect(() => {
     // derive modal visibility based on record
     if (recordId && recordIdIsValid) {
-      setModalIsOpen(true);
+      setIsOpen(true);
     } else {
-      setModalIsOpen(false);
+      setIsOpen(false);
     }
 
     // clear invalid recordId
@@ -59,9 +59,17 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
 
   const escapeWasPressed = useKeyPress('Escape');
   useEffect(() => {
-    if (modalIsOpen && escapeWasPressed) closeModal();
+    if (isOpen && escapeWasPressed) closeModal();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modalIsOpen, escapeWasPressed]);
+  }, [isOpen, escapeWasPressed]);
+
+  /*
+   *  focus management
+   */
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const focusClose = () => {
+    if (closeRef.current) closeRef.current.focus();
+  };
 
   /*
    *  carousel
@@ -90,18 +98,18 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
 
   const leftArrowWasPressed = useKeyPress('ArrowLeft');
   useEffect(() => {
-    if (modalIsOpen && leftArrowWasPressed) handlePrevious();
+    if (isOpen && leftArrowWasPressed) handlePrevious();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modalIsOpen, leftArrowWasPressed]);
+  }, [isOpen, leftArrowWasPressed]);
 
   const rightArrowWasPressed = useKeyPress('ArrowRight');
   useEffect(() => {
-    if (modalIsOpen && rightArrowWasPressed) handleNext();
+    if (isOpen && rightArrowWasPressed) handleNext();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modalIsOpen, rightArrowWasPressed]);
+  }, [isOpen, rightArrowWasPressed]);
 
   return (
-    <Wrapper isOpen={modalIsOpen}>
+    <Wrapper isOpen={isOpen} onOpened={focusClose}>
       {(() => {
         if (!record) return null;
 
@@ -110,7 +118,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
         return (
           <>
             <Header>
-              <Close onClick={closeModal} />
+              <Close ref={closeRef} onClick={closeModal} />
               <Title>
                 {title}
                 {year && <Year>({year})</Year>}
@@ -166,7 +174,7 @@ const yPadding = {
 /*
  *  layout
  */
-const Wrapper = styled(ReactstrapModal)``;
+const Wrapper: React.FC<ModalProps> = styled(ReactstrapModal)``;
 
 const Header = styled.div`
   padding-top ${yPadding.xs}px;
