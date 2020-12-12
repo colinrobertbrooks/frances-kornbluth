@@ -111,9 +111,6 @@ export const Slide: React.FC = ({ children }) => {
   );
 };
 
-/*
- *  slide
- */
 const slideInRight = keyframes`
   from {
     transform: translate3d(100%, 0, 0);
