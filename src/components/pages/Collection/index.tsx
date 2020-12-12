@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
 import { useCollectionContext } from '../../../contexts';
-import { getRems } from '../../../styles';
+import { getRems, media } from '../../../styles';
 import { styled, Page, Row, Col, Heading, Paragraph, Span } from '../shared';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
@@ -66,16 +66,18 @@ export const Collection: React.FC = () => {
               <SlideProvider>
                 <HeadingWrapper>
                   <Heading className="mb-0">Collection</Heading>
+                  <Count>
+                    {getCountText(collection.length, filteredCollection.length)}
+                  </Count>
+                </HeadingWrapper>
+                <SlideToggleWrapper>
                   <SlideToggle
                     openLabel="Open filters"
                     closeLabel="Close filters"
                   >
                     <FilterIcon />
                   </SlideToggle>
-                  <Count>
-                    {getCountText(collection.length, filteredCollection.length)}
-                  </Count>
-                </HeadingWrapper>
+                </SlideToggleWrapper>
                 <Slide closeLabel="Close filters">
                   <Filters
                     collection={collection}
@@ -115,6 +117,17 @@ const HeadingWrapper = styled.div`
   position: relative;
 `;
 
+const SlideToggleWrapper = styled.div`
+  position: absolute;
+  right: 15px;
+  top: 7px;
+
+  ${media.sm`
+    right: 0;
+    top: 14px;
+  `}
+`;
+
 const Count = styled(Span).attrs({ color: 'gray' })`
   font-size: ${getRems(14)};
   left: 4px;
@@ -123,5 +136,5 @@ const Count = styled(Span).attrs({ color: 'gray' })`
 `;
 
 const FilterIcon = styled(FilterSvg)`
-  height: ${getRems(22)};
+  height: ${getRems(20)};
 `;

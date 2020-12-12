@@ -177,11 +177,15 @@ export const SlideToggle: React.FC<ISlideToggleProps> = ({
 
 const ToggleElement = styled.button`
   ${unstyledButtonCSS};
-  color: ${colors.lightGray};
+  background-color: ${colors.white};
+  border: 1px solid ${colors.lightGray};
+  border-radius: 4px;
+  color: ${colors.darkGray};
+  padding: 3px 5px 5px 5px;
 
   &:hover,
   &:focus {
-    color: ${colors.darkGray};
+    border-color: ${colors.darkGray};
   }
 
   &:focus {
@@ -289,7 +293,8 @@ const SlideElement = styled.div.attrs({ role: 'dialog' })<{
   z-index: 999;
 
   ${media.md`
-    width: 320px;
+    width: 20vw;
+    min-width: 320px;
   `}
 
   // prevents react-select flicker on close
