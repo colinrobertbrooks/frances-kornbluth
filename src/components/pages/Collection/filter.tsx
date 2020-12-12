@@ -10,6 +10,7 @@ import { Label, Input } from '../../styled';
  *    - decade filter
  *    - tag filter
  *    - status filter
+ *    - reset method
  */
 
 /*
