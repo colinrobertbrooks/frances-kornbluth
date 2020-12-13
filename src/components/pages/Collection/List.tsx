@@ -19,6 +19,7 @@ import {
   listItemHeightConfig,
   listColConfig,
   HEADING_WRAPPER_HEIGHT_PX,
+  HEADING_WRAPPER_MARGIN_BOTTOM_PX,
   LIST_ITEM_MARGIN_BOTTOM_PX,
 } from './constants';
 
@@ -37,7 +38,10 @@ const getListColsPerRow = (windowSize: IWindowSize): number => {
 
 const getListDisplayHeight = (windowSize: IWindowSize): number => {
   const above =
-    HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX + HEADING_WRAPPER_HEIGHT_PX;
+    HEADER_HEIGHT_PX +
+    MAIN_PADDING_TOP_PX +
+    HEADING_WRAPPER_HEIGHT_PX +
+    HEADING_WRAPPER_MARGIN_BOTTOM_PX;
   return windowSize.height - above;
 };
 

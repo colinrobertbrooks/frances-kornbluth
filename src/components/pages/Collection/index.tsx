@@ -18,6 +18,7 @@ import { useFilterState, Filters } from './filter';
 import List from './List';
 import Modal from './Modal';
 import { FilterSvg } from '../../svg';
+import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
 
 /*
  *  TODO:
@@ -141,7 +142,7 @@ export const Collection: React.FC = () => {
 const HeadingWrapper = styled.div`
   align-items: center;
   display: flex;
-  margin-bottom: 28px; // mb-4 + mb-1
+  margin-bottom: ${HEADING_WRAPPER_MARGIN_BOTTOM_PX}px;
   position: relative;
 `;
 

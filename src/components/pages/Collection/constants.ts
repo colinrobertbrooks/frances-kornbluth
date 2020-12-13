@@ -18,6 +18,8 @@ export const listColConfig: MediaConfig = {
   xl: 3,
 };
 
-export const HEADING_WRAPPER_HEIGHT_PX = 76;
+export const HEADING_WRAPPER_HEIGHT_PX = 48;
+
+export const HEADING_WRAPPER_MARGIN_BOTTOM_PX = 36; // between mb-4 and mb-5
 
 export const LIST_ITEM_MARGIN_BOTTOM_PX = 16; // mb-3
