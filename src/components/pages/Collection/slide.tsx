@@ -232,7 +232,7 @@ export const Slide: React.FC<ISlideProps> = ({ closeLabel, children }) => {
           disabled={isClosing}
           onClick={close}
         />
-        {children}
+        {isOpening || isOpen ? children : null}
       </SlideElement>
     </FocusTrap>
   );
@@ -295,15 +295,6 @@ const SlideElement = styled.div.attrs({ role: 'dialog' })<{
   ${media.md`
     width: 20vw;
     min-width: 320px;
-  `}
-
-  // prevents react-select flicker on close
-  ${({ isClosing }) =>
-    isClosing &&
-    `
-      * {
-        display: none;
-      }
   `}
 `;
 
