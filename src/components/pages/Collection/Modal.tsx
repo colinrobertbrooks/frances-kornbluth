@@ -42,7 +42,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
    *  visibility
    */
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const closeModal = () => setRecordId(null);
+  const closeModal = () => setRecordId(undefined);
 
   useEffect(() => {
     // derive modal visibility based on record
@@ -54,7 +54,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
 
     // clear invalid recordId
     if (recordId && !recordIdIsValid) {
-      setRecordId(null);
+      setRecordId(undefined);
       // TODO: alert
     }
   }, [recordId, recordIdIsValid, setRecordId]);
