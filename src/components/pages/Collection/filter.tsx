@@ -4,6 +4,7 @@ import {
   Decade,
   MediumGroup,
   SizeGroup,
+  Tag,
   ICollectionRecord,
 } from '../../../types';
 import { unique } from '../../../utils';
@@ -11,7 +12,6 @@ import { FormGroup, Label, Input, Select, ISelectOption } from '../../styled';
 
 /*
  *  TODO:
- *    - tag filter
  *    - status filter
  *    - reset method
  */
@@ -25,12 +25,14 @@ type QueryTitle = string | null | undefined;
 type QueryMediums = (string | null)[] | null | undefined;
 type QuerySizes = (string | null)[] | null | undefined;
 type QueryDecades = (string | null)[] | null | undefined;
+type QueryTags = (string | null)[] | null | undefined;
 
 interface IQueryFilters {
   title: QueryTitle;
   mediums: QueryMediums;
   sizes: QuerySizes;
   decades: QueryDecades;
+  tags: QueryTags;
 }
 
 /*
@@ -40,7 +42,7 @@ const filterCollection = (
   collection: Collection,
   filters: Partial<IQueryFilters>
 ): Collection => {
-  const { title, mediums, sizes, decades } = filters;
+  const { title, mediums, sizes, decades, tags } = filters;
 
   return collection.filter((record) => {
     const booleans = [];
@@ -81,6 +83,18 @@ const filterCollection = (
       }
     }
 
+    if (tags?.length) {
+      const validTags = tags.filter((value) =>
+        Object.values(Tag).includes(value as Tag)
+      );
+
+      if (validTags.length) {
+        booleans.push(
+          validTags.every((tag) => record.tags.includes(tag as Tag))
+        );
+      }
+    }
+
     return booleans.every(Boolean);
   });
 };
@@ -97,10 +111,11 @@ interface IFilterProps {
   setSizes: (nextSizes: QuerySizes) => void;
   decades: QueryDecades;
   setDecades: (nextDecades: QuerySizes) => void;
+  tags: QueryTags;
+  setTags: (nextTags: QueryTags) => void;
 }
 
 interface IFilterState {
-  filters: IQueryFilters;
   filteredCollection: Collection;
   filterProps: IFilterProps;
 }
@@ -110,6 +125,7 @@ export const useFilterState = (collection: Collection): IFilterState => {
   const [mediums, setMediums] = useQueryParam('mediums', ArrayParam);
   const [sizes, setSizes] = useQueryParam('sizes', ArrayParam);
   const [decades, setDecades] = useQueryParam('decades', ArrayParam);
+  const [tags, setTags] = useQueryParam('tags', ArrayParam);
 
   const filters = useMemo(
     () => ({
@@ -117,8 +133,9 @@ export const useFilterState = (collection: Collection): IFilterState => {
       mediums,
       sizes,
       decades,
+      tags,
     }),
-    [title, mediums, sizes, decades]
+    [title, mediums, sizes, decades, tags]
   );
 
   const filteredCollection = useMemo(
@@ -127,7 +144,6 @@ export const useFilterState = (collection: Collection): IFilterState => {
   );
 
   return {
-    filters,
     filteredCollection,
     filterProps: {
       ...filters,
@@ -135,6 +151,7 @@ export const useFilterState = (collection: Collection): IFilterState => {
       setMediums,
       setSizes,
       setDecades,
+      setTags,
     },
   };
 };
@@ -142,17 +159,8 @@ export const useFilterState = (collection: Collection): IFilterState => {
 /*
  *  options
  */
-const getMediumOptions = (
-  collection: Collection,
-  filters: IQueryFilters
-): ISelectOption[] => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { mediums, ...restFilters } = filters;
-  const filteredValues = unique(
-    filterCollection(collection, restFilters).map(
-      (record) => record.mediumGroup
-    )
-  );
+const getMediumOptions = (records: Collection): ISelectOption[] => {
+  const filteredValues = unique(records.map((record) => record.mediumGroup));
   const allOptions = Object.entries(MediumGroup).map(([label, value]) => ({
     label,
     value,
@@ -160,15 +168,8 @@ const getMediumOptions = (
   return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
-const getSizeOptions = (
-  collection: Collection,
-  filters: IQueryFilters
-): ISelectOption[] => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { sizes, ...restFilters } = filters;
-  const filteredValues = unique(
-    filterCollection(collection, restFilters).map((record) => record.sizeGroup)
-  );
+const getSizeOptions = (records: Collection): ISelectOption[] => {
+  const filteredValues = unique(records.map((record) => record.sizeGroup));
   const allOptions = Object.entries(SizeGroup).map(([label, value]) => ({
     label,
     value,
@@ -176,16 +177,18 @@ const getSizeOptions = (
   return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
-const getDecadeOptions = (
-  collection: Collection,
-  filters: IQueryFilters
-): ISelectOption[] => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { decades, ...restFilters } = filters;
-  const filteredValues = unique(
-    filterCollection(collection, restFilters).map((record) => record.decade)
-  );
+const getDecadeOptions = (records: Collection): ISelectOption[] => {
+  const filteredValues = unique(records.map((record) => record.decade));
   const allOptions = Object.entries(Decade).map(([label, value]) => ({
+    label,
+    value,
+  }));
+  return allOptions.filter((option) => filteredValues.includes(option.value));
+};
+
+const getTagOptions = (records: Collection): ISelectOption[] => {
+  const filteredValues = unique(records.map((record) => record.tags).flat());
+  const allOptions = Object.entries(Tag).map(([label, value]) => ({
     label,
     value,
   }));
@@ -196,13 +199,11 @@ const getDecadeOptions = (
  *  component
  */
 interface IFiltersProps extends IFilterProps {
-  collection: Collection;
-  filters: IQueryFilters;
+  records: Collection;
 }
 
 export const Filters: React.FC<IFiltersProps> = ({
-  collection,
-  filters,
+  records,
   title,
   setTitle,
   mediums,
@@ -211,19 +212,13 @@ export const Filters: React.FC<IFiltersProps> = ({
   setSizes,
   decades,
   setDecades,
+  tags,
+  setTags,
 }) => {
-  const mediumOptions = useMemo(() => getMediumOptions(collection, filters), [
-    collection,
-    filters,
-  ]);
-  const sizeOptions = useMemo(() => getSizeOptions(collection, filters), [
-    collection,
-    filters,
-  ]);
-  const decadeOptions = useMemo(() => getDecadeOptions(collection, filters), [
-    collection,
-    filters,
-  ]);
+  const mediumOptions = useMemo(() => getMediumOptions(records), [records]);
+  const sizeOptions = useMemo(() => getSizeOptions(records), [records]);
+  const decadeOptions = useMemo(() => getDecadeOptions(records), [records]);
+  const tagOptions = useMemo(() => getTagOptions(records), [records]);
 
   return (
     <>
@@ -300,6 +295,27 @@ export const Filters: React.FC<IFiltersProps> = ({
           }
           onChange={(options: ISelectOption[]) =>
             setDecades(
+              options
+                ? options.map(({ value }: { value: string }) => value)
+                : []
+            )
+          }
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="tag-select">Tag</Label>
+        <Select
+          isMulti
+          id="tag-select"
+          placeholder="select tags"
+          options={tagOptions}
+          value={
+            tagOptions && tags
+              ? tagOptions.filter((option) => tags.includes(option.value))
+              : []
+          }
+          onChange={(options: ISelectOption[]) =>
+            setTags(
               options
                 ? options.map(({ value }: { value: string }) => value)
                 : []

@@ -115,7 +115,8 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
       {(() => {
         if (!record) return null;
 
-        const { title, year, minImgSrc, medium, dimensions } = record;
+        const { title, year, minImgSrc, medium, dimensions, tags } = record;
+        const alt = tags.length ? `${title} (${tags.join(', ')})` : title;
 
         return (
           <>
@@ -143,7 +144,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
               >
                 <NextIcon />
               </CarouselButton>
-              <Img src={minImgSrc} alt={title} />
+              <Img src={minImgSrc} alt={alt} />
             </Body>
             <Footer>
               <Sub>

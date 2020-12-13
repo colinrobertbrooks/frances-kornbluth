@@ -118,23 +118,31 @@ const List: React.FC<IListProps> = ({ records, onRecordClick, noRecords }) => {
           <Col md={12}>{noRecords}</Col>
         ) : (
           <>
-            {records.slice(0, listItemCount).map(({ id, title, minImgSrc }) => (
-              <Col
-                key={id}
-                xs={listColConfig.xs}
-                sm={listColConfig.sm}
-                md={listColConfig.md}
-                lg={listColConfig.lg}
-                xl={listColConfig.xl}
-              >
-                <ListItemButton
-                  aria-label={`${title} (Click for more details)`}
-                  onClick={() => onRecordClick(id)}
-                >
-                  <ListItemImg src={minImgSrc} alt={title} title={title} />
-                </ListItemButton>
-              </Col>
-            ))}
+            {records
+              .slice(0, listItemCount)
+              .map(({ id, title, minImgSrc, tags }) => {
+                const alt = tags.length
+                  ? `${title} (${tags.join(', ')})`
+                  : title;
+
+                return (
+                  <Col
+                    key={id}
+                    xs={listColConfig.xs}
+                    sm={listColConfig.sm}
+                    md={listColConfig.md}
+                    lg={listColConfig.lg}
+                    xl={listColConfig.xl}
+                  >
+                    <ListItemButton
+                      aria-label={`${title} (Click for more details)`}
+                      onClick={() => onRecordClick(id)}
+                    >
+                      <ListItemImg src={minImgSrc} alt={alt} title={title} />
+                    </ListItemButton>
+                  </Col>
+                );
+              })}
           </>
         )}
       </Row>

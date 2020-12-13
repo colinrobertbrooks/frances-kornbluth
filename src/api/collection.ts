@@ -4,7 +4,7 @@ import {
   ISerializedCollectionRecord,
   ICollectionRecord,
 } from '../types';
-import { deriveMediumGroup, deriveSizeGroup } from '../utils';
+import { deriveMediumGroup, deriveSizeGroup, generateTags } from '../utils';
 
 const deserializeCollection = (
   entry: ISerializedCollectionRecord[]
@@ -22,6 +22,7 @@ const deserializeCollection = (
         gsx$dimensions,
         gsx$status,
         gsx$holder,
+        ...gsx$rest
       }) => {
         const year = gsx$year.$t;
         const decade = gsx$decade.$t;
@@ -40,6 +41,7 @@ const deserializeCollection = (
           sizeGroup: deriveSizeGroup(dimensions),
           status: gsx$status.$t,
           holder: gsx$holder.$t || null,
+          tags: generateTags(gsx$rest),
         };
       }
     );

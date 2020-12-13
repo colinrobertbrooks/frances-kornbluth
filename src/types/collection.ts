@@ -39,6 +39,22 @@ export enum Status {
   Unknown = 'Unknown',
 }
 
+export enum Tag {
+  Abstract = 'Abstract',
+  'Black and White' = 'BlackAndWhite',
+  Color = 'Color',
+  'Dominican Republic' = 'DominicanRepublic',
+  Figure = 'Figure',
+  Landscape = 'Landscape',
+  Letter = 'Letter',
+  Monhegan = 'Monhegan',
+  Path = 'Path',
+  Representational = 'Representational',
+  Seascape = 'Seascape',
+  'Still Life' = 'StillLife',
+  Tondo = 'Tondo',
+}
+
 export interface ICollectionRecord {
   id: number;
   title: string;
@@ -51,6 +67,7 @@ export interface ICollectionRecord {
   sizeGroup: SizeGroup;
   status: Status;
   holder: string | null;
+  tags: Tag[];
 }
 
 type $T<T = string> = {
@@ -68,4 +85,17 @@ export interface ISerializedCollectionRecord {
   gsx$dimensions: $T;
   gsx$status: $T<Status>;
   gsx$holder: $T;
+  gsx$tagabstract: $T;
+  gsx$tagblackandwhite: $T;
+  gsx$tagcolor: $T;
+  gsx$tagdominicanrepublic: $T;
+  gsx$tagfigure: $T;
+  gsx$taglandscape: $T;
+  gsx$tagletter: $T;
+  gsx$tagmonhegan: $T;
+  gsx$tagpath: $T;
+  gsx$tagrepresentational: $T;
+  gsx$tagseascape: $T;
+  gsx$tagstilllife: $T;
+  gsx$tagtondo: $T;
 }

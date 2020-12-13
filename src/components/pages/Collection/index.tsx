@@ -40,9 +40,7 @@ export const Collection: React.FC = () => {
   /*
    *  filters
    */
-  const { filters, filteredCollection, filterProps } = useFilterState(
-    collection || []
-  );
+  const { filteredCollection, filterProps } = useFilterState(collection || []);
 
   /*
    *  modal
@@ -79,11 +77,7 @@ export const Collection: React.FC = () => {
                   </SlideToggle>
                 </SlideToggleWrapper>
                 <Slide closeLabel="Close filters">
-                  <Filters
-                    collection={collection}
-                    filters={filters}
-                    {...filterProps}
-                  />
+                  <Filters records={filteredCollection} {...filterProps} />
                 </Slide>
                 <List
                   records={filteredCollection}

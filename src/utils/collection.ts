@@ -1,4 +1,9 @@
-import { MediumGroup, SizeGroup } from '../types';
+import {
+  ISerializedCollectionRecord,
+  MediumGroup,
+  SizeGroup,
+  Tag,
+} from '../types';
 
 export const deriveMediumGroup = (medium: string): MediumGroup => {
   const lowercaseMedium = medium.toLowerCase();
@@ -45,4 +50,38 @@ export const deriveSizeGroup = (dimensions: string): SizeGroup => {
   if (area < 500) return SizeGroup.Medium;
   if (area < 1000) return SizeGroup.Large;
   return SizeGroup['Very Large'];
+};
+
+export const generateTags = ({
+  gsx$tagabstract,
+  gsx$tagblackandwhite,
+  gsx$tagcolor,
+  gsx$tagdominicanrepublic,
+  gsx$tagfigure,
+  gsx$taglandscape,
+  gsx$tagletter,
+  gsx$tagmonhegan,
+  gsx$tagpath,
+  gsx$tagrepresentational,
+  gsx$tagseascape,
+  gsx$tagstilllife,
+  gsx$tagtondo,
+}: Partial<ISerializedCollectionRecord>): Tag[] => {
+  const tags = [];
+
+  if (gsx$tagabstract?.$t) tags.push(Tag.Abstract);
+  if (gsx$tagblackandwhite?.$t) tags.push(Tag['Black and White']);
+  if (gsx$tagcolor?.$t) tags.push(Tag.Color);
+  if (gsx$tagdominicanrepublic?.$t) tags.push(Tag['Dominican Republic']);
+  if (gsx$tagfigure?.$t) tags.push(Tag.Figure);
+  if (gsx$taglandscape?.$t) tags.push(Tag.Landscape);
+  if (gsx$tagletter?.$t) tags.push(Tag.Letter);
+  if (gsx$tagmonhegan?.$t) tags.push(Tag.Monhegan);
+  if (gsx$tagpath?.$t) tags.push(Tag.Path);
+  if (gsx$tagrepresentational?.$t) tags.push(Tag.Representational);
+  if (gsx$tagseascape?.$t) tags.push(Tag.Seascape);
+  if (gsx$tagstilllife?.$t) tags.push(Tag['Still Life']);
+  if (gsx$tagtondo?.$t) tags.push(Tag.Tondo);
+
+  return tags;
 };
