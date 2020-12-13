@@ -23,7 +23,7 @@ import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
 /*
  *  TODO:
  *    - back to top
- *    - Add to collection link
+ *    - add to collection link
  */
 
 const checkIsOutsideClick = (event: any) => {

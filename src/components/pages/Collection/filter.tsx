@@ -21,6 +21,7 @@ import {
 
 /*
  *  TODO:
+ *    - disable vs. hide dead ends?
  *    - add counts to available select options
  *    - count on mobile (top right)
  */
