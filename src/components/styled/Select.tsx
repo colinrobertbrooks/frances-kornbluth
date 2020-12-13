@@ -84,6 +84,7 @@ export const Element = styled(ReactSelect).attrs({
 
     .react-select__option--is-selected,
     .react-select__option--is-selected:hover {
+      color: #333;
       background-color: ${colors.lightRed};
       font-weight: 600;
 
