@@ -28,10 +28,10 @@ import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
 
 const checkIsOutsideClick = (event: any) => {
   // prevents react select clear indicator from triggering slide outside click
-  const isReactSelectClearIndicatorSvg = event.target.parentElement.classList.contains(
+  const isReactSelectClearIndicatorSvg = event.target.parentElement?.classList.contains(
     'react-select__clear-indicator'
   );
-  const isReactSelectClearIndicatorSvgPath = event.target.parentElement.parentElement?.classList.contains(
+  const isReactSelectClearIndicatorSvgPath = event.target.parentElement?.parentElement?.classList.contains(
     'react-select__clear-indicator'
   );
   return !isReactSelectClearIndicatorSvg && !isReactSelectClearIndicatorSvgPath;
