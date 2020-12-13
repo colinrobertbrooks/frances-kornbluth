@@ -29,7 +29,7 @@ export const Select: React.FC<ISelectProps> = ({
   id,
   isSearchable = true,
   isClearable = false, // NOTE: triggers collection filters slide click outside
-  openMenuOnFocus = true,
+  openMenuOnFocus = false,
   tabSelectsValue = false,
   isMulti = false,
   ...restProps
