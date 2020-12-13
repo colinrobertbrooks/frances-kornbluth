@@ -4,6 +4,11 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 import { colors, typography } from '../../styles';
 
+export interface ISelectOption {
+  value: string;
+  label: string;
+}
+
 interface ISelectProps
   extends Pick<
     ReactSelectProps,

@@ -13,7 +13,7 @@ import { FilterSvg } from '../../svg';
 /*
  *  TODO:
  *    - back to top
- *    - indicate filters are applied
+ *    - indicate filters are applied?
  *    - reset filter button if no records
  */
 

@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import { useQueryParam, StringParam, ArrayParam } from 'use-query-params';
 import { MediumGroup, ICollectionRecord } from '../../../types';
-import { FormGroup, Label, Input, Select } from '../../styled';
+import { unique } from '../../../utils';
+import { FormGroup, Label, Input, Select, ISelectOption } from '../../styled';
 
 /*
  *  TODO:
@@ -10,11 +11,14 @@ import { FormGroup, Label, Input, Select } from '../../styled';
  *    - tag filter
  *    - status filter
  *    - reset method
+ *    - clear invalid filter query filters
  */
 
 /*
  *  types
  */
+type Collection = ICollectionRecord[];
+
 type QueryTitle = string | null | undefined;
 type QueryMediums = (string | null)[] | null | undefined;
 
@@ -27,9 +31,9 @@ interface IQueryFilters {
  *  method
  */
 const filterCollection = (
-  collection: ICollectionRecord[],
+  collection: Collection,
   filters: Partial<IQueryFilters>
-): ICollectionRecord[] => {
+): Collection => {
   const { title, mediums } = filters;
 
   return collection.filter((record) => {
@@ -61,13 +65,11 @@ interface IFilterProps {
 
 interface IFilterState {
   filters: IQueryFilters;
-  filteredCollection: ICollectionRecord[];
+  filteredCollection: Collection;
   filterProps: IFilterProps;
 }
 
-export const useFilterState = (
-  collection: ICollectionRecord[]
-): IFilterState => {
+export const useFilterState = (collection: Collection): IFilterState => {
   const [title, setTitle] = useQueryParam('title', StringParam);
   const [mediums, setMediums] = useQueryParam('mediums', ArrayParam);
 
@@ -91,18 +93,10 @@ export const useFilterState = (
 /*
  *  options
  */
-type SelectOption = {
-  value: string;
-  label: string;
-};
-
-// TODO: move to utils
-const unique = (arr: any[]) => arr.filter((v, i, a) => a.indexOf(v) === i);
-
 const getMediumOptions = (
-  collection: ICollectionRecord[],
+  collection: Collection,
   filters: IQueryFilters
-): SelectOption[] => {
+): ISelectOption[] => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { mediums, ...restFilters } = filters;
   const filteredValues = unique(
@@ -121,7 +115,7 @@ const getMediumOptions = (
  *  component
  */
 interface IFiltersProps extends IFilterProps {
-  collection: ICollectionRecord[];
+  collection: Collection;
   filters: IQueryFilters;
 }
 
@@ -162,7 +156,7 @@ export const Filters: React.FC<IFiltersProps> = ({
               ? mediumOptions.filter((option) => mediums.includes(option.value))
               : []
           }
-          onChange={(options: SelectOption[]) =>
+          onChange={(options: ISelectOption[]) =>
             setMediums(
               options
                 ? options.map(({ value }: { value: string }) => value)
