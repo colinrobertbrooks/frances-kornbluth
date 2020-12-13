@@ -46,7 +46,13 @@ const filterCollection = (
     }
 
     if (mediums?.length) {
-      booleans.push(mediums.includes(record.mediumGroup));
+      const validatedMediums = mediums.filter((value) =>
+        Object.values(MediumGroup).includes(value as MediumGroup)
+      );
+
+      if (validatedMediums.length) {
+        booleans.push(validatedMediums.includes(record.mediumGroup));
+      }
     }
 
     return booleans.every(Boolean);
