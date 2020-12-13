@@ -129,7 +129,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
             <Body>
               <CarouselButton
                 previous
-                aria-label="Go to previous artwork"
+                aria-label="Go to previous piece"
                 title="Previous"
                 onClick={handlePrevious}
               >
@@ -137,7 +137,7 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
               </CarouselButton>
               <CarouselButton
                 next
-                aria-label="Go to next artwork"
+                aria-label="Go to next piece"
                 title="Next"
                 onClick={handleNext}
               >
