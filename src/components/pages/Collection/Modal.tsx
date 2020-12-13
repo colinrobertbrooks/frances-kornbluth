@@ -18,8 +18,7 @@ import { styled, css } from '../shared';
 /*
  *  TODO:
  *    - available & inquire
- *    - index + 1 of records.length
- *    - return focus back to last open item on modal close
+ *    - count (bottom right)
  */
 
 type QueryId = number | null | undefined;

@@ -20,6 +20,12 @@ import {
 } from '../../styled';
 
 /*
+ *  TODO:
+ *    - optimize filters ux
+ *    - count on mobile (top right)
+ */
+
+/*
  *  types
  */
 type Collection = ICollectionRecord[];

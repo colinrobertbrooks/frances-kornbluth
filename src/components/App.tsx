@@ -22,7 +22,6 @@ import { Switch, Route, Url } from './router';
 /*
  *  TODO
  *    - gtm
- *    - lazy
  */
 
 const App: React.FC = () => (

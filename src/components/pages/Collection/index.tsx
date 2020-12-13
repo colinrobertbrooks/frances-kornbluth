@@ -22,8 +22,7 @@ import { FilterSvg } from '../../svg';
 /*
  *  TODO:
  *    - back to top
- *    - indicate filters are applied?
- *    - reset filter button if no records
+ *    - Add to collection link
  */
 
 const getCountText = (all: number, filtered: number): string => {
