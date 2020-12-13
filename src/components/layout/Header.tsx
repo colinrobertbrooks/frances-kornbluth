@@ -91,7 +91,11 @@ export const Header: React.FC = () => {
                 Artwork
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem onClick={() => alert('TODO')}>
+                <DropdownItem
+                  onClick={() => {
+                    window.location = (Url.AvailableArtworkPage as unknown) as Location;
+                  }}
+                >
                   Available Artwork
                 </DropdownItem>
                 <DropdownItem divider />

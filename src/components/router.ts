@@ -19,6 +19,7 @@ export enum Url {
   QuotesPage = '/quotes',
   VideosPage = '/videos',
   // artwork
+  AvailableArtworkPage = '/collection?status=Available',
   CollectionPage = '/collection',
   ReviewsPage = '/reviews',
   BooksPage = '/books',

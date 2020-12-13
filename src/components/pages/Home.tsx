@@ -64,7 +64,7 @@ export const Home: React.FC = () => (
               </Button>
             </Col>
             <Col sm={6} xl={4}>
-              <Button onClick={() => alert('TODO')} block>
+              <Button to={Url.AvailableArtworkPage} block>
                 Available Artwork
               </Button>
             </Col>
