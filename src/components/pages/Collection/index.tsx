@@ -2,7 +2,16 @@ import React, { useEffect } from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
 import { useCollectionContext } from '../../../contexts';
 import { getRems, media } from '../../../styles';
-import { styled, Page, Row, Col, Heading, Paragraph, Span } from '../shared';
+import {
+  styled,
+  Page,
+  Row,
+  Col,
+  Heading,
+  Paragraph,
+  Span,
+  OutlineButton,
+} from '../shared';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
@@ -40,7 +49,9 @@ export const Collection: React.FC = () => {
   /*
    *  filters
    */
-  const { filteredCollection, filterProps } = useFilterState(collection || []);
+  const { filteredCollection, filterProps, resetFilters } = useFilterState(
+    collection || []
+  );
 
   /*
    *  modal
@@ -77,7 +88,11 @@ export const Collection: React.FC = () => {
                   </SlideToggle>
                 </SlideToggleWrapper>
                 <Slide closeLabel="Close filters">
-                  <Filters records={filteredCollection} {...filterProps} />
+                  <Filters
+                    records={filteredCollection}
+                    reset={resetFilters}
+                    {...filterProps}
+                  />
                 </Slide>
                 <List
                   records={filteredCollection}
@@ -85,9 +100,14 @@ export const Collection: React.FC = () => {
                     setModalRecordId(nextModalRecordId)
                   }
                   noRecords={
-                    <Paragraph color="gray" className="text-center">
-                      No pieces matches your current filter selections.
-                    </Paragraph>
+                    <div className="text-center">
+                      <Paragraph color="gray" className="mt-2">
+                        No pieces matches your current filter selections.
+                      </Paragraph>
+                      <OutlineButton onClick={resetFilters}>
+                        Reset
+                      </OutlineButton>
+                    </div>
                   }
                 />
                 <Modal

@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import styled from 'styled-components';
 import { useQueryParam, StringParam, ArrayParam } from 'use-query-params';
 import {
   Decade,
@@ -9,12 +10,14 @@ import {
   ICollectionRecord,
 } from '../../../types';
 import { unique } from '../../../utils';
-import { FormGroup, Label, Input, Select, ISelectOption } from '../../styled';
-
-/*
- *  TODO:
- *    - reset method
- */
+import {
+  FormGroup,
+  Label,
+  Input,
+  Select,
+  ISelectOption,
+  OutlineButton,
+} from '../../styled';
 
 /*
  *  types
@@ -127,6 +130,7 @@ interface IFilterProps {
 interface IFilterState {
   filteredCollection: Collection;
   filterProps: IFilterProps;
+  resetFilters: () => void;
 }
 
 export const useFilterState = (collection: Collection): IFilterState => {
@@ -154,6 +158,15 @@ export const useFilterState = (collection: Collection): IFilterState => {
     [collection, filters]
   );
 
+  const resetFilters = () => {
+    setTitle(undefined);
+    setMediums(undefined);
+    setSizes(undefined);
+    setDecades(undefined);
+    setStatuses(undefined);
+    setTags(undefined);
+  };
+
   return {
     filteredCollection,
     filterProps: {
@@ -165,6 +178,7 @@ export const useFilterState = (collection: Collection): IFilterState => {
       setStatuses,
       setTags,
     },
+    resetFilters,
   };
 };
 
@@ -221,6 +235,7 @@ const getTagOptions = (records: Collection): ISelectOption[] => {
  */
 interface IFiltersProps extends IFilterProps {
   records: Collection;
+  reset: () => void;
 }
 
 export const Filters: React.FC<IFiltersProps> = ({
@@ -237,6 +252,7 @@ export const Filters: React.FC<IFiltersProps> = ({
   setStatuses,
   tags,
   setTags,
+  reset,
 }) => {
   const mediumOptions = useMemo(() => getMediumOptions(records), [records]);
   const sizeOptions = useMemo(() => getSizeOptions(records), [records]);
@@ -370,6 +386,15 @@ export const Filters: React.FC<IFiltersProps> = ({
           }
         />
       </FormGroup>
+      <ResetButtonWrapper>
+        <OutlineButton block onClick={reset}>
+          Reset
+        </OutlineButton>
+      </ResetButtonWrapper>
     </>
   );
 };
+
+const ResetButtonWrapper = styled.div`
+  margin-top: 40px;
+`;
