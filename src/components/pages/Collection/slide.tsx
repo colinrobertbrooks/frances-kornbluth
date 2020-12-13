@@ -47,8 +47,14 @@ const SlideContext = createContext<ISlideContext>({
   close: () => undefined,
 });
 
-export const SlideProvider: React.FC<{ lockBodyScrollWhenOpen?: boolean }> = ({
+interface ISlideProviderProps {
+  lockBodyScrollWhenOpen?: boolean;
+  checkIsOutsideClick?: (event: any) => boolean;
+}
+
+export const SlideProvider: React.FC<ISlideProviderProps> = ({
   lockBodyScrollWhenOpen = false,
+  checkIsOutsideClick,
   children,
 }) => {
   /*
@@ -102,9 +108,13 @@ export const SlideProvider: React.FC<{ lockBodyScrollWhenOpen?: boolean }> = ({
     setIsClosed(false);
   };
 
-  useOutsideClick(slideRef, () => {
-    if (isOpen) close(false);
-  });
+  useOutsideClick(
+    slideRef,
+    () => {
+      if (isOpen) close(false);
+    },
+    checkIsOutsideClick
+  );
 
   /*
    *  body scroll lock
@@ -168,7 +178,6 @@ export const SlideToggle: React.FC<ISlideToggleProps> = ({
       aria-label={label}
       title={label}
       onClick={toggle}
-      className="ml-2"
     >
       {children}
     </ToggleElement>

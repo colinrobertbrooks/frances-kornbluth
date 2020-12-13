@@ -25,6 +25,17 @@ import { FilterSvg } from '../../svg';
  *    - Add to collection link
  */
 
+const checkIsOutsideClick = (event: any) => {
+  // prevents react select clear indicator from triggering slide outside click
+  const isReactSelectClearIndicatorSvg = event.target.parentElement.classList.contains(
+    'react-select__clear-indicator'
+  );
+  const isReactSelectClearIndicatorSvgPath = event.target.parentElement.parentElement?.classList.contains(
+    'react-select__clear-indicator'
+  );
+  return !isReactSelectClearIndicatorSvg && !isReactSelectClearIndicatorSvgPath;
+};
+
 const getCountText = (all: number, filtered: number): string => {
   if (all === filtered) return `${all} pieces`;
   return `${filtered} of ${all} pieces`;
@@ -48,9 +59,12 @@ export const Collection: React.FC = () => {
   /*
    *  filters
    */
-  const { filteredCollection, filterProps, resetFilters } = useFilterState(
-    collection || []
-  );
+  const {
+    filters,
+    filteredCollection,
+    filterProps,
+    resetFilters,
+  } = useFilterState(collection || []);
 
   /*
    *  modal
@@ -71,7 +85,7 @@ export const Collection: React.FC = () => {
               );
 
             return (
-              <SlideProvider>
+              <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
                 <HeadingWrapper>
                   <Heading className="mb-0">Collection</Heading>
                   <Count>
@@ -88,7 +102,8 @@ export const Collection: React.FC = () => {
                 </SlideToggleWrapper>
                 <Slide closeLabel="Close filters">
                   <Filters
-                    records={filteredCollection}
+                    collection={collection}
+                    filters={filters}
                     reset={resetFilters}
                     {...filterProps}
                   />

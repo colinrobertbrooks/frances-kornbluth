@@ -21,7 +21,7 @@ import {
 
 /*
  *  TODO:
- *    - optimize filters ux
+ *    - add counts to available select options
  *    - count on mobile (top right)
  */
 
@@ -31,18 +31,18 @@ import {
 type Collection = ICollectionRecord[];
 
 type QueryTitle = string | null | undefined;
-type QueryMediums = (string | null)[] | null | undefined;
-type QuerySizes = (string | null)[] | null | undefined;
-type QueryDecades = (string | null)[] | null | undefined;
-type QueryStatuses = (string | null)[] | null | undefined;
+type QueryMedium = string | null | undefined;
+type QuerySize = string | null | undefined;
+type QueryDecade = string | null | undefined;
+type QueryStatus = string | null | undefined;
 type QueryTags = (string | null)[] | null | undefined;
 
 interface IQueryFilters {
   title: QueryTitle;
-  mediums: QueryMediums;
-  sizes: QuerySizes;
-  decades: QueryDecades;
-  statuses: QueryStatuses;
+  medium: QueryMedium;
+  size: QuerySize;
+  decade: QueryDecade;
+  status: QueryStatus;
   tags: QueryTags;
 }
 
@@ -53,7 +53,17 @@ const filterCollection = (
   collection: Collection,
   filters: Partial<IQueryFilters>
 ): Collection => {
-  const { title, mediums, sizes, decades, tags, statuses } = filters;
+  const { title, medium, size, decade, status, tags } = filters;
+
+  const mediumIsValid = Object.values(MediumGroup).includes(
+    medium as MediumGroup
+  );
+  const sizeIsValid = Object.values(SizeGroup).includes(size as SizeGroup);
+  const decadeIsValid = Object.values(Decade).includes(decade as Decade);
+  const statusIsValid = Object.values(Status).includes(status as Status);
+  const validTags = tags?.filter((value) =>
+    Object.values(Tag).includes(value as Tag)
+  );
 
   return collection.filter((record) => {
     const booleans = [];
@@ -64,51 +74,24 @@ const filterCollection = (
       );
     }
 
-    if (mediums?.length) {
-      const validMediums = mediums.filter((value) =>
-        Object.values(MediumGroup).includes(value as MediumGroup)
-      );
-      if (validMediums.length) {
-        booleans.push(validMediums.includes(record.mediumGroup));
-      }
+    if (mediumIsValid) {
+      booleans.push(medium === record.mediumGroup);
     }
 
-    if (sizes?.length) {
-      const validSizes = sizes.filter((value) =>
-        Object.values(SizeGroup).includes(value as SizeGroup)
-      );
-      if (validSizes.length) {
-        booleans.push(validSizes.includes(record.sizeGroup));
-      }
+    if (sizeIsValid) {
+      booleans.push(size === record.sizeGroup);
     }
 
-    if (decades?.length) {
-      const validDecades = decades.filter((value) =>
-        Object.values(Decade).includes(value as Decade)
-      );
-      if (validDecades.length) {
-        booleans.push(validDecades.includes(record.decade));
-      }
+    if (decadeIsValid) {
+      booleans.push(decade === record.decade);
     }
 
-    if (statuses?.length) {
-      const validStatuses = statuses.filter((value) =>
-        Object.values(Status).includes(value as Status)
-      );
-      if (validStatuses.length) {
-        booleans.push(validStatuses.includes(record.status));
-      }
+    if (statusIsValid) {
+      booleans.push(status === record.status);
     }
 
-    if (tags?.length) {
-      const validTags = tags.filter((value) =>
-        Object.values(Tag).includes(value as Tag)
-      );
-      if (validTags.length) {
-        booleans.push(
-          validTags.every((tag) => record.tags.includes(tag as Tag))
-        );
-      }
+    if (validTags?.length) {
+      booleans.push(validTags.every((tag) => record.tags.includes(tag as Tag)));
     }
 
     return booleans.every(Boolean);
@@ -121,19 +104,20 @@ const filterCollection = (
 interface IFilterProps {
   title: QueryTitle;
   setTitle: (nextTitle: QueryTitle) => void;
-  mediums: QueryMediums;
-  setMediums: (nextMediums: QueryMediums) => void;
-  sizes: QuerySizes;
-  setSizes: (nextSizes: QuerySizes) => void;
-  decades: QueryDecades;
-  setDecades: (nextDecades: QuerySizes) => void;
-  statuses: QueryStatuses;
-  setStatuses: (nextStatuses: QueryStatuses) => void;
+  medium: QueryMedium;
+  setMedium: (nextMedium: QueryMedium) => void;
+  size: QuerySize;
+  setSize: (nextSizes: QuerySize) => void;
+  decade: QueryDecade;
+  setDecade: (nextDecades: QuerySize) => void;
+  status: QueryStatus;
+  setStatus: (nextStatuses: QueryStatus) => void;
   tags: QueryTags;
   setTags: (nextTags: QueryTags) => void;
 }
 
 interface IFilterState {
+  filters: IQueryFilters;
   filteredCollection: Collection;
   filterProps: IFilterProps;
   resetFilters: () => void;
@@ -141,22 +125,22 @@ interface IFilterState {
 
 export const useFilterState = (collection: Collection): IFilterState => {
   const [title, setTitle] = useQueryParam('title', StringParam);
-  const [mediums, setMediums] = useQueryParam('mediums', ArrayParam);
-  const [sizes, setSizes] = useQueryParam('sizes', ArrayParam);
-  const [decades, setDecades] = useQueryParam('decades', ArrayParam);
-  const [statuses, setStatuses] = useQueryParam('statuses', ArrayParam);
+  const [medium, setMedium] = useQueryParam('medium', StringParam);
+  const [size, setSize] = useQueryParam('size', StringParam);
+  const [decade, setDecade] = useQueryParam('decade', StringParam);
+  const [status, setStatus] = useQueryParam('status', StringParam);
   const [tags, setTags] = useQueryParam('tags', ArrayParam);
 
   const filters = useMemo(
     () => ({
       title,
-      mediums,
-      sizes,
-      decades,
-      statuses,
+      medium,
+      size,
+      decade,
+      status,
       tags,
     }),
-    [title, mediums, sizes, decades, statuses, tags]
+    [title, medium, size, decade, status, tags]
   );
 
   const filteredCollection = useMemo(
@@ -166,22 +150,23 @@ export const useFilterState = (collection: Collection): IFilterState => {
 
   const resetFilters = () => {
     setTitle(undefined);
-    setMediums(undefined);
-    setSizes(undefined);
-    setDecades(undefined);
-    setStatuses(undefined);
+    setMedium(undefined);
+    setSize(undefined);
+    setDecade(undefined);
+    setStatus(undefined);
     setTags(undefined);
   };
 
   return {
+    filters,
     filteredCollection,
     filterProps: {
       ...filters,
       setTitle,
-      setMediums,
-      setSizes,
-      setDecades,
-      setStatuses,
+      setMedium,
+      setSize,
+      setDecade,
+      setStatus,
       setTags,
     },
     resetFilters,
@@ -191,80 +176,137 @@ export const useFilterState = (collection: Collection): IFilterState => {
 /*
  *  options
  */
-const getMediumOptions = (records: Collection): ISelectOption[] => {
-  const filteredValues = unique(records.map((record) => record.mediumGroup));
-  const allOptions = Object.entries(MediumGroup).map(([label, value]) => ({
+const getMediumOptions = (
+  collection: Collection,
+  filters: IQueryFilters
+): ISelectOption[] => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { medium, ...restFilters } = filters;
+  const refilteredCollection = filterCollection(collection, restFilters);
+  const availableValues = unique(
+    refilteredCollection.map((record) => record.mediumGroup)
+  );
+  return Object.entries(MediumGroup).map(([label, value]) => ({
     label,
     value,
+    isDisabled: !availableValues.includes(value),
   }));
-  return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
-const getSizeOptions = (records: Collection): ISelectOption[] => {
-  const filteredValues = unique(records.map((record) => record.sizeGroup));
-  const allOptions = Object.entries(SizeGroup).map(([label, value]) => ({
+const getSizeOptions = (
+  collection: Collection,
+  filters: IQueryFilters
+): ISelectOption[] => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { size, ...restFilters } = filters;
+  const refilteredCollection = filterCollection(collection, restFilters);
+  const availableValues = unique(refilteredCollection).map(
+    (record) => record.sizeGroup
+  );
+  return Object.entries(SizeGroup).map(([label, value]) => ({
     label,
     value,
+    isDisabled: !availableValues.includes(value),
   }));
-  return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
-const getDecadeOptions = (records: Collection): ISelectOption[] => {
-  const filteredValues = unique(records.map((record) => record.decade));
-  const allOptions = Object.entries(Decade).map(([label, value]) => ({
+const getDecadeOptions = (
+  collection: Collection,
+  filters: IQueryFilters
+): ISelectOption[] => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { decade, ...restFilters } = filters;
+  const refilteredCollection = filterCollection(collection, restFilters);
+  const availableValues = unique(
+    refilteredCollection.map((record) => record.decade)
+  );
+  return Object.entries(Decade).map(([label, value]) => ({
     label,
     value,
+    isDisabled: !availableValues.includes(value),
   }));
-  return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
-const getStatusOptions = (records: Collection): ISelectOption[] => {
-  const filteredValues = unique(records.map((record) => record.status).flat());
-  const allOptions = Object.entries(Status).map(([label, value]) => ({
+const getStatusOptions = (
+  collection: Collection,
+  filters: IQueryFilters
+): ISelectOption[] => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { status, ...restFilters } = filters;
+  const refilteredCollection = filterCollection(collection, restFilters);
+  const availableValues = unique(
+    refilteredCollection.map((record) => record.status)
+  );
+  return Object.entries(Status).map(([label, value]) => ({
     label,
     value,
+    isDisabled: !availableValues.includes(value),
   }));
-  return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
-const getTagOptions = (records: Collection): ISelectOption[] => {
-  const filteredValues = unique(records.map((record) => record.tags).flat());
-  const allOptions = Object.entries(Tag).map(([label, value]) => ({
+const getTagsOptions = (
+  collection: Collection,
+  filters: IQueryFilters
+): ISelectOption[] => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { tags, ...restFilters } = filters;
+  const refilteredCollection = filterCollection(collection, restFilters);
+  const availableValues = unique(
+    refilteredCollection.map((record) => record.tags).flat()
+  );
+  return Object.entries(Tag).map(([label, value]) => ({
     label,
     value,
+    isDisabled: !availableValues.includes(value),
   }));
-  return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
 /*
  *  component
  */
 interface IFiltersProps extends IFilterProps {
-  records: Collection;
+  collection: Collection;
+  filters: IQueryFilters;
   reset: () => void;
 }
 
 export const Filters: React.FC<IFiltersProps> = ({
-  records,
+  collection,
+  filters,
   title,
   setTitle,
-  mediums,
-  setMediums,
-  sizes,
-  setSizes,
-  decades,
-  setDecades,
-  statuses,
-  setStatuses,
+  medium,
+  setMedium,
+  size,
+  setSize,
+  decade,
+  setDecade,
+  status,
+  setStatus,
   tags,
   setTags,
   reset,
 }) => {
-  const mediumOptions = useMemo(() => getMediumOptions(records), [records]);
-  const sizeOptions = useMemo(() => getSizeOptions(records), [records]);
-  const decadeOptions = useMemo(() => getDecadeOptions(records), [records]);
-  const statusOptions = useMemo(() => getStatusOptions(records), [records]);
-  const tagOptions = useMemo(() => getTagOptions(records), [records]);
+  const mediumOptions = useMemo(() => getMediumOptions(collection, filters), [
+    collection,
+    filters,
+  ]);
+  const sizeOptions = useMemo(() => getSizeOptions(collection, filters), [
+    collection,
+    filters,
+  ]);
+  const decadeOptions = useMemo(() => getDecadeOptions(collection, filters), [
+    collection,
+    filters,
+  ]);
+  const statusOptions = useMemo(() => getStatusOptions(collection, filters), [
+    collection,
+    filters,
+  ]);
+  const tagsOptions = useMemo(() => getTagsOptions(collection, filters), [
+    collection,
+    filters,
+  ]);
 
   return (
     <>
@@ -288,107 +330,71 @@ export const Filters: React.FC<IFiltersProps> = ({
       <FormGroup>
         <Label htmlFor="medium-select">Medium</Label>
         <Select
-          isMulti
           id="medium-select"
           placeholder="select medium"
           options={mediumOptions}
           value={
-            mediumOptions && mediums
-              ? mediumOptions.filter((option) => mediums.includes(option.value))
-              : []
+            medium
+              ? mediumOptions.find((option) => medium === option.value)
+              : null
           }
-          onChange={(options: ISelectOption[]) =>
-            setMediums(
-              options
-                ? options.map(({ value }: { value: string }) => value)
-                : []
-            )
-          }
+          onChange={(option: ISelectOption) => setMedium(option?.value)}
         />
       </FormGroup>
       <FormGroup>
         <Label htmlFor="size-select">Size</Label>
         <Select
-          isMulti
           id="size-select"
           placeholder="select size"
           options={sizeOptions}
           value={
-            sizeOptions && sizes
-              ? sizeOptions.filter((option) => sizes.includes(option.value))
-              : []
+            size ? sizeOptions.find((option) => size === option.value) : null
           }
-          onChange={(options: ISelectOption[]) =>
-            setSizes(
-              options
-                ? options.map(({ value }: { value: string }) => value)
-                : []
-            )
-          }
+          onChange={(option: ISelectOption) => setSize(option?.value)}
         />
       </FormGroup>
       <FormGroup>
         <Label htmlFor="decade-select">Decade</Label>
         <Select
-          isMulti
           id="decade-select"
           placeholder="select decade"
           options={decadeOptions}
           value={
-            decadeOptions && decades
-              ? decadeOptions.filter((option) => decades.includes(option.value))
-              : []
+            decade
+              ? decadeOptions.find((option) => decade === option.value)
+              : null
           }
-          onChange={(options: ISelectOption[]) =>
-            setDecades(
-              options
-                ? options.map(({ value }: { value: string }) => value)
-                : []
-            )
-          }
+          onChange={(option: ISelectOption) => setDecade(option?.value)}
         />
       </FormGroup>
       <FormGroup>
         <Label htmlFor="status-select">Status</Label>
         <Select
-          isMulti
           id="status-select"
           placeholder="select status"
           options={statusOptions}
           value={
-            statusOptions && statuses
-              ? statusOptions.filter((option) =>
-                  statuses.includes(option.value)
-                )
-              : []
+            status
+              ? statusOptions.find((option) => status === option.value)
+              : null
           }
-          onChange={(options: ISelectOption[]) =>
-            setStatuses(
-              options
-                ? options.map(({ value }: { value: string }) => value)
-                : []
-            )
-          }
+          onChange={(option: ISelectOption) => setStatus(option?.value)}
         />
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="tag-select">Tags</Label>
+        <Label htmlFor="tag-multi-select">Tags</Label>
         <Select
           isMulti
-          id="tag-select"
+          id="tag-multi-select"
           placeholder="select tags"
-          options={tagOptions}
+          options={tagsOptions}
           value={
-            tagOptions && tags
-              ? tagOptions.filter((option) => tags.includes(option.value))
-              : []
+            tags
+              ? tagsOptions.filter((option) => tags.includes(option.value))
+              : null
           }
           onChange={(options: ISelectOption[]) =>
-            setTags(
-              options
-                ? options.map(({ value }: { value: string }) => value)
-                : []
-            )
+            setTags(options?.map(({ value }: ISelectOption) => value))
           }
         />
       </FormGroup>

@@ -7,6 +7,7 @@ import { colors, typography } from '../../styles';
 export interface ISelectOption {
   value: string;
   label: string;
+  isDisabled?: boolean;
 }
 
 interface ISelectProps
@@ -28,7 +29,7 @@ interface ISelectProps
 export const Select: React.FC<ISelectProps> = ({
   id,
   isSearchable = true,
-  isClearable = false, // NOTE: triggers collection filters slide click outside
+  isClearable = true,
   openMenuOnFocus = false,
   tabSelectsValue = false,
   isMulti = false,
@@ -91,6 +92,14 @@ export const Element = styled(ReactSelect).attrs({
       &.react-select__option--is-focused {
         background-color: ${lighten(0.03, colors.lightRed)};
       }
+    }
+
+    .react-select__option--is-disabled,
+    .react-select__option--is-disabled:hover,
+    .react-select__option--is-disabled:active {
+      background-color: ${colors.trueWhite};
+      cursor: not-allowed;
+      opacity: 0.7;
     }
   }
 `;
