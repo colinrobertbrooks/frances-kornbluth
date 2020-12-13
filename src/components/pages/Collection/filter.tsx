@@ -233,7 +233,14 @@ export const Filters: React.FC<IFiltersProps> = ({
           id="title-input"
           placeholder="enter title"
           value={title || ''}
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={(event) => {
+            const { value } = event.target;
+            if (!value) {
+              setTitle(undefined);
+            } else {
+              setTitle(value);
+            }
+          }}
           spellCheck={false}
         />
       </FormGroup>
