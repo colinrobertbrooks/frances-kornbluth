@@ -249,11 +249,9 @@ const getTagsOptions = (
   collection: Collection,
   filters: IQueryFilters
 ): ISelectOption[] => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { tags, ...restFilters } = filters;
-  const refilteredCollection = filterCollection(collection, restFilters);
+  const filteredCollection = filterCollection(collection, filters);
   const availableValues = unique(
-    refilteredCollection.map((record) => record.tags).flat()
+    filteredCollection.map((record) => record.tags).flat()
   );
   return Object.entries(Tag).map(([label, value]) => ({
     label,
