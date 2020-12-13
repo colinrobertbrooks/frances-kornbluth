@@ -3,6 +3,7 @@ import {
   IWindowSize,
   useWindowSize,
   useIntersectionObserver,
+  usePrevious,
 } from '../../../hooks';
 import {
   media,
@@ -102,12 +103,13 @@ const List: React.FC<IListProps> = ({ records, onRecordClick, noRecords }) => {
     }
   }, [initialListItemCount, listItemCount]);
 
+  const previousRecords = usePrevious(records);
   useEffect(() => {
-    // reset list item count if record count drops below list item count
-    if (records.length < listItemCount) {
+    // reset list item count if record count drops
+    if (previousRecords && records.length < previousRecords.length) {
       setListItemCount(initialListItemCount);
     }
-  }, [records, initialListItemCount, listItemCount]);
+  }, [previousRecords, records, initialListItemCount, listItemCount]);
 
   return (
     <>
