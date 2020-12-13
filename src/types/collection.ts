@@ -1,4 +1,5 @@
 export enum MediumGroup {
+  // name = value
   Acrylic = 'Acrylic',
   Charcoal = 'Charcoal',
   Collage = 'Collage',
@@ -8,6 +9,15 @@ export enum MediumGroup {
   Oil = 'Oil',
   Pastel = 'Pastel',
   Watercolor = 'Watercolor',
+  Unknown = 'Unknown',
+}
+
+export enum SizeGroup {
+  'Very Small' = 'VerySmall',
+  Small = 'Small',
+  Medium = 'Medium',
+  Large = 'Large',
+  'Very Large' = 'VeryLarge',
   Unknown = 'Unknown',
 }
 
@@ -26,6 +36,7 @@ export interface ICollectionRecord {
   medium: string;
   mediumGroup: MediumGroup;
   dimensions: string | null;
+  sizeGroup: SizeGroup;
   status: Status;
   holder: string | null;
 }

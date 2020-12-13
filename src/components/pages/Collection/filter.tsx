@@ -1,17 +1,15 @@
 import React, { useMemo } from 'react';
 import { useQueryParam, StringParam, ArrayParam } from 'use-query-params';
-import { MediumGroup, ICollectionRecord } from '../../../types';
+import { MediumGroup, SizeGroup, ICollectionRecord } from '../../../types';
 import { unique } from '../../../utils';
 import { FormGroup, Label, Input, Select, ISelectOption } from '../../styled';
 
 /*
  *  TODO:
- *    - size filter
  *    - decade filter
  *    - tag filter
  *    - status filter
  *    - reset method
- *    - clear invalid filter query filters
  */
 
 /*
@@ -21,10 +19,12 @@ type Collection = ICollectionRecord[];
 
 type QueryTitle = string | null | undefined;
 type QueryMediums = (string | null)[] | null | undefined;
+type QuerySizes = (string | null)[] | null | undefined;
 
 interface IQueryFilters {
   title: QueryTitle;
   mediums: QueryMediums;
+  sizes: QuerySizes;
 }
 
 /*
@@ -34,7 +34,7 @@ const filterCollection = (
   collection: Collection,
   filters: Partial<IQueryFilters>
 ): Collection => {
-  const { title, mediums } = filters;
+  const { title, mediums, sizes } = filters;
 
   return collection.filter((record) => {
     const booleans = [];
@@ -55,6 +55,16 @@ const filterCollection = (
       }
     }
 
+    if (sizes?.length) {
+      const validatedSizes = sizes.filter((value) =>
+        Object.values(SizeGroup).includes(value as SizeGroup)
+      );
+
+      if (validatedSizes.length) {
+        booleans.push(validatedSizes.includes(record.sizeGroup));
+      }
+    }
+
     return booleans.every(Boolean);
   });
 };
@@ -67,6 +77,8 @@ interface IFilterProps {
   setTitle: (nextTitle: QueryTitle) => void;
   mediums: QueryMediums;
   setMediums: (nextMediums: QueryMediums) => void;
+  sizes: QuerySizes;
+  setSizes: (nextSizes: QuerySizes) => void;
 }
 
 interface IFilterState {
@@ -78,10 +90,12 @@ interface IFilterState {
 export const useFilterState = (collection: Collection): IFilterState => {
   const [title, setTitle] = useQueryParam('title', StringParam);
   const [mediums, setMediums] = useQueryParam('mediums', ArrayParam);
+  const [sizes, setSizes] = useQueryParam('sizes', ArrayParam);
 
   const filters = {
     title,
     mediums,
+    sizes,
   };
 
   return {
@@ -92,6 +106,8 @@ export const useFilterState = (collection: Collection): IFilterState => {
       setTitle,
       mediums,
       setMediums,
+      sizes,
+      setSizes,
     },
   };
 };
@@ -117,6 +133,22 @@ const getMediumOptions = (
   return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
+const getSizeOptions = (
+  collection: Collection,
+  filters: IQueryFilters
+): ISelectOption[] => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { sizes, ...restFilters } = filters;
+  const filteredValues = unique(
+    filterCollection(collection, restFilters).map((record) => record.sizeGroup)
+  );
+  const allOptions = Object.entries(SizeGroup).map(([label, value]) => ({
+    label,
+    value,
+  }));
+  return allOptions.filter((option) => filteredValues.includes(option.value));
+};
+
 /*
  *  component
  */
@@ -132,8 +164,14 @@ export const Filters: React.FC<IFiltersProps> = ({
   setTitle,
   mediums,
   setMediums,
+  sizes,
+  setSizes,
 }) => {
   const mediumOptions = useMemo(() => getMediumOptions(collection, filters), [
+    collection,
+    filters,
+  ]);
+  const sizeOptions = useMemo(() => getSizeOptions(collection, filters), [
     collection,
     filters,
   ]);
@@ -164,6 +202,27 @@ export const Filters: React.FC<IFiltersProps> = ({
           }
           onChange={(options: ISelectOption[]) =>
             setMediums(
+              options
+                ? options.map(({ value }: { value: string }) => value)
+                : []
+            )
+          }
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="size-select">Size</Label>
+        <Select
+          isMulti
+          id="size-select"
+          placeholder="select sizes"
+          options={sizeOptions}
+          value={
+            sizeOptions && sizes
+              ? sizeOptions.filter((option) => sizes.includes(option.value))
+              : []
+          }
+          onChange={(options: ISelectOption[]) =>
+            setSizes(
               options
                 ? options.map(({ value }: { value: string }) => value)
                 : []

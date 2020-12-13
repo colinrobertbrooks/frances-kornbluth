@@ -3,6 +3,7 @@ import {
   ISerializedCollectionRecord,
   ICollectionRecord,
   MediumGroup,
+  SizeGroup,
 } from '../types';
 
 const deriveMediumGroup = (medium: string): MediumGroup => {
@@ -18,6 +19,38 @@ const deriveMediumGroup = (medium: string): MediumGroup => {
   if (lowercaseMedium.includes('pastel')) return MediumGroup.Pastel;
   if (lowercaseMedium.includes('watercolor')) return MediumGroup.Watercolor;
   return MediumGroup.Unknown;
+};
+
+const getArea = (dimensions: string): number => {
+  if (!dimensions.includes('"')) return 0;
+  const $dimensions = dimensions.replace('"', '').toLowerCase();
+
+  if ($dimensions.includes('x')) {
+    const [h, w] = $dimensions.split('x');
+    const area = Number(h) * Number(w);
+    if (Number.isNaN(area)) return 0;
+    return area;
+  }
+
+  if ($dimensions.includes('diameter')) {
+    const [h] = $dimensions.split('diameter');
+    const area = Number(h) * Number(h);
+    if (Number.isNaN(area)) return 0;
+    return area;
+  }
+
+  return 0;
+};
+
+const deriveSizeGroup = (dimensions: string): SizeGroup => {
+  const area = getArea(dimensions);
+
+  if (area === 0) return SizeGroup.Unknown;
+  if (area < 75) return SizeGroup['Very Small'];
+  if (area < 200) return SizeGroup.Small;
+  if (area < 500) return SizeGroup.Medium;
+  if (area < 1000) return SizeGroup.Large;
+  return SizeGroup['Very Large'];
 };
 
 const deserializeCollection = (
@@ -36,22 +69,20 @@ const deserializeCollection = (
         gsx$status,
         gsx$holder,
       }) => {
-        const title = gsx$title.$t || 'Untitled';
-        const year = gsx$year.$t ? Number(gsx$year.$t) : null;
         const medium = gsx$medium.$t;
-        const dimensions = gsx$dimensions.$t || 'finished size unavailable';
-        const holder = gsx$holder.$t || null;
+        const dimensions = gsx$dimensions.$t;
 
         return {
           id: Number(gsx$id.$t),
-          title,
+          title: gsx$title.$t || 'Untitled',
           minImgSrc: gsx$minimgsrc.$t,
-          year,
+          year: gsx$year.$t ? Number(gsx$year.$t) : null,
           medium,
           mediumGroup: deriveMediumGroup(medium),
-          dimensions,
+          dimensions: dimensions || 'finished size unavailable',
+          sizeGroup: deriveSizeGroup(dimensions),
           status: gsx$status.$t,
-          holder,
+          holder: gsx$holder.$t || null,
         };
       }
     );
