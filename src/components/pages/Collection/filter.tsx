@@ -5,6 +5,7 @@ import {
   MediumGroup,
   SizeGroup,
   Tag,
+  Status,
   ICollectionRecord,
 } from '../../../types';
 import { unique } from '../../../utils';
@@ -12,7 +13,6 @@ import { FormGroup, Label, Input, Select, ISelectOption } from '../../styled';
 
 /*
  *  TODO:
- *    - status filter
  *    - reset method
  */
 
@@ -26,6 +26,7 @@ type QueryMediums = (string | null)[] | null | undefined;
 type QuerySizes = (string | null)[] | null | undefined;
 type QueryDecades = (string | null)[] | null | undefined;
 type QueryTags = (string | null)[] | null | undefined;
+type QueryStatuses = (string | null)[] | null | undefined;
 
 interface IQueryFilters {
   title: QueryTitle;
@@ -33,6 +34,7 @@ interface IQueryFilters {
   sizes: QuerySizes;
   decades: QueryDecades;
   tags: QueryTags;
+  statuses: QueryStatuses;
 }
 
 /*
@@ -42,7 +44,7 @@ const filterCollection = (
   collection: Collection,
   filters: Partial<IQueryFilters>
 ): Collection => {
-  const { title, mediums, sizes, decades, tags } = filters;
+  const { title, mediums, sizes, decades, tags, statuses } = filters;
 
   return collection.filter((record) => {
     const booleans = [];
@@ -57,7 +59,6 @@ const filterCollection = (
       const validMediums = mediums.filter((value) =>
         Object.values(MediumGroup).includes(value as MediumGroup)
       );
-
       if (validMediums.length) {
         booleans.push(validMediums.includes(record.mediumGroup));
       }
@@ -67,7 +68,6 @@ const filterCollection = (
       const validSizes = sizes.filter((value) =>
         Object.values(SizeGroup).includes(value as SizeGroup)
       );
-
       if (validSizes.length) {
         booleans.push(validSizes.includes(record.sizeGroup));
       }
@@ -77,7 +77,6 @@ const filterCollection = (
       const validDecades = decades.filter((value) =>
         Object.values(Decade).includes(value as Decade)
       );
-
       if (validDecades.length) {
         booleans.push(validDecades.includes(record.decade));
       }
@@ -87,11 +86,19 @@ const filterCollection = (
       const validTags = tags.filter((value) =>
         Object.values(Tag).includes(value as Tag)
       );
-
       if (validTags.length) {
         booleans.push(
           validTags.every((tag) => record.tags.includes(tag as Tag))
         );
+      }
+    }
+
+    if (statuses?.length) {
+      const validStatuses = statuses.filter((value) =>
+        Object.values(Status).includes(value as Status)
+      );
+      if (validStatuses.length) {
+        booleans.push(validStatuses.includes(record.status));
       }
     }
 
@@ -113,6 +120,8 @@ interface IFilterProps {
   setDecades: (nextDecades: QuerySizes) => void;
   tags: QueryTags;
   setTags: (nextTags: QueryTags) => void;
+  statuses: QueryStatuses;
+  setStatuses: (nextStatuses: QueryStatuses) => void;
 }
 
 interface IFilterState {
@@ -126,6 +135,7 @@ export const useFilterState = (collection: Collection): IFilterState => {
   const [sizes, setSizes] = useQueryParam('sizes', ArrayParam);
   const [decades, setDecades] = useQueryParam('decades', ArrayParam);
   const [tags, setTags] = useQueryParam('tags', ArrayParam);
+  const [statuses, setStatuses] = useQueryParam('statuses', ArrayParam);
 
   const filters = useMemo(
     () => ({
@@ -134,8 +144,9 @@ export const useFilterState = (collection: Collection): IFilterState => {
       sizes,
       decades,
       tags,
+      statuses,
     }),
-    [title, mediums, sizes, decades, tags]
+    [title, mediums, sizes, decades, tags, statuses]
   );
 
   const filteredCollection = useMemo(
@@ -152,6 +163,7 @@ export const useFilterState = (collection: Collection): IFilterState => {
       setSizes,
       setDecades,
       setTags,
+      setStatuses,
     },
   };
 };
@@ -195,6 +207,15 @@ const getTagOptions = (records: Collection): ISelectOption[] => {
   return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
+const getStatusOptions = (records: Collection): ISelectOption[] => {
+  const filteredValues = unique(records.map((record) => record.status).flat());
+  const allOptions = Object.entries(Status).map(([label, value]) => ({
+    label,
+    value,
+  }));
+  return allOptions.filter((option) => filteredValues.includes(option.value));
+};
+
 /*
  *  component
  */
@@ -214,11 +235,14 @@ export const Filters: React.FC<IFiltersProps> = ({
   setDecades,
   tags,
   setTags,
+  statuses,
+  setStatuses,
 }) => {
   const mediumOptions = useMemo(() => getMediumOptions(records), [records]);
   const sizeOptions = useMemo(() => getSizeOptions(records), [records]);
   const decadeOptions = useMemo(() => getDecadeOptions(records), [records]);
   const tagOptions = useMemo(() => getTagOptions(records), [records]);
+  const statusOptions = useMemo(() => getStatusOptions(records), [records]);
 
   return (
     <>
@@ -244,7 +268,7 @@ export const Filters: React.FC<IFiltersProps> = ({
         <Select
           isMulti
           id="medium-select"
-          placeholder="select mediums"
+          placeholder="select medium"
           options={mediumOptions}
           value={
             mediumOptions && mediums
@@ -265,7 +289,7 @@ export const Filters: React.FC<IFiltersProps> = ({
         <Select
           isMulti
           id="size-select"
-          placeholder="select sizes"
+          placeholder="select size"
           options={sizeOptions}
           value={
             sizeOptions && sizes
@@ -286,7 +310,7 @@ export const Filters: React.FC<IFiltersProps> = ({
         <Select
           isMulti
           id="decade-select"
-          placeholder="select decades"
+          placeholder="select decade"
           options={decadeOptions}
           value={
             decadeOptions && decades
@@ -316,6 +340,29 @@ export const Filters: React.FC<IFiltersProps> = ({
           }
           onChange={(options: ISelectOption[]) =>
             setTags(
+              options
+                ? options.map(({ value }: { value: string }) => value)
+                : []
+            )
+          }
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="status-select">Status</Label>
+        <Select
+          isMulti
+          id="status-select"
+          placeholder="select status"
+          options={statusOptions}
+          value={
+            statusOptions && statuses
+              ? statusOptions.filter((option) =>
+                  statuses.includes(option.value)
+                )
+              : []
+          }
+          onChange={(options: ISelectOption[]) =>
+            setStatuses(
               options
                 ? options.map(({ value }: { value: string }) => value)
                 : []
