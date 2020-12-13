@@ -1,5 +1,9 @@
 import { adapter } from './utils';
-import { ISerializedCollectionRecord, ICollectionRecord } from '../types';
+import {
+  Decade,
+  ISerializedCollectionRecord,
+  ICollectionRecord,
+} from '../types';
 import { deriveMediumGroup, deriveSizeGroup } from '../utils';
 
 const deserializeCollection = (
@@ -13,11 +17,14 @@ const deserializeCollection = (
         gsx$title,
         gsx$minimgsrc,
         gsx$year,
+        gsx$decade,
         gsx$medium,
         gsx$dimensions,
         gsx$status,
         gsx$holder,
       }) => {
+        const year = gsx$year.$t;
+        const decade = gsx$decade.$t;
         const medium = gsx$medium.$t;
         const dimensions = gsx$dimensions.$t;
 
@@ -25,7 +32,8 @@ const deserializeCollection = (
           id: Number(gsx$id.$t),
           title: gsx$title.$t || 'Untitled',
           minImgSrc: gsx$minimgsrc.$t,
-          year: gsx$year.$t ? Number(gsx$year.$t) : null,
+          year: year ? Number(year) : null,
+          decade: decade ? (decade as Decade) : Decade.Unknown,
           medium,
           mediumGroup: deriveMediumGroup(medium),
           dimensions: dimensions || 'finished size unavailable',

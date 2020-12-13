@@ -1,5 +1,16 @@
+export enum Decade {
+  // label = value
+  '1950s' = '1950s',
+  '1960s' = '1960s',
+  '1970s' = '1970s',
+  '1980s' = '1980s',
+  '1990s' = '1990s',
+  '2000s' = '2000s',
+  '2010s' = '2010s',
+  Unknown = 'Unknown',
+}
+
 export enum MediumGroup {
-  // name = value
   Acrylic = 'Acrylic',
   Charcoal = 'Charcoal',
   Collage = 'Collage',
@@ -33,6 +44,7 @@ export interface ICollectionRecord {
   title: string;
   minImgSrc: string;
   year: number | null;
+  decade: Decade;
   medium: string;
   mediumGroup: MediumGroup;
   dimensions: string | null;
@@ -51,6 +63,7 @@ export interface ISerializedCollectionRecord {
   gsx$title: $T;
   gsx$minimgsrc: $T;
   gsx$year: $T;
+  gsx$decade: $T;
   gsx$medium: $T;
   gsx$dimensions: $T;
   gsx$status: $T<Status>;
