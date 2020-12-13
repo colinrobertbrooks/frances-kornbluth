@@ -4,8 +4,8 @@ import {
   Decade,
   MediumGroup,
   SizeGroup,
-  Tag,
   Status,
+  Tag,
   ICollectionRecord,
 } from '../../../types';
 import { unique } from '../../../utils';
@@ -25,16 +25,16 @@ type QueryTitle = string | null | undefined;
 type QueryMediums = (string | null)[] | null | undefined;
 type QuerySizes = (string | null)[] | null | undefined;
 type QueryDecades = (string | null)[] | null | undefined;
-type QueryTags = (string | null)[] | null | undefined;
 type QueryStatuses = (string | null)[] | null | undefined;
+type QueryTags = (string | null)[] | null | undefined;
 
 interface IQueryFilters {
   title: QueryTitle;
   mediums: QueryMediums;
   sizes: QuerySizes;
   decades: QueryDecades;
-  tags: QueryTags;
   statuses: QueryStatuses;
+  tags: QueryTags;
 }
 
 /*
@@ -82,6 +82,15 @@ const filterCollection = (
       }
     }
 
+    if (statuses?.length) {
+      const validStatuses = statuses.filter((value) =>
+        Object.values(Status).includes(value as Status)
+      );
+      if (validStatuses.length) {
+        booleans.push(validStatuses.includes(record.status));
+      }
+    }
+
     if (tags?.length) {
       const validTags = tags.filter((value) =>
         Object.values(Tag).includes(value as Tag)
@@ -90,15 +99,6 @@ const filterCollection = (
         booleans.push(
           validTags.every((tag) => record.tags.includes(tag as Tag))
         );
-      }
-    }
-
-    if (statuses?.length) {
-      const validStatuses = statuses.filter((value) =>
-        Object.values(Status).includes(value as Status)
-      );
-      if (validStatuses.length) {
-        booleans.push(validStatuses.includes(record.status));
       }
     }
 
@@ -118,10 +118,10 @@ interface IFilterProps {
   setSizes: (nextSizes: QuerySizes) => void;
   decades: QueryDecades;
   setDecades: (nextDecades: QuerySizes) => void;
-  tags: QueryTags;
-  setTags: (nextTags: QueryTags) => void;
   statuses: QueryStatuses;
   setStatuses: (nextStatuses: QueryStatuses) => void;
+  tags: QueryTags;
+  setTags: (nextTags: QueryTags) => void;
 }
 
 interface IFilterState {
@@ -134,8 +134,8 @@ export const useFilterState = (collection: Collection): IFilterState => {
   const [mediums, setMediums] = useQueryParam('mediums', ArrayParam);
   const [sizes, setSizes] = useQueryParam('sizes', ArrayParam);
   const [decades, setDecades] = useQueryParam('decades', ArrayParam);
-  const [tags, setTags] = useQueryParam('tags', ArrayParam);
   const [statuses, setStatuses] = useQueryParam('statuses', ArrayParam);
+  const [tags, setTags] = useQueryParam('tags', ArrayParam);
 
   const filters = useMemo(
     () => ({
@@ -143,10 +143,10 @@ export const useFilterState = (collection: Collection): IFilterState => {
       mediums,
       sizes,
       decades,
-      tags,
       statuses,
+      tags,
     }),
-    [title, mediums, sizes, decades, tags, statuses]
+    [title, mediums, sizes, decades, statuses, tags]
   );
 
   const filteredCollection = useMemo(
@@ -162,8 +162,8 @@ export const useFilterState = (collection: Collection): IFilterState => {
       setMediums,
       setSizes,
       setDecades,
-      setTags,
       setStatuses,
+      setTags,
     },
   };
 };
@@ -198,18 +198,18 @@ const getDecadeOptions = (records: Collection): ISelectOption[] => {
   return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
-const getTagOptions = (records: Collection): ISelectOption[] => {
-  const filteredValues = unique(records.map((record) => record.tags).flat());
-  const allOptions = Object.entries(Tag).map(([label, value]) => ({
+const getStatusOptions = (records: Collection): ISelectOption[] => {
+  const filteredValues = unique(records.map((record) => record.status).flat());
+  const allOptions = Object.entries(Status).map(([label, value]) => ({
     label,
     value,
   }));
   return allOptions.filter((option) => filteredValues.includes(option.value));
 };
 
-const getStatusOptions = (records: Collection): ISelectOption[] => {
-  const filteredValues = unique(records.map((record) => record.status).flat());
-  const allOptions = Object.entries(Status).map(([label, value]) => ({
+const getTagOptions = (records: Collection): ISelectOption[] => {
+  const filteredValues = unique(records.map((record) => record.tags).flat());
+  const allOptions = Object.entries(Tag).map(([label, value]) => ({
     label,
     value,
   }));
@@ -233,16 +233,16 @@ export const Filters: React.FC<IFiltersProps> = ({
   setSizes,
   decades,
   setDecades,
-  tags,
-  setTags,
   statuses,
   setStatuses,
+  tags,
+  setTags,
 }) => {
   const mediumOptions = useMemo(() => getMediumOptions(records), [records]);
   const sizeOptions = useMemo(() => getSizeOptions(records), [records]);
   const decadeOptions = useMemo(() => getDecadeOptions(records), [records]);
-  const tagOptions = useMemo(() => getTagOptions(records), [records]);
   const statusOptions = useMemo(() => getStatusOptions(records), [records]);
+  const tagOptions = useMemo(() => getTagOptions(records), [records]);
 
   return (
     <>
@@ -327,27 +327,6 @@ export const Filters: React.FC<IFiltersProps> = ({
         />
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="tag-select">Tag</Label>
-        <Select
-          isMulti
-          id="tag-select"
-          placeholder="select tags"
-          options={tagOptions}
-          value={
-            tagOptions && tags
-              ? tagOptions.filter((option) => tags.includes(option.value))
-              : []
-          }
-          onChange={(options: ISelectOption[]) =>
-            setTags(
-              options
-                ? options.map(({ value }: { value: string }) => value)
-                : []
-            )
-          }
-        />
-      </FormGroup>
-      <FormGroup>
         <Label htmlFor="status-select">Status</Label>
         <Select
           isMulti
@@ -363,6 +342,27 @@ export const Filters: React.FC<IFiltersProps> = ({
           }
           onChange={(options: ISelectOption[]) =>
             setStatuses(
+              options
+                ? options.map(({ value }: { value: string }) => value)
+                : []
+            )
+          }
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="tag-select">Tags</Label>
+        <Select
+          isMulti
+          id="tag-select"
+          placeholder="select tags"
+          options={tagOptions}
+          value={
+            tagOptions && tags
+              ? tagOptions.filter((option) => tags.includes(option.value))
+              : []
+          }
+          onChange={(options: ISelectOption[]) =>
+            setTags(
               options
                 ? options.map(({ value }: { value: string }) => value)
                 : []
