@@ -49,7 +49,7 @@ const SlideContext = createContext<ISlideContext>({
 
 interface ISlideProviderProps {
   lockBodyScrollWhenOpen?: boolean;
-  checkIsOutsideClick?: (event: any) => boolean;
+  checkIsOutsideClick?: (event: any) => boolean; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export const SlideProvider: React.FC<ISlideProviderProps> = ({

@@ -21,8 +21,8 @@ interface ISelectProps
     | 'tabSelectsValue'
   > {
   id: string;
-  value: any;
-  onChange: any;
+  value: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  onChange: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   isMulti?: boolean;
 }
 

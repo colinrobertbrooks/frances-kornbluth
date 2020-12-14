@@ -26,6 +26,7 @@ import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
  *    - add to collection link
  */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const checkIsOutsideClick = (event: any) => {
   // prevents react select clear indicator triggering slide outside click
   const isReactSelectClearIndicator = event.target.classList.contains(
