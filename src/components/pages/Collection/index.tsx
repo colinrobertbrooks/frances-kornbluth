@@ -157,9 +157,9 @@ const HeadingWrapper = styled.div`
 `;
 
 const HeadingCount = styled(Small).attrs({ color: 'gray' })`
-  left: 4px;
+  left: 8px;
   position: absolute;
-  top: 44px;
+  top: 48px;
 `;
 
 const SlideToggleWrapper = styled.div`
