@@ -290,7 +290,7 @@ const SlideElement = styled.div.attrs({ role: 'dialog' })<{
   overflow: scroll;
   overscroll-behavior: contain;
   position: fixed;
-  padding: 34px 8px;
+  padding: 48px 8px 24px 8px;
   right: 0;
   top: ${HEADER_HEIGHT_PX}px;
   width: 100vw;
@@ -319,7 +319,7 @@ const Close = styled.button.attrs<{ 'aria-label': string }>({
   ${unstyledButtonCSS};
   color: ${colors.lightGray};
   left: 0px;
-  padding: 2px 8px;
+  padding: 5px 10px;
   position: absolute;
   top: 0px;
 

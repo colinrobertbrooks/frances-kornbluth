@@ -44,7 +44,7 @@ const checkIsOutsideClick = (event: any) => {
   );
 };
 
-const getCountText = (all: number, filtered: number): string => {
+const getCount = (all: number, filtered: number): string => {
   if (all === filtered) return `${all} pieces`;
   return `${filtered} of ${all} pieces`;
 };
@@ -92,13 +92,16 @@ export const Collection: React.FC = () => {
                 </>
               );
 
+            const count = getCount(
+              collection.length,
+              filteredCollection.length
+            );
+
             return (
               <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
                 <HeadingWrapper>
                   <Heading className="mb-0">Collection</Heading>
-                  <Count>
-                    {getCountText(collection.length, filteredCollection.length)}
-                  </Count>
+                  <HeadingCount>{count}</HeadingCount>
                 </HeadingWrapper>
                 <SlideToggleWrapper>
                   <SlideToggle
@@ -109,6 +112,7 @@ export const Collection: React.FC = () => {
                   </SlideToggle>
                 </SlideToggleWrapper>
                 <Slide closeLabel="Close filters">
+                  <SlideCount>{count}</SlideCount>
                   <Filters
                     collection={collection}
                     filteredCollection={filteredCollection}
@@ -152,6 +156,12 @@ const HeadingWrapper = styled.div`
   position: relative;
 `;
 
+const HeadingCount = styled(Small).attrs({ color: 'lightGray' })`
+  left: 4px;
+  position: absolute;
+  top: 44px;
+`;
+
 const SlideToggleWrapper = styled.div`
   position: absolute;
   right: 15px;
@@ -163,13 +173,16 @@ const SlideToggleWrapper = styled.div`
   `}
 `;
 
-const Count = styled(Small).attrs({ color: 'gray' })`
-  font-size: ${getRems(14)};
-  left: 4px;
-  position: absolute;
-  top: 44px;
-`;
-
 const FilterIcon = styled(FilterSvg)`
   height: ${getRems(20)};
+`;
+
+const SlideCount = styled(Small).attrs({ color: 'lightGray' })`
+  position: absolute;
+  right: 10px;
+  top: 8px;
+
+  ${media.md`
+    display: none;
+  `}
 `;

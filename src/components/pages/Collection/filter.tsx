@@ -1,6 +1,7 @@
 import React, { useMemo, useRef } from 'react';
 import styled from 'styled-components';
 import { useQueryParam, StringParam, ArrayParam } from 'use-query-params';
+import { MIN_SCREEN_WIDTH_PX } from '../../../styles';
 import {
   Decade,
   MediumGroup,
@@ -24,7 +25,6 @@ import {
  *  TODO:
  *    - disable vs. hide dead ends?
  *    - add counts to available select options
- *    - count on mobile (top right)
  */
 
 /*
@@ -319,7 +319,7 @@ export const Filters: React.FC<IFiltersProps> = ({
   const titleInputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <>
+    <Wrapper>
       <FormGroup>
         <Label htmlFor="title-input">Title</Label>
         <ClearIndicatorWrapper>
@@ -425,9 +425,13 @@ export const Filters: React.FC<IFiltersProps> = ({
           Reset
         </OutlineButton>
       </ResetButtonWrapper>
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  min-width: ${MIN_SCREEN_WIDTH_PX}px;
+`;
 
 const ClearIndicatorWrapper = styled.div`
   position: relative;

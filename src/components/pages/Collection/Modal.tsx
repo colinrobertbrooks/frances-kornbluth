@@ -13,12 +13,11 @@ import {
 } from '../../../styles';
 import { ICollectionRecord, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
-import { styled, css, Span } from '../shared';
+import { styled, css, Span, Small } from '../shared';
 
 /*
  *  TODO:
  *    - available & inquire
- *    - count (bottom right)
  */
 
 type QueryId = number | null | undefined;
@@ -130,6 +129,9 @@ const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
         return (
           <>
             <Header>
+              <Count>
+                {getIdx(Number(id)) + 1} of {filteredCollection.length}
+              </Count>
               <Close ref={closeRef} onClick={closeModal} />
               <Title>
                 {title}
@@ -348,6 +350,22 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
 /*
  *  typography
  */
+const Count = styled(Small).attrs({ color: 'lightGray' })`
+  position: absolute;
+  left: 10px;
+  top: 5px;
+
+  ${media.md`
+    left: 12px;
+    top: 6px;
+  `}
+
+  ${media.lg`
+    left: 18px;
+    top: 14px;
+  `}
+`;
+
 const Year = styled.span`
   color: ${colors.gray};
 
