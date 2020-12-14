@@ -64,12 +64,16 @@ const getListItemCountIncrement = (windowSize: IWindowSize): number => {
  *  component
  */
 interface IListProps {
-  records: ICollectionRecord[];
-  onRecordClick: (id: number) => void;
-  noRecords: JSX.Element;
+  filteredCollection: ICollectionRecord[];
+  onItemClick: (id: number) => void;
+  noItems: JSX.Element;
 }
 
-const List: React.FC<IListProps> = ({ records, onRecordClick, noRecords }) => {
+const List: React.FC<IListProps> = ({
+  filteredCollection,
+  onItemClick,
+  noItems,
+}) => {
   /*
    *   infinite scrolling
    */
@@ -107,22 +111,30 @@ const List: React.FC<IListProps> = ({ records, onRecordClick, noRecords }) => {
     }
   }, [initialListItemCount, listItemCount]);
 
-  const previousRecords = usePrevious(records);
+  const previousFilteredCollection = usePrevious(filteredCollection);
   useEffect(() => {
     // reset list item count if record count drops
-    if (previousRecords && records.length < previousRecords.length) {
+    if (
+      previousFilteredCollection &&
+      filteredCollection.length < previousFilteredCollection.length
+    ) {
       setListItemCount(initialListItemCount);
     }
-  }, [previousRecords, records, initialListItemCount, listItemCount]);
+  }, [
+    previousFilteredCollection,
+    filteredCollection,
+    initialListItemCount,
+    listItemCount,
+  ]);
 
   return (
     <>
       <Row>
-        {!records.length ? (
-          <Col md={12}>{noRecords}</Col>
+        {!filteredCollection.length ? (
+          <Col md={12}>{noItems}</Col>
         ) : (
           <>
-            {records
+            {filteredCollection
               .slice(0, listItemCount)
               .map(({ id, title, minImgSrc, tags }) => {
                 const alt = tags.length
@@ -140,7 +152,7 @@ const List: React.FC<IListProps> = ({ records, onRecordClick, noRecords }) => {
                   >
                     <ListItemButton
                       aria-label={`${title} (Click for more details)`}
-                      onClick={() => onRecordClick(id)}
+                      onClick={() => onItemClick(id)}
                     >
                       <ListItemImg src={minImgSrc} alt={alt} title={title} />
                     </ListItemButton>

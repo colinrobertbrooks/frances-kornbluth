@@ -70,7 +70,7 @@ export const Collection: React.FC = () => {
   /*
    *  modal
    */
-  const [modalRecordId, setModalRecordId] = useQueryParam('id', NumberParam);
+  const [modalId, setModalId] = useQueryParam('id', NumberParam);
 
   return (
     <Page title="Collection">
@@ -104,17 +104,16 @@ export const Collection: React.FC = () => {
                 <Slide closeLabel="Close filters">
                   <Filters
                     collection={collection}
+                    filteredCollection={filteredCollection}
                     filters={filters}
                     reset={resetFilters}
                     {...filterProps}
                   />
                 </Slide>
                 <List
-                  records={filteredCollection}
-                  onRecordClick={(nextModalRecordId) =>
-                    setModalRecordId(nextModalRecordId)
-                  }
-                  noRecords={
+                  filteredCollection={filteredCollection}
+                  onItemClick={(nextmodalId) => setModalId(nextmodalId)}
+                  noItems={
                     <div className="text-center">
                       <Paragraph color="gray" className="mt-2">
                         No pieces matches your current filter selections.
@@ -126,9 +125,9 @@ export const Collection: React.FC = () => {
                   }
                 />
                 <Modal
-                  records={filteredCollection}
-                  recordId={modalRecordId}
-                  setRecordId={setModalRecordId}
+                  filteredCollection={filteredCollection}
+                  id={modalId}
+                  setId={setModalId}
                 />
               </SlideProvider>
             );

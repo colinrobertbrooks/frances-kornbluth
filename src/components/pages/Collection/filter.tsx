@@ -265,12 +265,14 @@ const getTagsOptions = (
  */
 interface IFiltersProps extends IFilterProps {
   collection: Collection;
+  filteredCollection: Collection;
   filters: IQueryFilters;
   reset: () => void;
 }
 
 export const Filters: React.FC<IFiltersProps> = ({
   collection,
+  // filteredCollection,
   filters,
   title,
   setTitle,

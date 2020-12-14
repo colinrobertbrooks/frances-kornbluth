@@ -24,39 +24,39 @@ import { styled, css } from '../shared';
 type QueryId = number | null | undefined;
 
 interface IModalProps {
-  records: ICollectionRecord[];
-  recordId: QueryId;
-  setRecordId: (nextRecordId: QueryId) => void;
+  filteredCollection: ICollectionRecord[];
+  id: QueryId;
+  setId: (nextId: QueryId) => void;
 }
 
-const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
+const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
   /*
    *  record
    */
   const { getCollectionRecord } = useCollectionContext();
-  const record = recordId ? getCollectionRecord(recordId) : undefined;
-  const recordIdIsValid = recordId && record;
+  const record = id ? getCollectionRecord(id) : undefined;
+  const idIsValid = id && record;
 
   /*
    *  visibility
    */
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const closeModal = () => setRecordId(undefined);
+  const closeModal = () => setId(undefined);
 
   useEffect(() => {
     // derive modal visibility based on record
-    if (recordId && recordIdIsValid) {
+    if (id && idIsValid) {
       setIsOpen(true);
     } else {
       setIsOpen(false);
     }
 
-    // clear invalid recordId
-    if (recordId && !recordIdIsValid) {
-      setRecordId(undefined);
+    // clear invalid id
+    if (id && !idIsValid) {
+      setId(undefined);
       // TODO: alert
     }
-  }, [recordId, recordIdIsValid, setRecordId]);
+  }, [id, idIsValid, setId]);
 
   const escapeWasPressed = useKeyPress('Escape');
   useEffect(() => {
@@ -75,25 +75,26 @@ const Modal: React.FC<IModalProps> = ({ records, recordId, setRecordId }) => {
   /*
    *  carousel
    */
-  const getIdx = (id: number) => records.map((r) => r.id).indexOf(id);
+  const getIdx = ($id: number) =>
+    filteredCollection.map((r) => r.id).indexOf($id);
 
   const handlePrevious = () => {
-    if (!recordId) return;
-    const idx = getIdx(recordId);
+    if (!id) return;
+    const idx = getIdx(id);
     if (idx === 0) {
-      setRecordId(records[records.length - 1].id);
+      setId(filteredCollection[filteredCollection.length - 1].id);
     } else {
-      setRecordId(records[idx - 1].id);
+      setId(filteredCollection[idx - 1].id);
     }
   };
 
   const handleNext = () => {
-    if (!recordId) return;
-    const idx = getIdx(recordId);
-    if (idx === records.length - 1) {
-      setRecordId(records[0].id);
+    if (!id) return;
+    const idx = getIdx(id);
+    if (idx === filteredCollection.length - 1) {
+      setId(filteredCollection[0].id);
     } else {
-      setRecordId(records[idx + 1].id);
+      setId(filteredCollection[idx + 1].id);
     }
   };
 
