@@ -15,11 +15,6 @@ import { ICollectionRecord, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
 import { styled, css, Span, Small, Button } from '../shared';
 
-/*
- *  TODO:
- *    - available
- */
-
 type QueryId = number | null | undefined;
 
 interface IModalProps {

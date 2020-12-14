@@ -12,8 +12,10 @@ import {
   focusOutlineCSS,
   HEADER_HEIGHT_PX,
   MAIN_PADDING_TOP_PX,
+  colors,
+  getRems,
 } from '../../../styles';
-import { ICollectionRecord } from '../../../types';
+import { ICollectionRecord, Status } from '../../../types';
 import { styled, Row, Col } from '../shared';
 import {
   listItemHeightConfig,
@@ -136,7 +138,7 @@ const List: React.FC<IListProps> = ({
           <>
             {filteredCollection
               .slice(0, listItemCount)
-              .map(({ id, title, minImgSrc, tags }) => {
+              .map(({ id, title, minImgSrc, tags, status }) => {
                 const alt = tags.length
                   ? `${title} (${tags.join(', ')})`
                   : title;
@@ -150,12 +152,15 @@ const List: React.FC<IListProps> = ({
                     lg={listColConfig.lg}
                     xl={listColConfig.xl}
                   >
-                    <ListItemButton
+                    <ModalTrigger
                       aria-label={`${title} (Click for more details)`}
                       onClick={() => onItemClick(id)}
                     >
-                      <ListItemImg src={minImgSrc} alt={alt} title={title} />
-                    </ListItemButton>
+                      <ImgWrapper>
+                        {status === Status.Available && <AvailablePill />}
+                        <Img src={minImgSrc} alt={alt} title={title} />
+                      </ImgWrapper>
+                    </ModalTrigger>
                   </Col>
                 );
               })}
@@ -167,7 +172,7 @@ const List: React.FC<IListProps> = ({
   );
 };
 
-const ListItemButton = styled.button`
+const ModalTrigger = styled.button`
   ${unstyledButtonCSS}
   border-radius: 4px;
   display: block;
@@ -184,7 +189,32 @@ const ListItemButton = styled.button`
   }
 `;
 
-const ListItemImg = styled.img.attrs({ className: 'img-thumbnail' })`
+const AvailablePill = styled.span.attrs({ children: 'Available' })`
+  background-color: ${colors.green};
+  border-radius: 4px;
+  color: ${colors.white};
+  display: none;
+  font-size: ${getRems(10)};
+  font-weight: 600;
+  left: 8px;
+  padding: 2px 4px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 8px;
+`;
+
+const ImgWrapper = styled.div`
+  position: relative;
+
+  &:hover,
+  &:focus {
+    ${AvailablePill} {
+      display: block;
+    }
+  }
+`;
+
+const Img = styled.img.attrs({ className: 'img-thumbnail' })`
   height: ${listItemHeightConfig.xs}px;
   transition: all 250ms;
 
