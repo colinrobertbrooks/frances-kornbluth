@@ -9,6 +9,7 @@ import {
   typography,
 } from '../../styles';
 import { Link, Url, ExternalLink, ExternalUrl } from '../router';
+import { Small } from '../styled';
 import { FacebookSvg, InstagramSvg } from '../svg';
 
 export const Footer: React.FC = () => (
@@ -50,7 +51,9 @@ export const Footer: React.FC = () => (
           </SocialLink>
         </Col>
         <Col lg={3} className="order-lg-first text-center text-lg-left">
-          <Copyright>© {new Date().getFullYear()} Frances Kornbluth</Copyright>
+          <Small color="lightGray">
+            © {new Date().getFullYear()} Frances Kornbluth
+          </Small>
         </Col>
       </Row>
     </Container>
@@ -120,8 +123,4 @@ const SocialLink = styled(ExternalLink)`
   ${linkCSS}
   cursor: pointer;
   display: inline-block;
-`;
-
-const Copyright = styled.small`
-  color: ${colors.lightGray};
 `;

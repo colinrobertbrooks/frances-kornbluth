@@ -9,7 +9,7 @@ import {
   Col,
   Heading,
   Paragraph,
-  Span,
+  Small,
   OutlineButton,
 } from '../shared';
 import Loader from './Loader';
@@ -163,7 +163,7 @@ const SlideToggleWrapper = styled.div`
   `}
 `;
 
-const Count = styled(Span).attrs({ color: 'gray' })`
+const Count = styled(Small).attrs({ color: 'gray' })`
   font-size: ${getRems(14)};
   left: 4px;
   position: absolute;

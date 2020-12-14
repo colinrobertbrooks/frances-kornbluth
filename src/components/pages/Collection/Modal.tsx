@@ -13,7 +13,7 @@ import {
 } from '../../../styles';
 import { ICollectionRecord, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
-import { styled, css } from '../shared';
+import { styled, css, Span } from '../shared';
 
 /*
  *  TODO:
@@ -365,10 +365,8 @@ const Title = styled.h2`
   margin: 0;
 `;
 
-const Sub = styled.span`
-  color: ${colors.gray};
+const Sub = styled(Span).attrs({ color: 'gray' })`
   display: block;
-  font-family: ${typography.default};
 `;
 
 interface IStatusProps {

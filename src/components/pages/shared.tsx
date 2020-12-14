@@ -9,6 +9,7 @@ import {
   Heading,
   Paragraph,
   Span,
+  Small,
   OutlineButton,
 } from '../styled';
 
@@ -33,7 +34,7 @@ export const Divider = styled(HorizontalRule).attrs({ className: 'my-4' })``;
 /*
  *  typography
  */
-export { Heading, Paragraph, Span };
+export { Heading, Paragraph, Span, Small };
 
 export const H1 = styled(Heading)`
   margin-bottom: 24px; // mb-4
@@ -72,10 +73,8 @@ const ArtworkTitle = styled.span`
   text-align: center;
 `;
 
-const ArtworkInfo = styled.span.attrs({ className: 'small' })`
-  color: ${colors.gray};
+const ArtworkInfo = styled(Small).attrs({ color: 'gray' })`
   display: block;
-  font-family: ${typography.default};
   text-align: center;
 `;
 

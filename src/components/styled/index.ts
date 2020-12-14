@@ -7,6 +7,7 @@ export * from './HorizontalRule';
 export * from './Heading';
 export * from './Paragraph';
 export * from './Span';
+export * from './Small';
 export * from './Label';
 
 // buttons

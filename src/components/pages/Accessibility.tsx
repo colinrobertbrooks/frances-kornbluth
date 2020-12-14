@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Url, ExternalLink } from '../router';
-import { Page, Row, Col, H1, Paragraph } from './shared';
+import { Page, Row, Col, H1, Paragraph, Small } from './shared';
 
 export const Accessibility: React.FC = () => (
   <Page title="Accessibility">
@@ -17,12 +17,11 @@ export const Accessibility: React.FC = () => (
           , or have any suggestions on accessibility improvements, please{' '}
           <Link to={Url.ContactPage}>contact us</Link>.
         </Paragraph>
-        <Paragraph color="gray" className="font-italic">
-          <small>
-            Late in life, Frances developed macular degeneration and utilized
-            assistive technology.
-          </small>
-        </Paragraph>
+
+        <Small color="gray" className="font-italic">
+          Late in life, Frances developed macular degeneration and utilized
+          assistive technology.
+        </Small>
       </Col>
     </Row>
   </Page>
