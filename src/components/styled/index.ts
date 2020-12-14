@@ -11,6 +11,7 @@ export * from './Small';
 export * from './Label';
 
 // buttons
+export * from './Button';
 export * from './OutlineButton';
 
 // forms

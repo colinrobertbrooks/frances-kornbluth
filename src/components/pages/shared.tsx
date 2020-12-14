@@ -10,6 +10,7 @@ import {
   Paragraph,
   Span,
   Small,
+  Button,
   OutlineButton,
 } from '../styled';
 
@@ -51,7 +52,7 @@ export const H2 = styled(Heading).attrs({
 /*
  *  buttons
  */
-export { OutlineButton };
+export { Button, OutlineButton };
 
 /*
  *  artwork

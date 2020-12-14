@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Button as BaseButton } from 'reactstrap';
 import { colors, typography } from '../../styles';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -35,7 +35,7 @@ interface IOutlineButtonProps {
   to?: string;
 }
 
-export const OutlineButton = styled(Button).attrs(
+export const OutlineButton = styled(BaseButton).attrs(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ theme, color = 'darkGray', to, ...restProps }) => ({
     color,

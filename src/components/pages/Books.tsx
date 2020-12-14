@@ -1,17 +1,7 @@
 import React from 'react';
 import { explorationsImg } from '../../assets/pages/books';
-import {
-  styled,
-  Page,
-  Row,
-  Col,
-  H1,
-  Paragraph,
-  Span,
-  OutlineButton,
-} from './shared';
+import { styled, Page, Row, Col, H1, Paragraph, Span, Button } from './shared';
 
-// TODO: style button
 export const Books: React.FC = () => (
   <Page title="Books">
     <Row>
@@ -38,12 +28,13 @@ export const Books: React.FC = () => (
               <i>$20 each plus shipping</i>
             </Paragraph>
             <div className="d-flex">
-              <OutlineButton
+              <Button
+                color="green"
                 className="d-block d-md-inline"
                 href="mailto:kornbluthart@gmail.com?subject=Explorations by Maire McArdle&body=I want to purchase a copy of Explorations by Maire McArdle."
               >
                 Purchase
-              </OutlineButton>
+              </Button>
             </div>
           </Col>
           <Col md={2} />

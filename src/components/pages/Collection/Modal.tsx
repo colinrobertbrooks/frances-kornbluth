@@ -13,7 +13,7 @@ import {
 } from '../../../styles';
 import { ICollectionRecord, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
-import { styled, css, Span, Small } from '../shared';
+import { styled, css, Span, Small, Button } from '../shared';
 
 /*
  *  TODO:
@@ -396,9 +396,9 @@ const CollectionStatus: React.FC<IStatusProps> = ({ record }) => {
     case Status.Available: {
       return (
         <div className="mt-2">
-          <button type="button" onClick={() => alert('TODO')}>
+          <Button color="green" onClick={() => alert('TODO')}>
             Inquire
-          </button>
+          </Button>
         </div>
       );
     }

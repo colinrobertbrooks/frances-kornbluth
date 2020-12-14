@@ -10,10 +10,9 @@ import {
   Heading,
   H2,
   Paragraph,
-  OutlineButton,
+  Button,
 } from './shared';
 
-// TODO: style button
 export const Contact: React.FC = () => (
   <Page title="Contact">
     <Row>
@@ -87,7 +86,7 @@ const StickyCol = styled(Col)`
   `}
 `;
 
-const ContactButton = styled(OutlineButton).attrs({
+const ContactButton = styled(Button).attrs({
   className: 'd-block d-md-inline my-2 mt-md-1',
   href: 'mailto:kornbluthart@gmail.com',
 })``;
