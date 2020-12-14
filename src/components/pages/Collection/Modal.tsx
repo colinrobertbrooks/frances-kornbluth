@@ -17,7 +17,7 @@ import { styled, css, Span, Small, Button } from '../shared';
 
 /*
  *  TODO:
- *    - available & inquire
+ *    - available
  */
 
 type QueryId = number | null | undefined;
@@ -251,6 +251,46 @@ const Footer = styled.div`
 `;
 
 /*
+ *  typography
+ */
+const Count = styled(Small).attrs({ color: 'gray' })`
+  position: absolute;
+  left: 10px;
+  top: 5px;
+
+  ${media.md`
+    left: 12px;
+    top: 6px;
+  `}
+
+  ${media.lg`
+    left: 18px;
+    top: 14px;
+  `}
+`;
+
+const Year = styled.span`
+  color: ${colors.gray};
+
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 6px;
+`;
+
+const Title = styled.h2`
+  color: ${colors.darkGray};
+  font-family: ${typography.default};
+  font-size: ${getRems(22)};
+  font-style: italic;
+  font-weight: 600;
+  margin: 0;
+`;
+
+const Sub = styled(Span).attrs({ color: 'gray' })`
+  display: block;
+`;
+
+/*
  *  close
  */
 const CloseIcon = styled(TimesSvg)`
@@ -348,44 +388,15 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
 `;
 
 /*
- *  typography
+ *  status
  */
-const Count = styled(Small).attrs({ color: 'gray' })`
-  position: absolute;
-  left: 10px;
-  top: 5px;
-
-  ${media.md`
-    left: 12px;
-    top: 6px;
-  `}
-
-  ${media.lg`
-    left: 18px;
-    top: 14px;
-  `}
-`;
-
-const Year = styled.span`
-  color: ${colors.gray};
-
-  font-style: normal;
-  font-weight: 400;
-  margin-left: 6px;
-`;
-
-const Title = styled.h2`
-  color: ${colors.darkGray};
-  font-family: ${typography.default};
-  font-size: ${getRems(22)};
-  font-style: italic;
-  font-weight: 600;
-  margin: 0;
-`;
-
-const Sub = styled(Span).attrs({ color: 'gray' })`
-  display: block;
-`;
+const makeInquireHref = (record: ICollectionRecord) => {
+  const { title, medium, dimensions, id } = record;
+  const mailto = 'kornbluthart@gmail.com';
+  const subject = `Inquiry: "${title}" (${medium}, ${dimensions})`;
+  const body = `I am interested in "${title}" (${medium}, ${dimensions}), which I found at franceskornbluth.com/collection?id=${id}. Please send more information.`;
+  return `mailto:${mailto}?&Subject=${subject}&body=${body}`;
+};
 
 interface IStatusProps {
   record: ICollectionRecord;
@@ -396,7 +407,12 @@ const CollectionStatus: React.FC<IStatusProps> = ({ record }) => {
     case Status.Available: {
       return (
         <div className="mt-2">
-          <Button color="green" onClick={() => alert('TODO')}>
+          <Button
+            color="green"
+            href={makeInquireHref(record)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Inquire
           </Button>
         </div>
