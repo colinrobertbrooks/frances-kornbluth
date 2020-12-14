@@ -350,7 +350,7 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
 /*
  *  typography
  */
-const Count = styled(Small).attrs({ color: 'lightGray' })`
+const Count = styled(Small).attrs({ color: 'gray' })`
   position: absolute;
   left: 10px;
   top: 5px;

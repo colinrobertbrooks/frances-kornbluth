@@ -156,7 +156,7 @@ const HeadingWrapper = styled.div`
   position: relative;
 `;
 
-const HeadingCount = styled(Small).attrs({ color: 'lightGray' })`
+const HeadingCount = styled(Small).attrs({ color: 'gray' })`
   left: 4px;
   position: absolute;
   top: 44px;
@@ -177,7 +177,7 @@ const FilterIcon = styled(FilterSvg)`
   height: ${getRems(20)};
 `;
 
-const SlideCount = styled(Small).attrs({ color: 'lightGray' })`
+const SlideCount = styled(Small).attrs({ color: 'gray' })`
   position: absolute;
   right: 10px;
   top: 8px;
