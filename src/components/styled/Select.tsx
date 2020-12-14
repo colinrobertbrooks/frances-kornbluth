@@ -65,6 +65,7 @@ export const Element = styled(ReactSelect).attrs({
   .react-select__multi-value__remove:hover {
     background-color: ${colors.lightRed};
     color: ${colors.red};
+    cursor: pointer;
   }
 
   .react-select__indicator-separator {
