@@ -90,7 +90,7 @@ const List: React.FC<IListProps> = ({
     initialListItemCount
   );
 
-  const listBottomTracker = useRef(null);
+  const listBottomTracker = useRef<HTMLDivElement>(null);
   const [listBottomTrackerIsVisible] = useIntersectionObserver({
     elementRef: listBottomTracker,
   });

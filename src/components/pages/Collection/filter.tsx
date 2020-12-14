@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import styled from 'styled-components';
 import { useQueryParam, StringParam, ArrayParam } from 'use-query-params';
 import {
@@ -14,6 +14,7 @@ import {
   FormGroup,
   Label,
   Input,
+  ClearIndicator,
   Select,
   ISelectOption,
   OutlineButton,
@@ -21,7 +22,6 @@ import {
 
 /*
  *  TODO:
- *    - title clear
  *    - disable vs. hide dead ends?
  *    - add counts to available select options
  *    - count on mobile (top right)
@@ -289,6 +289,9 @@ export const Filters: React.FC<IFiltersProps> = ({
   setTags,
   reset,
 }) => {
+  /*
+   *  options
+   */
   const mediumOptions = useMemo(() => getMediumOptions(collection, filters), [
     collection,
     filters,
@@ -310,24 +313,41 @@ export const Filters: React.FC<IFiltersProps> = ({
     filters,
   ]);
 
+  /*
+   *  focus management
+   */
+  const titleInputRef = useRef<HTMLInputElement>(null);
+
   return (
     <>
       <FormGroup>
         <Label htmlFor="title-input">Title</Label>
-        <Input
-          id="title-input"
-          placeholder="enter title"
-          value={title || ''}
-          onChange={(event) => {
-            const { value } = event.target;
-            if (!value) {
-              setTitle(undefined);
-            } else {
-              setTitle(value);
-            }
-          }}
-          spellCheck={false}
-        />
+        <ClearIndicatorWrapper>
+          <Input
+            innerRef={titleInputRef}
+            id="title-input"
+            placeholder="enter title"
+            value={title || ''}
+            onChange={(event) => {
+              const { value } = event.target;
+              if (!value) {
+                setTitle(undefined);
+              } else {
+                setTitle(value);
+              }
+            }}
+            spellCheck={false}
+          />
+          {title && (
+            <ClearIndicator
+              onClick={() => {
+                setTitle(undefined);
+                // replicate react-select's behavior on clear
+                if (titleInputRef.current) titleInputRef.current.focus();
+              }}
+            />
+          )}
+        </ClearIndicatorWrapper>
       </FormGroup>
       <FormGroup>
         <Label htmlFor="medium-select">Medium</Label>
@@ -408,6 +428,10 @@ export const Filters: React.FC<IFiltersProps> = ({
     </>
   );
 };
+
+const ClearIndicatorWrapper = styled.div`
+  position: relative;
+`;
 
 const ResetButtonWrapper = styled.div`
   margin-top: 40px;

@@ -14,5 +14,6 @@ export * from './OutlineButton';
 
 // forms
 export { FormGroup };
+export * from './ClearIndicator';
 export * from './Input';
 export * from './Select';
