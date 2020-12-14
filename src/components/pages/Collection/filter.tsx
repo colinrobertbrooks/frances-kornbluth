@@ -22,12 +22,6 @@ import {
 } from '../../styled';
 
 /*
- *  TODO:
- *    - disable vs. hide dead ends?
- *    - add counts to available select options
- */
-
-/*
  *  types
  */
 type Collection = ICollectionRecord[];
