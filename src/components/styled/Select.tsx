@@ -51,9 +51,8 @@ export const Element = styled(ReactSelect).attrs({
 })`
   font-family: ${typography.default};
 
-  .react-select__control,
-  .react-select__control:hover {
-    cursor: pointer;
+  .react-select__control {
+    cursor: text;
   }
 
   .react-select__control--is-focused,
@@ -70,6 +69,10 @@ export const Element = styled(ReactSelect).attrs({
 
   .react-select__indicator-separator {
     display: none;
+  }
+
+  .react-select__indicator {
+    cursor: pointer;
   }
 
   .react-select__menu {
