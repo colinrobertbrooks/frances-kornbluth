@@ -28,4 +28,8 @@ export const GlobalStyles = createGlobalStyle`
     max-width: none;
     min-width: 304px;
   }
+
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
 `;

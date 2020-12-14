@@ -68,10 +68,8 @@ const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
    *  focus management
    */
   const closeRef = useRef<HTMLButtonElement>(null);
-  const focusClose = () => {
-    if (closeRef.current) closeRef.current.focus();
-  };
-
+  const previousRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
   /*
    *  carousel
    */
@@ -100,18 +98,29 @@ const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
 
   const leftArrowWasPressed = useKeyPress('ArrowLeft');
   useEffect(() => {
-    if (isOpen && leftArrowWasPressed) handlePrevious();
+    if (isOpen && leftArrowWasPressed) {
+      if (previousRef.current) previousRef.current.focus();
+      handlePrevious();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, leftArrowWasPressed]);
 
   const rightArrowWasPressed = useKeyPress('ArrowRight');
   useEffect(() => {
-    if (isOpen && rightArrowWasPressed) handleNext();
+    if (isOpen && rightArrowWasPressed) {
+      if (nextRef.current) nextRef.current.focus();
+      handleNext();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, rightArrowWasPressed]);
 
   return (
-    <Wrapper isOpen={isOpen} onOpened={focusClose}>
+    <Wrapper
+      isOpen={isOpen}
+      onOpened={() => {
+        if (closeRef.current) closeRef.current.focus();
+      }}
+    >
       {(() => {
         if (!record) return null;
 
@@ -129,6 +138,7 @@ const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
             </Header>
             <Body>
               <CarouselButton
+                ref={previousRef}
                 previous
                 aria-label="Go to previous piece"
                 title="Previous"
@@ -137,6 +147,7 @@ const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
                 <PreviousIcon />
               </CarouselButton>
               <CarouselButton
+                ref={nextRef}
                 next
                 aria-label="Go to next piece"
                 title="Next"
