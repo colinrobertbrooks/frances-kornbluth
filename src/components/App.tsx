@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNotificationsContext } from '../contexts';
+import { usePrevious } from '../hooks';
 import { GlobalStyles } from '../styles';
 import { Header, Footer } from './layout';
 import {
@@ -19,11 +20,28 @@ import {
   Wanted,
   NotFound,
 } from './pages';
-import { Switch, Route, Url } from './router';
+import { Switch, Route, Url, useLocation } from './router';
 import { Notification } from './styled';
 
 const App: React.FC = () => {
-  const { notifications, dismissNotification } = useNotificationsContext();
+  const location = useLocation();
+  const previousLocation = usePrevious(location);
+  const {
+    notifications,
+    dismissNotification,
+    dismissNotifications,
+  } = useNotificationsContext();
+
+  useEffect(() => {
+    // dismiss notifications on route change
+    if (
+      notifications &&
+      previousLocation &&
+      location.pathname !== previousLocation?.pathname
+    ) {
+      dismissNotifications();
+    }
+  }, [notifications, location, previousLocation, dismissNotifications]);
 
   return (
     <>

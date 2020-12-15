@@ -6,6 +6,7 @@ interface INotificationsContext {
   addSuccessNotification: (text: string, heading?: string) => void;
   addErrorNotification: (text: string, heading?: string) => void;
   dismissNotification: (notification: INotification) => void;
+  dismissNotifications: () => void;
 }
 
 const NotificationsContext = React.createContext<INotificationsContext>({
@@ -13,6 +14,7 @@ const NotificationsContext = React.createContext<INotificationsContext>({
   addSuccessNotification: () => undefined,
   addErrorNotification: () => undefined,
   dismissNotification: () => undefined,
+  dismissNotifications: () => undefined,
 });
 
 export const NotificationsProvider: React.FC = ({ children }) => {
@@ -51,6 +53,8 @@ export const NotificationsProvider: React.FC = ({ children }) => {
       )
     );
 
+  const dismissNotifications = () => setNotifications([]);
+
   return (
     <NotificationsContext.Provider
       value={{
@@ -58,6 +62,7 @@ export const NotificationsProvider: React.FC = ({ children }) => {
         addSuccessNotification,
         addErrorNotification,
         dismissNotification,
+        dismissNotifications,
       }}
     >
       {children}

@@ -35,10 +35,10 @@ export const Header: React.FC = () => {
   const isArtistUrl = artistUrls.includes(location.pathname as Url);
   const isArtworkUrl = artworkUrls.includes(location.pathname as Url);
 
-  // close collapse on location change
+  // close collapse on route change
   const previousLocation = usePrevious(location);
   useEffect(() => {
-    if (collapseIsOpen && location !== previousLocation) {
+    if (collapseIsOpen && location.pathname !== previousLocation?.pathname) {
       setCollapseIsOpen(false);
     }
   }, [collapseIsOpen, location, previousLocation]);
