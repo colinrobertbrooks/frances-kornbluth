@@ -14,6 +14,7 @@ import {
   MAIN_PADDING_TOP_PX,
   colors,
   getRems,
+  typography,
 } from '../../../styles';
 import { ICollectionRecord, Status } from '../../../types';
 import { styled, Row, Col } from '../shared';
@@ -194,6 +195,7 @@ const AvailablePill = styled.span.attrs({ children: 'Available' })`
   border-radius: 4px;
   color: ${colors.white};
   display: none;
+  font-family: ${typography.default};
   font-size: ${getRems(10)};
   font-weight: 600;
   left: 8px;
