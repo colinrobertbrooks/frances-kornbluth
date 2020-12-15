@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
-import { useCollectionContext } from '../../../contexts';
+import {
+  useCollectionContext,
+  useNotificationsContext,
+} from '../../../contexts';
 import { getRems, media } from '../../../styles';
+import { Status } from '../../../types';
 import {
   styled,
   Page,
@@ -12,17 +16,16 @@ import {
   Small,
   OutlineButton,
 } from '../shared';
+import { FilterSvg } from '../../svg';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
 import List from './List';
 import Modal from './Modal';
-import { FilterSvg } from '../../svg';
 import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
 
 /*
  *  TODO:
- *    - back to top
  *    - add to collection link
  */
 
@@ -51,6 +54,8 @@ const getCount = (all: number, filtered: number): string => {
 };
 
 export const Collection: React.FC = () => {
+  const { addSuccessNotification } = useNotificationsContext();
+
   /*
    *  collection
    */
@@ -74,6 +79,13 @@ export const Collection: React.FC = () => {
     filterProps,
     resetFilters,
   } = useFilterState(collection || []);
+
+  useEffect(() => {
+    if (filters.status === Status.Available) {
+      addSuccessNotification('Viewing available artwork.', 'Available Artwork');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /*
    *  modal

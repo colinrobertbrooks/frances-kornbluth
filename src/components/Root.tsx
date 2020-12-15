@@ -1,15 +1,17 @@
 import React from 'react';
 import { QueryParamProvider } from 'use-query-params';
-import { CollectionProvider } from '../contexts';
+import { NotificationsProvider, CollectionProvider } from '../contexts';
 import { Router, Route } from './router';
 import App from './App';
 
 const Root: React.FC = () => (
   <Router>
     <QueryParamProvider ReactRouterRoute={Route}>
-      <CollectionProvider>
-        <App />
-      </CollectionProvider>
+      <NotificationsProvider>
+        <CollectionProvider>
+          <App />
+        </CollectionProvider>
+      </NotificationsProvider>
     </QueryParamProvider>
   </Router>
 );

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { getCollection } from '../api';
 import { ICollectionRecord } from '../types';
+import { useNotificationsContext } from './NotificationsContext';
 
 type Collection = ICollectionRecord[] | null;
 
@@ -23,6 +24,7 @@ export const CollectionProvider: React.FC = ({ children }) => {
     false
   );
   const [collection, setCollection] = useState<Collection>(null);
+  const { addErrorNotification } = useNotificationsContext();
 
   const loadCollection = async () => {
     try {
@@ -31,7 +33,7 @@ export const CollectionProvider: React.FC = ({ children }) => {
       setCollection(loadedCollection);
       setCollectionIsLoading(false);
     } catch (error) {
-      // TODO: alert
+      addErrorNotification('Error loading the collection.');
     }
   };
 

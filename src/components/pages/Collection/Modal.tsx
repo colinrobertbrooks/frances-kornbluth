@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal as ReactstrapModal, ModalProps } from 'reactstrap';
-import { useCollectionContext } from '../../../contexts';
+import {
+  useCollectionContext,
+  useNotificationsContext,
+} from '../../../contexts';
 import { useKeyPress } from '../../../hooks';
 import {
   media,
@@ -24,6 +27,8 @@ interface IModalProps {
 }
 
 const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
+  const { addErrorNotification } = useNotificationsContext();
+
   /*
    *  record
    */
@@ -48,9 +53,9 @@ const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
     // clear invalid id
     if (id && !idIsValid) {
       setId(undefined);
-      // TODO: alert
+      addErrorNotification('That piece of artwork was not found.', 'Not Found');
     }
-  }, [id, idIsValid, setId]);
+  }, [id, idIsValid, setId, addErrorNotification]);
 
   const escapeWasPressed = useKeyPress('Escape');
   useEffect(() => {
