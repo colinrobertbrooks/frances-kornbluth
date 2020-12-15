@@ -409,6 +409,7 @@ const CollectionStatus: React.FC<IStatusProps> = ({ record }) => {
         <div className="mt-2">
           <Button
             color="green"
+            className="d-block d-md-inline"
             href={makeInquireHref(record)}
             target="_blank"
             rel="noopener noreferrer"
