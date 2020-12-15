@@ -424,7 +424,7 @@ export const Filters: React.FC<IFiltersProps> = ({
 };
 
 const Wrapper = styled.div`
-  min-width: ${MIN_SCREEN_WIDTH_PX}px;
+  min-width: ${MIN_SCREEN_WIDTH_PX - 16}px;
 
   ${media.md`
     min-width: 0;
