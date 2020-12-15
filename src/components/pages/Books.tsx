@@ -1,5 +1,6 @@
 import React from 'react';
 import { explorationsImg } from '../../assets/pages/books';
+import { EMAIL_ADDRESS } from '../../constants';
 import { styled, Page, Row, Col, H1, Paragraph, Span, Button } from './shared';
 
 export const Books: React.FC = () => (
@@ -31,7 +32,7 @@ export const Books: React.FC = () => (
               <Button
                 color="green"
                 className="d-block d-md-inline"
-                href="mailto:kornbluthart@gmail.com?subject=Explorations by Maire McArdle&body=I want to purchase a copy of Explorations by Maire McArdle."
+                href={`mailto:${EMAIL_ADDRESS}?subject=Explorations by Maire McArdle&body=I want to purchase a copy of Explorations by Maire McArdle.`}
               >
                 Purchase
               </Button>

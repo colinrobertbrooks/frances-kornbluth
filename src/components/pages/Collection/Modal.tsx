@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal as ReactstrapModal, ModalProps } from 'reactstrap';
+import { EMAIL_ADDRESS } from '../../../constants';
 import {
   useCollectionContext,
   useNotificationsContext,
@@ -392,10 +393,9 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
  */
 const makeInquireHref = (record: ICollectionRecord) => {
   const { title, medium, dimensions, id } = record;
-  const mailto = 'kornbluthart@gmail.com';
   const subject = `Inquiry: "${title}" (${medium}, ${dimensions})`;
   const body = `I am interested in "${title}" (${medium}, ${dimensions}), which I found at franceskornbluth.com/collection?id=${id}. Please send more information.`;
-  return `mailto:${mailto}?&Subject=${subject}&body=${body}`;
+  return `mailto:${EMAIL_ADDRESS}?&Subject=${subject}&body=${body}`;
 };
 
 interface IStatusProps {

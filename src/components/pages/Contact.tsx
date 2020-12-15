@@ -1,4 +1,5 @@
 import React from 'react';
+import { EMAIL_ADDRESS } from '../../constants';
 import { media, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX } from '../../styles';
 import { Link, Url } from '../router';
 import {
@@ -88,5 +89,5 @@ const StickyCol = styled(Col)`
 
 const ContactButton = styled(Button).attrs({
   className: 'd-block d-md-inline my-2 mt-md-1',
-  href: 'mailto:kornbluthart@gmail.com',
+  href: `mailto:${EMAIL_ADDRESS}`,
 })``;
