@@ -28,15 +28,15 @@ export const Books: React.FC = () => (
             <Paragraph className="mb-3" color="darkGray">
               <i>$20 each plus shipping</i>
             </Paragraph>
-            <div className="d-flex">
-              <Button
-                color="green"
-                className="d-block d-md-inline"
-                href={`mailto:${EMAIL_ADDRESS}?subject=Explorations by Maire McArdle&body=I want to purchase a copy of Explorations by Maire McArdle.`}
-              >
-                Purchase
-              </Button>
-            </div>
+            <Button
+              color="green"
+              className="d-block d-md-inline"
+              href={`mailto:${EMAIL_ADDRESS}?subject="Explorations" by Maire McArdle&body=I want to purchase a copy of "Explorations" by Maire McArdle.`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Purchase
+            </Button>
           </Col>
           <Col md={2} />
         </Row>
