@@ -21,7 +21,7 @@ export const Home: React.FC = () => (
     <Container>
       <Row>
         <Col md={12}>
-          <SvgWrapper className="d-flex">
+          <SvgWrapper>
             <RocksSeaAndSkySvg fill={colors.brown} />
           </SvgWrapper>
         </Col>
@@ -97,15 +97,22 @@ const Background = styled.div`
 `;
 
 const SvgWrapper = styled.div`
-  min-height: 175px;
-
-  ${media.md`
-    min-height: 350px;
-  `}
+  margin-bottom: 48px;
 
   svg {
-    filter: drop-shadow(3px 3px 2px ${rgba(colors.white, 0.55)});
+    display: none;
   }
+
+  ${media.lg`
+    display: flex;
+    margin-bottom: 0;
+    min-height: 350px;
+
+    svg {
+      display: block;
+      filter: drop-shadow(3px 3px 2px ${rgba(colors.white, 0.55)});
+    }
+  `}
 `;
 
 const ArtImg = styled.img.attrs(({ alt }) => ({
