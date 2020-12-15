@@ -6,8 +6,9 @@ import React, {
   useState,
 } from 'react';
 import FocusTrap from 'focus-trap-react';
-import { useTimeout, useOutsideClick } from '../../../hooks';
+import { useTimeout, useOutsideClick, useWindowSize } from '../../../hooks';
 import {
+  breakpoints,
   colors,
   focusOutlineCSS,
   getRems,
@@ -48,12 +49,10 @@ const SlideContext = createContext<ISlideContext>({
 });
 
 interface ISlideProviderProps {
-  lockBodyScrollWhenOpen?: boolean;
   checkIsOutsideClick?: (event: any) => boolean; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export const SlideProvider: React.FC<ISlideProviderProps> = ({
-  lockBodyScrollWhenOpen = false,
   checkIsOutsideClick,
   children,
 }) => {
@@ -119,15 +118,17 @@ export const SlideProvider: React.FC<ISlideProviderProps> = ({
   /*
    *  body scroll lock
    */
+  const windowSize = useWindowSize();
   useLayoutEffect(() => {
-    if (lockBodyScrollWhenOpen) {
+    // lock body scroll when slide is full width
+    if (windowSize.width < breakpoints.md) {
       if (isOpen) {
         document.body.style.overflow = 'hidden';
       } else {
         document.body.style.overflow = '';
       }
     }
-  }, [lockBodyScrollWhenOpen, isOpen]);
+  }, [isOpen, windowSize]);
 
   return (
     <SlideContext.Provider
