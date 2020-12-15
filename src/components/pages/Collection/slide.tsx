@@ -89,7 +89,7 @@ export const SlideProvider: React.FC<ISlideProviderProps> = ({
       if (toggleRef.current && shouldFocusToggleOnClose)
         toggleRef.current.focus();
     },
-    isClosing ? SLIDE_ANIMATION_MS : null
+    isClosing ? SLIDE_ANIMATION_MS - 1 : null
   );
 
   const open = () => {
