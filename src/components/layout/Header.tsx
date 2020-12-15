@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { lighten, rgba } from 'polished';
 import {
@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { usePrevious } from '../../hooks';
 import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 import {
   Link,
@@ -24,7 +25,6 @@ import {
 import { FrancesKornbluthSvg } from '../svg';
 import { SkipToMain } from './skip-to-main';
 
-// close collapse on route change
 export const Header: React.FC = () => {
   // navbar toggler
   const [collapseIsOpen, setCollapseIsOpen] = useState<boolean>(false);
@@ -34,6 +34,14 @@ export const Header: React.FC = () => {
   const location = useLocation();
   const isArtistUrl = artistUrls.includes(location.pathname as Url);
   const isArtworkUrl = artworkUrls.includes(location.pathname as Url);
+
+  // close collapse on location change
+  const previousLocation = usePrevious(location);
+  useEffect(() => {
+    if (collapseIsOpen && location !== previousLocation) {
+      setCollapseIsOpen(false);
+    }
+  }, [collapseIsOpen, location, previousLocation]);
 
   return (
     <Element>
