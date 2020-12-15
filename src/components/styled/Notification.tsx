@@ -62,6 +62,14 @@ const Toast = styled(ReactstrapToast)`
 
 const ToastHeader = styled(ReactstrapToastHeader)`
   color: ${colors.darkGray};
+
+  .text-success {
+    color: ${colors.green} !important;
+  }
+
+  .text-danger {
+    color: ${colors.darkRed} !important;
+  }
 `;
 
 const ToastBody = styled(ReactstrapToastBody)`
