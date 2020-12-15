@@ -1,4 +1,4 @@
-/* eslint-disable default-case */
+/* eslint-disable default-case, consistent-return */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import {

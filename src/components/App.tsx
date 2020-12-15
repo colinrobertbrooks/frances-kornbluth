@@ -22,12 +22,6 @@ import {
 import { Switch, Route, Url } from './router';
 import { Notification } from './styled';
 
-/*
- *  TODO
- *    - meta
- *    - gtm
- */
-
 const App: React.FC = () => {
   const { notifications, dismissNotification } = useNotificationsContext();
 
