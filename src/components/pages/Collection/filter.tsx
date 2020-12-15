@@ -437,4 +437,5 @@ const ClearIndicatorWrapper = styled.div`
 
 const ResetButtonWrapper = styled.div`
   margin-top: 40px;
+  margin-bottom: 40px;
 `;
