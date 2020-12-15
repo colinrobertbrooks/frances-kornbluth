@@ -49,8 +49,6 @@ const getCount = (all: number, filtered: number): string => {
 };
 
 export const Collection: React.FC = () => {
-  const { addSuccessNotification } = useNotificationsContext();
-
   /*
    *  collection
    */
@@ -75,17 +73,22 @@ export const Collection: React.FC = () => {
     resetFilters,
   } = useFilterState(collection || []);
 
-  useEffect(() => {
-    if (filters.status === Status.Available) {
-      addSuccessNotification('Viewing available artwork.', 'Available Artwork');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   /*
    *  modal
    */
   const [modalId, setModalId] = useQueryParam('id', NumberParam);
+
+  /*
+   * notifications
+   */
+  const { addSuccessNotification } = useNotificationsContext();
+
+  useEffect(() => {
+    if (filters.status === Status.Available && !modalId) {
+      addSuccessNotification('Viewing available artwork.', 'Available Artwork');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Page title="Collection">
