@@ -1,7 +1,7 @@
 import React, { useMemo, useRef } from 'react';
 import styled from 'styled-components';
 import { useQueryParam, StringParam, ArrayParam } from 'use-query-params';
-import { MIN_SCREEN_WIDTH_PX } from '../../../styles';
+import { media, MIN_SCREEN_WIDTH_PX } from '../../../styles';
 import {
   Decade,
   MediumGroup,
@@ -425,6 +425,10 @@ export const Filters: React.FC<IFiltersProps> = ({
 
 const Wrapper = styled.div`
   min-width: ${MIN_SCREEN_WIDTH_PX}px;
+
+  ${media.md`
+    min-width: 0;
+  `}
 `;
 
 const ClearIndicatorWrapper = styled.div`
