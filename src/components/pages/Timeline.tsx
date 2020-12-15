@@ -475,7 +475,7 @@ const Milestone = ({
   year: string;
   event: string | React.ReactNode;
 }) => (
-  <div className="mb-1" style={{ maxWidth: 775 }}>
+  <div className="mb-2" style={{ maxWidth: 775 }}>
     <MilestoneYear>{year}:</MilestoneYear> <Span>{event}</Span>
   </div>
 );
