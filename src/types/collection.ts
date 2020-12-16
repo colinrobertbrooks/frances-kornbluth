@@ -68,6 +68,7 @@ export interface ICollectionRecord {
   status: Status;
   holder: string | null;
   tags: Tag[];
+  isNew: boolean;
 }
 
 type $T<T = string> = {
@@ -75,7 +76,6 @@ type $T<T = string> = {
 };
 
 export interface ISerializedCollectionRecord {
-  gsx$showonwebsite: $T;
   gsx$id: $T;
   gsx$title: $T;
   gsx$minimgsrc: $T;
@@ -98,4 +98,6 @@ export interface ISerializedCollectionRecord {
   gsx$tagseascape: $T;
   gsx$tagstilllife: $T;
   gsx$tagtondo: $T;
+  gsx$newonwebsite: $T;
+  gsx$showonwebsite: $T;
 }

@@ -126,7 +126,6 @@ export const Collection: React.FC = () => {
                   <SlideCount>{count}</SlideCount>
                   <Filters
                     collection={collection}
-                    filteredCollection={filteredCollection}
                     filters={filters}
                     reset={resetFilters}
                     {...filterProps}

@@ -1,6 +1,11 @@
 import React, { useMemo, useRef } from 'react';
 import styled from 'styled-components';
-import { useQueryParam, StringParam, ArrayParam } from 'use-query-params';
+import {
+  useQueryParam,
+  StringParam,
+  ArrayParam,
+  BooleanParam,
+} from 'use-query-params';
 import { media, MIN_SCREEN_WIDTH_PX } from '../../../styles';
 import {
   Decade,
@@ -32,6 +37,7 @@ type QuerySize = string | null | undefined;
 type QueryDecade = string | null | undefined;
 type QueryStatus = string | null | undefined;
 type QueryTags = (string | null)[] | null | undefined;
+type QueryIsNew = boolean | null | undefined;
 
 interface IQueryFilters {
   title: QueryTitle;
@@ -40,6 +46,7 @@ interface IQueryFilters {
   decade: QueryDecade;
   status: QueryStatus;
   tags: QueryTags;
+  isNew: QueryIsNew;
 }
 
 /*
@@ -49,7 +56,7 @@ const filterCollection = (
   collection: Collection,
   filters: Partial<IQueryFilters>
 ): Collection => {
-  const { title, medium, size, decade, status, tags } = filters;
+  const { title, medium, size, decade, status, tags, isNew } = filters;
 
   const mediumIsValid = Object.values(MediumGroup).includes(
     medium as MediumGroup
@@ -89,6 +96,9 @@ const filterCollection = (
     if (validTags?.length) {
       booleans.push(validTags.every((tag) => record.tags.includes(tag as Tag)));
     }
+    if (isNew) {
+      booleans.push(!!record.isNew);
+    }
 
     return booleans.every(Boolean);
   });
@@ -126,6 +136,7 @@ export const useFilterState = (collection: Collection): IFilterState => {
   const [decade, setDecade] = useQueryParam('decade', StringParam);
   const [status, setStatus] = useQueryParam('status', StringParam);
   const [tags, setTags] = useQueryParam('tags', ArrayParam);
+  const [isNew, setIsNew] = useQueryParam('isNew', BooleanParam);
 
   const filters = useMemo(
     () => ({
@@ -135,8 +146,9 @@ export const useFilterState = (collection: Collection): IFilterState => {
       decade,
       status,
       tags,
+      isNew,
     }),
-    [title, medium, size, decade, status, tags]
+    [title, medium, size, decade, status, tags, isNew]
   );
 
   const filteredCollection = useMemo(
@@ -151,6 +163,7 @@ export const useFilterState = (collection: Collection): IFilterState => {
     setDecade(undefined);
     setStatus(undefined);
     setTags(undefined);
+    setIsNew(undefined);
   };
 
   return {
@@ -260,14 +273,12 @@ const getTagsOptions = (
  */
 interface IFiltersProps extends IFilterProps {
   collection: Collection;
-  filteredCollection: Collection;
   filters: IQueryFilters;
   reset: () => void;
 }
 
 export const Filters: React.FC<IFiltersProps> = ({
   collection,
-  // filteredCollection,
   filters,
   title,
   setTitle,
