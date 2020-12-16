@@ -66,6 +66,7 @@ export const generateTags = ({
   gsx$tagseascape,
   gsx$tagstilllife,
   gsx$tagtondo,
+  gsx$tagtrees,
 }: Partial<ISerializedCollectionRecord>): Tag[] => {
   const tags = [];
 
@@ -82,6 +83,7 @@ export const generateTags = ({
   if (gsx$tagseascape?.$t) tags.push(Tag.Seascape);
   if (gsx$tagstilllife?.$t) tags.push(Tag['Still Life']);
   if (gsx$tagtondo?.$t) tags.push(Tag.Tondo);
+  if (gsx$tagtrees?.$t) tags.push(Tag.Trees);
 
   return tags;
 };
