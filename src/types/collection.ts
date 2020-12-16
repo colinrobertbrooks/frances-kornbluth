@@ -53,6 +53,7 @@ export enum Tag {
   Seascape = 'Seascape',
   'Still Life' = 'StillLife',
   Tondo = 'Tondo',
+  Trees = 'Trees',
 }
 
 export interface ICollectionRecord {
@@ -98,6 +99,7 @@ export interface ISerializedCollectionRecord {
   gsx$tagseascape: $T;
   gsx$tagstilllife: $T;
   gsx$tagtondo: $T;
+  gsx$tagtrees: $T;
   gsx$newonwebsite: $T;
   gsx$showonwebsite: $T;
 }
