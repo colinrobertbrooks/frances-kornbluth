@@ -9,7 +9,6 @@ import { useKeyPress } from '../../../hooks';
 import {
   media,
   focusOutlineCSS,
-  HEADER_HEIGHT_PX,
   unstyledButtonCSS,
   getRems,
   colors,
