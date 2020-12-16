@@ -22,6 +22,7 @@ const deserializeCollection = (
         gsx$dimensions,
         gsx$status,
         gsx$holder,
+        gsx$newonwebsite,
         ...gsx$rest
       }) => {
         const year = gsx$year.$t;
@@ -42,6 +43,7 @@ const deserializeCollection = (
           status: gsx$status.$t,
           holder: gsx$holder.$t || null,
           tags: generateTags(gsx$rest),
+          isNew: !!gsx$newonwebsite.$t,
         };
       }
     );
