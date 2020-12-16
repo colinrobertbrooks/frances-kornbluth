@@ -384,8 +384,16 @@ const CarouselButton = styled.button<{ previous?: boolean; next?: boolean }>`
 const Img = styled.img.attrs({ className: 'img-thumbnail' })`
   display: block;
   margin: 0 auto;
-  max-height: calc(100vh - ${HEADER_HEIGHT_PX + 200}px);
+  max-height: 50vh;
   user-select: none;
+
+  ${media.md`
+    max-height: 60vh;
+  `}
+
+  ${media.lg`
+    max-height: 70vh;
+  `}
 `;
 
 /*
