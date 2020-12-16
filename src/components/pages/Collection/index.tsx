@@ -4,7 +4,12 @@ import {
   useCollectionContext,
   useNotificationsContext,
 } from '../../../contexts';
-import { getRems, media } from '../../../styles';
+import {
+  getRems,
+  HEADER_HEIGHT_PX,
+  MAIN_PADDING_TOP_PX,
+  media,
+} from '../../../styles';
 import { Status } from '../../../types';
 import { FilterSvg } from '../../svg';
 import {
@@ -97,10 +102,10 @@ export const Collection: React.FC = () => {
           {(() => {
             if (collectionIsLoading || !collection)
               return (
-                <>
+                <LoadingWrapper>
                   <Heading className="mb-4">Collection</Heading>
                   <Loader />
-                </>
+                </LoadingWrapper>
               );
 
             const count = getCount(
@@ -158,6 +163,14 @@ export const Collection: React.FC = () => {
     </Page>
   );
 };
+
+const LoadingWrapper = styled.div`
+  min-height: calc(100vh - ${HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX}px);
+
+  ${media.lg`
+    min-height: 0;
+  `}
+`;
 
 const HeadingWrapper = styled.div`
   align-items: center;
