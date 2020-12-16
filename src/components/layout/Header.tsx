@@ -99,11 +99,7 @@ export const Header: React.FC = () => {
                 Artwork
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem
-                  onClick={() => {
-                    window.location = (Url.AvailableArtworkPage as unknown) as Location;
-                  }}
-                >
+                <DropdownItem tag={Link} to={Url.AvailableArtworkPage}>
                   Available Artwork
                 </DropdownItem>
                 <DropdownItem divider />
