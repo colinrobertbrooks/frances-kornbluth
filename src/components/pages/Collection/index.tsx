@@ -6,6 +6,7 @@ import {
 } from '../../../contexts';
 import { getRems, media } from '../../../styles';
 import { Status } from '../../../types';
+import { FilterSvg } from '../../svg';
 import {
   styled,
   Page,
@@ -16,7 +17,6 @@ import {
   Small,
   OutlineButton,
 } from '../shared';
-import { FilterSvg } from '../../svg';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';

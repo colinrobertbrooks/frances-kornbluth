@@ -35,7 +35,7 @@ const App: React.FC = () => {
   useEffect(() => {
     // dismiss notifications on route change
     if (
-      notifications &&
+      notifications.length &&
       previousLocation &&
       location.pathname !== previousLocation?.pathname
     ) {

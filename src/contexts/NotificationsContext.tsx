@@ -20,7 +20,7 @@ const NotificationsContext = React.createContext<INotificationsContext>({
 export const NotificationsProvider: React.FC = ({ children }) => {
   const [notifications, setNotifications] = useState<INotification[]>([]);
 
-  const addNotification = (notification: Omit<INotification, 'timestamp'>) => {
+  const addNotification = (notification: Omit<INotification, 'timestamp'>) =>
     setNotifications((oldNotifications) => [
       ...oldNotifications,
       {
@@ -28,7 +28,6 @@ export const NotificationsProvider: React.FC = ({ children }) => {
         timestamp: new Date().getTime(),
       },
     ]);
-  };
 
   const addSuccessNotification = (text: string, heading?: string) =>
     addNotification({
@@ -37,13 +36,12 @@ export const NotificationsProvider: React.FC = ({ children }) => {
       type: NotificationType.Success,
     });
 
-  const addErrorNotification = (text: string, heading?: string) => {
+  const addErrorNotification = (text: string, heading?: string) =>
     addNotification({
       text,
       heading,
       type: NotificationType.Error,
     });
-  };
 
   const dismissNotification = (notification: INotification) =>
     setNotifications((oldNotifications) =>
