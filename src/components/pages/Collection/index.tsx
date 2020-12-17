@@ -22,12 +22,13 @@ import {
   Small,
   OutlineButton,
 } from '../shared';
-import Loader from './Loader';
+import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
+import Loader from './Loader';
+import FilterToggleIntroTooltip from './FilterToggleIntroTooltip';
 import List from './List';
 import Modal from './Modal';
-import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const checkIsOutsideClick = (event: any) => {
@@ -121,11 +122,13 @@ export const Collection: React.FC = () => {
                 </HeadingWrapper>
                 <SlideToggleWrapper>
                   <SlideToggle
+                    id="js-filter-toggle"
                     openLabel="Open filters"
                     closeLabel="Close filters"
                   >
                     <FilterIcon />
                   </SlideToggle>
+                  <FilterToggleIntroTooltip />
                 </SlideToggleWrapper>
                 <Slide closeLabel="Close filters">
                   <SlideCount>{count}</SlideCount>

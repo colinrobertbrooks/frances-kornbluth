@@ -160,11 +160,13 @@ export const useSlideContext = (): ISlideContext => useContext(SlideContext);
  */
 
 interface ISlideToggleProps {
+  id?: string;
   openLabel: string;
   closeLabel: string;
 }
 
 export const SlideToggle: React.FC<ISlideToggleProps> = ({
+  id,
   openLabel,
   closeLabel,
   children,
@@ -175,6 +177,7 @@ export const SlideToggle: React.FC<ISlideToggleProps> = ({
   return (
     <ToggleElement
       ref={toggleRef}
+      id={id}
       type="button"
       aria-label={label}
       title={label}
