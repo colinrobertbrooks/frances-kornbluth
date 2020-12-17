@@ -2,7 +2,7 @@ import React from 'react';
 import ReactSelect, { NamedProps as ReactSelectProps } from 'react-select';
 import styled from 'styled-components';
 import { lighten } from 'polished';
-import { colors, typography } from '../../styles';
+import { colors, media, typography } from '../../styles';
 
 export interface ISelectOption {
   value: string;
@@ -77,6 +77,14 @@ export const Element = styled(ReactSelect).attrs({
   }
 
   .react-select__menu {
+    .react-select__menu-list {
+      max-height: 200px;
+
+      ${media.md`
+        max-height: 250px;
+      `}
+    }
+
     .react-select__option,
     .react-select__option:active {
       cursor: pointer;

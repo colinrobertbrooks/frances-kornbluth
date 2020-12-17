@@ -20,12 +20,12 @@ export const Home: React.FC = () => (
     <Background />
     <Container>
       <Row>
-        <Col md={12}>
+        <Col lg={12}>
           <SvgWrapper>
             <RocksSeaAndSkySvg fill={colors.brown} />
           </SvgWrapper>
         </Col>
-        <Col md={6} className="text-center mb-5 mb-md-0">
+        <Col lg={6} className="text-center mb-5 mb-lg-0">
           <ArtImg src={artistImg} alt="Artist" />
           <Paragraph className="mb-4">
             Frances Kornbluth (1920 - 2014) was an Abstract Expressionist
@@ -48,7 +48,7 @@ export const Home: React.FC = () => (
             <Col xl={2} />
           </Row>
         </Col>
-        <Col md={6} className="text-center">
+        <Col lg={6} className="text-center">
           <ArtImg src={artworkImg} alt="Artwork" />
           <Paragraph className="mb-4">
             Frances Kornbluth&#39;s body of work spans seven decades and can be

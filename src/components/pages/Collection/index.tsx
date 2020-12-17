@@ -4,7 +4,12 @@ import {
   useCollectionContext,
   useNotificationsContext,
 } from '../../../contexts';
-import { getRems, media } from '../../../styles';
+import {
+  getRems,
+  HEADER_HEIGHT_PX,
+  MAIN_PADDING_TOP_PX,
+  media,
+} from '../../../styles';
 import { Status } from '../../../types';
 import { FilterSvg } from '../../svg';
 import {
@@ -17,12 +22,13 @@ import {
   Small,
   OutlineButton,
 } from '../shared';
-import Loader from './Loader';
+import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
+import Loader from './Loader';
+import FilterToggleIntroTooltip from './FilterToggleIntroTooltip';
 import List from './List';
 import Modal from './Modal';
-import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const checkIsOutsideClick = (event: any) => {
@@ -97,10 +103,10 @@ export const Collection: React.FC = () => {
           {(() => {
             if (collectionIsLoading || !collection)
               return (
-                <>
+                <LoadingWrapper>
                   <Heading className="mb-4">Collection</Heading>
                   <Loader />
-                </>
+                </LoadingWrapper>
               );
 
             const count = getCount(
@@ -116,11 +122,13 @@ export const Collection: React.FC = () => {
                 </HeadingWrapper>
                 <SlideToggleWrapper>
                   <SlideToggle
+                    id="js-filter-toggle"
                     openLabel="Open filters"
                     closeLabel="Close filters"
                   >
                     <FilterIcon />
                   </SlideToggle>
+                  <FilterToggleIntroTooltip />
                 </SlideToggleWrapper>
                 <Slide closeLabel="Close filters">
                   <SlideCount>{count}</SlideCount>
@@ -158,6 +166,14 @@ export const Collection: React.FC = () => {
     </Page>
   );
 };
+
+const LoadingWrapper = styled.div`
+  min-height: calc(100vh - ${HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX}px);
+
+  ${media.lg`
+    min-height: 0;
+  `}
+`;
 
 const HeadingWrapper = styled.div`
   align-items: center;
