@@ -37,6 +37,7 @@ const FilterToggleIntroTooltip: React.FC = () => {
 const Popover = styled(ReactstrapPopper)`
   .popover {
     max-width: 250px;
+    z-index: 999;
 
     ${media.md`
       max-width: 275px;
