@@ -11,7 +11,7 @@ const FilterToggleIntroTooltip: React.FC = () => {
     false
   );
 
-  useTimeout(() => setIsOpen(true), !didDismiss ? 3750 : null);
+  useTimeout(() => setIsOpen(true), !didDismiss ? 200 : null);
 
   const handleDismiss = () => {
     if (isOpen || !didDismiss) {
