@@ -23,11 +23,12 @@ import {
   OutlineButton,
 } from '../shared';
 import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
+import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
-import Loader from './Loader';
 import FilterToggleIntroTooltip from './FilterToggleIntroTooltip';
 import List from './List';
+import ScrollToTop from './ScrollToTop';
 import Modal from './Modal';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -115,33 +116,35 @@ export const Collection: React.FC = () => {
             );
 
             return (
-              <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
+              <>
                 <HeadingWrapper>
                   <Heading className="mb-0">Collection</Heading>
                   <HeadingCount>{count}</HeadingCount>
                 </HeadingWrapper>
-                <SlideToggleWrapper>
-                  <SlideToggle
-                    id="js-filter-toggle"
-                    openLabel="Open filters"
-                    closeLabel="Close filters"
-                  >
-                    <FilterIcon />
-                  </SlideToggle>
-                  <FilterToggleIntroTooltip />
-                </SlideToggleWrapper>
-                <Slide closeLabel="Close filters">
-                  <SlideCount>{count}</SlideCount>
-                  <Filters
-                    collection={collection}
-                    filters={filters}
-                    reset={resetFilters}
-                    {...filterProps}
-                  />
-                </Slide>
+                <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
+                  <SlideToggleWrapper>
+                    <SlideToggle
+                      id="js-filter-toggle"
+                      openLabel="Open filters"
+                      closeLabel="Close filters"
+                    >
+                      <FilterIcon />
+                    </SlideToggle>
+                    <FilterToggleIntroTooltip />
+                  </SlideToggleWrapper>
+                  <Slide closeLabel="Close filters">
+                    <FiltersCount>{count}</FiltersCount>
+                    <Filters
+                      collection={collection}
+                      filters={filters}
+                      reset={resetFilters}
+                      {...filterProps}
+                    />
+                  </Slide>
+                </SlideProvider>
                 <List
                   filteredCollection={filteredCollection}
-                  onItemClick={(nextmodalId) => setModalId(nextmodalId)}
+                  onItemClick={(nextModalId) => setModalId(nextModalId)}
                   noItems={
                     <div className="text-center">
                       <Paragraph color="gray" className="mt-2">
@@ -153,12 +156,13 @@ export const Collection: React.FC = () => {
                     </div>
                   }
                 />
+                <ScrollToTop />
                 <Modal
                   filteredCollection={filteredCollection}
                   id={modalId}
                   setId={setModalId}
                 />
-              </SlideProvider>
+              </>
             );
           })()}
         </Col>
@@ -203,7 +207,7 @@ const FilterIcon = styled(FilterSvg)`
   height: ${getRems(20)};
 `;
 
-const SlideCount = styled(Small).attrs({ color: 'gray' })`
+const FiltersCount = styled(Small).attrs({ color: 'gray' })`
   position: absolute;
   right: 10px;
   top: 8px;
