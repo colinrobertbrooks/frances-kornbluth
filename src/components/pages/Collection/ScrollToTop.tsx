@@ -32,7 +32,7 @@ const ScrollToTop: React.FC = () => {
     <Element
       aria-hidden
       tabIndex={-1}
-      title="Scroll to top"
+      title="Back to top"
       isVisible={isVisible}
       onClick={handleScrollToTop}
     >
