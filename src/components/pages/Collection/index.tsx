@@ -148,7 +148,7 @@ export const Collection: React.FC = () => {
                   noItems={
                     <div className="text-center">
                       <Paragraph color="gray" className="mt-2">
-                        No pieces matches your current filter selections.
+                        No pieces match your current filter selections.
                       </Paragraph>
                       <OutlineButton onClick={resetFilters}>
                         Reset
