@@ -28,7 +28,7 @@ const FilterToggleIntroTooltip: React.FC = () => {
       toggle={handleDismiss}
     >
       <PopoverBody>
-        Click here to filter artwork by title, medium, size and more.
+        Click here to filter pieces by title, medium, size and more.
       </PopoverBody>
     </Popover>
   );
