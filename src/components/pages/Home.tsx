@@ -29,9 +29,9 @@ export const Home: React.FC = () => (
           <ArtImg src={artistImg} alt="Artist" />
           <Paragraph className="mb-4">
             Frances Kornbluth (1920 - 2014) was an Abstract Expressionist
-            painter who worked in New York City, Northeastern Connecticut and on
-            Monhegan Island off the coast of Maine. Her teachers and mentors
-            included Reuben Tam, William Kienbusch and Robert Richenburg.
+            painter who spent 57 summers painting on Monhegan Island off the
+            coast of Maine. Her teachers and mentors included Reuben Tam,
+            William Kienbusch and Robert Richenburg.
           </Paragraph>
           <Row>
             <Col xl={2} />
@@ -52,9 +52,9 @@ export const Home: React.FC = () => (
           <ArtImg src={artworkImg} alt="Artwork" />
           <Paragraph className="mb-4">
             Frances Kornbluth&#39;s body of work spans seven decades and can be
-            found in public collections, including the Chrysler Museum of Art,
-            the Colby College Museum of Art, the Hudson River Museum, the
-            Monhegan Museum and the Portland Museum of Art.
+            found in public collections, including the Monhegan Museum of Art
+            &amp; History, the Colby College Museum of Art and the Portland
+            Museum of Art.
           </Paragraph>
           <Row>
             <Col xl={2} />
