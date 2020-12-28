@@ -94,6 +94,8 @@ const Background = styled.div`
   position: absolute;
   width: 100vw;
   z-index: -1;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
 `;
 
 const SvgWrapper = styled.div`
