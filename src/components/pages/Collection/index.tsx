@@ -86,7 +86,7 @@ export const Collection: React.FC = () => {
   const [modalId, setModalId] = useQueryParam('id', NumberParam);
 
   /*
-   * notifications
+   *  notifications
    */
   const { addSuccessNotification } = useNotificationsContext();
 

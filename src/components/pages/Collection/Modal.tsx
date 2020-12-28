@@ -69,6 +69,7 @@ const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
   const closeRef = useRef<HTMLButtonElement>(null);
   const previousRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+
   /*
    *  carousel
    */

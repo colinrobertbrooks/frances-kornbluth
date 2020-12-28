@@ -156,7 +156,7 @@ export const SlideProvider: React.FC<ISlideProviderProps> = ({
 export const useSlideContext = (): ISlideContext => useContext(SlideContext);
 
 /*
- * toggle
+ *  toggle
  */
 
 interface ISlideToggleProps {
