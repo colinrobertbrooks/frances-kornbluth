@@ -78,7 +78,7 @@ const List: React.FC<IListProps> = ({
   noItems,
 }) => {
   /*
-   *   infinite scrolling
+   *  infinite scrolling
    */
   const windowSize = useWindowSize();
   const initialListItemCount = useMemo(

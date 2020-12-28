@@ -23,8 +23,10 @@ import {
   ClearIndicator,
   Select,
   ISelectOption,
+  Button,
   OutlineButton,
 } from '../../styled';
+import { useSlideContext } from './slide';
 
 /*
  *  types
@@ -323,6 +325,11 @@ export const Filters: React.FC<IFiltersProps> = ({
    */
   const titleInputRef = useRef<HTMLInputElement>(null);
 
+  /*
+   *  slide management
+   */
+  const { close } = useSlideContext();
+
   return (
     <Wrapper>
       <FormGroup>
@@ -425,11 +432,14 @@ export const Filters: React.FC<IFiltersProps> = ({
           }
         />
       </FormGroup>
-      <ResetButtonWrapper>
+      <ButtonsWrapper>
+        <Button block className="mb-3" onClick={close}>
+          Apply
+        </Button>
         <OutlineButton block onClick={reset}>
           Reset
         </OutlineButton>
-      </ResetButtonWrapper>
+      </ButtonsWrapper>
     </Wrapper>
   );
 };
@@ -446,7 +456,7 @@ const ClearIndicatorWrapper = styled.div`
   position: relative;
 `;
 
-const ResetButtonWrapper = styled.div`
+const ButtonsWrapper = styled.div`
   margin-top: 40px;
   margin-bottom: 120px;
 
