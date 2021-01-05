@@ -13,7 +13,6 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import { usePrevious } from '../../hooks';
-import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 import {
   Link,
   NavLink,
@@ -21,7 +20,8 @@ import {
   Url,
   artistUrls,
   artworkUrls,
-} from '../router';
+} from '../../router';
+import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
 import { SkipToMain } from './skip-to-main';
 

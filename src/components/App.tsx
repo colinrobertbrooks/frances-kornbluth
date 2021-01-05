@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNotificationsContext } from '../contexts';
 import { usePrevious } from '../hooks';
+import { Switch, Route, Url, useLocation } from '../router';
 import { GlobalStyles } from '../styles';
 import { Header, Footer } from './layout';
 import {
@@ -20,7 +21,6 @@ import {
   Wanted,
   NotFound,
 } from './pages';
-import { Switch, Route, Url, useLocation } from './router';
 import { Notification } from './styled';
 
 const App: React.FC = () => {
@@ -32,6 +32,7 @@ const App: React.FC = () => {
     dismissNotifications,
   } = useNotificationsContext();
 
+  // TODO: move to notifications context
   useEffect(() => {
     // dismiss notifications on route change
     if (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Url } from '../router';
+import { Link, Url } from '../../router';
 import { Page, Row, Col, H1, Paragraph } from './shared';
 
 export const Copyright: React.FC = () => (

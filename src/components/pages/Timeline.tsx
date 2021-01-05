@@ -19,8 +19,8 @@ import {
   artist2000s,
   artist2010s,
 } from '../../assets/pages/timeline';
+import { Link, Url } from '../../router';
 import { colors, media } from '../../styles';
-import { Link, Url } from '../router';
 import {
   Page,
   Row,

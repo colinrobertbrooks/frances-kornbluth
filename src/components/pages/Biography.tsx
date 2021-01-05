@@ -1,6 +1,6 @@
 import React from 'react';
 import { selfPortraitImg } from '../../assets/artwork';
-import { Link, Url } from '../router';
+import { Link, Url } from '../../router';
 import { Page, Row, Col, H1, Paragraph, Artwork } from './shared';
 
 export const Biography: React.FC = () => (
