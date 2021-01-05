@@ -4,8 +4,9 @@ export enum NotificationType {
 }
 
 export interface INotification {
-  text: string;
-  heading?: string;
-  timestamp: number;
   type: NotificationType;
+  shouldAutoDismiss?: boolean;
+  heading?: string;
+  text: string;
+  timestamp: number;
 }

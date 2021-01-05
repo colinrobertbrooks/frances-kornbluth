@@ -92,7 +92,11 @@ export const Collection: React.FC = () => {
 
   useEffect(() => {
     if (filters.status === Status.Available && !modalId) {
-      addSuccessNotification('Viewing available artwork.', 'Available Artwork');
+      addSuccessNotification({
+        shouldAutoDismiss: true,
+        heading: 'Available Artwork',
+        text: 'Viewing available artwork.',
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

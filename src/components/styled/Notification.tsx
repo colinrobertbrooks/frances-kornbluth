@@ -36,10 +36,10 @@ export const Notification: React.FC<INotificationProps> = ({
   notification,
   dismiss,
 }) => {
-  const { type, heading, text } = notification;
+  const { type, shouldAutoDismiss, heading, text } = notification;
 
   useEffect(() => {
-    if (type === NotificationType.Success) {
+    if (shouldAutoDismiss) {
       setTimeout(dismiss, 4000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

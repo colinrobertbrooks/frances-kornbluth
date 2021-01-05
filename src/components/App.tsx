@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useNotificationsContext } from '../contexts';
-import { usePrevious } from '../hooks';
-import { Switch, Route, Url, useLocation } from '../router';
+import { Switch, Route, Url } from '../router';
 import { GlobalStyles } from '../styles';
 import { Header, Footer } from './layout';
 import {
@@ -24,25 +23,7 @@ import {
 import { Notification } from './styled';
 
 const App: React.FC = () => {
-  const location = useLocation();
-  const previousLocation = usePrevious(location);
-  const {
-    notifications,
-    dismissNotification,
-    dismissNotifications,
-  } = useNotificationsContext();
-
-  // TODO: move to notifications context
-  useEffect(() => {
-    // dismiss notifications on route change
-    if (
-      notifications.length &&
-      previousLocation &&
-      location.pathname !== previousLocation?.pathname
-    ) {
-      dismissNotifications();
-    }
-  }, [notifications, location, previousLocation, dismissNotifications]);
+  const { notifications, dismissNotification } = useNotificationsContext();
 
   return (
     <>
@@ -98,17 +79,13 @@ const App: React.FC = () => {
       </Switch>
       <Footer />
       <NotificationsWrapper>
-        {notifications.map((notification) => {
-          const { timestamp, type } = notification;
-
-          return (
-            <Notification
-              key={`${timestamp}-${type}`}
-              notification={notification}
-              dismiss={() => dismissNotification(notification)}
-            />
-          );
-        })}
+        {notifications.map((notification) => (
+          <Notification
+            key={`${notification.type}-${notification.timestamp}`}
+            notification={notification}
+            dismiss={() => dismissNotification(notification)}
+          />
+        ))}
       </NotificationsWrapper>
     </>
   );

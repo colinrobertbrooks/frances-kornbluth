@@ -53,7 +53,11 @@ const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
     // clear invalid id
     if (id && !idIsValid) {
       setId(undefined);
-      addErrorNotification('That piece was not found.', 'Artwork Not Found');
+      addErrorNotification({
+        shouldAutoDismiss: true,
+        heading: 'Artwork Not Found',
+        text: 'That piece was not found.',
+      });
     }
   }, [id, idIsValid, setId, addErrorNotification]);
 

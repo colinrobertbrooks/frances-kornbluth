@@ -1,12 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { NotificationType, INotification } from '../types';
+import { usePrevious } from '../hooks';
+import { useLocation } from '../router';
+
+interface INotificationContent
+  extends Pick<INotification, 'shouldAutoDismiss' | 'heading' | 'text'> {}
 
 interface INotificationsContext {
   notifications: INotification[];
-  addSuccessNotification: (text: string, heading?: string) => void;
-  addErrorNotification: (text: string, heading?: string) => void;
+  addSuccessNotification: (content: INotificationContent) => void;
+  addErrorNotification: (content: INotificationContent) => void;
   dismissNotification: (notification: INotification) => void;
-  dismissNotifications: () => void;
 }
 
 const NotificationsContext = React.createContext<INotificationsContext>({
@@ -14,7 +18,6 @@ const NotificationsContext = React.createContext<INotificationsContext>({
   addSuccessNotification: () => undefined,
   addErrorNotification: () => undefined,
   dismissNotification: () => undefined,
-  dismissNotifications: () => undefined,
 });
 
 export const NotificationsProvider: React.FC = ({ children }) => {
@@ -29,18 +32,28 @@ export const NotificationsProvider: React.FC = ({ children }) => {
       },
     ]);
 
-  const addSuccessNotification = (text: string, heading?: string) =>
+  const addSuccessNotification = ({
+    shouldAutoDismiss = false,
+    heading = 'Success',
+    text,
+  }: INotificationContent) =>
     addNotification({
-      text,
-      heading,
       type: NotificationType.Success,
+      shouldAutoDismiss,
+      heading,
+      text,
     });
 
-  const addErrorNotification = (text: string, heading?: string) =>
+  const addErrorNotification = ({
+    shouldAutoDismiss = false,
+    heading = 'Error',
+    text,
+  }: INotificationContent) =>
     addNotification({
-      text,
-      heading,
       type: NotificationType.Error,
+      shouldAutoDismiss,
+      heading,
+      text,
     });
 
   const dismissNotification = (notification: INotification) =>
@@ -51,7 +64,19 @@ export const NotificationsProvider: React.FC = ({ children }) => {
       )
     );
 
-  const dismissNotifications = () => setNotifications([]);
+  const location = useLocation();
+  const previousLocation = usePrevious(location);
+
+  useEffect(() => {
+    // dismiss notifications on route change
+    if (
+      notifications.length &&
+      previousLocation &&
+      location.pathname !== previousLocation?.pathname
+    ) {
+      setNotifications([]);
+    }
+  }, [notifications, location, previousLocation]);
 
   return (
     <NotificationsContext.Provider
@@ -60,7 +85,6 @@ export const NotificationsProvider: React.FC = ({ children }) => {
         addSuccessNotification,
         addErrorNotification,
         dismissNotification,
-        dismissNotifications,
       }}
     >
       {children}

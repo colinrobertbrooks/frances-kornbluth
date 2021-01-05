@@ -33,7 +33,9 @@ export const CollectionProvider: React.FC = ({ children }) => {
       setCollection(loadedCollection);
       setCollectionIsLoading(false);
     } catch (error) {
-      addErrorNotification('Error loading the collection.');
+      addErrorNotification({
+        text: 'Error loading the collection.',
+      });
     }
   };
 
