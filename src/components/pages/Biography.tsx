@@ -61,7 +61,7 @@ export const Biography: React.FC = () => (
         </Paragraph>
         <Paragraph className="text-center">
           See more details on the{' '}
-          <Link to={Url.TimelinePage}>timeline page</Link> .
+          <Link to={Url.TimelinePage}>timeline page</Link>.
         </Paragraph>
       </Col>
     </Row>
