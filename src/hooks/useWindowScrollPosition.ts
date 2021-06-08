@@ -6,14 +6,14 @@ const getScrollPosition = () => ({
 });
 
 export function useWindowScrollPosition(): { x: number; y: number } {
-  const [scrollPosition, setScrollPosition] = useState(getScrollPosition());
+  const [scrollPosition, setScrollPosition] = useState(getScrollPosition);
 
   useEffect(() => {
     let requestRunning: number | null = null;
     const handleScroll = () => {
       if (!requestRunning) {
         requestRunning = window.requestAnimationFrame(() => {
-          setScrollPosition(getScrollPosition());
+          setScrollPosition(getScrollPosition);
           requestRunning = null;
         });
       }

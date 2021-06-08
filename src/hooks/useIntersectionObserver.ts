@@ -21,7 +21,7 @@ export function useIntersectionObserver<
   const observer = useRef<IntersectionObserver | null>(null);
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
 
-  const isClient = typeof window !== `undefined`;
+  const isClient = typeof window !== 'undefined';
   const hasIOSupport = isClient && !!window.IntersectionObserver;
   const noUpdate = entry?.isIntersecting && freezeOnceVisible;
   const IOOptions = { threshold, root, rootMargin };
