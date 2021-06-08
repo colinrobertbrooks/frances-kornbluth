@@ -158,7 +158,6 @@ export const useSlideContext = (): ISlideContext => useContext(SlideContext);
 /*
  *  toggle
  */
-
 interface ISlideToggleProps {
   id?: string;
   openLabel: string;
