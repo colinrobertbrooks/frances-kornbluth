@@ -49,9 +49,13 @@ const deserializeCollection = (
     );
 
 export const getCollection = async (): Promise<ICollectionRecord[]> => {
+  const worksheetId = '1IzGaO3pLokvuiuKkS2UccK4KuYvnQwM-osJf3WfciJU';
+  const tabName = 'Collection';
+  const keyValue = 'AIzaSyBGc0LCzZbPludpcRCualkt0gxOWQ0RBVI';
+
   try {
     const response = await adapter.get(
-      '/list/1IzGaO3pLokvuiuKkS2UccK4KuYvnQwM-osJf3WfciJU/1/public/full?alt=json'
+      `${worksheetId}/values/${tabName}?alt=json&key=${keyValue}`
     );
     return deserializeCollection(response.data.feed.entry);
   } catch (error) {
