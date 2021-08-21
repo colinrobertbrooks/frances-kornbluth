@@ -1,9 +1,4 @@
-import {
-  ISerializedCollectionRecord,
-  MediumGroup,
-  SizeGroup,
-  Tag,
-} from '../types';
+import { MediumGroup, SizeGroup, Tag, TItem } from '../types';
 
 export const deriveMediumGroup = (medium: string): MediumGroup => {
   const lowercaseMedium = medium.toLowerCase();
@@ -11,8 +6,9 @@ export const deriveMediumGroup = (medium: string): MediumGroup => {
   if (lowercaseMedium.includes('charcoal')) return MediumGroup.Charcoal;
   if (lowercaseMedium.includes('collage')) return MediumGroup.Collage;
   if (lowercaseMedium.includes('ink')) return MediumGroup.Ink;
-  if (lowercaseMedium.includes('mixed media'))
+  if (lowercaseMedium.includes('mixed media')) {
     return MediumGroup['Mixed Media'];
+  }
   if (lowercaseMedium.includes('monotype')) return MediumGroup.Monotype;
   if (lowercaseMedium.includes('oil')) return MediumGroup.Oil;
   if (lowercaseMedium.includes('pastel')) return MediumGroup.Pastel;
@@ -49,41 +45,42 @@ export const deriveSizeGroup = (dimensions: string): SizeGroup => {
   if (area < 200) return SizeGroup.Small;
   if (area < 500) return SizeGroup.Medium;
   if (area < 1000) return SizeGroup.Large;
+
   return SizeGroup['Very Large'];
 };
 
 export const generateTags = ({
-  gsx$tagabstract,
-  gsx$tagblackandwhite,
-  gsx$tagcolor,
-  gsx$tagdominicanrepublic,
-  gsx$tagfigure,
-  gsx$taglandscape,
-  gsx$tagletter,
-  gsx$tagmonhegan,
-  gsx$tagpath,
-  gsx$tagrepresentational,
-  gsx$tagseascape,
-  gsx$tagstilllife,
-  gsx$tagtondo,
-  gsx$tagtrees,
-}: Partial<ISerializedCollectionRecord>): Tag[] => {
+  tagAbstract,
+  tagBlackAndWhite,
+  tagColor,
+  tagDominicanRepublic,
+  tagFigure,
+  tagLandscape,
+  tagLetter,
+  tagMonhegan,
+  tagPath,
+  tagRepresentational,
+  tagSeascape,
+  tagStillLife,
+  tagTondo,
+  tagTrees,
+}: TItem): Tag[] => {
   const tags = [];
 
-  if (gsx$tagabstract?.$t) tags.push(Tag.Abstract);
-  if (gsx$tagblackandwhite?.$t) tags.push(Tag['Black and White']);
-  if (gsx$tagcolor?.$t) tags.push(Tag.Color);
-  if (gsx$tagdominicanrepublic?.$t) tags.push(Tag['Dominican Republic']);
-  if (gsx$tagfigure?.$t) tags.push(Tag.Figure);
-  if (gsx$taglandscape?.$t) tags.push(Tag.Landscape);
-  if (gsx$tagletter?.$t) tags.push(Tag.Letter);
-  if (gsx$tagmonhegan?.$t) tags.push(Tag.Monhegan);
-  if (gsx$tagpath?.$t) tags.push(Tag.Path);
-  if (gsx$tagrepresentational?.$t) tags.push(Tag.Representational);
-  if (gsx$tagseascape?.$t) tags.push(Tag.Seascape);
-  if (gsx$tagstilllife?.$t) tags.push(Tag['Still Life']);
-  if (gsx$tagtondo?.$t) tags.push(Tag.Tondo);
-  if (gsx$tagtrees?.$t) tags.push(Tag.Trees);
+  if (tagAbstract) tags.push(Tag.Abstract);
+  if (tagBlackAndWhite) tags.push(Tag['Black and White']);
+  if (tagColor) tags.push(Tag.Color);
+  if (tagDominicanRepublic) tags.push(Tag['Dominican Republic']);
+  if (tagFigure) tags.push(Tag.Figure);
+  if (tagLandscape) tags.push(Tag.Landscape);
+  if (tagLetter) tags.push(Tag.Letter);
+  if (tagMonhegan) tags.push(Tag.Monhegan);
+  if (tagPath) tags.push(Tag.Path);
+  if (tagRepresentational) tags.push(Tag.Representational);
+  if (tagSeascape) tags.push(Tag.Seascape);
+  if (tagStillLife) tags.push(Tag['Still Life']);
+  if (tagTondo) tags.push(Tag.Tondo);
+  if (tagTrees) tags.push(Tag.Trees);
 
   return tags;
 };

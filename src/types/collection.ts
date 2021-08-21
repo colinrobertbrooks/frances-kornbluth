@@ -72,34 +72,4 @@ export interface ICollectionRecord {
   isNew: boolean;
 }
 
-type $T<T = string> = {
-  $t: T;
-};
-
-export interface ISerializedCollectionRecord {
-  gsx$id: $T;
-  gsx$title: $T;
-  gsx$minimgsrc: $T;
-  gsx$year: $T;
-  gsx$decade: $T;
-  gsx$medium: $T;
-  gsx$dimensions: $T;
-  gsx$status: $T<Status>;
-  gsx$holder: $T;
-  gsx$tagabstract: $T;
-  gsx$tagblackandwhite: $T;
-  gsx$tagcolor: $T;
-  gsx$tagdominicanrepublic: $T;
-  gsx$tagfigure: $T;
-  gsx$taglandscape: $T;
-  gsx$tagletter: $T;
-  gsx$tagmonhegan: $T;
-  gsx$tagpath: $T;
-  gsx$tagrepresentational: $T;
-  gsx$tagseascape: $T;
-  gsx$tagstilllife: $T;
-  gsx$tagtondo: $T;
-  gsx$tagtrees: $T;
-  gsx$newonwebsite: $T;
-  gsx$showonwebsite: $T;
-}
+export type TItem = { [key: string]: string };
