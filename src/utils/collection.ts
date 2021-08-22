@@ -1,4 +1,4 @@
-import { MediumGroup, SizeGroup, Tag, TItem } from '../types';
+import { TSpreadsheetDatum, MediumGroup, SizeGroup, Tag } from '../types';
 
 export const deriveMediumGroup = (medium: string): MediumGroup => {
   const lowercaseMedium = medium.toLowerCase();
@@ -64,7 +64,7 @@ export const generateTags = ({
   tagStillLife,
   tagTondo,
   tagTrees,
-}: TItem): Tag[] => {
+}: TSpreadsheetDatum): Tag[] => {
   const tags = [];
 
   if (tagAbstract) tags.push(Tag.Abstract);

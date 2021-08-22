@@ -1,3 +1,5 @@
+export type TSpreadsheetDatum = { [key: string]: string };
+
 export enum Decade {
   // label = value
   '1950s' = '1950s',
@@ -71,5 +73,3 @@ export interface ICollectionRecord {
   tags: Tag[];
   isNew: boolean;
 }
-
-export type TItem = { [key: string]: string };

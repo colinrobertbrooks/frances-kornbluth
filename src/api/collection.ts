@@ -1,19 +1,19 @@
 import { adapter } from './utils';
-import { Decade, Status, ICollectionRecord, TItem } from '../types';
+import { TSpreadsheetDatum, Decade, Status, ICollectionRecord } from '../types';
 import { deriveMediumGroup, deriveSizeGroup, generateTags } from '../utils';
 
 const deserializeCollection = (values: string[][]): ICollectionRecord[] => {
   const [headRow, ...bodyRows] = values;
-  const collection: TItem[] = [];
+  const data: TSpreadsheetDatum[] = [];
   bodyRows.forEach((row) => {
-    const item: TItem = {};
+    const datum: TSpreadsheetDatum = {};
     row.forEach((val, valIdx) => {
-      item[headRow[valIdx]] = val;
+      datum[headRow[valIdx]] = val;
     });
-    collection.push(item);
+    data.push(datum);
   });
 
-  return collection.map(
+  return data.map(
     ({
       id,
       title,
