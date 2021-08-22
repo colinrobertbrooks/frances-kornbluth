@@ -47,13 +47,13 @@ const deserializeCollection = (values: string[][]): ICollectionRecord[] => {
 };
 
 export const getCollection = async (): Promise<ICollectionRecord[]> => {
-  const worksheetId = '1IzGaO3pLokvuiuKkS2UccK4KuYvnQwM-osJf3WfciJU';
-  const tabName = 'Collection';
-  const keyValue = 'AIzaSyBGc0LCzZbPludpcRCualkt0gxOWQ0RBVI';
+  const spreadsheetId = '1IzGaO3pLokvuiuKkS2UccK4KuYvnQwM-osJf3WfciJU';
+  const range = 'Collection';
+  const key = 'AIzaSyBGc0LCzZbPludpcRCualkt0gxOWQ0RBVI';
 
   try {
     const response = await adapter.get(
-      `${worksheetId}/values/${tabName}?alt=json&key=${keyValue}`
+      `${spreadsheetId}/values/${range}?key=${key}`
     );
     return deserializeCollection(response.data.values);
   } catch (error) {
