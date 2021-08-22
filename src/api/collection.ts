@@ -47,6 +47,7 @@ const deserializeCollection = (values: string[][]): ICollectionRecord[] => {
 };
 
 export const getCollection = async (): Promise<ICollectionRecord[]> => {
+  // https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/get
   const spreadsheetId = '1IzGaO3pLokvuiuKkS2UccK4KuYvnQwM-osJf3WfciJU';
   const range = 'Collection';
   const key = 'AIzaSyBGc0LCzZbPludpcRCualkt0gxOWQ0RBVI';
