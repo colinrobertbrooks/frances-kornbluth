@@ -13,37 +13,39 @@ const deserializeCollection = (values: string[][]): ICollectionRecord[] => {
     data.push(datum);
   });
 
-  return data.map(
-    ({
-      id,
-      title,
-      minImgSrc,
-      year,
-      decade,
-      medium,
-      dimensions,
-      status,
-      holder,
-      newOnWebsite,
-      ...rest
-    }) => {
-      return {
-        id: Number(id),
-        title: title || 'Untitled',
+  return data
+    .filter(({ showOnWebsite }) => !!showOnWebsite)
+    .map(
+      ({
+        id,
+        title,
         minImgSrc,
-        year: year ? Number(year) : null,
-        decade: decade ? (decade as Decade) : Decade.Unknown,
+        year,
+        decade,
         medium,
-        mediumGroup: deriveMediumGroup(medium),
-        dimensions: dimensions || 'finished size unavailable',
-        sizeGroup: deriveSizeGroup(dimensions),
-        status: status as Status,
-        holder: holder || null,
-        tags: generateTags(rest),
-        isNew: !!newOnWebsite,
-      };
-    }
-  );
+        dimensions,
+        status,
+        holder,
+        newOnWebsite,
+        ...rest
+      }) => {
+        return {
+          id: Number(id),
+          title: title || 'Untitled',
+          minImgSrc,
+          year: year ? Number(year) : null,
+          decade: decade ? (decade as Decade) : Decade.Unknown,
+          medium,
+          mediumGroup: deriveMediumGroup(medium),
+          dimensions: dimensions || 'finished size unavailable',
+          sizeGroup: deriveSizeGroup(dimensions),
+          status: status as Status,
+          holder: holder || null,
+          tags: generateTags(rest),
+          isNew: !!newOnWebsite,
+        };
+      }
+    );
 };
 
 export const getCollection = async (): Promise<ICollectionRecord[]> => {
