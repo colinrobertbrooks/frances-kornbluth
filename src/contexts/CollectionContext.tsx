@@ -20,9 +20,8 @@ const CollectionContext = createContext<ICollectionContext>({
 });
 
 export const CollectionProvider: React.FC = ({ children }) => {
-  const [collectionIsLoading, setCollectionIsLoading] = useState<boolean>(
-    false
-  );
+  const [collectionIsLoading, setCollectionIsLoading] =
+    useState<boolean>(false);
   const [collection, setCollection] = useState<Collection>(null);
   const { addErrorNotification } = useNotificationsContext();
 

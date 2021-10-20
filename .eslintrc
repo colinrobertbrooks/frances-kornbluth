@@ -1,19 +1,18 @@
 {
   "extends": [
-    "colinrcummings",
-    "colinrcummings/typescript",
-    "colinrcummings/jest",
-    "colinrcummings/prettier",
-    "colinrcummings/prettier/react"
+    "colinrobertbrooks",
+    "colinrobertbrooks/typescript",
+    "colinrobertbrooks/jest",
+    "colinrobertbrooks/prettier"
   ],
   "env": {
     "browser": true
   },
   "rules": {
-    "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "no-use-before-define": "off"
   }
 }

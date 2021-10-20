@@ -89,9 +89,8 @@ const List: React.FC<IListProps> = ({
     () => getListItemCountIncrement(windowSize),
     [windowSize]
   );
-  const [listItemCount, setListItemCount] = useState<number>(
-    initialListItemCount
-  );
+  const [listItemCount, setListItemCount] =
+    useState<number>(initialListItemCount);
 
   const listBottomTracker = useRef<HTMLDivElement>(null);
   const [listBottomTrackerIsVisible] = useIntersectionObserver({

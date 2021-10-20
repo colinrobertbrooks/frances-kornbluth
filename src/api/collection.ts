@@ -28,23 +28,21 @@ const deserializeCollection = (values: string[][]): ICollectionRecord[] => {
         holder,
         newOnWebsite,
         ...rest
-      }) => {
-        return {
-          id: Number(id),
-          title: title || 'Untitled',
-          minImgSrc,
-          year: year ? Number(year) : null,
-          decade: decade ? (decade as Decade) : Decade.Unknown,
-          medium,
-          mediumGroup: deriveMediumGroup(medium),
-          dimensions: dimensions || 'finished size unavailable',
-          sizeGroup: deriveSizeGroup(dimensions),
-          status: status as Status,
-          holder: holder || null,
-          tags: generateTags(rest),
-          isNew: !!newOnWebsite,
-        };
-      }
+      }) => ({
+        id: Number(id),
+        title: title || 'Untitled',
+        minImgSrc,
+        year: year ? Number(year) : null,
+        decade: decade ? (decade as Decade) : Decade.Unknown,
+        medium,
+        mediumGroup: deriveMediumGroup(medium),
+        dimensions: dimensions || 'finished size unavailable',
+        sizeGroup: deriveSizeGroup(dimensions),
+        status: status as Status,
+        holder: holder || null,
+        tags: generateTags(rest),
+        isNew: !!newOnWebsite,
+      })
     );
 };
 

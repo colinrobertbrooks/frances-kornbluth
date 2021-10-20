@@ -62,9 +62,8 @@ export const SlideProvider: React.FC<ISlideProviderProps> = ({
   const toggleRef = useRef<HTMLButtonElement>(null);
   const slideRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const [shouldFocusToggleOnClose, setShouldFocusToggleOnClose] = useState(
-    true
-  );
+  const [shouldFocusToggleOnClose, setShouldFocusToggleOnClose] =
+    useState(true);
 
   /*
    *  visibility
@@ -213,15 +212,8 @@ interface ISlideProps {
 }
 
 export const Slide: React.FC<ISlideProps> = ({ closeLabel, children }) => {
-  const {
-    slideRef,
-    closeRef,
-    isOpening,
-    isOpen,
-    isClosing,
-    isClosed,
-    close,
-  } = useSlideContext();
+  const { slideRef, closeRef, isOpening, isOpen, isClosing, isClosed, close } =
+    useSlideContext();
 
   return (
     <FocusTrap
