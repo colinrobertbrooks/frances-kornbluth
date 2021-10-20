@@ -299,26 +299,26 @@ export const Filters: React.FC<IFiltersProps> = ({
   /*
    *  options
    */
-  const mediumOptions = useMemo(() => getMediumOptions(collection, filters), [
-    collection,
-    filters,
-  ]);
-  const sizeOptions = useMemo(() => getSizeOptions(collection, filters), [
-    collection,
-    filters,
-  ]);
-  const decadeOptions = useMemo(() => getDecadeOptions(collection, filters), [
-    collection,
-    filters,
-  ]);
-  const statusOptions = useMemo(() => getStatusOptions(collection, filters), [
-    collection,
-    filters,
-  ]);
-  const tagsOptions = useMemo(() => getTagsOptions(collection, filters), [
-    collection,
-    filters,
-  ]);
+  const mediumOptions = useMemo(
+    () => getMediumOptions(collection, filters),
+    [collection, filters]
+  );
+  const sizeOptions = useMemo(
+    () => getSizeOptions(collection, filters),
+    [collection, filters]
+  );
+  const decadeOptions = useMemo(
+    () => getDecadeOptions(collection, filters),
+    [collection, filters]
+  );
+  const statusOptions = useMemo(
+    () => getStatusOptions(collection, filters),
+    [collection, filters]
+  );
+  const tagsOptions = useMemo(
+    () => getTagsOptions(collection, filters),
+    [collection, filters]
+  );
 
   /*
    *  focus management

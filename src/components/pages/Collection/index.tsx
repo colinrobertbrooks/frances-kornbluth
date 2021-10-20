@@ -37,12 +37,14 @@ const checkIsOutsideClick = (event: any) => {
   const isReactSelectClearIndicator = event.target.classList.contains(
     'react-select__clear-indicator'
   );
-  const isReactSelectClearIndicatorSvg = event.target.parentElement?.classList.contains(
-    'react-select__clear-indicator'
-  );
-  const isReactSelectClearIndicatorSvgPath = event.target.parentElement?.parentElement?.classList.contains(
-    'react-select__clear-indicator'
-  );
+  const isReactSelectClearIndicatorSvg =
+    event.target.parentElement?.classList.contains(
+      'react-select__clear-indicator'
+    );
+  const isReactSelectClearIndicatorSvgPath =
+    event.target.parentElement?.parentElement?.classList.contains(
+      'react-select__clear-indicator'
+    );
   return (
     !isReactSelectClearIndicator &&
     !isReactSelectClearIndicatorSvg &&
@@ -59,11 +61,8 @@ export const Collection: React.FC = () => {
   /*
    *  collection
    */
-  const {
-    collectionIsLoading,
-    collection,
-    loadCollection,
-  } = useCollectionContext();
+  const { collectionIsLoading, collection, loadCollection } =
+    useCollectionContext();
 
   useEffect(() => {
     // load collection if it hasn't been loaded already
@@ -73,12 +72,8 @@ export const Collection: React.FC = () => {
   /*
    *  filters
    */
-  const {
-    filters,
-    filteredCollection,
-    filterProps,
-    resetFilters,
-  } = useFilterState(collection || []);
+  const { filters, filteredCollection, filterProps, resetFilters } =
+    useFilterState(collection || []);
 
   /*
    *  modal

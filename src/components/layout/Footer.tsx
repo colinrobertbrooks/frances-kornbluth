@@ -101,7 +101,7 @@ const PageLinkListItemDivider = styled.div.attrs({
 `;
 
 const PageLink = styled(Link)`
- ${linkCSS}
+  ${linkCSS}
   font-size: ${getRems(14)};
   letter-spacing: ${getRems(1)};
   line-height: ${getRems(19)};
