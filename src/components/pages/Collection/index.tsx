@@ -99,7 +99,7 @@ export const Collection: React.FC = () => {
   return (
     <Page title="Collection">
       <Row>
-        <Col md={12}>
+        <Col md={12} className="position-relative">
           {(() => {
             if (collectionIsLoading || !collection)
               return (

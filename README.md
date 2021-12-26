@@ -1,5 +1,9 @@
 # [Frances Kornbluth](https://www.franceskornbluth.com/)
 
+## NVM
+
+`$ nvm use 14.17.6`
+
 ## Setup
 
 `$ npm install`

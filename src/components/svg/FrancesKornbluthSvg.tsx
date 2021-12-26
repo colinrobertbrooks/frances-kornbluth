@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface FrancesKornbluthSvg {
+interface FrancesKornbluthSvgProps {
   fill: string;
   maxWidth?: number;
 }
 
-export const FrancesKornbluthSvg: React.FC<FrancesKornbluthSvg> = ({
+export const FrancesKornbluthSvg: React.FC<FrancesKornbluthSvgProps> = ({
   fill,
   maxWidth,
 }) => (

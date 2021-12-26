@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactSelect, { NamedProps as ReactSelectProps } from 'react-select';
+import ReactSelect, { Props as ReactSelectProps } from 'react-select';
 import styled from 'styled-components';
 import { lighten } from 'polished';
 import { colors, media, typography } from '../../styles';
@@ -11,19 +11,10 @@ export interface ISelectOption {
 }
 
 interface ISelectProps
-  extends Pick<
-    ReactSelectProps,
-    | 'isSearchable'
-    | 'isClearable'
-    | 'placeholder'
-    | 'options'
-    | 'openMenuOnFocus'
-    | 'tabSelectsValue'
-  > {
+  extends Omit<ReactSelectProps, 'classNamePrefix' | 'onChange' | 'value'> {
   id: string;
   value: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   onChange: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  isMulti?: boolean;
 }
 
 export const Select: React.FC<ISelectProps> = ({
