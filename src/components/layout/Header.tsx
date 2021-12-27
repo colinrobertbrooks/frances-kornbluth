@@ -202,7 +202,7 @@ const Element = styled.header`
     border-color: ${colors.border};
   }
 
-  // https://github.com/ng-bootstrap/ng-bootstrap/issues/4100
+  // https://github.com/twbs/bootstrap/issues/33957
   .dropdown-menu-end {
     right: 0;
     left: auto;
