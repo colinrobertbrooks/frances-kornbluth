@@ -179,17 +179,12 @@ const LoadingWrapper = styled.div`
 `;
 
 const HeadingWrapper = styled.div`
-  align-items: center;
   display: flex;
+  flex-direction: column;
   margin-bottom: ${HEADING_WRAPPER_MARGIN_BOTTOM_PX}px;
-  position: relative;
 `;
 
-const HeadingCount = styled(Small).attrs({ color: 'gray' })`
-  left: 8px;
-  position: absolute;
-  top: 48px;
-`;
+const HeadingCount = styled(Small).attrs({ color: 'gray' })``;
 
 const SlideToggleWrapper = styled.div`
   position: absolute;
