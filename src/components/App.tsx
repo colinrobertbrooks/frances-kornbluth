@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNotificationsContext } from '../contexts';
-import { Switch, Route, Url } from '../router';
+import { Routes, Route, Url } from '../router';
 import { GlobalStyles } from '../styles';
 import { Header, Footer } from './layout';
 import {
@@ -22,61 +22,32 @@ import {
 } from './pages';
 import { Notification } from './styled';
 
-const App: React.FC = () => {
+const App = () => {
   const { notifications, dismissNotification } = useNotificationsContext();
 
   return (
     <>
       <GlobalStyles />
       <Header />
-      <Switch>
-        <Route exact path={Url.HomePage}>
-          <Home />
-        </Route>
+      <Routes>
+        <Route path={Url.HomePage} element={<Home />} />
         {/* artist */}
-        <Route path={Url.BiographyPage}>
-          <Biography />
-        </Route>
-        <Route path={Url.TimelinePage}>
-          <Timeline />
-        </Route>
-        <Route path={Url.StatementsPage}>
-          <Statements />
-        </Route>
-        <Route path={Url.QuotesPage}>
-          <Quotes />
-        </Route>
-        <Route path={Url.VideosPage}>
-          <Videos />
-        </Route>
+        <Route path={Url.BiographyPage} element={<Biography />} />
+        <Route path={Url.TimelinePage} element={<Timeline />} />
+        <Route path={Url.StatementsPage} element={<Statements />} />
+        <Route path={Url.QuotesPage} element={<Quotes />} />
+        <Route path={Url.VideosPage} element={<Videos />} />
         {/* artwork */}
-        <Route path={Url.CollectionPage}>
-          <Collection />
-        </Route>
-        <Route path={Url.ReviewsPage}>
-          <Reviews />
-        </Route>
-        <Route path={Url.BooksPage}>
-          <Books />
-        </Route>
+        <Route path={Url.CollectionPage} element={<Collection />} />
+        <Route path={Url.ReviewsPage} element={<Reviews />} />
+        <Route path={Url.BooksPage} element={<Books />} />
         {/* footer */}
-        <Route path={Url.ContactPage}>
-          <Contact />
-        </Route>
-        <Route path={Url.AccessibilityPage}>
-          <Accessibility />
-        </Route>
-        <Route path={Url.CopyrightPage}>
-          <Copyright />
-        </Route>
-        <Route path={Url.WantedPage}>
-          <Wanted />
-        </Route>
-        {/* errors */}
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
+        <Route path={Url.ContactPage} element={<Contact />} />
+        <Route path={Url.AccessibilityPage} element={<Accessibility />} />
+        <Route path={Url.CopyrightPage} element={<Copyright />} />
+        <Route path={Url.WantedPage} element={<Wanted />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Footer />
       <NotificationsWrapper>
         {notifications.map((notification) => (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ChevronRightSvg: React.FC = (props) => (
+export const ChevronRightSvg = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 256 512"
     xmlns="http://www.w3.org/2000/svg"

@@ -32,10 +32,7 @@ const getHeading = (type: NotificationType): string => {
   }
 };
 
-export const Notification: React.FC<INotificationProps> = ({
-  notification,
-  dismiss,
-}) => {
+export const Notification = ({ notification, dismiss }: INotificationProps) => {
   const { type, shouldAutoDismiss, heading, text } = notification;
 
   useEffect(() => {

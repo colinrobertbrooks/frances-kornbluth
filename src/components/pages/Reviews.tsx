@@ -16,7 +16,7 @@ import {
   Artwork,
 } from './shared';
 
-export const Reviews: React.FC = () => (
+export const Reviews = () => (
   <Page title="Reviews">
     <Row>
       <Col md={12}>

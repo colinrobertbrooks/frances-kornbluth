@@ -3,7 +3,7 @@ import { selfPortraitImg } from '../../assets/artwork';
 import { Link, Url } from '../../router';
 import { Page, Row, Col, H1, Paragraph, Artwork } from './shared';
 
-export const Biography: React.FC = () => (
+export const Biography = () => (
   <Page title="Biography">
     <Row>
       <Col md={12}>

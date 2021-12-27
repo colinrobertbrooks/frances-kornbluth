@@ -57,7 +57,7 @@ const getCount = (all: number, filtered: number): string => {
   return `${filtered} of ${all} pieces`;
 };
 
-export const Collection: React.FC = () => {
+export const Collection = () => {
   /*
    *  collection
    */
@@ -99,7 +99,7 @@ export const Collection: React.FC = () => {
   return (
     <Page title="Collection">
       <Row>
-        <Col md={12}>
+        <Col md={12} className="position-relative">
           {(() => {
             if (collectionIsLoading || !collection)
               return (

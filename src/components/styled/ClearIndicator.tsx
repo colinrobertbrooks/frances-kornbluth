@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // a la react-select
-export const ClearIndicator: React.FC<{
-  onClick: () => void;
-}> = ({ onClick }) => (
+export const ClearIndicator = ({ onClick }: { onClick: () => void }) => (
   <Wrapper aria-hidden onClick={onClick}>
     <Icon />
   </Wrapper>

@@ -1,14 +1,13 @@
 import React from 'react';
 
-interface IRockSeaAndSkySvgProps {
-  fill: string;
+interface IRockSeaAndSkySvgProps extends React.SVGProps<SVGSVGElement> {
   maxWidth?: number;
 }
 
-export const RocksSeaAndSkySvg: React.FC<IRockSeaAndSkySvgProps> = ({
+export const RocksSeaAndSkySvg = ({
   fill,
   maxWidth,
-}) => (
+}: IRockSeaAndSkySvgProps) => (
   <svg
     width="2621.000000pt"
     height="649.000000pt"

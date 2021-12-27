@@ -15,7 +15,7 @@ import {
   OutlineButton,
 } from './shared';
 
-export const Home: React.FC = () => (
+export const Home = () => (
   <Page className="position-relative p-0 home-page" fluid>
     <Background />
     <Container>
@@ -27,12 +27,12 @@ export const Home: React.FC = () => (
         </Col>
         <Col lg={6} className="text-center mb-5 mb-lg-0">
           <ArtImg src={artistImg} alt="Artist" />
-          <Paragraph className="mb-4">
+          <ArtCopy>
             Frances Kornbluth (1920 - 2014) was an Abstract Expressionist
             painter who spent 57 summers painting on Monhegan Island off the
             coast of Maine. Her teachers and mentors included Reuben Tam,
             William Kienbusch and Robert Richenburg.
-          </Paragraph>
+          </ArtCopy>
           <Row>
             <Col xl={2} />
             <Col sm={6} xl={4}>
@@ -50,12 +50,12 @@ export const Home: React.FC = () => (
         </Col>
         <Col lg={6} className="text-center">
           <ArtImg src={artworkImg} alt="Artwork" />
-          <Paragraph className="mb-4">
+          <ArtCopy>
             Frances Kornbluth&#39;s body of work spans seven decades and can be
             found in public collections, including the Monhegan Museum of Art
             &amp; History, the Colby College Museum of Art and the Portland
             Museum of Art.
-          </Paragraph>
+          </ArtCopy>
           <Row>
             <Col xl={2} />
             <Col sm={6} xl={4}>
@@ -130,6 +130,13 @@ const ArtImg = styled.img.attrs(({ alt }) => ({
   ${media.md`
       height: 200px;
       width: 200px;
+  `}
+`;
+
+const ArtCopy = styled(Paragraph).attrs({ className: 'mb-4' })`
+  ${media.lg`
+    margin: 0 auto;
+    max-width: 550px;
   `}
 `;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const InstagramSvg: React.FC = (props) => (
+export const InstagramSvg = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 448 512"
     xmlns="http://www.w3.org/2000/svg"

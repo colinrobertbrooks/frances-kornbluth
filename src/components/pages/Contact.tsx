@@ -14,7 +14,7 @@ import {
   Button,
 } from './shared';
 
-export const Contact: React.FC = () => (
+export const Contact = () => (
   <Page title="Contact">
     <Row>
       <Col md={9}>

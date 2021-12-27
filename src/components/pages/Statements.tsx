@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page, Row, Col, H1, H2, Paragraph } from './shared';
 
-export const Statements: React.FC = () => (
+export const Statements = () => (
   <Page title="Statements">
     <Row>
       <Col md={12}>

@@ -25,7 +25,7 @@ import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
 import { SkipToMain } from './skip-to-main';
 
-export const Header: React.FC = () => {
+export const Header = () => {
   // navbar toggler
   const [collapseIsOpen, setCollapseIsOpen] = useState<boolean>(false);
   const toggleCollapse = (): void => setCollapseIsOpen(!collapseIsOpen);
@@ -71,7 +71,7 @@ export const Header: React.FC = () => {
               >
                 Artist
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItemNavLink to={Url.BiographyPage}>
                   Biography
                 </DropdownItemNavLink>
@@ -98,7 +98,7 @@ export const Header: React.FC = () => {
               >
                 Artwork
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem tag={Link} to={Url.AvailableArtworkPage}>
                   Available Artwork
                 </DropdownItem>
@@ -200,6 +200,12 @@ const Element = styled.header`
 
   .dropdown-menu {
     border-color: ${colors.border};
+  }
+
+  // https://github.com/twbs/bootstrap/issues/33957
+  .dropdown-menu-end {
+    right: 0;
+    left: auto;
   }
 
   .dropdown-divider {

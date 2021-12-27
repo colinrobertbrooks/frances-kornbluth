@@ -1,13 +1,9 @@
 import React from 'react';
 
-interface ISpinnerSvgProps {
-  fill: string;
-}
-
-export const SpinnerSvg: React.FC<ISpinnerSvgProps> = ({
+export const SpinnerSvg = ({
   fill,
   ...restProps
-}) => (
+}: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     x="0px"

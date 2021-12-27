@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Url, ExternalLink } from '../../router';
 import { Page, Row, Col, H1, Paragraph, Small } from './shared';
 
-export const Accessibility: React.FC = () => (
+export const Accessibility = () => (
   <Page title="Accessibility">
     <Row>
       <Col md={12}>

@@ -3,7 +3,7 @@ import { Link, Url } from '../../router';
 import { colors, typography } from '../../styles';
 import { styled, Page, Row, Col, H1, Paragraph } from './shared';
 
-export const Wanted: React.FC = () => (
+export const Wanted = () => (
   <Page title="Wanted">
     <Row>
       <Col md={12}>
