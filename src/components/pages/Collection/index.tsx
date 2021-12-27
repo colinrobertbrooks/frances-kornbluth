@@ -99,7 +99,7 @@ export const Collection = () => {
   return (
     <Page title="Collection">
       <Row>
-        <Col md={12} className="position-relative">
+        <Col md={12}>
           {(() => {
             if (collectionIsLoading || !collection)
               return (
@@ -116,21 +116,22 @@ export const Collection = () => {
 
             return (
               <>
-                <HeadingWrapper>
-                  <Heading className="mb-0">Collection</Heading>
-                  <HeadingCount>{count}</HeadingCount>
-                </HeadingWrapper>
                 <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
-                  <SlideToggleWrapper>
-                    <SlideToggle
-                      id="js-filter-toggle"
-                      openLabel="Open filters"
-                      closeLabel="Close filters"
-                    >
-                      <FilterIcon />
-                    </SlideToggle>
-                    <FilterToggleIntroTooltip />
-                  </SlideToggleWrapper>
+                  <HeadingWrapper>
+                    <Heading className="mb-0">Collection</Heading>
+                    <HeadingCount>{count}</HeadingCount>
+                    <SlideToggleWrapper>
+                      <SlideToggle
+                        id="js-filter-toggle"
+                        openLabel="Open filters"
+                        closeLabel="Close filters"
+                      >
+                        <FilterIcon />
+                      </SlideToggle>
+                      <FilterToggleIntroTooltip />
+                    </SlideToggleWrapper>
+                  </HeadingWrapper>
+
                   <Slide closeLabel="Close filters">
                     <FiltersCount>{count}</FiltersCount>
                     <Filters
@@ -182,19 +183,15 @@ const HeadingWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: ${HEADING_WRAPPER_MARGIN_BOTTOM_PX}px;
+  position: relative;
 `;
 
 const HeadingCount = styled(Small).attrs({ color: 'gray' })``;
 
 const SlideToggleWrapper = styled.div`
   position: absolute;
-  right: 15px;
-  top: 7px;
-
-  ${media.sm`
-    right: 0;
-    top: 14px;
-  `}
+  top: 0;
+  right: 0;
 `;
 
 const FilterIcon = styled(FilterSvg)`
