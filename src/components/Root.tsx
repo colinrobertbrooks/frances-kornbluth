@@ -4,7 +4,7 @@ import { NotificationsProvider, CollectionProvider } from '../contexts';
 import { Router, RouteAdapter } from '../router';
 import App from './App';
 
-const Root: React.FC = () => (
+const Root = () => (
   <Router>
     <QueryParamProvider
       ReactRouterRoute={RouteAdapter as unknown as React.FunctionComponent}

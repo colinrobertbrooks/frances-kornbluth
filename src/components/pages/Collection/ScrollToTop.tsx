@@ -11,7 +11,7 @@ import {
 } from '../../../styles';
 import { ChevronUpSvg } from '../../svg';
 
-const ScrollToTop: React.FC = () => {
+const ScrollToTop = () => {
   const windowScrollPosition = useWindowScrollPosition();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 

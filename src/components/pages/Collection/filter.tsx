@@ -279,7 +279,7 @@ interface IFiltersProps extends IFilterProps {
   reset: () => void;
 }
 
-export const Filters: React.FC<IFiltersProps> = ({
+export const Filters = ({
   collection,
   filters,
   title,
@@ -295,7 +295,7 @@ export const Filters: React.FC<IFiltersProps> = ({
   tags,
   setTags,
   reset,
-}) => {
+}: IFiltersProps) => {
   /*
    *  options
    */

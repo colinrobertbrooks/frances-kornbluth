@@ -57,7 +57,7 @@ const getCount = (all: number, filtered: number): string => {
   return `${filtered} of ${all} pieces`;
 };
 
-export const Collection: React.FC = () => {
+export const Collection = () => {
   /*
    *  collection
    */

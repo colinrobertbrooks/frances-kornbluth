@@ -33,7 +33,7 @@ import {
   Artwork,
 } from './shared';
 
-export const Timeline: React.FC = () => (
+export const Timeline = () => (
   <Page title="Timeline">
     <Row>
       <Col md={12}>

@@ -12,7 +12,7 @@ import {
 import { Small } from '../styled';
 import { FacebookSvg, InstagramSvg } from '../svg';
 
-export const Footer: React.FC = () => (
+export const Footer = () => (
   <Element>
     <Container className="py-2 pb-lg-2">
       <Row>

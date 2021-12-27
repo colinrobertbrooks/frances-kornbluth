@@ -3,7 +3,7 @@ import { SpinnerSvg } from '../../svg';
 import { colors } from '../../../styles';
 import { styled } from '../shared';
 
-const Loader: React.FC = () => (
+const Loader = () => (
   <Wrapper>
     <Spinner />
   </Wrapper>

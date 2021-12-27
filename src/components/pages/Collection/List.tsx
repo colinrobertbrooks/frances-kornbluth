@@ -72,11 +72,7 @@ interface IListProps {
   noItems: JSX.Element;
 }
 
-const List: React.FC<IListProps> = ({
-  filteredCollection,
-  onItemClick,
-  noItems,
-}) => {
+const List = ({ filteredCollection, onItemClick, noItems }: IListProps) => {
   /*
    *  infinite scrolling
    */

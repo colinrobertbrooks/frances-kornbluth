@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Modal as ReactstrapModal, ModalProps } from 'reactstrap';
+import { Modal as ReactstrapModal } from 'reactstrap';
 import { EMAIL_ADDRESS } from '../../../constants';
 import {
   useCollectionContext,
@@ -26,7 +26,7 @@ interface IModalProps {
   setId: (nextId: QueryId) => void;
 }
 
-const Modal: React.FC<IModalProps> = ({ filteredCollection, id, setId }) => {
+const Modal = ({ filteredCollection, id, setId }: IModalProps) => {
   const { addErrorNotification } = useNotificationsContext();
 
   /*
@@ -195,7 +195,7 @@ const yPadding = {
 /*
  *  layout
  */
-const Wrapper: React.FC<ModalProps> = styled(ReactstrapModal)``;
+const Wrapper = styled(ReactstrapModal)``;
 
 const Header = styled.div`
   padding-top ${yPadding.xs}px;
@@ -414,7 +414,7 @@ interface IStatusProps {
   record: ICollectionRecord;
 }
 
-const CollectionStatus: React.FC<IStatusProps> = ({ record }) => {
+const CollectionStatus = ({ record }: IStatusProps) => {
   switch (record.status) {
     case Status.Available: {
       return (

@@ -1,14 +1,13 @@
 import React from 'react';
 
-interface FrancesKornbluthSvgProps {
-  fill: string;
+interface IFrancesKornbluthSvgProps extends React.SVGProps<SVGSVGElement> {
   maxWidth?: number;
 }
 
-export const FrancesKornbluthSvg: React.FC<FrancesKornbluthSvgProps> = ({
+export const FrancesKornbluthSvg = ({
   fill,
   maxWidth,
-}) => (
+}: IFrancesKornbluthSvgProps) => (
   <svg
     width="2585.000000pt"
     height="340.000000pt"

@@ -25,7 +25,7 @@ import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
 import { SkipToMain } from './skip-to-main';
 
-export const Header: React.FC = () => {
+export const Header = () => {
   // navbar toggler
   const [collapseIsOpen, setCollapseIsOpen] = useState<boolean>(false);
   const toggleCollapse = (): void => setCollapseIsOpen(!collapseIsOpen);

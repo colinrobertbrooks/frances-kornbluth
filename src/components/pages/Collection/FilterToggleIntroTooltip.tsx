@@ -4,7 +4,7 @@ import { Popover as ReactstrapPopper, PopoverBody } from 'reactstrap';
 import { media, typography } from '../../../styles';
 import { useLocalStorage, useTimeout } from '../../../hooks';
 
-const FilterToggleIntroTooltip: React.FC = () => {
+const FilterToggleIntroTooltip = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [didDismiss, setDidDismiss] = useLocalStorage(
     'DID_DISMISS_COLLECTION_FILTER_TOGGLE_INTRO_TOOLTIP',

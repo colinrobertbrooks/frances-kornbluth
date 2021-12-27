@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, Page, Row, Col, H1, Paragraph } from './shared';
 
-export const Videos: React.FC = () => (
+export const Videos = () => (
   <Page title="Videos">
     <Row>
       <Col md={12}>

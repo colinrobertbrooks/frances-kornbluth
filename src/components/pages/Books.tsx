@@ -3,7 +3,7 @@ import { explorationsImg } from '../../assets/pages/books';
 import { EMAIL_ADDRESS } from '../../constants';
 import { styled, Page, Row, Col, H1, Paragraph, Span, Button } from './shared';
 
-export const Books: React.FC = () => (
+export const Books = () => (
   <Page title="Books">
     <Row>
       <Col md={12}>

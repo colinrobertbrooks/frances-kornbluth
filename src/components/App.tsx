@@ -22,7 +22,7 @@ import {
 } from './pages';
 import { Notification } from './styled';
 
-const App: React.FC = () => {
+const App = () => {
   const { notifications, dismissNotification } = useNotificationsContext();
 
   return (

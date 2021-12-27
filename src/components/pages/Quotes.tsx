@@ -15,7 +15,7 @@ import {
   Artwork,
 } from './shared';
 
-export const Quotes: React.FC = () => (
+export const Quotes = () => (
   <Page title="Quotes">
     <Row>
       <Col md={12}>
