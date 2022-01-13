@@ -98,6 +98,7 @@ const filterCollection = (
     if (validTags?.length) {
       booleans.push(validTags.every((tag) => record.tags.includes(tag as Tag)));
     }
+
     if (isNew) {
       booleans.push(!!record.isNew);
     }
