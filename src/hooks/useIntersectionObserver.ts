@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useRef, useEffect, useState, RefObject } from 'react';
 
 interface Args<T> extends IntersectionObserverInit {
@@ -33,9 +32,7 @@ export function useIntersectionObserver<
   useEffect(() => {
     const node = elementRef?.current; // DOM Ref
 
-    if (!hasIOSupport || noUpdate || !node) {
-      return;
-    }
+    if (!hasIOSupport || noUpdate || !node) return;
 
     // Delete the old observer before creating a new one
     if (observer.current) observer.current.disconnect();
@@ -47,9 +44,8 @@ export function useIntersectionObserver<
 
     currentObserver.observe(node);
 
-    return () => {
-      currentObserver.disconnect();
-    };
+    return () => currentObserver.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elementRef, threshold, root, rootMargin, noUpdate]);
 
   return [!!entry?.isIntersecting, entry];
