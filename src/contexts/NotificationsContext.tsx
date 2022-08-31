@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { NotificationType, INotification } from '../types';
-import { usePrevious } from '../hooks';
-import { useLocation } from '../router';
+import React, { useContext, useEffect, useState } from "react";
+import { usePrevious } from "../hooks";
+import { useLocation } from "../router";
+import { INotification, NotificationType } from "../types";
 
 interface INotificationContent
   extends Pick<INotification, 'shouldAutoDismiss' | 'heading' | 'text'> {}
@@ -58,10 +58,7 @@ export const NotificationsProvider: React.FC = ({ children }) => {
 
   const dismissNotification = (notification: INotification) =>
     setNotifications((oldNotifications) =>
-      oldNotifications.filter(
-        (n) =>
-          n.timestamp !== notification.timestamp && n.type !== notification.type
-      )
+      oldNotifications.filter((n) => n.timestamp !== notification.timestamp)
     );
 
   const location = useLocation();
