@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { usePrevious } from "../hooks";
-import { useLocation } from "../router";
-import { INotification, NotificationType } from "../types";
+import React, { useContext, useEffect, useState } from 'react';
+import { usePrevious } from '../hooks';
+import { useLocation } from '../router';
+import { INotification, NotificationType } from '../types';
 
 interface INotificationContent
   extends Pick<INotification, 'shouldAutoDismiss' | 'heading' | 'text'> {}
