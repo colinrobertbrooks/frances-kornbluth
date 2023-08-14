@@ -338,17 +338,19 @@ export const Timeline = () => (
                 </>
               }
             />
+            {/* June 15 - September 2, 2001 */}
             <Milestone
               year="2001"
-              event="On Island: Women Artists of Monhegan exhibition at the University of New England"
+              event="Monhegan: The Abstracted Island exhibition at the Bates College Museum of Art"
             />
             <Milestone
               year="2001"
               event="Solo exhibition: Constructions & Collages at the Slater Memorial Museum"
             />
+            {/* July 26 - September 23, 2007 */}
             <Milestone
               year="2007"
-              event="Monhegan: The Abstracted Island exhibition at the Bates College Museum of Art"
+              event="On Island: Women Artists of Monhegan exhibition at the University of New England"
             />
             <Milestone
               year="2009"
@@ -363,7 +365,7 @@ export const Timeline = () => (
           <MilestonesWrapper>
             <Milestone
               year="2010"
-              event="Challenge, Wit and Wonder: Three Maine Women Artists exhibition at the Pace Galleries"
+              event="Challenge, Wit and Wisdom: Three Maine Women Artists exhibition at the Pace Galleries"
             />
             <Milestone
               year="2010"
