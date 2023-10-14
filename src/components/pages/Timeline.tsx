@@ -154,7 +154,7 @@ export const Timeline = () => (
             />
             <Milestone
               year="1962"
-              event="Masters Degree from the Pratt Institute; studied with Robert Richenburg"
+              event="Master's Degree from the Pratt Institute; studied with Robert Richenburg"
             />
             <Milestone
               year="1962"

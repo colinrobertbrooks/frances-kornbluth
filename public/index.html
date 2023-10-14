@@ -4,40 +4,46 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <title>Frances Kornbluth</title>
     <meta
-    name="description"
-    content="Frances Kornbluth (1920 - 2014) was an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
-  />
-  <meta
-    property="og:title"
-    content="Frances Kornbluth, Artist & Artwork"
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://franceskornbluth.com/" />
-  <meta
-    property="og:image"
-    content="https://franceskornbluth.com/screenshot.jpg"
-  />
-  <meta
-    property="og:description"
-    content="Frances Kornbluth (1920 - 2014) was an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
-  />
-  <script type="text/javascript">
-    // SPA + GH
-    (function(l) {
-      if (l.search[1] === '/' ) {
-        var decoded = l.search.slice(1).split('&').map(function(s) {
-          return s.replace(/~and~/g, '&')
-        }).join('?');
-        window.history.replaceState(null, null,
+      name="description"
+      content="Frances Kornbluth (1920 - 2014) was an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    />
+    <meta property="og:title" content="Frances Kornbluth, Artist & Artwork" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://franceskornbluth.com/" />
+    <meta
+      property="og:image"
+      content="https://franceskornbluth.com/screenshot.jpg"
+    />
+    <meta
+      property="og:description"
+      content="Frances Kornbluth (1920 - 2014) was an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    />
+    <script type="text/javascript">
+      // SPA + GH
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(
+            null,
+            null,
             l.pathname.slice(0, -1) + decoded + l.hash
-        );
-      }
-    }(window.location))
-  </script>
+          );
+        }
+      })(window.location);
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
