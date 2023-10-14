@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1a8a0596.css",
-    "main.js": "/static/js/main.b9f9c74f.js",
+    "main.js": "/static/js/main.af4de501.js",
     "static/media/altos-twilight.jpg": "/static/media/altos-twilight.f7696ed9ec4f02d300a6.jpg",
     "static/media/germination.jpg": "/static/media/germination.33c7a6cc6d8a070e0d2e.jpg",
     "static/media/path-clearing.jpg": "/static/media/path-clearing.b3bc6d6d40f44a6fcd0d.jpg",
@@ -28,10 +28,10 @@
     "static/media/artist.jpg": "/static/media/artist.0cf5b646b59e5c9d144f.jpg",
     "index.html": "/index.html",
     "main.1a8a0596.css.map": "/static/css/main.1a8a0596.css.map",
-    "main.b9f9c74f.js.map": "/static/js/main.b9f9c74f.js.map"
+    "main.af4de501.js.map": "/static/js/main.af4de501.js.map"
   },
   "entrypoints": [
     "static/css/main.1a8a0596.css",
-    "static/js/main.b9f9c74f.js"
+    "static/js/main.af4de501.js"
   ]
 }
