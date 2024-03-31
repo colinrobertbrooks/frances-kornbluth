@@ -45,6 +45,7 @@ export const Timeline = () => (
           <MilestonesWrapper>
             <Milestone
               year="1955"
+              // Kienbusch 1955; Tam 1956-1959
               event="Enrolled in the Brooklyn Museum Art School, studying with William Kienbusch and Reuben Tam"
             />
             <Milestone year="1957" event="First visit to Monhegan Island" />
