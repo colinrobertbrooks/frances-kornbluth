@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^0.28.0",
     "bootstrap": "^5.3.3",
     "focus-trap-react": "^8.9.0",
     "focus-visible": "^5.2.0",
