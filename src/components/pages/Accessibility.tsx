@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, Url, ExternalLink } from '../../router';
 import { Page, Row, Col, H1, Paragraph, Small } from './shared';
 

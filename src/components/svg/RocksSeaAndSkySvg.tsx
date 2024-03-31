@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface IRockSeaAndSkySvgProps extends React.SVGProps<SVGSVGElement> {
   maxWidth?: number;
 }

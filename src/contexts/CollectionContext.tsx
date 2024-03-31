@@ -12,14 +12,15 @@ interface ICollectionContext {
   getCollectionRecord: (id: number) => ICollectionRecord | undefined;
 }
 
-const CollectionContext = createContext<ICollectionContext>({
-  collectionIsLoading: false,
-  collection: null,
-  loadCollection: () => undefined,
-  getCollectionRecord: () => undefined,
-});
+const CollectionContext = createContext<ICollectionContext>(
+  {} as ICollectionContext
+);
 
-export const CollectionProvider: React.FC = ({ children }) => {
+export const CollectionProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [collectionIsLoading, setCollectionIsLoading] =
     useState<boolean>(false);
   const [collection, setCollection] = useState<Collection>(null);
@@ -55,5 +56,12 @@ export const CollectionProvider: React.FC = ({ children }) => {
   );
 };
 
-export const useCollectionContext = (): ICollectionContext =>
-  useContext(CollectionContext);
+export const useCollectionContext = (): ICollectionContext => {
+  const context = useContext(CollectionContext);
+  if (!context) {
+    throw new Error(
+      'useCollectionContext must be used within a <CollectionProvider />'
+    );
+  }
+  return context;
+};

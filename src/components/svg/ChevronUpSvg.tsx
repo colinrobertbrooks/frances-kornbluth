@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ChevronUpSvg = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 448 512"

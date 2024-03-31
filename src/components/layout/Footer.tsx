@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { Link, Url, ExternalLink, ExternalUrl } from '../../router';

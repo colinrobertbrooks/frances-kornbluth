@@ -50,12 +50,13 @@ const SlideContext = createContext<ISlideContext>({
 
 interface ISlideProviderProps {
   checkIsOutsideClick?: (event: any) => boolean; // eslint-disable-line @typescript-eslint/no-explicit-any
+  children: React.ReactNode;
 }
 
-export const SlideProvider: React.FC<ISlideProviderProps> = ({
+export const SlideProvider = ({
   checkIsOutsideClick,
   children,
-}) => {
+}: ISlideProviderProps) => {
   /*
    *  focus management
    */
@@ -161,14 +162,15 @@ interface ISlideToggleProps {
   id?: string;
   openLabel: string;
   closeLabel: string;
+  children: React.ReactNode;
 }
 
-export const SlideToggle: React.FC<ISlideToggleProps> = ({
+export const SlideToggle = ({
   id,
   openLabel,
   closeLabel,
   children,
-}) => {
+}: ISlideToggleProps) => {
   const { toggleRef, isOpening, isOpen, toggle } = useSlideContext();
   const label = isOpening || isOpen ? closeLabel : openLabel;
 
@@ -209,9 +211,10 @@ const ToggleElement = styled.button`
  */
 interface ISlideProps {
   closeLabel: string;
+  children: React.ReactNode;
 }
 
-export const Slide: React.FC<ISlideProps> = ({ closeLabel, children }) => {
+export const Slide = ({ closeLabel, children }: ISlideProps) => {
   const { slideRef, closeRef, isOpening, isOpen, isClosing, isClosed, close } =
     useSlideContext();
 

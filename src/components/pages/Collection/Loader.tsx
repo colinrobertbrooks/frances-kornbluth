@@ -1,4 +1,3 @@
-import React from 'react';
 import { SpinnerSvg } from '../../svg';
 import { colors } from '../../../styles';
 import { styled } from '../shared';

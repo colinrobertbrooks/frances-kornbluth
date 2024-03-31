@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Modal as ReactstrapModal } from 'reactstrap';
 import { EMAIL_ADDRESS } from '../../../constants';
 import {

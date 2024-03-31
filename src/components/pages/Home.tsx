@@ -1,4 +1,3 @@
-import React from 'react';
 import { artistImg, artworkImg, backgroundImg } from '../../assets/pages/home';
 import { Url } from '../../router';
 import { HEADER_HEIGHT_PX, colors, media } from '../../styles';

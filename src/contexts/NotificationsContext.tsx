@@ -20,7 +20,11 @@ const NotificationsContext = React.createContext<INotificationsContext>({
   dismissNotification: () => undefined,
 });
 
-export const NotificationsProvider: React.FC = ({ children }) => {
+export const NotificationsProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [notifications, setNotifications] = useState<INotification[]>([]);
 
   const addNotification = (notification: Omit<INotification, 'timestamp'>) =>

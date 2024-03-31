@@ -1,5 +1,5 @@
 /* eslint-disable default-case, consistent-return */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import {
   Toast as ReactstrapToast,

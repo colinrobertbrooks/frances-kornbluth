@@ -1,4 +1,3 @@
-import React from 'react';
 import { QueryParamProvider } from 'use-query-params';
 import { NotificationsProvider, CollectionProvider } from '../contexts';
 import { Router, RouteAdapter } from '../router';

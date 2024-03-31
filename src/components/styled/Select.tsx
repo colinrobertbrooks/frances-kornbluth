@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactSelect, { Props as ReactSelectProps } from 'react-select';
 import styled from 'styled-components';
 import { lighten } from 'polished';
@@ -17,7 +16,7 @@ interface ISelectProps
   onChange: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export const Select: React.FC<ISelectProps> = ({
+export const Select = ({
   id,
   isSearchable = true,
   isClearable = true,
@@ -25,7 +24,7 @@ export const Select: React.FC<ISelectProps> = ({
   tabSelectsValue = false,
   isMulti = false,
   ...restProps
-}) => (
+}: ISelectProps) => (
   <Element
     isSearchable={isSearchable}
     openMenuOnFocus={openMenuOnFocus}
