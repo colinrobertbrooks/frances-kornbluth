@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, Url } from '../../router';
 import { colors, typography } from '../../styles';
 import { styled, Page, Row, Col, H1, Paragraph } from './shared';

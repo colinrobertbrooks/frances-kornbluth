@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
@@ -14,14 +13,15 @@ interface IPageProps {
   className?: string;
   title?: string;
   fluid?: boolean;
+  children: React.ReactNode;
 }
 
-export const Page: React.FC<IPageProps> = ({
+export const Page = ({
   className = 'pt-4',
   title,
   fluid = false,
   children,
-}) => {
+}: IPageProps) => {
   useDocumentTitle(
     title ? `${title} | Frances Kornbluth` : 'Frances Kornbluth'
   );

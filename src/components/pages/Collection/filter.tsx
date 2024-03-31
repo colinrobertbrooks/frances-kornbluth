@@ -341,7 +341,8 @@ export const Filters = ({
             id="title-input"
             placeholder="enter title"
             value={title || ''}
-            onChange={(event) => {
+            // TODO: fix type
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const { value } = event.target;
               if (!value) {
                 setTitle(undefined);

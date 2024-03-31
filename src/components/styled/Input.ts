@@ -2,7 +2,7 @@ import { Input as ReactstrapInput, InputProps } from 'reactstrap';
 import styled from 'styled-components';
 import { colors, typography } from '../../styles';
 
-export const Input: React.FC<InputProps> = styled(ReactstrapInput)`
+export const Input = styled(ReactstrapInput)<InputProps>`
   font-family: ${typography.default};
 
   &:focus {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Page, Row, Col, H1, H2, Paragraph } from './shared';
 
 export const Statements = () => (

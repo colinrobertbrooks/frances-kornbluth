@@ -1,4 +1,3 @@
-import React from 'react';
 import { explorationsImg } from '../../assets/pages/books';
 import { EMAIL_ADDRESS } from '../../constants';
 import { styled, Page, Row, Col, H1, Paragraph, Span, Button } from './shared';

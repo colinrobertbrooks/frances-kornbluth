@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import {
   novemberImg,
@@ -458,7 +457,7 @@ const DecadeHeading = styled(Heading).attrs({
   color: ${colors.gray};
 `;
 
-const MilestonesWrapper: React.FC = ({ children }) => (
+const MilestonesWrapper = ({ children }: { children: React.ReactNode }) => (
   <Row>
     <Col lg={2} />
     <Col lg={9}>{children}</Col>

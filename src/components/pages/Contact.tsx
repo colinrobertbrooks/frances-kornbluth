@@ -1,4 +1,3 @@
-import React from 'react';
 import { EMAIL_ADDRESS } from '../../constants';
 import { Link, Url } from '../../router';
 import { media, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX } from '../../styles';
