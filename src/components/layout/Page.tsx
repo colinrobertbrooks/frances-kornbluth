@@ -9,19 +9,19 @@ import {
 } from '../../styles';
 import { MainAnchor } from './skip-to-main';
 
-interface IPageProps {
+type PageProps = {
   className?: string;
   title?: string;
   fluid?: boolean;
   children: React.ReactNode;
-}
+};
 
 export const Page = ({
   className = 'pt-4',
   title,
   fluid = false,
   children,
-}: IPageProps) => {
+}: PageProps) => {
   useDocumentTitle(
     title ? `${title} | Frances Kornbluth` : 'Frances Kornbluth'
   );

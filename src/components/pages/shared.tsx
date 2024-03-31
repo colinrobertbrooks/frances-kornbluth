@@ -78,13 +78,13 @@ const ArtworkInfo = styled(Small).attrs({ color: 'gray' })`
   text-align: center;
 `;
 
-interface IArtworkProps {
+type ArtworkProps = {
   className?: string;
   src: string;
   title: string;
   medium: string;
   dimensions: string;
-}
+};
 
 export const Artwork = ({
   className,
@@ -92,7 +92,7 @@ export const Artwork = ({
   title,
   medium,
   dimensions,
-}: IArtworkProps): JSX.Element => (
+}: ArtworkProps): JSX.Element => (
   <div className={className}>
     <ArtworkImg src={src} alt={title} title={title} />
     <ArtworkTitle>{title}</ArtworkTitle>

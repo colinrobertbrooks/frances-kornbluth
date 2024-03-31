@@ -14,19 +14,19 @@ import {
   colors,
   typography,
 } from '../../../styles';
-import { ICollectionRecord, Status } from '../../../types';
+import { CollectionRecord, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
 import { styled, css, Span, Small, Button } from '../shared';
 
 type QueryId = number | null | undefined;
 
-interface IModalProps {
-  filteredCollection: ICollectionRecord[];
+type ModalProps = {
+  filteredCollection: CollectionRecord[];
   id: QueryId;
   setId: (nextId: QueryId) => void;
-}
+};
 
-const Modal = ({ filteredCollection, id, setId }: IModalProps) => {
+const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
   const { addErrorNotification } = useNotificationsContext();
 
   /*
@@ -403,18 +403,18 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
 /*
  *  status
  */
-const makeInquireHref = (record: ICollectionRecord) => {
+const makeInquireHref = (record: CollectionRecord) => {
   const { title, medium, dimensions, id } = record;
   const subject = `Inquiry: "${title}" (${medium}, ${dimensions})`;
   const body = `I am interested in "${title}" (${medium}, ${dimensions}), which I found at franceskornbluth.com/collection?id=${id}. Please send more information.`;
   return `mailto:${EMAIL_ADDRESS}?&Subject=${subject}&body=${body}`;
 };
 
-interface IStatusProps {
-  record: ICollectionRecord;
-}
+type StatusProps = {
+  record: CollectionRecord;
+};
 
-const CollectionStatus = ({ record }: IStatusProps) => {
+const CollectionStatus = ({ record }: StatusProps) => {
   switch (record.status) {
     case Status.Available: {
       return (

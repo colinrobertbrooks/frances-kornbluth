@@ -1,19 +1,19 @@
 import React, { createContext, useContext, useState } from 'react';
 import { getCollection } from '../api';
-import { ICollectionRecord } from '../types';
+import { CollectionRecord } from '../types';
 import { useNotificationsContext } from './NotificationsContext';
 
-type Collection = ICollectionRecord[] | null;
+type Collection = CollectionRecord[] | null;
 
-interface ICollectionContext {
+type CollectionContextValue = {
   collectionIsLoading: boolean;
   collection: Collection;
   loadCollection: () => void;
-  getCollectionRecord: (id: number) => ICollectionRecord | undefined;
-}
+  getCollectionRecord: (id: number) => CollectionRecord | undefined;
+};
 
-const CollectionContext = createContext<ICollectionContext>(
-  {} as ICollectionContext
+const CollectionContext = createContext<CollectionContextValue>(
+  {} as CollectionContextValue
 );
 
 export const CollectionProvider = ({
@@ -39,7 +39,7 @@ export const CollectionProvider = ({
     }
   };
 
-  const getCollectionRecord = (id: number): ICollectionRecord | undefined =>
+  const getCollectionRecord = (id: number): CollectionRecord | undefined =>
     collection?.find((c) => c.id === id);
 
   return (
@@ -56,7 +56,7 @@ export const CollectionProvider = ({
   );
 };
 
-export const useCollectionContext = (): ICollectionContext => {
+export const useCollectionContext = (): CollectionContextValue => {
   const context = useContext(CollectionContext);
   if (!context) {
     throw new Error(

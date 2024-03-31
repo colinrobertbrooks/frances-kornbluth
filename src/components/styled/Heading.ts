@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { colors, typography, getRems } from '../../styles';
 
-interface IHeadingProps {
+type HeadingProps = {
   color?: 'darkGray' | 'gray';
-}
+};
 
-export const Heading = styled.h1<IHeadingProps>`
+export const Heading = styled.h1<HeadingProps>`
   color: ${({ color }) => (color ? colors[color] : colors.darkGray)};
   font-family: ${typography.heading};
   font-weight: 500;

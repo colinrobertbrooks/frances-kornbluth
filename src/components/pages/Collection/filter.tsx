@@ -13,7 +13,7 @@ import {
   SizeGroup,
   Status,
   Tag,
-  ICollectionRecord,
+  CollectionRecord,
 } from '../../../types';
 import { unique } from '../../../utils';
 import {
@@ -22,7 +22,7 @@ import {
   Input,
   ClearIndicator,
   Select,
-  ISelectOption,
+  SelectOption,
   Button,
   OutlineButton,
 } from '../../styled';
@@ -31,7 +31,7 @@ import { useSlideContext } from './slide';
 /*
  *  types
  */
-type Collection = ICollectionRecord[];
+type Collection = CollectionRecord[];
 
 type QueryTitle = string | null | undefined;
 type QueryMedium = string | null | undefined;
@@ -41,7 +41,7 @@ type QueryStatus = string | null | undefined;
 type QueryTags = (string | null)[] | null | undefined;
 type QueryIsNew = boolean | null | undefined;
 
-interface IQueryFilters {
+type QueryFilters = {
   title: QueryTitle;
   medium: QueryMedium;
   size: QuerySize;
@@ -49,14 +49,14 @@ interface IQueryFilters {
   status: QueryStatus;
   tags: QueryTags;
   isNew: QueryIsNew;
-}
+};
 
 /*
  *  method
  */
 const filterCollection = (
   collection: Collection,
-  filters: Partial<IQueryFilters>
+  filters: Partial<QueryFilters>
 ): Collection => {
   const { title, medium, size, decade, status, tags, isNew } = filters;
 
@@ -110,7 +110,7 @@ const filterCollection = (
 /*
  *  state
  */
-interface IFilterProps {
+type FilterProps = {
   title: QueryTitle;
   setTitle: (nextTitle: QueryTitle) => void;
   medium: QueryMedium;
@@ -123,16 +123,16 @@ interface IFilterProps {
   setStatus: (nextStatuses: QueryStatus) => void;
   tags: QueryTags;
   setTags: (nextTags: QueryTags) => void;
-}
+};
 
-interface IFilterState {
-  filters: IQueryFilters;
+type FilterState = {
+  filters: QueryFilters;
   filteredCollection: Collection;
-  filterProps: IFilterProps;
+  filterProps: FilterProps;
   resetFilters: () => void;
-}
+};
 
-export const useFilterState = (collection: Collection): IFilterState => {
+export const useFilterState = (collection: Collection): FilterState => {
   const [title, setTitle] = useQueryParam('title', StringParam);
   const [medium, setMedium] = useQueryParam('medium', StringParam);
   const [size, setSize] = useQueryParam('size', StringParam);
@@ -190,8 +190,8 @@ export const useFilterState = (collection: Collection): IFilterState => {
  */
 const getMediumOptions = (
   collection: Collection,
-  filters: IQueryFilters
-): ISelectOption[] => {
+  filters: QueryFilters
+): SelectOption[] => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { medium, ...restFilters } = filters;
   const refilteredCollection = filterCollection(collection, restFilters);
@@ -207,8 +207,8 @@ const getMediumOptions = (
 
 const getSizeOptions = (
   collection: Collection,
-  filters: IQueryFilters
-): ISelectOption[] => {
+  filters: QueryFilters
+): SelectOption[] => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { size, ...restFilters } = filters;
   const refilteredCollection = filterCollection(collection, restFilters);
@@ -224,8 +224,8 @@ const getSizeOptions = (
 
 const getDecadeOptions = (
   collection: Collection,
-  filters: IQueryFilters
-): ISelectOption[] => {
+  filters: QueryFilters
+): SelectOption[] => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { decade, ...restFilters } = filters;
   const refilteredCollection = filterCollection(collection, restFilters);
@@ -241,8 +241,8 @@ const getDecadeOptions = (
 
 const getStatusOptions = (
   collection: Collection,
-  filters: IQueryFilters
-): ISelectOption[] => {
+  filters: QueryFilters
+): SelectOption[] => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { status, ...restFilters } = filters;
   const refilteredCollection = filterCollection(collection, restFilters);
@@ -258,8 +258,8 @@ const getStatusOptions = (
 
 const getTagsOptions = (
   collection: Collection,
-  filters: IQueryFilters
-): ISelectOption[] => {
+  filters: QueryFilters
+): SelectOption[] => {
   const filteredCollection = filterCollection(collection, filters);
   const availableValues = unique(
     filteredCollection.map((record) => record.tags).flat()
@@ -274,11 +274,11 @@ const getTagsOptions = (
 /*
  *  component
  */
-interface IFiltersProps extends IFilterProps {
+type FiltersProps = FilterProps & {
   collection: Collection;
-  filters: IQueryFilters;
+  filters: QueryFilters;
   reset: () => void;
-}
+};
 
 export const Filters = ({
   collection,
@@ -296,7 +296,7 @@ export const Filters = ({
   tags,
   setTags,
   reset,
-}: IFiltersProps) => {
+}: FiltersProps) => {
   /*
    *  options
    */
@@ -374,7 +374,7 @@ export const Filters = ({
               ? mediumOptions.find((option) => medium === option.value)
               : null
           }
-          onChange={(option: ISelectOption) => setMedium(option?.value)}
+          onChange={(option: SelectOption) => setMedium(option?.value)}
         />
       </FormGroup>
       <FormGroup>
@@ -386,7 +386,7 @@ export const Filters = ({
           value={
             size ? sizeOptions.find((option) => size === option.value) : null
           }
-          onChange={(option: ISelectOption) => setSize(option?.value)}
+          onChange={(option: SelectOption) => setSize(option?.value)}
         />
       </FormGroup>
       <FormGroup>
@@ -400,7 +400,7 @@ export const Filters = ({
               ? decadeOptions.find((option) => decade === option.value)
               : null
           }
-          onChange={(option: ISelectOption) => setDecade(option?.value)}
+          onChange={(option: SelectOption) => setDecade(option?.value)}
         />
       </FormGroup>
       <FormGroup>
@@ -414,7 +414,7 @@ export const Filters = ({
               ? statusOptions.find((option) => status === option.value)
               : null
           }
-          onChange={(option: ISelectOption) => setStatus(option?.value)}
+          onChange={(option: SelectOption) => setStatus(option?.value)}
         />
       </FormGroup>
       <FormGroup>
@@ -429,8 +429,8 @@ export const Filters = ({
               ? tagsOptions.filter((option) => tags.includes(option.value))
               : null
           }
-          onChange={(options: ISelectOption[]) =>
-            setTags(options?.map(({ value }: ISelectOption) => value))
+          onChange={(options: SelectOption[]) =>
+            setTags(options?.map(({ value }: SelectOption) => value))
           }
         />
       </FormGroup>

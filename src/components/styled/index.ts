@@ -21,4 +21,4 @@ export * from './Input';
 export * from './Select';
 
 // notifications
-export * from './Notification';
+export * from './ToastNotification';

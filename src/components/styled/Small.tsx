@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { colors, typography } from '../../styles';
 
-interface ISmallProps {
+type SmallProps = {
   color?: 'black' | 'darkGray' | 'gray' | 'lightGray';
-}
+};
 
-export const Small = styled.small<ISmallProps>`
+export const Small = styled.small<SmallProps>`
   color: ${({ color }) => (color ? colors[color] : colors.black)};
   font-family: ${typography.default};
 `;

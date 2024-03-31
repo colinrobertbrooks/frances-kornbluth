@@ -19,7 +19,7 @@ import {
   Wanted,
   NotFound,
 } from './pages';
-import { Notification } from './styled';
+import { ToastNotification } from './styled';
 
 const App = () => {
   const { notifications, dismissNotification } = useNotificationsContext();
@@ -50,7 +50,7 @@ const App = () => {
       <Footer />
       <NotificationsWrapper>
         {notifications.map((notification) => (
-          <Notification
+          <ToastNotification
             key={`${notification.type}-${notification.timestamp}`}
             notification={notification}
             dismiss={() => dismissNotification(notification)}

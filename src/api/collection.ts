@@ -1,12 +1,12 @@
 import { adapter } from './utils';
-import { TSpreadsheetDatum, Decade, Status, ICollectionRecord } from '../types';
+import { SpreadsheetDatum, Decade, Status, CollectionRecord } from '../types';
 import { deriveMediumGroup, deriveSizeGroup, generateTags } from '../utils';
 
-const deserializeCollection = (values: string[][]): ICollectionRecord[] => {
+const deserializeCollection = (values: string[][]): CollectionRecord[] => {
   const [headRow, ...bodyRows] = values;
-  const data: TSpreadsheetDatum[] = [];
+  const data: SpreadsheetDatum[] = [];
   bodyRows.forEach((row) => {
-    const datum: TSpreadsheetDatum = {};
+    const datum: SpreadsheetDatum = {};
     row.forEach((val, valIdx) => {
       datum[headRow[valIdx]] = val;
     });
@@ -46,7 +46,7 @@ const deserializeCollection = (values: string[][]): ICollectionRecord[] => {
     );
 };
 
-export const getCollection = async (): Promise<ICollectionRecord[]> => {
+export const getCollection = async (): Promise<CollectionRecord[]> => {
   // https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/get
   const spreadsheetId = '1IzGaO3pLokvuiuKkS2UccK4KuYvnQwM-osJf3WfciJU';
   const range = 'Collection';
