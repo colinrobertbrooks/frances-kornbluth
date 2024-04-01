@@ -37,9 +37,15 @@ export const artistUrls = [
   Url.TimelinePage,
   Url.StatementsPage,
   Url.QuotesPage,
+  Url.VideosPage,
 ];
 
-export const artworkUrls = [Url.CollectionPage, Url.ReviewsPage, Url.BooksPage];
+export const artworkUrls = [
+  Url.CollectionPage,
+  Url.ExhibitionsPage,
+  Url.PublicationsPage,
+  Url.ReviewsPage,
+];
 
 export const ExternalLink = styled.a.attrs({
   target: '_blank',
