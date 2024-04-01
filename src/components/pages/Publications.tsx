@@ -61,7 +61,11 @@ const Publication = ({
 }) => (
   <Row>
     <Col md={3}>
-      <img alt={title} className="img-thumbnail mb-3 mb-md-0" src={coverImg} />
+      <img
+        alt={title}
+        className="img-thumbnail w-100 mb-3 mb-md-0"
+        src={coverImg}
+      />
     </Col>
     <Col md={9}>
       <Heading as="h2" color="gray" className="text-start mb-1">
