@@ -23,8 +23,9 @@ export enum Url {
   VideosPage = '/videos',
   // artwork
   CollectionPage = '/collection',
+  ExhibitionsPage = '/exhibitions',
+  PublicationsPage = '/publications',
   ReviewsPage = '/reviews',
-  BooksPage = '/books',
   // footer
   ContactPage = '/contact',
   CopyrightPage = '/copyright',

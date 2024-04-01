@@ -2,20 +2,16 @@ import { styled, Page, Row, Col, H1, Paragraph } from './shared';
 
 export const Videos = () => (
   <Page title="Videos">
-    <Row>
-      <Col md={12}>
-        <H1>Videos</H1>
-        <Paragraph as="h2" color="gray">
-          Interview for <i>The Women Artists of Monhegan Island</i> (2012)
-        </Paragraph>
-        <VideoWrapper>
-          <Video
-            title="Frances Kornbluth Interview"
-            src="https://www.youtube.com/embed/OuqiylLBRRA"
-          />
-        </VideoWrapper>
-      </Col>
-    </Row>
+    <H1>Videos</H1>
+    <Paragraph as="h2" color="gray">
+      Interview for <i>The Women Artists of Monhegan Island</i> (2012)
+    </Paragraph>
+    <VideoWrapper>
+      <Video
+        title="Frances Kornbluth Interview"
+        src="https://www.youtube.com/embed/OuqiylLBRRA"
+      />
+    </VideoWrapper>
   </Page>
 );
 

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Modal as ReactstrapModal } from 'reactstrap';
-import { EMAIL_ADDRESS } from '../../../constants';
 import {
   useCollectionContext,
   useNotificationsContext,
@@ -16,7 +15,7 @@ import {
 } from '../../../styles';
 import { CollectionItem, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
-import { styled, css, Span, Small, Button } from '../shared';
+import { styled, css, Span, Small } from '../shared';
 
 type QueryId = number | null | undefined;
 

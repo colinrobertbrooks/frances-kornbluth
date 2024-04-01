@@ -8,7 +8,6 @@ import {
   Col,
   Divider,
   Heading,
-  H2,
   Paragraph,
   Button,
 } from './shared';
@@ -23,7 +22,7 @@ export const Contact = () => (
         <ContactButton>Contact Us</ContactButton>
       </StickyCol>
       <Col md={9}>
-        <Divider />
+        <Divider className="d-md-none" />
         <H2>Acquisitions</H2>
         <Paragraph>
           If you are interested in acquiring work by Frances Kornbluth, then
@@ -51,7 +50,13 @@ export const Contact = () => (
   </Page>
 );
 
-const H1 = styled(Heading).attrs({ className: 'mb-2 m-md-0' })``;
+const H1 = styled(Heading).attrs({ className: 'mb-2 mb-md-4' })``;
+
+const H2 = styled(Heading).attrs({
+  as: 'h2',
+  className: 'mb-2',
+  color: 'gray',
+})``;
 
 const StickyCol = styled(Col)`
   ${media.md`

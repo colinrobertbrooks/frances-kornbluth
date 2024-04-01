@@ -10,13 +10,13 @@ import {
   winterLandscapeImg,
 } from '../../assets/artwork';
 import {
-  artist1950s,
-  artist1960s,
-  artist1970s,
-  artist1980s,
-  artist1990s,
-  artist2000s,
-  artist2010s,
+  artist1950sImg,
+  artist1960sImg,
+  artist1970sImg,
+  artist1980sImg,
+  artist1990sImg,
+  artist2000sImg,
+  artist2010sImg,
 } from '../../assets/pages/timeline';
 import { Link, Url } from '../../router';
 import { colors, media } from '../../styles';
@@ -37,9 +37,8 @@ export const Timeline = () => (
     <Row>
       <Col md={12}>
         <H1>Timeline</H1>
-        <Divider />
         <DecadeWrapper>
-          <DecadeImg src={artist1950s} alt="Kornbluth in 1958" />
+          <DecadeImg src={artist1950sImg} alt="Kornbluth in 1958" />
           <DecadeHeading>1950s</DecadeHeading>
           <MilestonesWrapper>
             <Milestone
@@ -108,7 +107,7 @@ export const Timeline = () => (
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
-          <DecadeImg src={artist1960s} alt="Kornbluth in the 1960s" />
+          <DecadeImg src={artist1960sImg} alt="Kornbluth in the 1960sImg" />
           <DecadeHeading>1960s</DecadeHeading>
           <MilestonesWrapper>
             <Milestone
@@ -207,7 +206,7 @@ export const Timeline = () => (
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
-          <DecadeImg src={artist1970s} alt="Kornbluth in 1978" />
+          <DecadeImg src={artist1970sImg} alt="Kornbluth in 1978" />
           <DecadeHeading>1970s</DecadeHeading>
           <MilestonesWrapper>
             <Milestone
@@ -258,7 +257,7 @@ export const Timeline = () => (
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
-          <DecadeImg src={artist1980s} alt="Kornbluth in 1989" />
+          <DecadeImg src={artist1980sImg} alt="Kornbluth in 1989" />
           <DecadeHeading>1980s</DecadeHeading>
           <MilestonesWrapper>
             <Milestone
@@ -298,7 +297,7 @@ export const Timeline = () => (
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
-          <DecadeImg src={artist1990s} alt="Kornbluth in 1997" />
+          <DecadeImg src={artist1990sImg} alt="Kornbluth in 1997" />
           <DecadeHeading>1990s</DecadeHeading>
           <MilestonesWrapper>
             <Milestone
@@ -318,7 +317,7 @@ export const Timeline = () => (
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
-          <DecadeImg src={artist2000s} alt="Kornbluth in 2001" />
+          <DecadeImg src={artist2000sImg} alt="Kornbluth in 2001" />
           <DecadeHeading>2000s</DecadeHeading>
           <MilestonesWrapper>
             <Milestone
@@ -360,7 +359,7 @@ export const Timeline = () => (
         </DecadeWrapper>
         <Divider />
         <DecadeWrapper>
-          <DecadeImg src={artist2010s} alt="Kornbluth in 2010" />
+          <DecadeImg src={artist2010sImg} alt="Kornbluth in 2010" />
           <DecadeHeading>2010s</DecadeHeading>
           <MilestonesWrapper>
             <Milestone

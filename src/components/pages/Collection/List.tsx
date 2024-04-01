@@ -12,11 +12,8 @@ import {
   focusOutlineCSS,
   HEADER_HEIGHT_PX,
   MAIN_PADDING_TOP_PX,
-  colors,
-  getRems,
-  typography,
 } from '../../../styles';
-import { CollectionItem, Status } from '../../../types';
+import { CollectionItem } from '../../../types';
 import { styled, Row, Col } from '../shared';
 import {
   listItemHeightConfig,
@@ -134,7 +131,7 @@ const List = ({ filteredCollection, onItemClick, noItems }: ListProps) => {
           <>
             {filteredCollection
               .slice(0, listItemCount)
-              .map(({ id, title, minImgSrc, tags, status }) => {
+              .map(({ id, title, minImgSrc, tags }) => {
                 const alt = tags.length
                   ? `${title} (${tags.join(', ')})`
                   : title;
