@@ -36,7 +36,7 @@ export const Quotes = () => (
       connected to the island. Being here every summer continues to enhance my
       power to see, to feel and to make art.&quot;
     </Quote>
-    <Source>- Monhegan, The Artists&apos; Island (1995)</Source>
+    <Source>- Monhegan: The Artists&apos; Island (1995)</Source>
     <Divider />
     <H2 className="text-center">Dominican Republic</H2>
     <Artwork
