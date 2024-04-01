@@ -1,19 +1,19 @@
 import React, { createContext, useContext, useState } from 'react';
 import { getCollection } from '../api';
-import { ICollectionRecord } from '../types';
+import { CollectionItem } from '../types';
 import { useNotificationsContext } from './NotificationsContext';
 
-type Collection = ICollectionRecord[] | null;
+type Collection = CollectionItem[] | null;
 
-interface ICollectionContext {
+type CollectionContextValue = {
   collectionIsLoading: boolean;
   collection: Collection;
   loadCollection: () => void;
-  getCollectionRecord: (id: number) => ICollectionRecord | undefined;
-}
+  getCollectionItem: (id: number) => CollectionItem | undefined;
+};
 
-const CollectionContext = createContext<ICollectionContext>(
-  {} as ICollectionContext
+const CollectionContext = createContext<CollectionContextValue>(
+  {} as CollectionContextValue
 );
 
 export const CollectionProvider = ({
@@ -39,7 +39,7 @@ export const CollectionProvider = ({
     }
   };
 
-  const getCollectionRecord = (id: number): ICollectionRecord | undefined =>
+  const getCollectionItem = (id: number): CollectionItem | undefined =>
     collection?.find((c) => c.id === id);
 
   return (
@@ -48,7 +48,7 @@ export const CollectionProvider = ({
         collectionIsLoading,
         collection,
         loadCollection,
-        getCollectionRecord,
+        getCollectionItem,
       }}
     >
       {children}
@@ -56,7 +56,7 @@ export const CollectionProvider = ({
   );
 };
 
-export const useCollectionContext = (): ICollectionContext => {
+export const useCollectionContext = (): CollectionContextValue => {
   const context = useContext(CollectionContext);
   if (!context) {
     throw new Error(

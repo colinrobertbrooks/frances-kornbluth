@@ -24,7 +24,7 @@ const SLIDE_ANIMATION_MS = 300;
 /*
  *  context
  */
-interface ISlideContext {
+type SlideContextValue = {
   toggleRef: React.RefObject<HTMLButtonElement>;
   slideRef: React.RefObject<HTMLDivElement>;
   closeRef: React.RefObject<HTMLButtonElement>;
@@ -34,29 +34,19 @@ interface ISlideContext {
   isClosed: boolean;
   toggle: () => void;
   close: () => void;
-}
+};
 
-const SlideContext = createContext<ISlideContext>({
-  toggleRef: React.createRef(),
-  slideRef: React.createRef(),
-  closeRef: React.createRef(),
-  isOpening: false,
-  isOpen: false,
-  isClosing: false,
-  isClosed: true,
-  toggle: () => undefined,
-  close: () => undefined,
-});
+const SlideContext = createContext<SlideContextValue>({} as SlideContextValue);
 
-interface ISlideProviderProps {
+type SlideProviderProps = {
   checkIsOutsideClick?: (event: any) => boolean; // eslint-disable-line @typescript-eslint/no-explicit-any
   children: React.ReactNode;
-}
+};
 
 export const SlideProvider = ({
   checkIsOutsideClick,
   children,
-}: ISlideProviderProps) => {
+}: SlideProviderProps) => {
   /*
    *  focus management
    */
@@ -153,24 +143,30 @@ export const SlideProvider = ({
   );
 };
 
-export const useSlideContext = (): ISlideContext => useContext(SlideContext);
+export const useSlideContext = (): SlideContextValue => {
+  const context = useContext(SlideContext);
+  if (!context) {
+    throw new Error('useSlideContext must be used within a <SlideProvider />');
+  }
+  return context;
+};
 
 /*
  *  toggle
  */
-interface ISlideToggleProps {
+type SlideToggleProps = {
   id?: string;
   openLabel: string;
   closeLabel: string;
   children: React.ReactNode;
-}
+};
 
 export const SlideToggle = ({
   id,
   openLabel,
   closeLabel,
   children,
-}: ISlideToggleProps) => {
+}: SlideToggleProps) => {
   const { toggleRef, isOpening, isOpen, toggle } = useSlideContext();
   const label = isOpening || isOpen ? closeLabel : openLabel;
 
@@ -209,12 +205,12 @@ const ToggleElement = styled.button`
 /*
  *  slide
  */
-interface ISlideProps {
+type SlideProps = {
   closeLabel: string;
   children: React.ReactNode;
-}
+};
 
-export const Slide = ({ closeLabel, children }: ISlideProps) => {
+export const Slide = ({ closeLabel, children }: SlideProps) => {
   const { slideRef, closeRef, isOpening, isOpen, isClosing, isClosed, close } =
     useSlideContext();
 

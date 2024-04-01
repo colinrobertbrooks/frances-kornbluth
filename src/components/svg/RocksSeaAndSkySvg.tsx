@@ -1,11 +1,11 @@
-interface IRockSeaAndSkySvgProps extends React.SVGProps<SVGSVGElement> {
+type RockSeaAndSkySvgProps = React.SVGProps<SVGSVGElement> & {
   maxWidth?: number;
-}
+};
 
 export const RocksSeaAndSkySvg = ({
   fill,
   maxWidth,
-}: IRockSeaAndSkySvgProps) => (
+}: RockSeaAndSkySvgProps) => (
   <svg
     width="2621.000000pt"
     height="649.000000pt"

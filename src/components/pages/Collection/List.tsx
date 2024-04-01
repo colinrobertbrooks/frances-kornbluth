@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  IWindowSize,
+  WindowSize,
   useWindowSize,
   useIntersectionObserver,
   usePrevious,
@@ -16,7 +16,7 @@ import {
   getRems,
   typography,
 } from '../../../styles';
-import { ICollectionRecord, Status } from '../../../types';
+import { CollectionItem, Status } from '../../../types';
 import { styled, Row, Col } from '../shared';
 import {
   listItemHeightConfig,
@@ -29,17 +29,17 @@ import {
 /*
  *  methods
  */
-const getListItemHeigh = (windowSize: IWindowSize): number => {
+const getListItemHeigh = (windowSize: WindowSize): number => {
   const currentMedia = getCurrentMedia(windowSize.width);
   return listItemHeightConfig[currentMedia] + LIST_ITEM_MARGIN_BOTTOM_PX;
 };
 
-const getListColsPerRow = (windowSize: IWindowSize): number => {
+const getListColsPerRow = (windowSize: WindowSize): number => {
   const currentMedia = getCurrentMedia(windowSize.width);
   return 12 / listColConfig[currentMedia];
 };
 
-const getListDisplayHeight = (windowSize: IWindowSize): number => {
+const getListDisplayHeight = (windowSize: WindowSize): number => {
   const above =
     HEADER_HEIGHT_PX +
     MAIN_PADDING_TOP_PX +
@@ -48,7 +48,7 @@ const getListDisplayHeight = (windowSize: IWindowSize): number => {
   return windowSize.height - above;
 };
 
-const getInitialListItemCount = (windowSize: IWindowSize): number => {
+const getInitialListItemCount = (windowSize: WindowSize): number => {
   const listDisplayHeight = getListDisplayHeight(windowSize);
   const listItemHeight = getListItemHeigh(windowSize);
   const bufferRows = 2;
@@ -57,7 +57,7 @@ const getInitialListItemCount = (windowSize: IWindowSize): number => {
   return rowCount * colsPerRow;
 };
 
-const getListItemCountIncrement = (windowSize: IWindowSize): number => {
+const getListItemCountIncrement = (windowSize: WindowSize): number => {
   const colsPerRow = getListColsPerRow(windowSize);
   const incrementRows = 2;
   return colsPerRow * incrementRows;
@@ -66,13 +66,13 @@ const getListItemCountIncrement = (windowSize: IWindowSize): number => {
 /*
  *  component
  */
-interface IListProps {
-  filteredCollection: ICollectionRecord[];
+type ListProps = {
+  filteredCollection: CollectionItem[];
   onItemClick: (id: number) => void;
   noItems: JSX.Element;
-}
+};
 
-const List = ({ filteredCollection, onItemClick, noItems }: IListProps) => {
+const List = ({ filteredCollection, onItemClick, noItems }: ListProps) => {
   /*
    *  infinite scrolling
    */
@@ -111,7 +111,7 @@ const List = ({ filteredCollection, onItemClick, noItems }: IListProps) => {
 
   const previousFilteredCollection = usePrevious(filteredCollection);
   useEffect(() => {
-    // reset list item count if record count drops
+    // reset list item count if count drops
     if (
       previousFilteredCollection &&
       filteredCollection.length < previousFilteredCollection.length

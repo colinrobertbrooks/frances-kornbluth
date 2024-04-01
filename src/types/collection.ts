@@ -1,4 +1,4 @@
-export type TSpreadsheetDatum = { [key: string]: string };
+export type SpreadsheetItem = { [key: string]: string };
 
 export enum Decade {
   // label = value
@@ -58,7 +58,7 @@ export enum Tag {
   Trees = 'Trees',
 }
 
-export interface ICollectionRecord {
+export type CollectionItem = {
   id: number;
   title: string;
   minImgSrc: string;
@@ -72,4 +72,4 @@ export interface ICollectionRecord {
   holder: string | null;
   tags: Tag[];
   isNew: boolean;
-}
+};

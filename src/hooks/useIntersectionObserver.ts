@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState, RefObject } from 'react';
 
-interface Args<T> extends IntersectionObserverInit {
+type Args<T> = IntersectionObserverInit & {
   elementRef: RefObject<T>;
   freezeOnceVisible?: boolean;
-}
+};
 
 type ReturnType = [boolean, IntersectionObserverEntry | undefined];
 

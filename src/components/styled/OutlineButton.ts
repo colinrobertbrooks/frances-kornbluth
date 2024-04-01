@@ -30,10 +30,10 @@ const outlineButtonColors: any = {
   },
 };
 
-interface IOutlineButtonProps {
+type OutlineButtonProps = {
   color?: 'darkGray';
   to?: string;
-}
+};
 
 export const OutlineButton = styled(BaseButton).attrs(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,7 +43,7 @@ export const OutlineButton = styled(BaseButton).attrs(
     tag: to ? Link : undefined,
     ...restProps,
   })
-)<IOutlineButtonProps>`
+)<OutlineButtonProps>`
   ${({ color }) => {
     const { base, hover, focus, active } = outlineButtonColors[color];
 

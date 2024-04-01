@@ -3,18 +3,20 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 import { colors, media, typography } from '../../styles';
 
-export interface ISelectOption {
+export type SelectOption = {
   value: string;
   label: string;
   isDisabled?: boolean;
-}
+};
 
-interface ISelectProps
-  extends Omit<ReactSelectProps, 'classNamePrefix' | 'onChange' | 'value'> {
+type SelectProps = Omit<
+  ReactSelectProps,
+  'classNamePrefix' | 'onChange' | 'value'
+> & {
   id: string;
   value: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   onChange: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-}
+};
 
 export const Select = ({
   id,
@@ -24,7 +26,7 @@ export const Select = ({
   tabSelectsValue = false,
   isMulti = false,
   ...restProps
-}: ISelectProps) => (
+}: SelectProps) => (
   <Element
     isSearchable={isSearchable}
     openMenuOnFocus={openMenuOnFocus}

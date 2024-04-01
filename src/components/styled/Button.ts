@@ -52,10 +52,10 @@ const buttonColors: any = {
   },
 };
 
-interface IButtonProps {
+type ButtonProps = {
   color?: 'darkGray' | 'green';
   to?: string;
-}
+};
 
 export const Button = styled(BaseButton).attrs(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -64,7 +64,7 @@ export const Button = styled(BaseButton).attrs(
     tag: to ? Link : undefined,
     ...restProps,
   })
-)<IButtonProps>`
+)<ButtonProps>`
   ${({ color }) => {
     const { base, hover, focus, active } = buttonColors[color];
 

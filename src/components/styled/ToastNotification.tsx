@@ -7,12 +7,12 @@ import {
   ToastBody as ReactstrapToastBody,
 } from 'reactstrap';
 import { colors, typography } from '../../styles';
-import { NotificationType, INotification } from '../../types';
+import { NotificationType, Notification } from '../../types';
 
-interface INotificationProps {
-  notification: INotification;
+type ToastNotificationProps = {
+  notification: Notification;
   dismiss: () => void;
-}
+};
 
 const getIcon = (type: NotificationType): string => {
   switch (type) {
@@ -32,7 +32,10 @@ const getHeading = (type: NotificationType): string => {
   }
 };
 
-export const Notification = ({ notification, dismiss }: INotificationProps) => {
+export const ToastNotification = ({
+  notification,
+  dismiss,
+}: ToastNotificationProps) => {
   const { type, shouldAutoDismiss, heading, text } = notification;
 
   useEffect(() => {

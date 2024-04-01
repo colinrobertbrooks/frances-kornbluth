@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
 
-interface IParagraphProps {
+type ParagraphProps = {
   color?: 'black' | 'darkGray' | 'gray';
-}
+};
 
-export const Paragraph = styled.p<IParagraphProps>`
+export const Paragraph = styled.p<ParagraphProps>`
   color: ${({ color }) => (color ? colors[color] : colors.black)};
   font-family: ${typography.default};
   font-size: ${getRems(18)};

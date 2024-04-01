@@ -3,10 +3,10 @@ export enum NotificationType {
   Error,
 }
 
-export interface INotification {
+export type Notification = {
   type: NotificationType;
   shouldAutoDismiss?: boolean;
   heading?: string;
   text: string;
   timestamp: number;
-}
+};

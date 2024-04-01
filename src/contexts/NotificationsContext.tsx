@@ -1,33 +1,32 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { usePrevious } from '../hooks';
 import { useLocation } from '../router';
-import { INotification, NotificationType } from '../types';
+import { Notification, NotificationType } from '../types';
 
-interface INotificationContent
-  extends Pick<INotification, 'shouldAutoDismiss' | 'heading' | 'text'> {}
+type NotificationContent = Pick<
+  Notification,
+  'shouldAutoDismiss' | 'heading' | 'text'
+> & {};
 
-interface INotificationsContext {
-  notifications: INotification[];
-  addSuccessNotification: (content: INotificationContent) => void;
-  addErrorNotification: (content: INotificationContent) => void;
-  dismissNotification: (notification: INotification) => void;
-}
+type NotificationsContextValue = {
+  notifications: Notification[];
+  addSuccessNotification: (content: NotificationContent) => void;
+  addErrorNotification: (content: NotificationContent) => void;
+  dismissNotification: (notification: Notification) => void;
+};
 
-const NotificationsContext = React.createContext<INotificationsContext>({
-  notifications: [],
-  addSuccessNotification: () => undefined,
-  addErrorNotification: () => undefined,
-  dismissNotification: () => undefined,
-});
+const NotificationsContext = React.createContext<NotificationsContextValue>(
+  {} as NotificationsContextValue
+);
 
 export const NotificationsProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [notifications, setNotifications] = useState<INotification[]>([]);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
 
-  const addNotification = (notification: Omit<INotification, 'timestamp'>) =>
+  const addNotification = (notification: Omit<Notification, 'timestamp'>) =>
     setNotifications((oldNotifications) => [
       ...oldNotifications,
       {
@@ -40,7 +39,7 @@ export const NotificationsProvider = ({
     shouldAutoDismiss = false,
     heading = 'Success',
     text,
-  }: INotificationContent) =>
+  }: NotificationContent) =>
     addNotification({
       type: NotificationType.Success,
       shouldAutoDismiss,
@@ -52,7 +51,7 @@ export const NotificationsProvider = ({
     shouldAutoDismiss = false,
     heading = 'Error',
     text,
-  }: INotificationContent) =>
+  }: NotificationContent) =>
     addNotification({
       type: NotificationType.Error,
       shouldAutoDismiss,
@@ -60,7 +59,7 @@ export const NotificationsProvider = ({
       text,
     });
 
-  const dismissNotification = (notification: INotification) =>
+  const dismissNotification = (notification: Notification) =>
     setNotifications((oldNotifications) =>
       oldNotifications.filter((n) => n.timestamp !== notification.timestamp)
     );
@@ -93,5 +92,12 @@ export const NotificationsProvider = ({
   );
 };
 
-export const useNotificationsContext = (): INotificationsContext =>
-  useContext(NotificationsContext);
+export const useNotificationsContext = (): NotificationsContextValue => {
+  const context = useContext(NotificationsContext);
+  if (!context) {
+    throw new Error(
+      'useNotificationsContext must be used within a <NotificationsProvider />'
+    );
+  }
+  return context;
+};
