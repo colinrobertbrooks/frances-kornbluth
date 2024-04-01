@@ -1,4 +1,4 @@
-import { styled, Page, Row, Col, H1, Paragraph } from './shared';
+import { styled, Page, H1, Paragraph } from './shared';
 
 export const Videos = () => (
   <Page title="Videos">
