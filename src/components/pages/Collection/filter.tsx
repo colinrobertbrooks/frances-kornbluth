@@ -25,6 +25,7 @@ import {
   SelectOption,
   Button,
   OutlineButton,
+  Checkbox,
 } from '../../styled';
 import { useSlideContext } from './slide';
 
@@ -276,6 +277,8 @@ export const Filters = ({
   setDecade,
   tags,
   setTags,
+  status,
+  setStatus,
   reset,
 }: FiltersProps) => {
   /*
@@ -395,6 +398,15 @@ export const Filters = ({
           onChange={(options: SelectOption[]) =>
             setTags(options?.map(({ value }: SelectOption) => value))
           }
+        />
+      </FormGroup>
+      <FormGroup>
+        <Checkbox
+          checked={status === Status.Public}
+          onChange={() =>
+            setStatus(status === Status.Public ? undefined : Status.Public)
+          }
+          label="Public Collection"
         />
       </FormGroup>
       <ButtonsWrapper>

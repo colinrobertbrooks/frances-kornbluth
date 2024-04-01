@@ -5,6 +5,16 @@ import { colors } from './colors';
 /*
   a11y
 */
+export const disabledCSS = css`
+  cursor: not-allowed;
+  opacity: 0.7;
+`;
+
+export const focusBorderCSS = css`
+  border-color: #ced4da;
+  box-shadow: 0 0 0 0.2rem ${lighten(0.06, colors.lightRed)};
+`;
+
 export const focusOutlineCSS = css`
   outline: ${lighten(0.06, colors.lightRed)} auto 1px;
 `;

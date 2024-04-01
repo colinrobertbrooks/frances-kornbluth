@@ -1,7 +1,13 @@
 import ReactSelect, { Props as ReactSelectProps } from 'react-select';
 import styled from 'styled-components';
 import { lighten } from 'polished';
-import { colors, media, typography } from '../../styles';
+import {
+  colors,
+  disabledCSS,
+  focusBorderCSS,
+  media,
+  typography,
+} from '../../styles';
 
 export type SelectOption = {
   value: string;
@@ -41,6 +47,7 @@ export const Select = ({
 export const Element = styled(ReactSelect).attrs({
   classNamePrefix: 'react-select',
 })`
+  border-color: ${colors.lightGray};
   font-family: ${typography.default};
 
   .react-select__control {
@@ -49,8 +56,7 @@ export const Element = styled(ReactSelect).attrs({
 
   .react-select__control--is-focused,
   .react-select__control--is-focused:hover {
-    box-shadow: 0 0 0 0.2rem ${colors.lightRed};
-    border-color: #ced4da;
+    ${focusBorderCSS}
   }
 
   .react-select__multi-value__remove:active,
@@ -101,9 +107,7 @@ export const Element = styled(ReactSelect).attrs({
     .react-select__option--is-disabled,
     .react-select__option--is-disabled:hover,
     .react-select__option--is-disabled:active {
-      background-color: ${colors.trueWhite};
-      cursor: not-allowed;
-      opacity: 0.7;
+      ${disabledCSS}
     }
   }
 `;

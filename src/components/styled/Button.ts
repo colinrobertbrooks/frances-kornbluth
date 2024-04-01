@@ -21,11 +21,13 @@ const buttonColors: any = {
       backgroundColor: darken(0.06, colors.darkGray),
       borderColor: colors.darkGray,
       boxShadow: lighten(0.06, colors.lightRed),
+      color: colors.white,
     },
     active: {
       backgroundColor: colors.black,
       borderColor: colors.black,
       boxShadow: lighten(0.06, colors.lightRed),
+      color: colors.white,
     },
   },
   green: {
@@ -43,11 +45,13 @@ const buttonColors: any = {
       backgroundColor: darken(0.06, colors.green),
       borderColor: colors.green,
       boxShadow: lighten(0.06, colors.lightRed),
+      color: colors.white,
     },
     active: {
       backgroundColor: darken(0.12, colors.green),
       borderColor: colors.darkGreen,
       boxShadow: lighten(0.06, colors.lightRed),
+      color: colors.white,
     },
   },
 };
@@ -84,12 +88,14 @@ export const Button = styled(BaseButton).attrs(
         background-color ${focus.backgroundColor};
         border-color: ${focus.borderColor};
         box-shadow: 0 0 0 0.2rem ${focus.boxShadow};
+        color: ${focus.color};
       }
 
       &:active {
         background-color ${active.backgroundColor};
         border-color: ${active.borderColor};
         box-shadow: 0 0 0 0.2rem ${active.boxShadow} !important;
+        color: ${active.color};
       }
     `;
   }}
