@@ -26,7 +26,7 @@ export const Publications = () => (
     />
     <Divider />
     <Publication
-      title="Explorations"
+      title="Frances Kornbluth: Explorations"
       author="Maire McArdle"
       year="2011"
       coverImg={explorations2011Img}
