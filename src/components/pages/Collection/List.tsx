@@ -152,10 +152,7 @@ const List = ({ filteredCollection, onItemClick, noItems }: ListProps) => {
                       aria-label={`${title} (Click for more details)`}
                       onClick={() => onItemClick(id)}
                     >
-                      <ImgWrapper>
-                        {status === Status.Available && <AvailablePill />}
-                        <Img src={minImgSrc} alt={alt} title={title} />
-                      </ImgWrapper>
+                      <Img src={minImgSrc} alt={alt} title={title} />
                     </ModalTrigger>
                   </Col>
                 );
@@ -182,32 +179,6 @@ const ModalTrigger = styled.button`
 
   &:focus {
     ${focusOutlineCSS}
-  }
-`;
-
-const AvailablePill = styled.span.attrs({ children: 'Available' })`
-  background-color: ${colors.green};
-  border-radius: 4px;
-  color: ${colors.white};
-  display: none;
-  font-family: ${typography.default};
-  font-size: ${getRems(10)};
-  font-weight: 600;
-  left: 8px;
-  padding: 2px 4px;
-  position: absolute;
-  text-transform: uppercase;
-  top: 8px;
-`;
-
-const ImgWrapper = styled.div`
-  position: relative;
-
-  &:hover,
-  &:focus {
-    ${AvailablePill} {
-      display: block;
-    }
   }
 `;
 

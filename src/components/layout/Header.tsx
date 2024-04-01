@@ -99,7 +99,7 @@ export const Header = () => {
                 Artwork
               </DropdownToggle>
               <DropdownMenu end>
-                <DropdownItem tag={Link} to={Url.AvailableArtworkPage}>
+                <DropdownItem tag={Link} to={Url.ContactPage}>
                   Available Artwork
                 </DropdownItem>
                 <DropdownItem divider />

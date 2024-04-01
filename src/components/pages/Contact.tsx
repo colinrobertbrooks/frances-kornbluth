@@ -26,36 +26,11 @@ export const Contact = () => (
         <Divider />
         <H2>Acquisitions</H2>
         <Paragraph>
-          Available artwork can be viewed by clicking{' '}
-          <Link to={Url.AvailableArtworkPage}>here</Link>. Additional artwork
-          may be available; please contact us if you are looking for something
-          specific. We are happy to assist collectors and institutions in
-          selecting pieces of a particular medium, size, period or series.
+          If you are interested in acquiring work by Frances Kornbluth, then
+          please contact us.
         </Paragraph>
         <Divider />
-        <H2>Additions</H2>
-        <Paragraph>
-          To have your Frances Kornbluth artwork added to the{' '}
-          <Link to={Url.CollectionPage}>collection page</Link>, please send us a
-          medium- to high-quality JPEG image in addition to the title, medium
-          and dimensions (height x width in inches) for each piece. If you know
-          the year in which the piece was completed, please send that
-          information as well.
-        </Paragraph>
-        <Paragraph>
-          <Link to={Url.WantedPage}>Click here</Link> to see some of the pieces
-          for which we are currently seeking images.
-        </Paragraph>
-        <Divider />
-        <H2>Consignments</H2>
-        <Paragraph>
-          To have your Frances Kornbluth artwork added to available artwork,
-          please follow the instructions under additions, also indicating that
-          you would like to sell the piece. We will contact you to discuss
-          consignment terms.
-        </Paragraph>
-        <Divider />
-        <H2>Expositions</H2>
+        <H2>Exhibitions</H2>
         <Paragraph>
           Some of the artwork on the{' '}
           <Link to={Url.CollectionPage}>collection page</Link> can be made

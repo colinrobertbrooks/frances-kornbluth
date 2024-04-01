@@ -63,7 +63,7 @@ export const Home = () => (
               </Button>
             </Col>
             <Col sm={6} xl={4}>
-              <Button to={Url.AvailableArtworkPage} block>
+              <Button to={Url.ContactPage} block>
                 Available Artwork
               </Button>
             </Col>

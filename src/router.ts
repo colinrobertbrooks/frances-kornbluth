@@ -22,7 +22,6 @@ export enum Url {
   QuotesPage = '/quotes',
   VideosPage = '/videos',
   // artwork
-  AvailableArtworkPage = '/collection?status=Available',
   CollectionPage = '/collection',
   ReviewsPage = '/reviews',
   BooksPage = '/books',
@@ -30,7 +29,6 @@ export enum Url {
   ContactPage = '/contact',
   CopyrightPage = '/copyright',
   AccessibilityPage = '/accessibility',
-  WantedPage = '/wanted',
 }
 
 export const artistUrls = [

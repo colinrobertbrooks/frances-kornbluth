@@ -80,22 +80,6 @@ export const Collection = () => {
    */
   const [modalId, setModalId] = useQueryParam('id', NumberParam);
 
-  /*
-   *  notifications
-   */
-  const { addSuccessNotification } = useNotificationsContext();
-
-  useEffect(() => {
-    if (filters.status === Status.Available && !modalId) {
-      addSuccessNotification({
-        shouldAutoDismiss: true,
-        heading: 'Available Artwork',
-        text: 'Viewing available artwork.',
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <Page title="Collection">
       <Row>

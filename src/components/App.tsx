@@ -16,7 +16,6 @@ import {
   Statements,
   Timeline,
   Videos,
-  Wanted,
   NotFound,
 } from './pages';
 import { ToastNotification } from './styled';
@@ -44,7 +43,6 @@ const App = () => {
         <Route path={Url.ContactPage} element={<Contact />} />
         <Route path={Url.AccessibilityPage} element={<Accessibility />} />
         <Route path={Url.CopyrightPage} element={<Copyright />} />
-        <Route path={Url.WantedPage} element={<Wanted />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
