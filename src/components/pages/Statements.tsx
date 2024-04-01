@@ -1,9 +1,9 @@
-import { Page, H1, H2, Paragraph } from './shared';
+import { Page, H1, H2, Paragraph, Divider } from './shared';
 
 export const Statements = () => (
   <Page title="Statements">
     <H1>Statements</H1>
-    <H2>1968</H2>
+    <H2 className="text-center">1968</H2>
     <Paragraph>
       &quot;My exploration of the &apos;ocean&apos; theme through various two
       dimensional media is a personal record of sensing, feeling and giving
@@ -18,7 +18,8 @@ export const Statements = () => (
       Visual facts are often a point of departure in favor of expressive quality
       and concept.&quot;
     </Paragraph>
-    <H2>1976</H2>
+    <Divider />
+    <H2 className="text-center">1976</H2>
     <Paragraph>
       &quot;The natural environment has always been my subject matter. Early on,
       I realized that scene dominated the tradition of landscape art. The idea
@@ -41,7 +42,8 @@ export const Statements = () => (
       freedom to move from preconception of images and forms to exploration and
       discovery.&quot;
     </Paragraph>
-    <H2>1985</H2>
+    <Divider />
+    <H2 className="text-center">1985</H2>
     <Paragraph>
       &quot;I feel that making art is giving form to facts and feelings.
       Material and the images they take on become a vehicle for these concerns.
@@ -52,7 +54,8 @@ export const Statements = () => (
       light and tides; their poetry and drama. Beyond landscape as scenic
       material. I paint to record my sense of nature and being alive.&quot;
     </Paragraph>
-    <H2>1996</H2>
+    <Divider />
+    <H2 className="text-center">1996</H2>
     <Paragraph>
       &quot;My art reflects a philosophy of openness and trust in my life. My
       growth as an artist has come about from being open to experience and the
@@ -85,7 +88,8 @@ export const Statements = () => (
       the studio, I have been able to make order of the chaos that impacts and
       pervades life at this time.&quot;
     </Paragraph>
-    <H2>2007</H2>
+    <Divider />
+    <H2 className="text-center">2007</H2>
     <Paragraph>
       &quot;The natural environment has been my ongoing sense of imagery and
       inspiration. Over the years, working in different mediums and at various
@@ -96,7 +100,8 @@ export const Statements = () => (
       of my individuality, the tradition of art and artists from which I follow
       and the time in which each work is created.&quot;
     </Paragraph>
-    <H2>2013</H2>
+    <Divider />
+    <H2 className="text-center">2013</H2>
     <Paragraph>
       &quot;In my art I define and redefine landscape, arriving at abstractions
       of the natural and man-made environment. My vocabulary of shapes and forms

@@ -6,8 +6,9 @@ import {
   Page,
   Row,
   Col,
+  H1,
+  H2,
   Divider,
-  Heading,
   Paragraph,
   Button,
 } from './shared';
@@ -23,13 +24,13 @@ export const Contact = () => (
       </StickyCol>
       <Col md={9}>
         <Divider className="d-md-none" />
-        <H2>Acquisitions</H2>
+        <H2 className="mb-2">Acquisitions</H2>
         <Paragraph>
           If you are interested in acquiring work by Frances Kornbluth, then
           please contact us.
         </Paragraph>
         <Divider />
-        <H2>Exhibitions</H2>
+        <H2 className="mb-2">Exhibitions</H2>
         <Paragraph>
           Some of the artwork on the{' '}
           <Link to={Url.CollectionPage}>collection page</Link> can be made
@@ -37,7 +38,7 @@ export const Contact = () => (
           availability and lending arrangements.
         </Paragraph>
         <Divider />
-        <H2>Reproductions</H2>
+        <H2 className="mb-2">Reproductions</H2>
         <Paragraph>
           If you would like to reproduce any of Frances Kornbluth’s artwork for
           any purpose, please contact us. See the{' '}
@@ -49,14 +50,6 @@ export const Contact = () => (
     </Row>
   </Page>
 );
-
-const H1 = styled(Heading).attrs({ className: 'mb-2 mb-md-4' })``;
-
-const H2 = styled(Heading).attrs({
-  as: 'h2',
-  className: 'mb-2',
-  color: 'gray',
-})``;
 
 const StickyCol = styled(Col)`
   ${media.md`

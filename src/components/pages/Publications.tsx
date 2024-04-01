@@ -68,11 +68,11 @@ const Publication = ({
       />
     </Col>
     <Col md={9}>
-      <Heading as="h2" color="gray" className="text-start mb-1">
+      <Heading as="h2" color="darkGray" className="h4 mb-1">
         {title}
       </Heading>
       <Paragraph className="mb-1">{author}</Paragraph>
-      <Span className="small" color="darkGray">
+      <Span className="small" color="gray">
         Published {year}
       </Span>
     </Col>

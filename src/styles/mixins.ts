@@ -23,6 +23,24 @@ export const srOnlyCSS = css`
 `;
 
 /*
+ *  links
+ */
+export const linkCSS = css`
+  a {
+    color: ${colors.red};
+
+    &:hover,
+    &:focus {
+      color: ${colors.darkRed};
+    }
+
+    &:focus {
+      ${focusOutlineCSS}
+    }
+  }
+`;
+
+/*
  *  resets
  */
 export const unstyledButtonCSS = css`

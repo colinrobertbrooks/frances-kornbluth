@@ -7,7 +7,7 @@ import { styled, Page, Divider, H1, H2, Paragraph, Artwork } from './shared';
 export const Quotes = () => (
   <Page title="Quotes">
     <H1>Quotes</H1>
-    <H2>Monhegan Island</H2>
+    <H2 className="text-center">Monhegan Island</H2>
     <Artwork
       className="my-4"
       src={changingLightMonheganIcePondImg}
@@ -38,7 +38,7 @@ export const Quotes = () => (
     </Quote>
     <Source>- Monhegan, The Artists&apos; Island (1995)</Source>
     <Divider />
-    <H2>Dominican Republic</H2>
+    <H2 className="text-center">Dominican Republic</H2>
     <Artwork
       className="my-4"
       src={altosTwilightImg}

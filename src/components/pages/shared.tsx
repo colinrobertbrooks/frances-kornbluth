@@ -46,8 +46,7 @@ export const H2 = styled(Heading).attrs({
   as: 'h2',
   color: 'gray',
 })`
-  margin-bottom: 8x; // mb-2
-  text-align: center;
+  margin-bottom: 8px; // mb-2
 `;
 
 /*
