@@ -249,7 +249,7 @@ export const Timeline = () => (
               <Artwork
                 src={islandPath2Img}
                 title="Island Path #2"
-                medium="Oil on canvas"
+                medium="Acrylic on canvas"
                 dimensions='46 x 42"'
               />
             </Col>
