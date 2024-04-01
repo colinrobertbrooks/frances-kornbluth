@@ -32,16 +32,16 @@ export const Contact = () => (
         <Divider />
         <H2 className="mb-2">Exhibitions</H2>
         <Paragraph>
-          Some of the artwork on the{' '}
-          <Link to={Url.CollectionPage}>collection page</Link> can be made
-          available for public exhibition; please contact us to discuss
-          availability and lending arrangements.
+          If you are interested in exhibiting work by Frances Kornbluth, then
+          please contact us. Some of the work on the{' '}
+          <Link to={Url.CollectionPage}>collection page</Link> is available for
+          lending.
         </Paragraph>
         <Divider />
         <H2 className="mb-2">Reproductions</H2>
         <Paragraph>
-          If you would like to reproduce any of Frances Kornbluth’s artwork for
-          any purpose, please contact us. See the{' '}
+          If you are interested in reproducing work by Frances Kornbluth, then
+          please contact us. See the{' '}
           <Link to={Url.CopyrightPage}>copyright page</Link> for more
           information.
         </Paragraph>
