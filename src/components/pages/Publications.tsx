@@ -1,8 +1,8 @@
 import {
   monhegan1995Img,
+  onIsland2007Img,
   explorations2011Img,
   maineWomenPioneers2013Img,
-  onIsland2013Img,
 } from '../../assets/pages/publications';
 import {
   Page,
@@ -19,13 +19,6 @@ export const Publications = () => (
   <Page title="Publications">
     <H1>Publications</H1>
     <Publication
-      title="On Island: Women Artists of Monhegan"
-      author="University of New England Art Gallery"
-      year="2013"
-      coverImg={onIsland2013Img}
-    />
-    <Divider />
-    <Publication
       title="Maine Women Pioneers III"
       author="University of New England Art Gallery"
       year="2013"
@@ -37,6 +30,13 @@ export const Publications = () => (
       author="Maire McArdle"
       year="2011"
       coverImg={explorations2011Img}
+    />
+    <Divider />
+    <Publication
+      title="On Island: Women Artists of Monhegan"
+      author="University of New England Art Gallery"
+      year="2007"
+      coverImg={onIsland2007Img}
     />
     <Divider />
     <Publication
