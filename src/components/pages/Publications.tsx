@@ -28,7 +28,7 @@ export const Publications = () => (
     <Publication
       title="Maine Women Pioneers III"
       author="University of New England Art Gallery"
-      year="2012"
+      year="2013"
       coverImg={maineWomenPioneers2013Img}
     />
     <Divider />
