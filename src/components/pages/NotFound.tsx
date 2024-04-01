@@ -1,5 +1,5 @@
 import { Link, Url } from '../../router';
-import { Page, Row, Col, H1, Paragraph } from './shared';
+import { Page, H1, Paragraph } from './shared';
 
 export const NotFound = () => (
   <Page title="Not Found">

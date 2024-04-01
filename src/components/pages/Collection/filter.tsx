@@ -239,23 +239,6 @@ const getDecadeOptions = (
   }));
 };
 
-const getStatusOptions = (
-  collection: Collection,
-  filters: QueryFilters
-): SelectOption[] => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { status, ...restFilters } = filters;
-  const refilteredCollection = filterCollection(collection, restFilters);
-  const availableValues = unique(
-    refilteredCollection.map((item) => item.status)
-  );
-  return Object.entries(Status).map(([label, value]) => ({
-    label,
-    value,
-    isDisabled: !availableValues.includes(value),
-  }));
-};
-
 const getTagsOptions = (
   collection: Collection,
   filters: QueryFilters
