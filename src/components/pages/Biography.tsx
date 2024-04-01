@@ -53,7 +53,7 @@ export const Biography = () => (
       On May 26, 2014, Kornbluth died in Dayville, CT at the age of 93. During
       her lifetime, she was a member of the National Association of Women
       Artists, a charter member of the National Museum of Women in the Arts and
-      a member of Women Artists of Monhegan Island.
+      a founding member of Women Artists of Monhegan Island.
     </Paragraph>
     <Paragraph className="text-center">
       See more details on the <Link to={Url.TimelinePage}>timeline page</Link>.
