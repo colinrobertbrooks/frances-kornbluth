@@ -13,7 +13,7 @@ import {
   SizeGroup,
   Status,
   Tag,
-  CollectionRecord,
+  CollectionItem,
 } from '../../../types';
 import { unique } from '../../../utils';
 import {
@@ -31,7 +31,7 @@ import { useSlideContext } from './slide';
 /*
  *  types
  */
-type Collection = CollectionRecord[];
+type Collection = CollectionItem[];
 
 type QueryTitle = string | null | undefined;
 type QueryMedium = string | null | undefined;
@@ -70,37 +70,37 @@ const filterCollection = (
     Object.values(Tag).includes(value as Tag)
   );
 
-  return collection.filter((record) => {
+  return collection.filter((item) => {
     const booleans = [];
 
     if (title) {
       booleans.push(
-        record.title.toLocaleLowerCase().includes(title.trim().toLowerCase())
+        item.title.toLocaleLowerCase().includes(title.trim().toLowerCase())
       );
     }
 
     if (mediumIsValid) {
-      booleans.push(medium === record.mediumGroup);
+      booleans.push(medium === item.mediumGroup);
     }
 
     if (sizeIsValid) {
-      booleans.push(size === record.sizeGroup);
+      booleans.push(size === item.sizeGroup);
     }
 
     if (decadeIsValid) {
-      booleans.push(decade === record.decade);
+      booleans.push(decade === item.decade);
     }
 
     if (statusIsValid) {
-      booleans.push(status === record.status);
+      booleans.push(status === item.status);
     }
 
     if (validTags?.length) {
-      booleans.push(validTags.every((tag) => record.tags.includes(tag as Tag)));
+      booleans.push(validTags.every((tag) => item.tags.includes(tag as Tag)));
     }
 
     if (isNew) {
-      booleans.push(!!record.isNew);
+      booleans.push(!!item.isNew);
     }
 
     return booleans.every(Boolean);
@@ -196,7 +196,7 @@ const getMediumOptions = (
   const { medium, ...restFilters } = filters;
   const refilteredCollection = filterCollection(collection, restFilters);
   const availableValues = unique(
-    refilteredCollection.map((record) => record.mediumGroup)
+    refilteredCollection.map((item) => item.mediumGroup)
   );
   return Object.entries(MediumGroup).map(([label, value]) => ({
     label,
@@ -213,7 +213,7 @@ const getSizeOptions = (
   const { size, ...restFilters } = filters;
   const refilteredCollection = filterCollection(collection, restFilters);
   const availableValues = unique(refilteredCollection).map(
-    (record) => record.sizeGroup
+    (item) => item.sizeGroup
   );
   return Object.entries(SizeGroup).map(([label, value]) => ({
     label,
@@ -230,7 +230,7 @@ const getDecadeOptions = (
   const { decade, ...restFilters } = filters;
   const refilteredCollection = filterCollection(collection, restFilters);
   const availableValues = unique(
-    refilteredCollection.map((record) => record.decade)
+    refilteredCollection.map((item) => item.decade)
   );
   return Object.entries(Decade).map(([label, value]) => ({
     label,
@@ -247,7 +247,7 @@ const getStatusOptions = (
   const { status, ...restFilters } = filters;
   const refilteredCollection = filterCollection(collection, restFilters);
   const availableValues = unique(
-    refilteredCollection.map((record) => record.status)
+    refilteredCollection.map((item) => item.status)
   );
   return Object.entries(Status).map(([label, value]) => ({
     label,
@@ -262,7 +262,7 @@ const getTagsOptions = (
 ): SelectOption[] => {
   const filteredCollection = filterCollection(collection, filters);
   const availableValues = unique(
-    filteredCollection.map((record) => record.tags).flat()
+    filteredCollection.map((item) => item.tags).flat()
   );
   return Object.entries(Tag).map(([label, value]) => ({
     label,

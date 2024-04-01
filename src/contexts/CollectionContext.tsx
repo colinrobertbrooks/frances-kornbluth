@@ -1,15 +1,15 @@
 import React, { createContext, useContext, useState } from 'react';
 import { getCollection } from '../api';
-import { CollectionRecord } from '../types';
+import { CollectionItem } from '../types';
 import { useNotificationsContext } from './NotificationsContext';
 
-type Collection = CollectionRecord[] | null;
+type Collection = CollectionItem[] | null;
 
 type CollectionContextValue = {
   collectionIsLoading: boolean;
   collection: Collection;
   loadCollection: () => void;
-  getCollectionRecord: (id: number) => CollectionRecord | undefined;
+  getCollectionItem: (id: number) => CollectionItem | undefined;
 };
 
 const CollectionContext = createContext<CollectionContextValue>(
@@ -39,7 +39,7 @@ export const CollectionProvider = ({
     }
   };
 
-  const getCollectionRecord = (id: number): CollectionRecord | undefined =>
+  const getCollectionItem = (id: number): CollectionItem | undefined =>
     collection?.find((c) => c.id === id);
 
   return (
@@ -48,7 +48,7 @@ export const CollectionProvider = ({
         collectionIsLoading,
         collection,
         loadCollection,
-        getCollectionRecord,
+        getCollectionItem,
       }}
     >
       {children}

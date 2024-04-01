@@ -16,7 +16,7 @@ import {
   getRems,
   typography,
 } from '../../../styles';
-import { CollectionRecord, Status } from '../../../types';
+import { CollectionItem, Status } from '../../../types';
 import { styled, Row, Col } from '../shared';
 import {
   listItemHeightConfig,
@@ -67,7 +67,7 @@ const getListItemCountIncrement = (windowSize: WindowSize): number => {
  *  component
  */
 type ListProps = {
-  filteredCollection: CollectionRecord[];
+  filteredCollection: CollectionItem[];
   onItemClick: (id: number) => void;
   noItems: JSX.Element;
 };
@@ -111,7 +111,7 @@ const List = ({ filteredCollection, onItemClick, noItems }: ListProps) => {
 
   const previousFilteredCollection = usePrevious(filteredCollection);
   useEffect(() => {
-    // reset list item count if record count drops
+    // reset list item count if count drops
     if (
       previousFilteredCollection &&
       filteredCollection.length < previousFilteredCollection.length

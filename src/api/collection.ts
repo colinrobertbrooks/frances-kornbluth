@@ -1,16 +1,16 @@
 import { adapter } from './utils';
-import { SpreadsheetDatum, Decade, Status, CollectionRecord } from '../types';
+import { SpreadsheetItem, Decade, Status, CollectionItem } from '../types';
 import { deriveMediumGroup, deriveSizeGroup, generateTags } from '../utils';
 
-const deserializeCollection = (values: string[][]): CollectionRecord[] => {
+const deserializeCollection = (values: string[][]): CollectionItem[] => {
   const [headRow, ...bodyRows] = values;
-  const data: SpreadsheetDatum[] = [];
+  const data: SpreadsheetItem[] = [];
   bodyRows.forEach((row) => {
-    const datum: SpreadsheetDatum = {};
+    const item: SpreadsheetItem = {};
     row.forEach((val, valIdx) => {
-      datum[headRow[valIdx]] = val;
+      item[headRow[valIdx]] = val;
     });
-    data.push(datum);
+    data.push(item);
   });
 
   return data
@@ -46,7 +46,7 @@ const deserializeCollection = (values: string[][]): CollectionRecord[] => {
     );
 };
 
-export const getCollection = async (): Promise<CollectionRecord[]> => {
+export const getCollection = async (): Promise<CollectionItem[]> => {
   // https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/get
   const spreadsheetId = '1IzGaO3pLokvuiuKkS2UccK4KuYvnQwM-osJf3WfciJU';
   const range = 'Collection';

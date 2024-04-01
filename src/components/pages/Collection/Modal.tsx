@@ -14,14 +14,14 @@ import {
   colors,
   typography,
 } from '../../../styles';
-import { CollectionRecord, Status } from '../../../types';
+import { CollectionItem, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
 import { styled, css, Span, Small, Button } from '../shared';
 
 type QueryId = number | null | undefined;
 
 type ModalProps = {
-  filteredCollection: CollectionRecord[];
+  filteredCollection: CollectionItem[];
   id: QueryId;
   setId: (nextId: QueryId) => void;
 };
@@ -30,11 +30,11 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
   const { addErrorNotification } = useNotificationsContext();
 
   /*
-   *  record
+   *  item
    */
-  const { getCollectionRecord } = useCollectionContext();
-  const record = id ? getCollectionRecord(id) : undefined;
-  const idIsValid = id && record;
+  const { getCollectionItem } = useCollectionContext();
+  const item = id ? getCollectionItem(id) : undefined;
+  const idIsValid = id && item;
 
   /*
    *  visibility
@@ -43,7 +43,7 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
   const closeModal = () => setId(undefined);
 
   useEffect(() => {
-    // derive modal visibility based on record
+    // derive modal visibility based on item
     if (id && idIsValid) {
       setIsOpen(true);
     } else {
@@ -126,9 +126,9 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
       }}
     >
       {(() => {
-        if (!record) return null;
+        if (!item) return null;
 
-        const { title, year, minImgSrc, medium, dimensions, tags } = record;
+        const { title, year, minImgSrc, medium, dimensions, tags } = item;
         const alt = tags.length ? `${title} (${tags.join(', ')})` : title;
 
         return (
@@ -168,7 +168,7 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
               <Sub>
                 {medium}, {dimensions}
               </Sub>
-              <CollectionStatus record={record} />
+              <CollectionStatus item={item} />
             </Footer>
           </>
         );
@@ -403,26 +403,26 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
 /*
  *  status
  */
-const makeInquireHref = (record: CollectionRecord) => {
-  const { title, medium, dimensions, id } = record;
+const makeInquireHref = (item: CollectionItem) => {
+  const { title, medium, dimensions, id } = item;
   const subject = `Inquiry: "${title}" (${medium}, ${dimensions})`;
   const body = `I am interested in "${title}" (${medium}, ${dimensions}), which I found at franceskornbluth.com/collection?id=${id}. Please send more information.`;
   return `mailto:${EMAIL_ADDRESS}?&Subject=${subject}&body=${body}`;
 };
 
 type StatusProps = {
-  record: CollectionRecord;
+  item: CollectionItem;
 };
 
-const CollectionStatus = ({ record }: StatusProps) => {
-  switch (record.status) {
+const CollectionStatus = ({ item }: StatusProps) => {
+  switch (item.status) {
     case Status.Available: {
       return (
         <div className="mt-2">
           <Button
             color="green"
             className="d-block d-md-inline"
-            href={makeInquireHref(record)}
+            href={makeInquireHref(item)}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -432,9 +432,9 @@ const CollectionStatus = ({ record }: StatusProps) => {
       );
     }
     case Status.Private:
-      return <Sub>Collection of {record.holder}</Sub>;
+      return <Sub>Collection of {item.holder}</Sub>;
     case Status.Public:
-      return <Sub>Collection of the {record.holder}</Sub>;
+      return <Sub>Collection of the {item.holder}</Sub>;
     default:
       return <Sub>Collection unknown</Sub>;
   }

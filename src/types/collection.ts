@@ -1,4 +1,4 @@
-export type SpreadsheetDatum = { [key: string]: string };
+export type SpreadsheetItem = { [key: string]: string };
 
 export enum Decade {
   // label = value
@@ -58,7 +58,7 @@ export enum Tag {
   Trees = 'Trees',
 }
 
-export type CollectionRecord = {
+export type CollectionItem = {
   id: number;
   title: string;
   minImgSrc: string;
