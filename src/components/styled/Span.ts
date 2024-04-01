@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors, getRems, typography } from '../../styles';
 
 type SpanProps = {
-  color?: 'black' | 'gray';
+  color?: 'black' | 'darkGray' | 'gray';
 };
 
 export const Span = styled.span<SpanProps>`

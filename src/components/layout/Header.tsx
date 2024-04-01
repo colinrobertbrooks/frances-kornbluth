@@ -99,18 +99,17 @@ export const Header = () => {
                 Artwork
               </DropdownToggle>
               <DropdownMenu end>
-                <DropdownItem tag={Link} to={Url.AvailableArtworkPage}>
-                  Available Artwork
-                </DropdownItem>
-                <DropdownItem divider />
                 <DropdownItemNavLink to={Url.CollectionPage}>
                   Collection
                 </DropdownItemNavLink>
+                <DropdownItemNavLink to={Url.ExhibitionsPage}>
+                  Exhibitions
+                </DropdownItemNavLink>
+                <DropdownItemNavLink to={Url.PublicationsPage}>
+                  Publications
+                </DropdownItemNavLink>
                 <DropdownItemNavLink to={Url.ReviewsPage}>
                   Reviews
-                </DropdownItemNavLink>
-                <DropdownItemNavLink to={Url.BooksPage}>
-                  Books
                 </DropdownItemNavLink>
               </DropdownMenu>
             </UncontrolledDropdown>

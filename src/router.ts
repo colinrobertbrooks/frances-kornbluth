@@ -22,15 +22,14 @@ export enum Url {
   QuotesPage = '/quotes',
   VideosPage = '/videos',
   // artwork
-  AvailableArtworkPage = '/collection?status=Available',
   CollectionPage = '/collection',
+  ExhibitionsPage = '/exhibitions',
+  PublicationsPage = '/publications',
   ReviewsPage = '/reviews',
-  BooksPage = '/books',
   // footer
   ContactPage = '/contact',
   CopyrightPage = '/copyright',
   AccessibilityPage = '/accessibility',
-  WantedPage = '/wanted',
 }
 
 export const artistUrls = [
@@ -38,9 +37,15 @@ export const artistUrls = [
   Url.TimelinePage,
   Url.StatementsPage,
   Url.QuotesPage,
+  Url.VideosPage,
 ];
 
-export const artworkUrls = [Url.CollectionPage, Url.ReviewsPage, Url.BooksPage];
+export const artworkUrls = [
+  Url.CollectionPage,
+  Url.ExhibitionsPage,
+  Url.PublicationsPage,
+  Url.ReviewsPage,
+];
 
 export const ExternalLink = styled.a.attrs({
   target: '_blank',

@@ -29,7 +29,9 @@ export { Container, Row, Col };
  */
 export { Page };
 
-export const Divider = styled(HorizontalRule).attrs({ className: 'my-4' })``;
+export const Divider = styled(HorizontalRule)`
+  margin: 24px 0; // my-4
+`;
 
 /*
  *  typography

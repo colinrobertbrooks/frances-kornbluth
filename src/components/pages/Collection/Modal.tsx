@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Modal as ReactstrapModal } from 'reactstrap';
-import { EMAIL_ADDRESS } from '../../../constants';
 import {
   useCollectionContext,
   useNotificationsContext,
@@ -16,7 +15,7 @@ import {
 } from '../../../styles';
 import { CollectionItem, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
-import { styled, css, Span, Small, Button } from '../shared';
+import { styled, css, Span, Small } from '../shared';
 
 type QueryId = number | null | undefined;
 
@@ -403,40 +402,18 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
 /*
  *  status
  */
-const makeInquireHref = (item: CollectionItem) => {
-  const { title, medium, dimensions, id } = item;
-  const subject = `Inquiry: "${title}" (${medium}, ${dimensions})`;
-  const body = `I am interested in "${title}" (${medium}, ${dimensions}), which I found at franceskornbluth.com/collection?id=${id}. Please send more information.`;
-  return `mailto:${EMAIL_ADDRESS}?&Subject=${subject}&body=${body}`;
-};
-
 type StatusProps = {
   item: CollectionItem;
 };
 
 const CollectionStatus = ({ item }: StatusProps) => {
   switch (item.status) {
-    case Status.Available: {
-      return (
-        <div className="mt-2">
-          <Button
-            color="green"
-            className="d-block d-md-inline"
-            href={makeInquireHref(item)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Inquire
-          </Button>
-        </div>
-      );
-    }
     case Status.Private:
       return <Sub>Collection of {item.holder}</Sub>;
     case Status.Public:
       return <Sub>Collection of the {item.holder}</Sub>;
     default:
-      return <Sub>Collection unknown</Sub>;
+      return null;
   }
 };
 

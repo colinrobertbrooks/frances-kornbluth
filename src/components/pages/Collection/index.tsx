@@ -1,22 +1,16 @@
 import { useEffect } from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
-import {
-  useCollectionContext,
-  useNotificationsContext,
-} from '../../../contexts';
+import { useCollectionContext } from '../../../contexts';
 import {
   getRems,
   HEADER_HEIGHT_PX,
   MAIN_PADDING_TOP_PX,
   media,
 } from '../../../styles';
-import { Status } from '../../../types';
 import { FilterSvg } from '../../svg';
 import {
   styled,
   Page,
-  Row,
-  Col,
   Heading,
   Paragraph,
   Small,
@@ -80,93 +74,68 @@ export const Collection = () => {
    */
   const [modalId, setModalId] = useQueryParam('id', NumberParam);
 
-  /*
-   *  notifications
-   */
-  const { addSuccessNotification } = useNotificationsContext();
-
-  useEffect(() => {
-    if (filters.status === Status.Available && !modalId) {
-      addSuccessNotification({
-        shouldAutoDismiss: true,
-        heading: 'Available Artwork',
-        text: 'Viewing available artwork.',
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <Page title="Collection">
-      <Row>
-        <Col md={12}>
-          {(() => {
-            if (collectionIsLoading || !collection)
-              return (
-                <LoadingWrapper>
-                  <Heading className="mb-4">Collection</Heading>
-                  <Loader />
-                </LoadingWrapper>
-              );
+      {(() => {
+        if (collectionIsLoading || !collection)
+          return (
+            <LoadingWrapper>
+              <Heading className="mb-4">Collection</Heading>
+              <Loader />
+            </LoadingWrapper>
+          );
 
-            const count = getCount(
-              collection.length,
-              filteredCollection.length
-            );
+        const count = getCount(collection.length, filteredCollection.length);
 
-            return (
-              <>
-                <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
-                  <HeadingWrapper>
-                    <Heading className="mb-0">Collection</Heading>
-                    <HeadingCount>{count}</HeadingCount>
-                    <SlideToggleWrapper>
-                      <SlideToggle
-                        id="js-filter-toggle"
-                        openLabel="Open filters"
-                        closeLabel="Close filters"
-                      >
-                        <FilterIcon />
-                      </SlideToggle>
-                      <FilterToggleIntroTooltip />
-                    </SlideToggleWrapper>
-                  </HeadingWrapper>
+        return (
+          <>
+            <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
+              <HeadingWrapper>
+                <Heading className="mb-0">Collection</Heading>
+                <HeadingCount>{count}</HeadingCount>
+                <SlideToggleWrapper>
+                  <SlideToggle
+                    id="js-filter-toggle"
+                    openLabel="Open filters"
+                    closeLabel="Close filters"
+                  >
+                    <FilterIcon />
+                  </SlideToggle>
+                  <FilterToggleIntroTooltip />
+                </SlideToggleWrapper>
+              </HeadingWrapper>
 
-                  <Slide closeLabel="Close filters">
-                    <FiltersCount>{count}</FiltersCount>
-                    <Filters
-                      collection={collection}
-                      filters={filters}
-                      reset={resetFilters}
-                      {...filterProps}
-                    />
-                  </Slide>
-                </SlideProvider>
-                <List
-                  filteredCollection={filteredCollection}
-                  onItemClick={(nextModalId) => setModalId(nextModalId)}
-                  noItems={
-                    <div className="text-center">
-                      <Paragraph color="gray" className="mt-2">
-                        No pieces match your current filter selections.
-                      </Paragraph>
-                      <OutlineButton onClick={resetFilters}>
-                        Reset
-                      </OutlineButton>
-                    </div>
-                  }
+              <Slide closeLabel="Close filters">
+                <FiltersCount>{count}</FiltersCount>
+                <Filters
+                  collection={collection}
+                  filters={filters}
+                  reset={resetFilters}
+                  {...filterProps}
                 />
-                <ScrollToTop />
-                <Modal
-                  filteredCollection={filteredCollection}
-                  id={modalId}
-                  setId={setModalId}
-                />
-              </>
-            );
-          })()}
-        </Col>
-      </Row>
+              </Slide>
+            </SlideProvider>
+            <List
+              filteredCollection={filteredCollection}
+              onItemClick={(nextModalId) => setModalId(nextModalId)}
+              noItems={
+                <div className="text-center">
+                  <Paragraph color="gray" className="mt-2">
+                    No pieces match your current filter selections.
+                  </Paragraph>
+                  <OutlineButton onClick={resetFilters}>Reset</OutlineButton>
+                </div>
+              }
+            />
+            <ScrollToTop />
+            <Modal
+              filteredCollection={filteredCollection}
+              id={modalId}
+              setId={setModalId}
+            />
+          </>
+        );
+      })()}
     </Page>
   );
 };

@@ -239,23 +239,6 @@ const getDecadeOptions = (
   }));
 };
 
-const getStatusOptions = (
-  collection: Collection,
-  filters: QueryFilters
-): SelectOption[] => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { status, ...restFilters } = filters;
-  const refilteredCollection = filterCollection(collection, restFilters);
-  const availableValues = unique(
-    refilteredCollection.map((item) => item.status)
-  );
-  return Object.entries(Status).map(([label, value]) => ({
-    label,
-    value,
-    isDisabled: !availableValues.includes(value),
-  }));
-};
-
 const getTagsOptions = (
   collection: Collection,
   filters: QueryFilters
@@ -291,8 +274,6 @@ export const Filters = ({
   setSize,
   decade,
   setDecade,
-  status,
-  setStatus,
   tags,
   setTags,
   reset,
@@ -310,10 +291,6 @@ export const Filters = ({
   );
   const decadeOptions = useMemo(
     () => getDecadeOptions(collection, filters),
-    [collection, filters]
-  );
-  const statusOptions = useMemo(
-    () => getStatusOptions(collection, filters),
     [collection, filters]
   );
   const tagsOptions = useMemo(
@@ -401,20 +378,6 @@ export const Filters = ({
               : null
           }
           onChange={(option: SelectOption) => setDecade(option?.value)}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label htmlFor="status-select">Status</Label>
-        <Select
-          id="status-select"
-          placeholder="select status"
-          options={statusOptions}
-          value={
-            status
-              ? statusOptions.find((option) => status === option.value)
-              : null
-          }
-          onChange={(option: SelectOption) => setStatus(option?.value)}
         />
       </FormGroup>
       <FormGroup>

@@ -6,17 +6,17 @@ import { Header, Footer } from './layout';
 import {
   Accessibility,
   Biography,
-  Books,
   Collection,
   Contact,
   Copyright,
+  Exhibitions,
   Home,
+  Publications,
   Quotes,
   Reviews,
   Statements,
   Timeline,
   Videos,
-  Wanted,
   NotFound,
 } from './pages';
 import { ToastNotification } from './styled';
@@ -38,13 +38,13 @@ const App = () => {
         <Route path={Url.VideosPage} element={<Videos />} />
         {/* artwork */}
         <Route path={Url.CollectionPage} element={<Collection />} />
+        <Route path={Url.ExhibitionsPage} element={<Exhibitions />} />
+        <Route path={Url.PublicationsPage} element={<Publications />} />
         <Route path={Url.ReviewsPage} element={<Reviews />} />
-        <Route path={Url.BooksPage} element={<Books />} />
         {/* footer */}
         <Route path={Url.ContactPage} element={<Contact />} />
         <Route path={Url.AccessibilityPage} element={<Accessibility />} />
         <Route path={Url.CopyrightPage} element={<Copyright />} />
-        <Route path={Url.WantedPage} element={<Wanted />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
