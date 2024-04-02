@@ -3,6 +3,7 @@ import {
   onIsland2007Img,
   explorations2011Img,
   maineWomenPioneers2013Img,
+  theMonheganWildlands2024Img,
 } from '../../assets/pages/publications';
 import {
   Page,
@@ -18,6 +19,13 @@ import {
 export const Publications = () => (
   <Page title="Publications">
     <H1>Publications</H1>
+    <Publication
+      title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
+      author=" Barry A. Logan, Jennifer Pye and Frank H. Goodyear III"
+      year="2024"
+      coverImg={theMonheganWildlands2024Img}
+    />
+    <Divider />
     <Publication
       title="Maine Women Pioneers III"
       author="University of New England Art Gallery"
