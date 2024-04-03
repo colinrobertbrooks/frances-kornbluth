@@ -4,7 +4,7 @@ export const Videos = () => (
   <Page title="Videos">
     <H1>Videos</H1>
     <Paragraph as="h2" color="gray">
-      Interview for <i>The Women Artists of Monhegan Island</i> (2012)
+      Interview for <em>The Women Artists of Monhegan Island</em> (2012)
     </Paragraph>
     <VideoWrapper>
       <Video
