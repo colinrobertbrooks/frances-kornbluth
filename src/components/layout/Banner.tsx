@@ -25,6 +25,7 @@ const Element = styled.aside`
   flex-direction: column;
   height: ${BANNER_HEIGHT_PX}px;
   justify-content: center;
+  padding: 0 8px; // px-2
 `;
 
 export default Banner;
