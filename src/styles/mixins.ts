@@ -50,6 +50,24 @@ export const linkCSS = css`
   }
 `;
 
+export const unstyledLinkCSS = css`
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  line-height: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+`;
+
 /*
  *  resets
  */

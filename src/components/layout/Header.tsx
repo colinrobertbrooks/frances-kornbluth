@@ -21,8 +21,16 @@ import {
   artistUrls,
   artworkUrls,
 } from '../../router';
-import { colors, focusOutlineCSS, getRems, typography } from '../../styles';
+import {
+  HAS_BANNER,
+  MIN_SCREEN_WIDTH_PX,
+  colors,
+  focusOutlineCSS,
+  getRems,
+  typography,
+} from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
+import Banner from './Banner';
 import { SkipToMain } from './skip-to-main';
 
 export const Header = () => {
@@ -45,6 +53,7 @@ export const Header = () => {
 
   return (
     <Element>
+      {HAS_BANNER && <Banner />}
       <Navbar expand="md">
         <div className="d-flex justify-content-between w-100">
           <SkipToMain />
@@ -67,7 +76,6 @@ export const Header = () => {
                 nav
                 caret
                 className={isArtistUrl ? 'active' : undefined}
-                style={{ minWidth: '84px' }}
               >
                 Artist
               </DropdownToggle>
@@ -124,6 +132,7 @@ const Element = styled.header`
   background-color: ${colors.trueWhite};
   border-bottom: 1px solid ${colors.border};
   font-family: ${typography.default};
+  min-width: ${MIN_SCREEN_WIDTH_PX}px;
   position: fixed;
   top: 0;
   width: 100%;

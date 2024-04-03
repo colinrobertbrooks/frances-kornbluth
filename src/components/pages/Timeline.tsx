@@ -43,24 +43,15 @@ export const Timeline = () => (
           <MilestonesWrapper>
             <Milestone
               year="1955"
-              // Kienbusch 1955; Tam 1956-1959
-              event="Enrolled in the Brooklyn Museum Art School, studying with William Kienbusch and Reuben Tam"
+              event="Enrolled in the Brooklyn Museum Art School, studying with William Kienbusch (1955) and Reuben Tam (1956 - 1959)"
             />
             <Milestone year="1957" event="First visit to Monhegan Island" />
             <Milestone
               year="1958"
-              event="Solo exhibition: Watercolors & Drawings at the Brooklyn Museum"
-            />
-            <Milestone
-              year="1958"
-              event="Brooklyn and Long Island Artists exhibition at the Brooklyn Museum"
-            />
-            <Milestone
-              year="1958"
               event={
                 <>
-                  M. Grumbacher Prize from the National Society of Painters in
-                  Casein for <i>Shelter Island Shore</i>
+                  <em>Watercolors & Drawings</em> solo exhibition at the
+                  Brooklyn Museum
                 </>
               }
             />
@@ -68,8 +59,26 @@ export const Timeline = () => (
               year="1958"
               event={
                 <>
-                  Honorable Mention (Oil) at the New York City Center Gallery
-                  for <i>November</i>
+                  <em>Brooklyn and Long Island Artists</em> exhibition at the
+                  Brooklyn Museum
+                </>
+              }
+            />
+            <Milestone
+              year="1958"
+              event={
+                <>
+                  M. Grumbacher Prize from the National Society of Painters in
+                  Casein for <em>Shelter Island Shore</em>
+                </>
+              }
+            />
+            <Milestone
+              year="1958"
+              event={
+                <>
+                  Honorable Mention at the New York City Center Gallery for{' '}
+                  <em>November</em>
                 </>
               }
             />
@@ -77,8 +86,8 @@ export const Timeline = () => (
               year="1959"
               event={
                 <>
-                  Honorable Mention (Oil) at the New York City Center Gallery
-                  for <i>Summer&apos;s Vocabulary #1</i>
+                  Honorable Mention at the New York City Center Gallery for{' '}
+                  <em>Summer&apos;s Vocabulary #1</em>
                 </>
               }
             />
@@ -114,21 +123,8 @@ export const Timeline = () => (
               year="1960"
               event={
                 <>
-                  First Prize (Oil) at the New York City Center Gallery for{' '}
-                  <i>Ocean Song #2</i>
-                </>
-              }
-            />
-            <Milestone
-              year="1961"
-              event="Solo exhibition: Paintings at Hofstra College"
-            />
-            <Milestone
-              year="1961"
-              event={
-                <>
-                  First Prize, 12th Annual Long Island Artists exhibition at
-                  Hofstra College for <i>Still Life/Interior</i>
+                  First Prize at the New York City Center Gallery for{' '}
+                  <em>Ocean Song #2</em>
                 </>
               }
             />
@@ -136,8 +132,7 @@ export const Timeline = () => (
               year="1961"
               event={
                 <>
-                  Special Mention Award, Norfolk Museum&apos;s American Drawing
-                  Annual XVIII for <i>The Lamp</i>
+                  <em>Paintings</em> solo exhibition at Hofstra College
                 </>
               }
             />
@@ -145,9 +140,28 @@ export const Timeline = () => (
               year="1961"
               event={
                 <>
-                  Medal of Honor and Catherine and Henry J. Gainsman Prize
-                  (Watercolor) from the National Association of Women Artists
-                  for <i>Rocks, Sea and Sky</i>
+                  First Prize, <em>12th Annual Long Island Artists</em>{' '}
+                  exhibition at Hofstra College for <em>Still Life/Interior</em>
+                </>
+              }
+            />
+            <Milestone
+              year="1961"
+              event={
+                <>
+                  Special Mention Award, Norfolk Museum&apos;s{' '}
+                  <em>American Drawing Annual XVIII</em> exhibition for{' '}
+                  <em>The Lamp</em>
+                </>
+              }
+            />
+            <Milestone
+              year="1961"
+              event={
+                <>
+                  Medal of Honor and Catherine and Henry J. Gainsman Prize from
+                  the National Association of Women Artists for{' '}
+                  <em>Rocks, Sea and Sky</em>
                 </>
               }
             />
@@ -157,23 +171,33 @@ export const Timeline = () => (
             />
             <Milestone
               year="1962"
-              event="Solo exhibition: Collages & Constructions at the Pratt Institute"
+              event={
+                <>
+                  <em>Collages & Constructions</em> solo exhibition at the Pratt
+                  Institute
+                </>
+              }
             />
             <Milestone
               year="1963"
-              event="158th Annual exhibition at the Pennsylvania Academy of Fine Arts"
+              event={
+                <>
+                  <em>158th Annual Exhibition</em> at the Pennsylvania Academy
+                  of Fine Arts
+                </>
+              }
             />
             <Milestone
               year="1964"
-              event="Aileen O. Webb Prize (Watercolor) from the National Association of Women Artists"
+              event="Aileen O. Webb Prize from the National Association of Women Artists"
             />
             <Milestone
               year="1968"
               event={
                 <>
-                  Medal of Honor and the Elizabeth R. Fulda Memorial Prize (Oil)
-                  from the National Association of Women Artists for{' '}
-                  <i>Rising Landscape</i>
+                  Medal of Honor and the Elizabeth R. Fulda Memorial Prize from
+                  the National Association of Women Artists for{' '}
+                  <em>Rising Landscape</em>
                 </>
               }
             />
@@ -219,18 +243,28 @@ export const Timeline = () => (
             />
             <Milestone
               year="1974"
-              event="Artists From Monhegan Exhibition at the Allentown Museum"
+              event={
+                <>
+                  <em>Artists From Monhegan</em> exhibition at the Allentown
+                  Museum
+                </>
+              }
             />
             <Milestone
               year="1974"
-              event="Four Painters and a Sculptor exhibition at the Worcester Art Museum"
+              event={
+                <>
+                  <em>Four Painters and a Sculptor</em> exhibition at the
+                  Worcester Art Museum
+                </>
+              }
             />
             <Milestone
               year="1975"
               event={
                 <>
-                  Charles Woodbury Memorial Prize (Watercolor) from the National
-                  Association of Women Artists for <i>Cove Wind</i>
+                  Charles Woodbury Memorial Prize from the National Association
+                  of Women Artists for <em>Cove Wind</em>
                 </>
               }
             />
@@ -238,8 +272,8 @@ export const Timeline = () => (
               year="1977"
               event={
                 <>
-                  Helen Henningsen Memorial Prize (Oil) from the National
-                  Association of Women Artists for <i>Island Path #2</i>
+                  Helen Henningsen Memorial Prize from the National Association
+                  of Women Artists for <em>Island Path #2</em>
                 </>
               }
             />
@@ -264,9 +298,8 @@ export const Timeline = () => (
               year="1982"
               event={
                 <>
-                  Elizabeth Morse Genius Foundation Prize (Works on Paper) from
-                  the National Association of Women Artists for{' '}
-                  <i>Window to the Sea</i>
+                  Elizabeth Morse Genius Foundation Prize from the National
+                  Association of Women Artists for <em>Window to the Sea</em>
                 </>
               }
             />
@@ -279,7 +312,8 @@ export const Timeline = () => (
               event={
                 <>
                   John Carl Georgo Memorial Award from the National Association
-                  of Women Artists for <i>Changing Light, Monhegan Ice Pond</i>
+                  of Women Artists for{' '}
+                  <em>Changing Light, Monhegan Ice Pond</em>
                 </>
               }
             />
@@ -304,14 +338,19 @@ export const Timeline = () => (
               year="1992"
               event={
                 <>
-                  Miriam E. Halpern Memorial Award (Works on Paper) from the
-                  National Association of Women Artists for <i>Rosebud #3</i>
+                  Miriam E. Halpern Memorial Award from the National Association
+                  of Women Artists for <em>Rosebud #3</em>
                 </>
               }
             />
             <Milestone
               year="1996"
-              event="Solo exhibition: Overview, Four Decades at the University of Connecticut"
+              event={
+                <>
+                  <em>Overview, Four Decades</em> solo exhibition at the
+                  University of Connecticut
+                </>
+              }
             />
           </MilestonesWrapper>
         </DecadeWrapper>
@@ -326,34 +365,60 @@ export const Timeline = () => (
             />
             <Milestone
               year="2000"
-              event="Visual Language of American Religion exhibition at the Bauer Art Museum"
+              event={
+                <>
+                  <em>Visual Language of American Religion</em> exhibition at
+                  the Bauer Art Museum
+                </>
+              }
             />
             <Milestone
               year="2000"
               event={
                 <>
                   First Prize (Painting), 57th Annual Connecticut Artists
-                  exhibition at the Slater Memorial Museum for <i>November</i>
+                  exhibition at the Slater Memorial Museum for <em>November</em>
                 </>
               }
             />
-            {/* June 15 - September 2, 2001 */}
             <Milestone
               year="2001"
-              event="Monhegan: The Abstracted Island exhibition at the Bates College Museum of Art"
+              event={
+                <>
+                  {/* June 15 - September 2, 2001 */}
+                  <em>Monhegan: The Abstracted Island</em> exhibition at the
+                  Bates College Museum of Art
+                </>
+              }
             />
             <Milestone
               year="2001"
-              event="Solo exhibition: Constructions & Collages at the Slater Memorial Museum"
+              event={
+                <>
+                  <em>Constructions & Collages</em> solo exhibition at the
+                  Slater Memorial Museum
+                </>
+              }
             />
-            {/* July 26 - September 23, 2007 */}
+
             <Milestone
               year="2007"
-              event="On Island: Women Artists of Monhegan exhibition at the University of New England"
+              event={
+                <>
+                  {/* July 26 - September 23, 2007 */}
+                  <em>On Island: Women Artists</em> of Monhegan exhibition at
+                  the University of New England
+                </>
+              }
             />
             <Milestone
               year="2009"
-              event="Solo exhibition: Paintings & Collages at the Island Inn, Monhegan Island"
+              event={
+                <>
+                  <em>Paintings & Collages</em> solo exhibition at the Island
+                  Inn, Monhegan Island
+                </>
+              }
             />
           </MilestonesWrapper>
         </DecadeWrapper>
@@ -364,32 +429,50 @@ export const Timeline = () => (
           <MilestonesWrapper>
             <Milestone
               year="2010"
-              event="Challenge, Wit and Wisdom: Three Maine Women Artists exhibition at the Pace Galleries"
-            />
-            <Milestone
-              year="2010"
-              event="Collage: Piecing It Together exhibition at the Portland Museum of Art"
+              event={
+                <>
+                  <em>Challenge, Wit and Wisdom: Three Maine Women Artists</em>{' '}
+                  exhibition at the Pace Galleries
+                </>
+              }
             />
             <Milestone
               year="2010"
               event={
                 <>
-                  Miriam E. Halpern Memorial Award (Works on Paper) from the
-                  National Association of Women Artists for <i>Genesis</i>
+                  {/* January ? - February 28, 2010 */}
+                  <em>Collage: Piecing It Together</em> exhibition at the
+                  Portland Museum of Art
+                </>
+              }
+            />
+            <Milestone
+              year="2010"
+              event={
+                <>
+                  Miriam E. Halpern Memorial Award from the National Association
+                  of Women Artists for <em>Genesis</em>
                 </>
               }
             />
             <Milestone year="2013" event="Last summer on Monhegan Island" />
             <Milestone
               year="2013"
-              event="Maine Women Pioneers III: Homage exhibition at the University of New England"
+              event={
+                <>
+                  {/* January 2 – March 3, 2013 */}
+                  <em>Maine Women Pioneers III: Homage</em> exhibition at the
+                  University of New England
+                </>
+              }
             />
             <Milestone
               year="2013"
               event={
                 <>
-                  Best Work on Paper, 69th Annual Connecticut Artists Exhibition
-                  at the Slater Memorial Museum for <i>Winter Landscape</i>
+                  Best Work on Paper, <em>69th Annual Connecticut Artists</em>{' '}
+                  exhibitions at the Slater Memorial Museum for{' '}
+                  <em>Winter Landscape</em>
                 </>
               }
             />

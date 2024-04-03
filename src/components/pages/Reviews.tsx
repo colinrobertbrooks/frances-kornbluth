@@ -26,7 +26,7 @@ export const Reviews = () => (
       dimensions='24 x 24"'
     />
     <Review>
-      &quot;One of the best pieces in the show is <i>Path Clearing</i> by
+      &quot;One of the best pieces in the show is <em>Path Clearing</em> by
       Frances Kornbluth, a small painting with dark colors and mysterious
       glowing light. Only through repeated viewing and careful examination does
       the spectator become aware of the very sensitive use of color in what
@@ -47,7 +47,7 @@ export const Reviews = () => (
     <Review>
       &quot;In the 1980s, Kornbluth began experimenting with multiple canvases,
       several of which were triptychs. The most exciting of these is{' '}
-      <i>Lobster Cove Suite #2</i>. This shows a marvelous range of her best
+      <em>Lobster Cove Suite #2</em>. This shows a marvelous range of her best
       colors: earthy greens and subtle blue-greys. The lower quarter of the
       painting is a larger piece of canvas with three equally spaced green
       squares, just the size of the sixteen mini-canvases above. Combined, they

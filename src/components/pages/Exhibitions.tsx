@@ -19,8 +19,8 @@ export const Exhibitions = () => (
     />
     <Divider />
     <Small color="gray">
-      Exhibitions on this page are posthumous. For earlier exhibitions, see the{' '}
-      <Link to={Url.TimelinePage}>timeline page</Link>.
+      Exhibitions on this page are posthumous. For selected earlier exhibitions,
+      see the <Link to={Url.TimelinePage}>timeline page</Link>.
     </Small>
   </Page>
 );
