@@ -10,6 +10,7 @@ import {
   Location as RouterLocation,
 } from 'react-router-dom';
 import styled from 'styled-components';
+import { unstyledLinkCSS } from './styles';
 
 export { Router, Routes, Route, Link, NavLink, useLocation };
 
@@ -32,6 +33,11 @@ export enum Url {
   AccessibilityPage = '/accessibility',
 }
 
+export enum ExternalUrl {
+  Facebook = 'https://www.facebook.com/franceskornbluth',
+  Instagram = 'https://www.instagram.com/franceskornbluth',
+}
+
 export const artistUrls = [
   Url.BiographyPage,
   Url.TimelinePage,
@@ -47,15 +53,14 @@ export const artworkUrls = [
   Url.ReviewsPage,
 ];
 
+export const UnstyledLink = styled(Link)`
+  ${unstyledLinkCSS}
+`;
+
 export const ExternalLink = styled.a.attrs({
   target: '_blank',
   rel: 'noopener noreferrer',
 })``;
-
-export enum ExternalUrl {
-  Facebook = 'https://www.facebook.com/franceskornbluth',
-  Instagram = 'https://www.instagram.com/franceskornbluth',
-}
 
 // temporary solution for use-query-params + react-router-dom v6 (https://github.com/pbeshai/use-query-params/issues/196)
 export const RouteAdapter: React.FunctionComponent<{
