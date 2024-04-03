@@ -7,7 +7,7 @@ const Banner = () => (
     <UnstyledLink className="text-center" to={Url.ExhibitionsPage}>
       <span>
         See <em>Women Artists of Monhegan Island: A Common Bond</em> at the
-        Mongegan Museum
+        Monhegan Museum
       </span>
       <span className="small d-none d-md-block">
         July 1 – September 30, 2024
