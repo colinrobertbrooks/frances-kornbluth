@@ -24,18 +24,17 @@ export const Biography = () => (
     <Paragraph>
       In 1947, Kornbluth enrolled in an art workshop on Long Island and began
       painting figures and still lives in the studio. In 1955, she enrolled in
-      the Brooklyn Museum School, where she studied with Reuben Tam (1916 -
-      1991) and William Kienbusch (1914 - 1980) for four years. During this
-      time, Kornbluth painted in and out of the studio—including the Freeport
-      marshes and Jones Beach—and her work became increasingly abstract. It was
-      Tam who encouraged Kornbluth to exhibit her work at the Brooklyn Museum
-      and the City Center Gallery, in addition to introducing her to Maine’s
-      Monhegan Island in 1957—she would later credit Tam with: “defining me as
-      the artist I had never envisioned becoming.” Kornbluth also studied with
-      Robert Richenburg (1917 - 2006) at the Pratt Institute, where she received
-      a master’s degree in 1962. In 1969, Kornbluth and her family moved from
-      Merrick, NY to North Grosvenordale, CT, where she would maintain a winter
-      studio for the rest of her life.
+      the Brooklyn Museum School, where she studied for four years with William
+      Kienbusch and Reuben Tam. During this time, Kornbluth painted in and out
+      of the studio—including the Freeport marshes and Jones Beach—and her work
+      became increasingly abstract. It was Tam who encouraged Kornbluth to
+      exhibit her work at the Brooklyn Museum and the City Center Gallery, in
+      addition to introducing her to Maine’s Monhegan Island in 1957—she would
+      later credit Tam with: “defining me as the artist I had never envisioned
+      becoming.” Kornbluth also studied with Robert Richenburg at the Pratt
+      Institute, where she received a master’s degree in 1962. In 1969,
+      Kornbluth and her family moved from Merrick, NY to North Grosvenordale,
+      CT, where she would maintain a winter studio for the rest of her life.
     </Paragraph>
     <Paragraph>
       For 57 years, Kornbluth spent her summers on Monhegan Island, renting in
