@@ -15,7 +15,7 @@ import {
 } from './shared';
 
 export const Home = () => (
-  <Page className="position-relative p-0 home-page" fluid>
+  <Page className="position-relative p-0" fluid>
     <Background />
     <Container>
       <Row>

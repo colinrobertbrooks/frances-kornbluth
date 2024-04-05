@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
 import {
-  NAVBAR_HEIGHT_PX,
   HEADER_HEIGHT_PX,
   FOOTER_MARGIN_TOP_PX,
   FOOTER_MIN_HEIGHT_PX,
@@ -44,8 +43,5 @@ const Main = styled(Container).attrs({ tag: 'main' })`
       HEADER_HEIGHT_PX + FOOTER_MARGIN_TOP_PX + FOOTER_MIN_HEIGHT_PX
     }px);
 
-    &.home-page {
-      min-height: calc(100vh - ${NAVBAR_HEIGHT_PX + 10}px);
-    }
   `}
 `;

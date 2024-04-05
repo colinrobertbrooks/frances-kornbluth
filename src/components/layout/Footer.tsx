@@ -12,7 +12,7 @@ import { Small } from '../styled';
 import { FacebookSvg, InstagramSvg } from '../svg';
 
 export const Footer = () => (
-  <Element>
+  <Element className="flex-grow-1">
     <Container className="py-2 pb-lg-2">
       <Row>
         <Col lg={6} className="mb-3 m-lg-0 text-center">

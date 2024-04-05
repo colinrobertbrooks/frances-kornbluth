@@ -4,17 +4,21 @@ import { colors } from './colors';
 
 export const GlobalStyles = createGlobalStyle`
   html {
+    min-height: 100%;
     scroll-behavior: smooth;
   }
 
   body {
     background-color: ${colors.body};
+    min-height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   #root {
-    height: calc(100% - ${HEADER_HEIGHT_PX}px);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     min-width: ${MIN_SCREEN_WIDTH_PX}px;
   }
 

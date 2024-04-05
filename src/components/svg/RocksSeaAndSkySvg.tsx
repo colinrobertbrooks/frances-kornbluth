@@ -1,16 +1,11 @@
-type RockSeaAndSkySvgProps = React.SVGProps<SVGSVGElement> & {
-  maxWidth?: number;
-};
+type RockSeaAndSkySvgProps = React.SVGProps<SVGSVGElement>;
 
-export const RocksSeaAndSkySvg = ({
-  fill,
-  maxWidth,
-}: RockSeaAndSkySvgProps) => (
+export const RocksSeaAndSkySvg = ({ fill }: RockSeaAndSkySvgProps) => (
   <svg
     width="2621.000000pt"
     height="649.000000pt"
     viewBox="0 0 2621.000000 649.000000"
-    style={{ width: '100%', maxWidth, height: 'auto' }}
+    style={{ width: '100%', height: 'auto' }}
     aria-hidden="true"
     focusable="false"
     role="img"
