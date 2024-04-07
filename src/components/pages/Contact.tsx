@@ -1,5 +1,5 @@
 import { EMAIL_ADDRESS } from '../../constants';
-import { Link, Url } from '../../router';
+import { ExternalLink, ExternalUrl, Link, Url } from '../../router';
 import { media, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX } from '../../styles';
 import {
   styled,
@@ -20,20 +20,22 @@ export const Contact = () => (
         <H1>Contact</H1>
       </Col>
       <StickyCol md={3} className="text-center">
-        <ContactButton>Contact Us</ContactButton>
+        <ContactUsButton />
       </StickyCol>
       <Col md={9}>
         <Divider className="d-md-none" />
         <H2 className="mb-2">Acquisitions</H2>
         <Paragraph>
           If you are interested in acquiring work by Frances Kornbluth, then
-          please contact us.
+          please contact{' '}
+          <ExternalLink href={ExternalUrl.GarveyRita}>Garvey Rita</ExternalLink>
+          .
         </Paragraph>
         <Divider />
         <H2 className="mb-2">Exhibitions</H2>
         <Paragraph>
           If you are interested in exhibiting work by Frances Kornbluth, then
-          please contact us. Some of the work on the{' '}
+          please <ContactUsLink />. Some of the work on the{' '}
           <Link to={Url.CollectionPage}>collection page</Link> is available for
           lending.
         </Paragraph>
@@ -41,7 +43,7 @@ export const Contact = () => (
         <H2 className="mb-2">Reproductions</H2>
         <Paragraph>
           If you are interested in reproducing work by Frances Kornbluth, then
-          please contact us. See the{' '}
+          please <ContactUsLink />. See the{' '}
           <Link to={Url.CopyrightPage}>copyright page</Link> for more
           information.
         </Paragraph>
@@ -59,7 +61,13 @@ const StickyCol = styled(Col)`
   `}
 `;
 
-const ContactButton = styled(Button).attrs({
+const ContactUsButton = styled(Button).attrs({
+  children: 'Contact Us',
   className: 'd-block d-md-inline my-2 mt-md-1',
+  href: `mailto:${EMAIL_ADDRESS}`,
+})``;
+
+const ContactUsLink = styled(ExternalLink).attrs({
+  children: 'contact us',
   href: `mailto:${EMAIL_ADDRESS}`,
 })``;
