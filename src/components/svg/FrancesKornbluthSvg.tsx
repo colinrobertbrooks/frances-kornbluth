@@ -1,4 +1,5 @@
-type FrancesKornbluthSvgProps = React.SVGProps<SVGSVGElement> & {
+type FrancesKornbluthSvgProps = {
+  fill?: string;
   maxWidth?: number;
 };
 
