@@ -167,7 +167,6 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
               <Sub>
                 {medium}, {dimensions}
               </Sub>
-              <CollectionStatus item={item} />
             </Footer>
           </>
         );
@@ -398,23 +397,5 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
     max-height: 70vh;
   `}
 `;
-
-/*
- *  status
- */
-type StatusProps = {
-  item: CollectionItem;
-};
-
-const CollectionStatus = ({ item }: StatusProps) => {
-  switch (item.status) {
-    case Status.Private:
-      return <Sub>Collection of {item.holder}</Sub>;
-    case Status.Public:
-      return <Sub>Collection of the {item.holder}</Sub>;
-    default:
-      return null;
-  }
-};
 
 export default Modal;
