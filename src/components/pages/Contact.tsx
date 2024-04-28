@@ -27,7 +27,9 @@ export const Contact = () => (
         <H2 className="mb-2">Acquisitions</H2>
         <Paragraph>
           If you are interested in acquiring work by Frances Kornbluth, then
-          please <ContactUsLink />.
+          please contact{' '}
+          <ExternalLink href={ExternalUrl.GarveyRita}>Garvey Rita</ExternalLink>
+          .
         </Paragraph>
         <Divider />
         <H2 className="mb-2">Exhibitions</H2>
