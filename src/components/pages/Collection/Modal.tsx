@@ -13,7 +13,7 @@ import {
   colors,
   typography,
 } from '../../../styles';
-import { CollectionItem, Status } from '../../../types';
+import { CollectionItem } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
 import { styled, css, Span, Small } from '../shared';
 
