@@ -13,7 +13,7 @@ import {
   colors,
   typography,
 } from '../../../styles';
-import { CollectionItem } from '../../../types';
+import { CollectionItem, Status } from '../../../types';
 import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
 import { styled, css, Span, Small } from '../shared';
 
@@ -167,6 +167,7 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
               <Sub>
                 {medium}, {dimensions}
               </Sub>
+              <CollectionStatus item={item} />
             </Footer>
           </>
         );
@@ -397,5 +398,21 @@ const Img = styled.img.attrs({ className: 'img-thumbnail' })`
     max-height: 70vh;
   `}
 `;
+
+/*
+ *  status
+ */
+type CollectionStatusProps = {
+  item: CollectionItem;
+};
+
+const CollectionStatus = ({ item }: CollectionStatusProps) => {
+  switch (item.status) {
+    case Status.Public:
+      return <Sub>Collection of the {item.holder}</Sub>;
+    default:
+      return null;
+  }
+};
 
 export default Modal;
