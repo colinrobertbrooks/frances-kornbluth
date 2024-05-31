@@ -1,6 +1,11 @@
 import { EMAIL_ADDRESS } from '../../constants';
 import { ExternalLink, ExternalUrl, Link, Url } from '../../router';
-import { media, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX } from '../../styles';
+import {
+  colors,
+  media,
+  HEADER_HEIGHT_PX,
+  MAIN_PADDING_TOP_PX,
+} from '../../styles';
 import {
   styled,
   Page,
@@ -27,9 +32,19 @@ export const Contact = () => (
         <H2 className="mb-2">Acquisitions</H2>
         <Paragraph>
           If you are interested in acquiring work by Frances Kornbluth, then
-          please contact{' '}
-          <ExternalLink href={ExternalUrl.GarveyRita}>Garvey Rita</ExternalLink>
-          .
+          please contact:
+          <AcquisitionsList>
+            <AcquisitionsListItem>
+              <ExternalLink href={ExternalUrl.GarveyRita}>
+                Garvey Rita Art & Antiques
+              </ExternalLink>
+            </AcquisitionsListItem>
+            <AcquisitionsListItem>
+              <ExternalLink href={ExternalUrl.JKenneth}>
+                J. Kenneth Fine Art
+              </ExternalLink>
+            </AcquisitionsListItem>
+          </AcquisitionsList>
         </Paragraph>
         <Divider />
         <H2 className="mb-2">Exhibitions</H2>
@@ -71,3 +86,15 @@ const ContactUsLink = styled(ExternalLink).attrs({
   children: 'contact us',
   href: `mailto:${EMAIL_ADDRESS}`,
 })``;
+
+const AcquisitionsList = styled.ul`
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+`;
+
+const AcquisitionsListItem = styled.li`
+  &::marker {
+    color: ${colors.gray};
+  }
+`;
