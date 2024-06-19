@@ -31,7 +31,7 @@ export const Contact = () => (
         <Divider className="d-md-none" />
         <H2 className="mb-2">Acquisitions</H2>
         <Paragraph>
-          If you are interested in acquiring work by Frances Kornbluth, then
+          To learn about work by Frances Kornbluth that is available for sale,
           please contact:
           <AcquisitionsList>
             <AcquisitionsListItem>
