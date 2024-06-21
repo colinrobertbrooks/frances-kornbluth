@@ -4,6 +4,7 @@ import {
   explorations2011Img,
   maineWomenPioneers2013Img,
   generations2024Img,
+  wami2024Img,
   theMonheganWildlands2024Img,
 } from '../../assets/pages/publications';
 import {
@@ -25,6 +26,13 @@ export const Publications = () => (
       author="Barry A. Logan, Jennifer Pye and Frank H. Goodyear III"
       year="2024"
       coverImg={theMonheganWildlands2024Img}
+    />
+    <Divider />
+    <Publication
+      title="A Common Bond: Women Artists of Monhegan Island"
+      author="Monhegan Museum of Art & History"
+      year="2024"
+      coverImg={wami2024Img}
     />
     <Divider />
     <Publication
