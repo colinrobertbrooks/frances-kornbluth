@@ -6,7 +6,7 @@ const Banner = () => (
   <Element>
     <UnstyledLink className="text-center" to={Url.ExhibitionsPage}>
       <span>
-        See <em>Women Artists of Monhegan Island: A Common Bond</em> at the
+        See <em>A Common Bond: Women Artists of Monhegan Island</em> at the
         Monhegan Museum
       </span>
       <span className="small d-none d-md-block">

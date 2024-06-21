@@ -6,7 +6,7 @@ export const Exhibitions = () => (
     <H1>Exhibitions</H1>
     <H2 className="mb-4">Upcoming</H2>
     <Exhibit
-      title="Women Artists of Monhegan Island: A Common Bond"
+      title="A Common Bond: Women Artists of Monhegan Island"
       dates="July 1 – September 30, 2024"
       location="Monhegan Museum of Art & History (Monhegan, ME)"
       link="https://monheganmuseum.org/upcoming"
