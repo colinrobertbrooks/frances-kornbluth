@@ -16,7 +16,10 @@ import {
 } from './shared';
 
 export const Reviews = () => (
-  <Page title="Reviews">
+  <Page
+    title="Reviews"
+    description="Reviews of artwork by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+  >
     <H1>Reviews</H1>
     <Artwork
       className="mt-5 mb-4"

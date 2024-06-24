@@ -1,7 +1,10 @@
 import { styled, Page, H1, Paragraph } from './shared';
 
 export const Videos = () => (
-  <Page title="Videos">
+  <Page
+    title="Videos"
+    description="Videos including Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+  >
     <H1>Videos</H1>
     <Paragraph as="h2" color="gray">
       Interview for <em>The Women Artists of Monhegan Island</em> (2012)

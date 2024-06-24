@@ -5,7 +5,10 @@ import {
 import { styled, Page, Divider, H1, H2, Paragraph, Artwork } from './shared';
 
 export const Quotes = () => (
-  <Page title="Quotes">
+  <Page
+    title="Quotes"
+    description="Quotes by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+  >
     <H1>Quotes</H1>
     <H2 className="text-center">Monhegan Island</H2>
     <Artwork

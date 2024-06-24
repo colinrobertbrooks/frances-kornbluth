@@ -19,7 +19,10 @@ import {
 } from './shared';
 
 export const Contact = () => (
-  <Page title="Contact">
+  <Page
+    title="Contact"
+    description="Artwork for sale, exhibition and reproduction by Frances Kornbluth, an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+  >
     <Row>
       <Col md={9}>
         <H1>Contact</H1>
@@ -31,8 +34,8 @@ export const Contact = () => (
         <Divider className="d-md-none" />
         <H2 className="mb-2">Acquisitions</H2>
         <Paragraph>
-          To learn about work by Frances Kornbluth that is available for sale,
-          please contact:
+          To learn about artwork by Frances Kornbluth that is available for
+          sale, please contact:
           <AcquisitionsList>
             <AcquisitionsListItem>
               <ExternalLink href={ExternalUrl.GarveyRita}>
@@ -49,16 +52,16 @@ export const Contact = () => (
         <Divider />
         <H2 className="mb-2">Exhibitions</H2>
         <Paragraph>
-          If you are interested in exhibiting work by Frances Kornbluth, then
-          please <ContactUsLink />. Some of the work on the{' '}
+          If you are interested in exhibiting artwork by Frances Kornbluth, then
+          please <ContactUsLink />. Some of the artwork on the{' '}
           <Link to={Url.CollectionPage}>collection page</Link> is available for
           lending.
         </Paragraph>
         <Divider />
         <H2 className="mb-2">Reproductions</H2>
         <Paragraph>
-          If you are interested in reproducing work by Frances Kornbluth, then
-          please <ContactUsLink />. See the{' '}
+          If you are interested in reproducing artwork by Frances Kornbluth,
+          then please <ContactUsLink />. See the{' '}
           <Link to={Url.CopyrightPage}>copyright page</Link> for more
           information.
         </Paragraph>

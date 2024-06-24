@@ -2,10 +2,13 @@ import { ExternalLink, Link, Url } from '../../router';
 import { Page, H1, H2, Heading, Paragraph, Small, Divider } from './shared';
 
 export const Exhibitions = () => (
-  <Page title="Exhibitions">
+  <Page
+    title="Exhibitions"
+    description="Upcoming and past exhibitions of artwork by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+  >
     <H1>Exhibitions</H1>
     <H2 className="mb-4">Upcoming</H2>
-    <Exhibit
+    <Exhibition
       title="A Common Bond: Women Artists of Monhegan Island"
       dates="July 1 – September 30, 2024"
       location="Monhegan Museum of Art & History (Monhegan, ME)"
@@ -13,7 +16,7 @@ export const Exhibitions = () => (
     />
     <Divider />
     <H2 className="mb-4">Past</H2>
-    <Exhibit
+    <Exhibition
       title="Generations: The Legacy of Mentors"
       dates="May 2 – June 9, 2024"
       location="Maine Art Gallery (Wiscasset, ME)"
@@ -26,7 +29,7 @@ export const Exhibitions = () => (
   </Page>
 );
 
-const Exhibit = ({
+const Exhibition = ({
   title,
   dates,
   location,

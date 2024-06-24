@@ -1,7 +1,10 @@
 import { Page, H1, H2, Paragraph, Divider } from './shared';
 
 export const Statements = () => (
-  <Page title="Statements">
+  <Page
+    title="Statements"
+    description="Statements by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+  >
     <H1>Statements</H1>
     <H2 className="text-center">1968</H2>
     <Paragraph>

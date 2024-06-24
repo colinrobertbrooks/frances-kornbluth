@@ -3,7 +3,10 @@ import { Link, Url } from '../../router';
 import { Page, H1, Paragraph, Artwork } from './shared';
 
 export const Biography = () => (
-  <Page title="Biography">
+  <Page
+    title="Biography"
+    description="Biography of Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+  >
     <H1>Biography</H1>
     <Artwork
       className="mb-4"
