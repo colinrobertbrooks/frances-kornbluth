@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Container } from 'reactstrap';
-import { useDocumentTitle, useScrollToTopOnMount } from '../../hooks';
+import { Helmet } from 'react-helmet-async';
+import { useScrollToTopOnMount } from '../../hooks';
 import {
   HEADER_HEIGHT_PX,
   FOOTER_MARGIN_TOP_PX,
@@ -16,22 +17,29 @@ type PageProps = {
   children: React.ReactNode;
 };
 
+const DEFAULT_TITLE = 'Frances Kornbluth';
+
 export const Page = ({
   className = 'pt-4',
   title,
   fluid = false,
   children,
 }: PageProps) => {
-  useDocumentTitle(
-    title ? `${title} | Frances Kornbluth` : 'Frances Kornbluth'
-  );
   useScrollToTopOnMount();
 
+  const metaTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
+
   return (
-    <Main className={className} fluid={fluid}>
-      <MainAnchor />
-      {children}
-    </Main>
+    <>
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta property="og:title" content={metaTitle} />
+      </Helmet>
+      <Main className={className} fluid={fluid}>
+        <MainAnchor />
+        {children}
+      </Main>
+    </>
   );
 };
 
