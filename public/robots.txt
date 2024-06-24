@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://franceskornbluth.com/sitemap.txt
+Sitemap: https://franceskornbluth.com/sitemap.xml
