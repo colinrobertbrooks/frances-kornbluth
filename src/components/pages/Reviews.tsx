@@ -3,6 +3,7 @@ import {
   lobsterCoveSuite2Img,
   winterLandscapeImg,
   germinationImg,
+  changingLightMonheganIcePondImg,
 } from '../../assets/artwork';
 import {
   styled,
@@ -88,6 +89,20 @@ export const Reviews = () => (
       insists on being abstract.&quot;
     </Review>
     <Source>- Daniel Kany (January 2013)</Source>
+    <Divider />
+    <Artwork
+      className="mt-5 mb-4"
+      src={changingLightMonheganIcePondImg}
+      title="Changing Light, Monhegan Ice Pond"
+      medium="Acrylic on linen"
+      dimensions='59 x 43"'
+    />
+    <Review>
+      &quot;Kornbluth’s <em>Changing Light, Monhegan Ice Pond</em> (1989) evokes
+      a shimmering cascade of what might be moonlight on the water framed by
+      colorful foliage.&quot;
+    </Review>
+    <Source>- Carl Little (July 2024)</Source>
   </Page>
 );
 
