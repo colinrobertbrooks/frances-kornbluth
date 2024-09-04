@@ -28,7 +28,7 @@ export const Exhibitions = () => (
     <H2 className="mb-4">Upcoming</H2>
     <Exhibition
       title="Nocturne"
-      dates="September 12 – October, 2024"
+      dates="September 12 – October 20, 2024"
       location="Maine Art Gallery (Wiscasset, ME)"
       link="https://www.maineartgallerywiscasset.org/nocturne-2024"
     />
