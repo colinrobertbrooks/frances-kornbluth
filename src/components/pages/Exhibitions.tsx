@@ -24,8 +24,6 @@ export const Exhibitions = () => (
         </Paragraph>
       }
     />
-    <Divider />
-    <H2 className="mb-4">Upcoming</H2>
     <Exhibition
       title="Nocturne"
       dates="September 12 – October 20, 2024"
@@ -33,6 +31,10 @@ export const Exhibitions = () => (
       link="https://www.maineartgallerywiscasset.org/nocturne-2024"
     />
     <Divider />
+    {/*
+    <H2 className="mb-4">Upcoming</H2>
+    <Divider />
+    */}
     <H2 className="mb-4">Past</H2>
     <Exhibition
       title="Generations: The Legacy of Mentors"
