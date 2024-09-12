@@ -1,4 +1,4 @@
-import { Link, Url, ExternalLink } from '../../router';
+import { Link, Url, ExternalLink } from 'router';
 import { Page, H1, Paragraph, Small } from './shared';
 
 export const Accessibility = () => (

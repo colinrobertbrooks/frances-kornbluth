@@ -4,7 +4,7 @@ import {
   winterLandscapeImg,
   germinationImg,
   changingLightMonheganIcePondImg,
-} from '../../assets/artwork';
+} from 'assets/artwork';
 import {
   styled,
   Page,

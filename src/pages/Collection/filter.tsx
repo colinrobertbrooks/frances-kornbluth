@@ -1,21 +1,10 @@
 import React, { useMemo, useRef } from 'react';
-import styled from 'styled-components';
 import {
   useQueryParam,
   StringParam,
   ArrayParam,
   BooleanParam,
 } from 'use-query-params';
-import { media, MIN_SCREEN_WIDTH_PX } from '../../../styles';
-import {
-  Decade,
-  MediumGroup,
-  SizeGroup,
-  Status,
-  Tag,
-  CollectionItem,
-} from '../../../types';
-import { unique } from '../../../utils';
 import {
   FormGroup,
   Label,
@@ -26,7 +15,18 @@ import {
   Button,
   OutlineButton,
   Checkbox,
-} from '../../styled';
+} from 'components';
+import { media, MIN_SCREEN_WIDTH_PX } from 'styles';
+import {
+  Decade,
+  MediumGroup,
+  SizeGroup,
+  Status,
+  Tag,
+  CollectionItem,
+} from 'types';
+import { styled } from '../shared';
+import { unique } from 'utils';
 import { useSlideContext } from './slide';
 
 /*

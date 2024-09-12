@@ -1,8 +1,7 @@
-import { artistImg, artworkImg, backgroundImg } from '../../assets/pages/home';
-import { Url } from '../../router';
-import { HEADER_HEIGHT_PX, colors, media } from '../../styles';
-import { Page } from '../layout';
-import { RocksSeaAndSkySvg } from '../svg';
+import { artistImg, artworkImg, backgroundImg } from 'assets/pages/home';
+import { Page, RocksSeaAndSkySvg } from 'components';
+import { Url } from 'router';
+import { HEADER_HEIGHT_PX, colors, media } from 'styles';
 import {
   styled,
   keyframes,

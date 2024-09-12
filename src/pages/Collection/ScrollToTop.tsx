@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { useWindowScrollPosition } from '../../../hooks';
+import { ChevronUpSvg } from 'components';
+import { useWindowScrollPosition } from 'hooks';
 import {
   colors,
   getRems,
@@ -8,8 +8,8 @@ import {
   unstyledButtonCSS,
   HEADER_HEIGHT_PX,
   FOOTER_MIN_HEIGHT_PX,
-} from '../../../styles';
-import { ChevronUpSvg } from '../../svg';
+} from 'styles';
+import { styled, css } from '../shared';
 
 const ScrollToTop = () => {
   const windowScrollPosition = useWindowScrollPosition();

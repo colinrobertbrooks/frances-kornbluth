@@ -6,7 +6,7 @@ import {
   generations2024Img,
   wami2024Img,
   theMonheganWildlands2024Img,
-} from '../../assets/pages/publications';
+} from 'assets/pages/publications';
 import {
   Page,
   Row,

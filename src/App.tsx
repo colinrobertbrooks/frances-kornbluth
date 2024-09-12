@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { useNotificationsContext } from '../contexts';
-import { Routes, Route, Url } from '../router';
-import { GlobalStyles } from '../styles';
-import { Header, Footer } from './layout';
+import { Header, Footer, ToastNotification } from 'components';
+import { useNotificationsContext } from 'contexts';
 import {
   Accessibility,
   Biography,
@@ -18,8 +16,9 @@ import {
   Timeline,
   Videos,
   NotFound,
-} from './pages';
-import { ToastNotification } from './styled';
+} from 'pages';
+import { GlobalStyles } from 'styles';
+import { Routes, Route, Url } from 'router';
 
 const App = () => {
   const { notifications, dismissNotification } = useNotificationsContext();

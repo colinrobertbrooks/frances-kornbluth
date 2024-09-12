@@ -6,7 +6,8 @@ import React, {
   useState,
 } from 'react';
 import FocusTrap from 'focus-trap-react';
-import { useTimeout, useOutsideClick, useWindowSize } from '../../../hooks';
+import { TimesSvg } from 'components';
+import { useTimeout, useOutsideClick, useWindowSize } from 'hooks';
 import {
   breakpoints,
   colors,
@@ -15,8 +16,7 @@ import {
   HEADER_HEIGHT_PX,
   media,
   unstyledButtonCSS,
-} from '../../../styles';
-import { TimesSvg } from '../../svg';
+} from 'styles';
 import { styled, css, keyframes } from '../shared';
 
 const SLIDE_ANIMATION_MS = 300;

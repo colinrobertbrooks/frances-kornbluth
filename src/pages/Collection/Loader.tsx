@@ -1,5 +1,5 @@
-import { SpinnerSvg } from '../../svg';
-import { colors } from '../../../styles';
+import { SpinnerSvg } from 'components';
+import { colors } from 'styles';
 import { styled } from '../shared';
 
 const Loader = () => (

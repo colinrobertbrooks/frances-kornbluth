@@ -1,4 +1,4 @@
-import { SpreadsheetItem, MediumGroup, SizeGroup, Tag } from '../types';
+import { SpreadsheetItem, MediumGroup, SizeGroup, Tag } from 'types';
 
 export const deriveMediumGroup = (medium: string): MediumGroup => {
   const lowercaseMedium = medium.toLowerCase();

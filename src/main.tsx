@@ -1,10 +1,9 @@
-import React from 'react';
 import 'focus-visible';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Root from './components/Root';
-import { initGoogleTagManager } from './utils';
+import Root from './Root';
+import { initGoogleTagManager } from 'utils';
 
 initGoogleTagManager();
 

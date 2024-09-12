@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import {
   novemberImg,
   summersVocabulary1Img,
@@ -8,7 +7,7 @@ import {
   changingLightMonheganIcePondImg,
   genesisImg,
   winterLandscapeImg,
-} from '../../assets/artwork';
+} from 'assets/artwork';
 import {
   artist1950sImg,
   artist1960sImg,
@@ -17,10 +16,11 @@ import {
   artist1990sImg,
   artist2000sImg,
   artist2010sImg,
-} from '../../assets/pages/timeline';
-import { Link, Url } from '../../router';
-import { colors, media } from '../../styles';
+} from 'assets/pages/timeline';
+import { Link, Url } from 'router';
+import { colors, media } from 'styles';
 import {
+  styled,
   Page,
   Row,
   Col,

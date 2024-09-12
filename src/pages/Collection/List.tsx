@@ -4,7 +4,7 @@ import {
   useWindowSize,
   useIntersectionObserver,
   usePrevious,
-} from '../../../hooks';
+} from 'hooks';
 import {
   media,
   getCurrentMedia,
@@ -12,8 +12,8 @@ import {
   focusOutlineCSS,
   HEADER_HEIGHT_PX,
   MAIN_PADDING_TOP_PX,
-} from '../../../styles';
-import { CollectionItem } from '../../../types';
+} from 'styles';
+import { CollectionItem } from 'types';
 import { styled, Row, Col } from '../shared';
 import {
   listItemHeightConfig,
@@ -21,7 +21,7 @@ import {
   HEADING_WRAPPER_HEIGHT_PX,
   HEADING_WRAPPER_MARGIN_BOTTOM_PX,
   LIST_ITEM_MARGIN_BOTTOM_PX,
-} from './constants';
+} from './consts';
 
 /*
  *  methods

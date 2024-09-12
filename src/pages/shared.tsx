@@ -1,17 +1,17 @@
 import styled, { css, keyframes } from 'styled-components';
 import { lighten, rgba } from 'polished';
 import { Container, Row, Col } from 'reactstrap';
-import { colors, typography } from '../../styles';
-import { Page } from '../layout';
 import {
   HorizontalRule,
   Heading,
+  Page,
   Paragraph,
   Span,
   Small,
   Button,
   OutlineButton,
-} from '../styled';
+} from 'components';
+import { colors, typography } from 'styles';
 
 /*
  *  styled

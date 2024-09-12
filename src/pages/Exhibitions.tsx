@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Link, Url } from '../../router';
+import { ExternalLink, Link, Url } from '../router';
 import { Page, H1, H2, Heading, Paragraph, Small, Divider } from './shared';
 
 export const Exhibitions = () => (

@@ -1,4 +1,4 @@
-import { Link, Url } from '../../router';
+import { Link, Url } from 'router';
 import { Page, H1, Paragraph } from './shared';
 
 export const Copyright = () => (
