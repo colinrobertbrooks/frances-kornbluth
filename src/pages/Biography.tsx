@@ -1,5 +1,5 @@
-import { selfPortraitImg } from '../../assets/artwork';
-import { Link, Url } from '../../router';
+import { selfPortraitImg } from 'assets/artwork';
+import { Link, Url } from 'router';
 import { Page, H1, Paragraph, Artwork } from './shared';
 
 export const Biography = () => (

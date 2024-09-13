@@ -1,7 +1,7 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryParamProvider } from 'use-query-params';
-import { NotificationsProvider, CollectionProvider } from '../contexts';
-import { Router, RouteAdapter } from '../router';
+import { NotificationsProvider, CollectionProvider } from 'contexts';
+import { Router, RouteAdapter } from 'router';
 import App from './App';
 
 const Root = () => (

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 import { Popover as ReactstrapPopper, PopoverBody } from 'reactstrap';
-import { media, typography } from '../../../styles';
-import { useLocalStorage, useTimeout } from '../../../hooks';
+import { useLocalStorage, useTimeout } from 'hooks';
+import { media, typography } from 'styles';
+import { styled } from '../shared';
 
 const FilterToggleIntroTooltip = () => {
   const [isOpen, setIsOpen] = useState(false);

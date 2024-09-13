@@ -1,11 +1,6 @@
-import { EMAIL_ADDRESS } from '../../constants';
-import { ExternalLink, ExternalUrl, Link, Url } from '../../router';
-import {
-  colors,
-  media,
-  HEADER_HEIGHT_PX,
-  MAIN_PADDING_TOP_PX,
-} from '../../styles';
+import { EMAIL_ADDRESS } from 'consts';
+import { ExternalLink, ExternalUrl, Link, Url } from 'router';
+import { colors, media, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX } from 'styles';
 import {
   styled,
   Page,

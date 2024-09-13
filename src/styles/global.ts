@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { MIN_SCREEN_WIDTH_PX, HEADER_HEIGHT_PX } from './constants';
+import { MIN_SCREEN_WIDTH_PX, HEADER_HEIGHT_PX } from './consts';
 import { colors } from './colors';
 
 export const GlobalStyles = createGlobalStyle`

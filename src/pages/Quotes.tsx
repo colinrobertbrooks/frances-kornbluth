@@ -1,7 +1,7 @@
 import {
   changingLightMonheganIcePondImg,
   altosTwilightImg,
-} from '../../assets/artwork';
+} from 'assets/artwork';
 import { styled, Page, Divider, H1, H2, Paragraph, Artwork } from './shared';
 
 export const Quotes = () => (

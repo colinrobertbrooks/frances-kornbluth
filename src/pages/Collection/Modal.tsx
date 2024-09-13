@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Modal as ReactstrapModal } from 'reactstrap';
-import {
-  useCollectionContext,
-  useNotificationsContext,
-} from '../../../contexts';
-import { useKeyPress } from '../../../hooks';
+import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from 'components';
+import { useCollectionContext, useNotificationsContext } from 'contexts';
+import { useKeyPress } from 'hooks';
 import {
   media,
   focusOutlineCSS,
@@ -12,9 +10,8 @@ import {
   getRems,
   colors,
   typography,
-} from '../../../styles';
-import { CollectionItem, Status } from '../../../types';
-import { TimesSvg, ChevronLeftSvg, ChevronRightSvg } from '../../svg';
+} from 'styles';
+import { CollectionItem, Status } from 'types';
 import { styled, css, Span, Small } from '../shared';
 
 type QueryId = number | null | undefined;

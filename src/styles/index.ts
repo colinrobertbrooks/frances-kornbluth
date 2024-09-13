@@ -1,6 +1,6 @@
 export * from './breakpoints';
 export * from './colors';
-export * from './constants';
+export * from './consts';
 export * from './global';
 export * from './media';
 export * from './mixins';

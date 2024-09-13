@@ -1,6 +1,6 @@
 import TagManager from 'react-gtm-module';
+import { GOOGLE_TAG_MANAGER_ID } from 'consts';
 import { IS_PROD } from './env';
-import { GOOGLE_TAG_MANAGER_ID } from '../constants';
 
 export const initGoogleTagManager = (): void => {
   if (IS_PROD) {

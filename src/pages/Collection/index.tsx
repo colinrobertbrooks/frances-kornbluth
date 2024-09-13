@@ -1,13 +1,8 @@
 import { useEffect } from 'react';
 import { useQueryParam, NumberParam } from 'use-query-params';
-import { useCollectionContext } from '../../../contexts';
-import {
-  getRems,
-  HEADER_HEIGHT_PX,
-  MAIN_PADDING_TOP_PX,
-  media,
-} from '../../../styles';
-import { FilterSvg } from '../../svg';
+import { FilterSvg } from 'components';
+import { useCollectionContext } from 'contexts';
+import { getRems, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX, media } from 'styles';
 import {
   styled,
   Page,
@@ -16,7 +11,7 @@ import {
   Small,
   OutlineButton,
 } from '../shared';
-import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './constants';
+import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './consts';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
