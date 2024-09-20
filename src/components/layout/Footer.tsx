@@ -38,7 +38,6 @@ export const Footer = () => (
           <SocialLink
             href={ExternalUrl.Facebook}
             title="Follow Frances Kornbluth on Facebook"
-            className="mx-3"
           >
             <FacebookIcon />
           </SocialLink>
@@ -107,6 +106,7 @@ const PageLink = styled(Link)`
 `;
 
 const socialIconCSS = css`
+  width: ${getRems(24)};
   height: ${getRems(24)};
 `;
 
@@ -122,4 +122,5 @@ const SocialLink = styled(ExternalLink)`
   ${linkCSS}
   cursor: pointer;
   display: inline-block;
+  margin: 0 ${getRems(8)};
 `;
