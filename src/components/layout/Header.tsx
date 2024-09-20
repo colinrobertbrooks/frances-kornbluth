@@ -53,10 +53,10 @@ export const Header = () => {
 
   return (
     <Element>
+      <SkipToMain />
       {HAS_BANNER && <Banner />}
-      <Navbar expand="md">
+      <Navbar expand="md" container>
         <div className="d-flex justify-content-between w-100">
-          <SkipToMain />
           <NavbarBrand
             tag={Link}
             to={Url.HomePage}
