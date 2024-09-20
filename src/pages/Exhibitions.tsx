@@ -15,12 +15,16 @@ export const Exhibitions = () => (
       location="Monhegan Museum of Art & History (Monhegan, ME)"
       children={
         <Paragraph className="row gy-2">
-          <ExternalLink href="https://monheganmuseum.org/upcoming">
-            More Information
-          </ExternalLink>
-          <ExternalLink href="https://www.islandinstitute.org/working-waterfront/righting-a-wrong-monhegans-women-artists-get-their-due/">
-            Review by Carl Little
-          </ExternalLink>
+          <span>
+            <ExternalLink href="https://monheganmuseum.org/upcoming">
+              More Information
+            </ExternalLink>
+          </span>
+          <span>
+            <ExternalLink href="https://www.islandinstitute.org/working-waterfront/righting-a-wrong-monhegans-women-artists-get-their-due/">
+              Review by Carl Little
+            </ExternalLink>
+          </span>
         </Paragraph>
       }
     />
