@@ -6,7 +6,7 @@ export const MIN_SCREEN_WIDTH_PX = 320;
 /*
  *  banner
  */
-export const HAS_BANNER = true;
+export const HAS_BANNER = false;
 
 export const BANNER_HEIGHT_PX = 57;
 

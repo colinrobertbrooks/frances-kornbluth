@@ -10,25 +10,6 @@ export const Exhibitions = () => (
     <H1>Exhibitions</H1>
     <H2 className="mb-4">Current</H2>
     <Exhibition
-      title="A Common Bond: Women Artists of Monhegan Island"
-      dates="July 1 – September 30, 2024"
-      location="Monhegan Museum of Art & History (Monhegan, ME)"
-      children={
-        <Paragraph className="row gy-2">
-          <span>
-            <ExternalLink href="https://monheganmuseum.org/upcoming">
-              More Information
-            </ExternalLink>
-          </span>
-          <span>
-            <ExternalLink href="https://www.islandinstitute.org/working-waterfront/righting-a-wrong-monhegans-women-artists-get-their-due/">
-              Review by Carl Little
-            </ExternalLink>
-          </span>
-        </Paragraph>
-      }
-    />
-    <Exhibition
       title="Nocturne"
       dates="September 12 – October 20, 2024"
       location="Maine Art Gallery (Wiscasset, ME)"
@@ -40,6 +21,18 @@ export const Exhibitions = () => (
     <Divider />
     */}
     <H2 className="mb-4">Past</H2>
+    <Exhibition
+      title="A Common Bond: Women Artists of Monhegan Island"
+      dates="July 1 – September 30, 2024"
+      location="Monhegan Museum of Art & History (Monhegan, ME)"
+      children={
+        <Paragraph>
+          <ExternalLink href="https://www.islandinstitute.org/working-waterfront/righting-a-wrong-monhegans-women-artists-get-their-due/">
+            Review by Carl Little
+          </ExternalLink>
+        </Paragraph>
+      }
+    />
     <Exhibition
       title="Generations: The Legacy of Mentors"
       dates="May 2 – June 9, 2024"
