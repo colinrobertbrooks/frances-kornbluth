@@ -388,7 +388,7 @@ export const Timeline = () => (
               year="2001"
               event={
                 <>
-                  {/* June 15 - September 2, 2001 */}
+                  {/* June 15 - September 2 */}
                   <em>Monhegan: The Abstracted Island</em> exhibition at the
                   Bates College Museum of Art
                 </>
@@ -403,12 +403,21 @@ export const Timeline = () => (
                 </>
               }
             />
-
+            <Milestone
+              year="2003"
+              event={
+                <>
+                  {/* June 5 - August 10 */}
+                  <em>Monhegan Island: A 150-Year Tradition</em> exhibition at
+                  the Emerson Gallery, Hamilton College
+                </>
+              }
+            />
             <Milestone
               year="2007"
               event={
                 <>
-                  {/* July 26 - September 23, 2007 */}
+                  {/* July 26 - September 23 */}
                   <em>On Island: Women Artists</em> of Monhegan exhibition at
                   the University of New England
                 </>
@@ -443,7 +452,7 @@ export const Timeline = () => (
               year="2010"
               event={
                 <>
-                  {/* January ? - February 28, 2010 */}
+                  {/* January ? - February 28 */}
                   <em>Collage: Piecing It Together</em> exhibition at the
                   Portland Museum of Art
                 </>
@@ -463,7 +472,7 @@ export const Timeline = () => (
               year="2013"
               event={
                 <>
-                  {/* January 2 – March 3, 2013 */}
+                  {/* January 2 – March 3 */}
                   <em>Maine Women Pioneers III: Homage</em> exhibition at the
                   University of New England
                 </>
