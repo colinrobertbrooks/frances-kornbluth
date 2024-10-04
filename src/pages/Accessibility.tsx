@@ -14,7 +14,7 @@ export const Accessibility = () => (
       <ExternalLink href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">
         web accessibility issue
       </ExternalLink>
-      , or have any suggestions on accessibility improvements, please{' '}
+      , or have any suggestions on accessibility improvements, then please{' '}
       <Link to={Url.ContactPage}>contact us</Link>.
     </Paragraph>
     <Small color="gray">
