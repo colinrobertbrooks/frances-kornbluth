@@ -62,8 +62,8 @@ export const Home = () => (
               </Button>
             </Col>
             <Col sm={6} xl={4}>
-              <Button to={Url.ExhibitionsPage} block>
-                Exhibitions
+              <Button to={Url.PublicationsPage} block>
+                Publications
               </Button>
             </Col>
             <Col xl={2} />
