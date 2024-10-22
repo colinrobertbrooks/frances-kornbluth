@@ -8,19 +8,20 @@ export const Exhibitions = () => (
     description="Upcoming and past exhibitions of artwork by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
   >
     <H1>Exhibitions</H1>
+    {/*
     <H2 className="mb-4">Current</H2>
+    <Divider />
+
+    */}
+    <H2 className="mb-4">Upcoming</H2>
+    <Paragraph>No upcoming exhibitions.</Paragraph>
+    <Divider />
+    <H2 className="mb-4">Past</H2>
     <Exhibition
       title="Nocturne"
       dates="September 12 – October 20, 2024"
       location="Maine Art Gallery (Wiscasset, ME)"
-      link="https://www.maineartgallerywiscasset.org/nocturne-2024"
     />
-    <Divider />
-    {/*
-    <H2 className="mb-4">Upcoming</H2>
-    <Divider />
-    */}
-    <H2 className="mb-4">Past</H2>
     <Exhibition
       title="A Common Bond: Women Artists of Monhegan Island"
       dates="July 1 – September 30, 2024"
