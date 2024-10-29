@@ -1,20 +1,55 @@
-import { styled, Page, H1, Paragraph } from './shared';
+import { ExternalLink } from 'router';
+import {
+  styled,
+  Page,
+  Row,
+  Col,
+  Heading,
+  H1,
+  Paragraph,
+  Divider,
+} from './shared';
 
 export const Videos = () => (
   <Page
     title="Videos"
     description="Videos including Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
   >
-    <H1>Videos</H1>
-    <Paragraph as="h2" color="gray">
-      Interview for <em>The Women Artists of Monhegan Island</em> (2012)
-    </Paragraph>
-    <VideoWrapper>
-      <Video
-        title="Frances Kornbluth Interview"
-        src="https://www.youtube.com/embed/OuqiylLBRRA"
-      />
-    </VideoWrapper>
+    <Row>
+      <Col xl={8}>
+        <H1>Videos</H1>
+        <Heading as="h2" color="darkGray" className="h4 mb-4">
+          Interview for <em>Lynne Drexler: A Life in Color</em> (2008)
+        </Heading>
+        <VideoWrapper>
+          <Video
+            title="Frances Kornbluth interviewed for Lynne Drexler: A Life in Color"
+            src="https://www.youtube.com/embed/b3_CUm39dIM?start=877"
+          />
+        </VideoWrapper>
+        <Paragraph className="mt-2">
+          Also see{' '}
+          <ExternalLink href="https://youtu.be/b3_CUm39dIM?si=IZuAbhMke07RJhHO&t=1293">
+            21:33
+          </ExternalLink>{' '}
+          and{' '}
+          <ExternalLink href="https://youtu.be/b3_CUm39dIM?si=duPCm2sknIDQR1qN&t=1460">
+            24:20
+          </ExternalLink>
+          .
+        </Paragraph>
+        <Divider />
+        <Heading as="h2" color="darkGray" className="h4 mb-4">
+          Interview for <em>The Women Artists of Monhegan Island</em> (2012)
+        </Heading>
+        <VideoWrapper>
+          <Video
+            title="Frances Kornbluth interviewed for The Women Artists of Monhegan Island"
+            src="https://www.youtube.com/embed/OuqiylLBRRA"
+          />
+        </VideoWrapper>
+      </Col>
+    </Row>
   </Page>
 );
 
