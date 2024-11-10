@@ -1,14 +1,4 @@
-import { ExternalLink } from 'router';
-import {
-  styled,
-  Page,
-  Row,
-  Col,
-  Heading,
-  H1,
-  Paragraph,
-  Divider,
-} from './shared';
+import { styled, Page, Row, Col, Heading, H1 } from './shared';
 
 export const Videos = () => (
   <Page
@@ -18,6 +8,7 @@ export const Videos = () => (
     <Row>
       <Col xl={8}>
         <H1>Videos</H1>
+        {/*
         <Heading as="h2" color="darkGray" className="h4 mb-4">
           Interview for <em>Lynne Drexler: A Life in Color</em> (2008)
         </Heading>
@@ -39,6 +30,7 @@ export const Videos = () => (
           .
         </Paragraph>
         <Divider />
+        */}
         <Heading as="h2" color="darkGray" className="h4 mb-4">
           Interview for <em>The Women Artists of Monhegan Island</em> (2012)
         </Heading>
