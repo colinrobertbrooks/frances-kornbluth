@@ -29,20 +29,11 @@ export const Contact = () => (
         <Divider className="d-md-none" />
         <H2 className="mb-2">Acquisitions</H2>
         <Paragraph>
-          To learn about artwork by Frances Kornbluth that is available for
-          sale, please contact:
-          <AcquisitionsList>
-            <AcquisitionsListItem>
-              <ExternalLink href={ExternalUrl.GarveyRita}>
-                Garvey Rita Art & Antiques
-              </ExternalLink>
-            </AcquisitionsListItem>
-            <AcquisitionsListItem>
-              <ExternalLink href={ExternalUrl.JKenneth}>
-                J. Kenneth Fine Art
-              </ExternalLink>
-            </AcquisitionsListItem>
-          </AcquisitionsList>
+          The estate of Frances Kornbluth is represented by{' '}
+          <ExternalLink href={ExternalUrl.JKenneth}>
+            J. Kenneth Fine Art
+          </ExternalLink>
+          .
         </Paragraph>
         <Divider />
         <H2 className="mb-2">Exhibitions</H2>
@@ -84,15 +75,3 @@ const ContactUsLink = styled(ExternalLink).attrs({
   children: 'contact us',
   href: `mailto:${EMAIL_ADDRESS}`,
 })``;
-
-const AcquisitionsList = styled.ul`
-  display: grid;
-  gap: 8px;
-  margin-top: 8px;
-`;
-
-const AcquisitionsListItem = styled.li`
-  &::marker {
-    color: ${colors.gray};
-  }
-`;
