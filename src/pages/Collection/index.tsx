@@ -15,6 +15,7 @@ import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './consts';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
+import AvailableArtworkBanner from './AvailableArtworkBanner';
 import FilterToggleIntroTooltip from './FilterToggleIntroTooltip';
 import List from './List';
 import ScrollToTop from './ScrollToTop';
@@ -78,6 +79,7 @@ export const Collection = () => {
         if (collectionIsLoading || !collection)
           return (
             <LoadingWrapper>
+              <AvailableArtworkBanner />
               <Heading className="mb-4">Collection</Heading>
               <Loader />
             </LoadingWrapper>
@@ -88,6 +90,7 @@ export const Collection = () => {
         return (
           <>
             <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
+              <AvailableArtworkBanner />
               <HeadingWrapper>
                 <Heading className="mb-0">Collection</Heading>
                 <HeadingCount>{count}</HeadingCount>
