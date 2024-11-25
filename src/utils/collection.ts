@@ -5,6 +5,7 @@ export const deriveMediumGroup = (medium: string): MediumGroup => {
   if (lowercaseMedium.includes('acrylic')) return MediumGroup.Acrylic;
   if (lowercaseMedium.includes('charcoal')) return MediumGroup.Charcoal;
   if (lowercaseMedium.includes('collage')) return MediumGroup.Collage;
+  if (lowercaseMedium.includes('gouache')) return MediumGroup.Gouache;
   if (lowercaseMedium.includes('ink')) return MediumGroup.Ink;
   if (lowercaseMedium.includes('mixed media')) {
     return MediumGroup['Mixed Media'];

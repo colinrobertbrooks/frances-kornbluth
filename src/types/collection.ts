@@ -16,6 +16,7 @@ export enum MediumGroup {
   Acrylic = 'Acrylic',
   Charcoal = 'Charcoal',
   Collage = 'Collage',
+  Gouache = 'Gouache',
   Ink = 'Ink',
   'Mixed Media' = 'MixedMedia',
   Monotype = 'Monotype',
