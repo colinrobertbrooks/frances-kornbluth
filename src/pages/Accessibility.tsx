@@ -18,7 +18,7 @@ export const Accessibility = () => (
       <Link to={Url.ContactPage}>contact us</Link>.
     </Paragraph>
     <Small color="gray">
-      Late in life, Frances developed macular degeneration and utilized
+      Late in life, Kornbluth developed macular degeneration and utilized
       assistive technology.
     </Small>
   </Page>

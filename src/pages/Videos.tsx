@@ -28,7 +28,7 @@ export const Videos = () => (
           />
         </VideoWrapper>
         <Paragraph className="mt-2">
-          Frances appears at{' '}
+          Kornbluth appears at{' '}
           <ExternalLink href="https://www.youtube.com/embed/b3_CUm39dIM?start=877">
             14:37
           </ExternalLink>
