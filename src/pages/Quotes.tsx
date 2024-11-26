@@ -44,7 +44,6 @@ export const Quotes = () => (
     <Source>
       - <em>Monhegan: The Artists&apos; Island</em> (1995)
     </Source>
-    <Divider />
     <Quote>
       &quot;I forget which poet said that 'no man is an island,' but actually:
       you are an island. You're a separate person, and I think going to an
