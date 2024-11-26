@@ -19,7 +19,7 @@ export const Biography = () => (
       Frances Kornbluth was born in New York City on July 26, 1920. As a child,
       Kornbluth developed a passion for the piano, and graduated from Brooklyn
       College in 1940 with a degree in music. During World War II, she married,
-      and—while her husband was overseas—worked in Washington DC for the Lend
+      and—while her husband was overseas—worked in Washington, D.C. for the Lend
       Lease Organization and then the Office of Strategic Services. After the
       war, Kornbluth and her husband moved to Merrick, NY where they had two
       children.
@@ -36,15 +36,16 @@ export const Biography = () => (
       later credit Tam with: “defining me as the artist I had never envisioned
       becoming.” Kornbluth also studied with Robert Richenburg at the Pratt
       Institute, where she received a master’s degree in 1962. In 1969,
-      Kornbluth and her family moved from Merrick, NY to North Grosvenordale,
-      CT, where she would maintain a winter studio for the rest of her life.
+      Kornbluth and her family moved to North Grosvenordale, CT, where she would
+      maintain a winter studio for the rest of her life.
     </Paragraph>
     <Paragraph>
       For 57 years, Kornbluth spent her summers on Monhegan Island, renting in
       different locations until 1974 when she purchased a cottage in Lobster
-      Cove and established a permanent summer studio. Imagery from Monhegan
-      Island—including Lobster Cove, Burnt Head, White Head and Ice Pond—recur
-      in different ways throughout her work.
+      Cove and established a permanent summer studio. Imagery from
+      Monhegan—including Lobster Cove, Burnt Head, White Head and Ice Pond—recur
+      in different ways throughout her work. On the island, Kornbluth's friends
+      and contemporaries included Lynne Drexler and Elena Jahn.
     </Paragraph>
     <Paragraph>
       The Dominican Republic is another location that recurs in Kornbluth’s
@@ -55,7 +56,7 @@ export const Biography = () => (
       On May 26, 2014, Kornbluth died in Dayville, CT at the age of 93. During
       her lifetime, she was a member of the National Association of Women
       Artists, a charter member of the National Museum of Women in the Arts and
-      a founding member of Women Artists of Monhegan Island.
+      a founding member of Women Artists of Monhegan Island (WAMI).
     </Paragraph>
     <Paragraph className="text-center">
       See more details on the <Link to={Url.TimelinePage}>timeline page</Link>.
