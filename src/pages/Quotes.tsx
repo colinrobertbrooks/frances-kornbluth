@@ -32,14 +32,27 @@ export const Quotes = () => (
       become your own prisoner. I come here to work, and it&apos;s never failed
       me.&quot;
     </Quote>
-    <Source>- Islands Magazine (1989)</Source>
+    <Source>
+      - <em>Islands Magazine</em> (1989)
+    </Source>
     <Quote>
       &quot;I first came to Monhegan in 1957 and was struck by the openness of
       space, light and the purity of its natural forms. My growth is vitally
       connected to the island. Being here every summer continues to enhance my
       power to see, to feel and to make art.&quot;
     </Quote>
-    <Source>- Monhegan: The Artists&apos; Island (1995)</Source>
+    <Source>
+      - <em>Monhegan: The Artists&apos; Island</em> (1995)
+    </Source>
+    <Divider />
+    <Quote>
+      &quot;I forget which poet said that 'no man is an island,' but actually:
+      you are an island. You're a separate person, and I think going to an
+      island reinforces it.&quot;
+    </Quote>
+    <Source>
+      - <em>Lynne Drexler: A Life in Color</em> (2008)
+    </Source>
     <Divider />
     <H2 className="text-center">Dominican Republic</H2>
     <Artwork
@@ -54,14 +67,18 @@ export const Quotes = () => (
       the natural world, my perceptions of the elements, visual and otherwise,
       and a heightened sense of growth and change in the environment.&quot;
     </Quote>
-    <Source>- Artists In Residence, Altos de Chavon (1985)</Source>
+    <Source>
+      - <em>Artists In Residence, Altos de Chavon</em> (1985)
+    </Source>
     <Quote>
       &quot;In the Dominican Republic I got a sense of how intense and powerful
       an environment can be. It was a world of feelings and I had a passion for
       the place. I felt a need to work and I felt effective by defining my
       experience.&quot;
     </Quote>
-    <Source>- The Observer Patriot (1990)</Source>
+    <Source>
+      - <em>The Observer Patriot</em> (1990)
+    </Source>
   </Page>
 );
 

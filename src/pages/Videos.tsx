@@ -1,4 +1,14 @@
-import { styled, Page, Row, Col, Heading, H1 } from './shared';
+import { ExternalLink } from 'router';
+import {
+  styled,
+  Page,
+  Row,
+  Col,
+  Heading,
+  H1,
+  Paragraph,
+  Divider,
+} from './shared';
 
 export const Videos = () => (
   <Page
@@ -8,7 +18,6 @@ export const Videos = () => (
     <Row>
       <Col xl={8}>
         <H1>Videos</H1>
-        {/*
         <Heading as="h2" color="darkGray" className="h4 mb-4">
           Interview for <em>Lynne Drexler: A Life in Color</em> (2008)
         </Heading>
@@ -19,7 +28,11 @@ export const Videos = () => (
           />
         </VideoWrapper>
         <Paragraph className="mt-2">
-          Also see{' '}
+          Frances appears at{' '}
+          <ExternalLink href="https://www.youtube.com/embed/b3_CUm39dIM?start=877">
+            14:37
+          </ExternalLink>
+          ,{' '}
           <ExternalLink href="https://youtu.be/b3_CUm39dIM?si=IZuAbhMke07RJhHO&t=1293">
             21:33
           </ExternalLink>{' '}
@@ -30,7 +43,6 @@ export const Videos = () => (
           .
         </Paragraph>
         <Divider />
-        */}
         <Heading as="h2" color="darkGray" className="h4 mb-4">
           Interview for <em>The Women Artists of Monhegan Island</em> (2012)
         </Heading>
