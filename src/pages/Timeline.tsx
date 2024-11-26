@@ -338,6 +338,10 @@ export const Timeline = () => (
           <DecadeHeading>1990s</DecadeHeading>
           <MilestonesWrapper>
             <Milestone
+              year="1990"
+              event="Co-founded the Woman Artists of Monhegan Island (WAMI) collective with Elena Jahn"
+            />
+            <Milestone
               year="1992"
               event={
                 <>
