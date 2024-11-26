@@ -29,7 +29,7 @@ export const Contact = () => (
         <Divider className="d-md-none" />
         <H2 className="mb-2">Acquisitions</H2>
         <Paragraph>
-          The estate of Frances Kornbluth is represented by{' '}
+          The estate of Frances Kornbluth is exclusively represented by{' '}
           <ExternalLink href={ExternalUrl.JKenneth}>
             J. Kenneth Fine Art
           </ExternalLink>
