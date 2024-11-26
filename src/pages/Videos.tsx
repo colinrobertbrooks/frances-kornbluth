@@ -24,7 +24,7 @@ export const Videos = () => (
         <VideoWrapper>
           <Video
             title="Frances Kornbluth interviewed for Lynne Drexler: A Life in Color"
-            src="https://www.youtube.com/embed/b3_CUm39dIM?start=877"
+            src="https://www.youtube.com/embed/b3_CUm39dIM?start=1460"
           />
         </VideoWrapper>
         <Paragraph className="mt-2">
