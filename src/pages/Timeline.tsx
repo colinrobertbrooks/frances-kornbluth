@@ -339,7 +339,7 @@ export const Timeline = () => (
           <MilestonesWrapper>
             <Milestone
               year="1990"
-              event="Co-founded the Woman Artists of Monhegan Island (WAMI) collective with Elena Jahn"
+              event="Co-founded the Women Artists of Monhegan Island (WAMI) collective with Elena Jahn"
             />
             <Milestone
               year="1992"
