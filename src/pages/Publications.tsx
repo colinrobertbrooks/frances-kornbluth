@@ -7,6 +7,7 @@ import {
   wami2024Img,
   theMonheganWildlands2024Img,
 } from 'assets/pages/publications';
+import { Link, Url } from 'router';
 import {
   Page,
   Row,
@@ -72,6 +73,11 @@ export const Publications = () => (
       year="1995"
       coverImg={monhegan1995Img}
     />
+    <Divider />
+    <Paragraph className="mt-4 text-center">
+      See more artwork on the{' '}
+      <Link to={Url.CollectionPage}>collection page</Link>.
+    </Paragraph>
   </Page>
 );
 

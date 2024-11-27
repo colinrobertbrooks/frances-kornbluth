@@ -1,4 +1,4 @@
-import { ExternalLink } from 'router';
+import { ExternalLink, Link, Url } from 'router';
 import {
   styled,
   Page,
@@ -52,6 +52,11 @@ export const Videos = () => (
             src="https://www.youtube.com/embed/OuqiylLBRRA"
           />
         </VideoWrapper>
+        <Divider />
+        <Paragraph className="mt-4 text-center">
+          See more artwork on the{' '}
+          <Link to={Url.CollectionPage}>collection page</Link>.
+        </Paragraph>
       </Col>
     </Row>
   </Page>

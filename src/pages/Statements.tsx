@@ -1,3 +1,4 @@
+import { Link, Url } from 'router';
 import { Page, H1, H2, Paragraph, Divider } from './shared';
 
 export const Statements = () => (
@@ -117,6 +118,10 @@ export const Statements = () => (
       concerned with the natural order of things, in a realm where details have
       a life of their own and often dictate new patterns that expand meaning and
       the boundaries of personal experience.&quot;
+    </Paragraph>
+    <Divider />
+    <Paragraph className="mt-4 text-center">
+      Read more on the <Link to={Url.QuotesPage}>quotes page</Link>.
     </Paragraph>
   </Page>
 );

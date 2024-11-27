@@ -5,6 +5,7 @@ import {
   germinationImg,
   changingLightMonheganIcePondImg,
 } from 'assets/artwork';
+import { Link, Url } from 'router';
 import {
   styled,
   Page,
@@ -103,6 +104,11 @@ export const Reviews = () => (
       colorful foliage.&quot;
     </Review>
     <Source>- Carl Little (July 2024)</Source>
+    <Divider />
+    <Paragraph className="mt-4 text-center">
+      See more artwork on the{' '}
+      <Link to={Url.CollectionPage}>collection page</Link>.
+    </Paragraph>
   </Page>
 );
 

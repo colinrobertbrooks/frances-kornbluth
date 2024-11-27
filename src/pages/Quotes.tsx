@@ -2,6 +2,7 @@ import {
   changingLightMonheganIcePondImg,
   altosTwilightImg,
 } from 'assets/artwork';
+import { Link, Url } from 'router';
 import { styled, Page, Divider, H1, H2, Paragraph, Artwork } from './shared';
 
 export const Quotes = () => (
@@ -78,6 +79,10 @@ export const Quotes = () => (
     <Source>
       - <em>The Observer Patriot</em> (1990)
     </Source>
+    <Divider />
+    <Paragraph className="mt-4 text-center">
+      Watch more on the <Link to={Url.VideosPage}>videos page</Link>.
+    </Paragraph>
   </Page>
 );
 

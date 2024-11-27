@@ -519,9 +519,10 @@ export const Timeline = () => (
             <Col md={2} />
           </Row>
         </DecadeWrapper>
-        <Paragraph className="mt-4 text-center">
-          See more artwork on the{' '}
-          <Link to={Url.CollectionPage}>collection page</Link>.
+        <Divider />
+        <Paragraph className="text-center">
+          Learn more on the <Link to={Url.StatementsPage}>statements page</Link>
+          .
         </Paragraph>
       </Col>
     </Row>
