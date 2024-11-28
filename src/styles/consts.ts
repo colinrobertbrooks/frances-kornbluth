@@ -1,14 +1,14 @@
+import { SITE_HAS_GLOBAL_BANNER } from '../consts';
+
 /*
  *  screen
  */
 export const MIN_SCREEN_WIDTH_PX = 320;
 
 /*
- *  banner
+ *  global banner
  */
-export const HAS_BANNER = false;
-
-export const BANNER_HEIGHT_PX = 57;
+export const GLOBAL_BANNER_HEIGHT_PX = 57;
 
 /*
  *  navbar
@@ -18,8 +18,8 @@ export const NAVBAR_HEIGHT_PX = 57;
 /*
  *  header
  */
-export const HEADER_HEIGHT_PX = HAS_BANNER
-  ? BANNER_HEIGHT_PX + NAVBAR_HEIGHT_PX
+export const HEADER_HEIGHT_PX = SITE_HAS_GLOBAL_BANNER
+  ? GLOBAL_BANNER_HEIGHT_PX + NAVBAR_HEIGHT_PX
   : NAVBAR_HEIGHT_PX;
 
 /*

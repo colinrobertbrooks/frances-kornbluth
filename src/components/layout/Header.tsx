@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { SITE_HAS_GLOBAL_BANNER } from '../../consts';
 import { usePrevious } from '../../hooks';
 import {
   Link,
@@ -22,7 +23,6 @@ import {
   artworkUrls,
 } from '../../router';
 import {
-  HAS_BANNER,
   MIN_SCREEN_WIDTH_PX,
   colors,
   focusOutlineCSS,
@@ -30,7 +30,7 @@ import {
   typography,
 } from '../../styles';
 import { FrancesKornbluthSvg } from '../svg';
-import Banner from './Banner';
+import GlobalBanner from './GlobalBanner';
 import { SkipToMain } from './skip-to-main';
 
 export const Header = () => {
@@ -54,7 +54,7 @@ export const Header = () => {
   return (
     <Element>
       <SkipToMain />
-      {HAS_BANNER && <Banner />}
+      {SITE_HAS_GLOBAL_BANNER && <GlobalBanner />}
       <Navbar expand="md" container>
         <div className="d-flex justify-content-between w-100">
           <NavbarBrand
