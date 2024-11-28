@@ -12,6 +12,7 @@ import {
   Paragraph,
   OutlineButton,
 } from './shared';
+import { SITE_HAS_UPCOMING_EXHIBITIONS } from 'consts';
 
 export const Home = () => (
   <Page className="position-relative p-0" fluid>
@@ -62,9 +63,15 @@ export const Home = () => (
               </Button>
             </Col>
             <Col sm={6} xl={4}>
-              <Button to={Url.PublicationsPage} block>
-                Publications
-              </Button>
+              {SITE_HAS_UPCOMING_EXHIBITIONS ? (
+                <Button to={Url.ExhibitionsPage} block>
+                  Exhibition
+                </Button>
+              ) : (
+                <Button to={Url.PublicationsPage} block>
+                  Publications
+                </Button>
+              )}
             </Col>
             <Col xl={2} />
           </Row>

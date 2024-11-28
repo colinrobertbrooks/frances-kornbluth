@@ -12,7 +12,10 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import { SITE_HAS_GLOBAL_BANNER } from '../../consts';
+import {
+  SITE_HAS_GLOBAL_BANNER,
+  SITE_HAS_UPCOMING_EXHIBITIONS,
+} from '../../consts';
 import { usePrevious } from '../../hooks';
 import {
   Link,
@@ -110,9 +113,11 @@ export const Header = () => {
                 <DropdownItemNavLink to={Url.CollectionPage}>
                   Collection
                 </DropdownItemNavLink>
-                <DropdownItemNavLink to={Url.ExhibitionsPage}>
-                  Exhibitions
-                </DropdownItemNavLink>
+                {SITE_HAS_UPCOMING_EXHIBITIONS && (
+                  <DropdownItemNavLink to={Url.ExhibitionsPage}>
+                    Exhibitions
+                  </DropdownItemNavLink>
+                )}
                 <DropdownItemNavLink to={Url.PublicationsPage}>
                   Publications
                 </DropdownItemNavLink>
