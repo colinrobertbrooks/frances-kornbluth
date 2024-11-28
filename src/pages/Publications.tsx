@@ -75,8 +75,7 @@ export const Publications = () => (
     />
     <Divider />
     <Paragraph className="mt-4 text-center">
-      See more artwork on the{' '}
-      <Link to={Url.CollectionPage}>collection page</Link>.
+      Read more on the <Link to={Url.ReviewsPage}>reviews page</Link>.
     </Paragraph>
   </Page>
 );
