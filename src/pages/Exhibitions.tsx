@@ -9,12 +9,24 @@ export const Exhibitions = () => (
   >
     <H1>Exhibitions</H1>
     {/*
-    <H2 className="mb-4">Current</H2>
-    <Divider />
-
+      <H2 className="mb-4">Current</H2>
+      <Divider />
     */}
     <H2 className="mb-4">Upcoming</H2>
-    <Paragraph>No upcoming exhibitions.</Paragraph>
+
+    <Exhibition
+      title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
+      dates="December 12, 2024 - June 1, 2025"
+      location="Bowdoin College Museum of Art (Brunswick, ME)"
+      link="https://www.bowdoin.edu/art-museum/exhibitions/2024/monhegan-wildlands.html"
+    />
+    <Exhibition
+      title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
+      dates="July 1, 2025 – September 30, 2025"
+      location="Monhegan Museum of Art & History (Monhegan, ME)"
+      link="https://monheganmuseum.org/upcoming-exhibition-wildlands"
+    />
+    {/* <Paragraph>No upcoming exhibitions.</Paragraph> */}
     <Divider />
     <H2 className="mb-4">Past</H2>
     <Exhibition
