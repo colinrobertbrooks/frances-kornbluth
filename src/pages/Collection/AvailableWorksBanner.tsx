@@ -10,7 +10,7 @@ import {
 } from 'styles';
 import { styled, Paragraph } from '../shared';
 
-const AvailableArtworkBanner = () => {
+const AvailableWorksBanner = () => {
   const [didDismiss, setDidDismiss] = useState<boolean>(false);
 
   if (didDismiss) return null;
@@ -18,7 +18,7 @@ const AvailableArtworkBanner = () => {
   return (
     <Wrapper>
       <Paragraph className="fs-6 m-0">
-        <span>For available artwork contact:</span>{' '}
+        <span>For available works contact:</span>{' '}
         <ExternalLink href={ExternalUrl.JKenneth}>
           J. Kenneth Fine Art
         </ExternalLink>
@@ -77,4 +77,4 @@ const Dismiss = styled.button.attrs({
   }
 `;
 
-export default AvailableArtworkBanner;
+export default AvailableWorksBanner;

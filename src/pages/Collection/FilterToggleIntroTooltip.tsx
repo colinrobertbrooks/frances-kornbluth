@@ -28,7 +28,7 @@ const FilterToggleIntroTooltip = () => {
       toggle={handleDismiss}
     >
       <PopoverBody>
-        Click here to filter pieces by title, medium, size and more.
+        Click here to filter works by title, medium, size and more.
       </PopoverBody>
     </Popover>
   );

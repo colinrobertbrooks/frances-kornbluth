@@ -15,7 +15,7 @@ import { HEADING_WRAPPER_MARGIN_BOTTOM_PX } from './consts';
 import Loader from './Loader';
 import { SlideProvider, SlideToggle, Slide } from './slide';
 import { useFilterState, Filters } from './filter';
-import AvailableArtworkBanner from './AvailableArtworkBanner';
+import AvailableWorksBanner from './AvailableWorksBanner';
 import FilterToggleIntroTooltip from './FilterToggleIntroTooltip';
 import List from './List';
 import ScrollToTop from './ScrollToTop';
@@ -43,8 +43,8 @@ const checkIsOutsideClick = (event: any) => {
 };
 
 const getCount = (all: number, filtered: number): string => {
-  if (all === filtered) return `${all} pieces`;
-  return `${filtered} of ${all} pieces`;
+  if (all === filtered) return `${all} works`;
+  return `${filtered} of ${all} works`;
 };
 
 export const Collection = () => {
@@ -79,7 +79,7 @@ export const Collection = () => {
         if (collectionIsLoading || !collection)
           return (
             <LoadingWrapper>
-              <AvailableArtworkBanner />
+              <AvailableWorksBanner />
               <Heading className="mb-4">Collection</Heading>
               <Loader />
             </LoadingWrapper>
@@ -90,7 +90,7 @@ export const Collection = () => {
         return (
           <>
             <SlideProvider checkIsOutsideClick={checkIsOutsideClick}>
-              <AvailableArtworkBanner />
+              <AvailableWorksBanner />
               <HeadingWrapper>
                 <Heading className="mb-0">Collection</Heading>
                 <HeadingCount>{count}</HeadingCount>
@@ -122,7 +122,7 @@ export const Collection = () => {
               noItems={
                 <div className="text-center">
                   <Paragraph color="gray" className="mt-2">
-                    No pieces match your current filter selections.
+                    No works match your current filter selections.
                   </Paragraph>
                   <OutlineButton onClick={resetFilters}>Reset</OutlineButton>
                 </div>

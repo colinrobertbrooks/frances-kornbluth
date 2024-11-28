@@ -51,8 +51,8 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
       setId(undefined);
       addErrorNotification({
         shouldAutoDismiss: true,
-        heading: 'Artwork Not Found',
-        text: 'That piece was not found.',
+        heading: 'Work Not Found',
+        text: 'That work was not found.',
       });
     }
   }, [id, idIsValid, setId, addErrorNotification]);
@@ -143,7 +143,7 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
               <CarouselButton
                 ref={previousRef}
                 previous
-                aria-label="Go to previous piece"
+                aria-label="Go to previous work"
                 title="Previous"
                 onClick={handlePrevious}
               >
@@ -152,7 +152,7 @@ const Modal = ({ filteredCollection, id, setId }: ModalProps) => {
               <CarouselButton
                 ref={nextRef}
                 next
-                aria-label="Go to next piece"
+                aria-label="Go to next work"
                 title="Next"
                 onClick={handleNext}
               >
