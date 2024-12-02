@@ -65,7 +65,7 @@ export const Home = () => (
             <Col sm={6} xl={4}>
               {SITE_HAS_UPCOMING_EXHIBITIONS ? (
                 <Button to={Url.ExhibitionsPage} block>
-                  Exhibition
+                  Exhibitions
                 </Button>
               ) : (
                 <Button to={Url.PublicationsPage} block>
