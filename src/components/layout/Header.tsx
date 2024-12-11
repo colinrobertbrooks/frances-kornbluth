@@ -14,7 +14,7 @@ import {
 } from 'reactstrap';
 import {
   SITE_HAS_GLOBAL_BANNER,
-  SITE_HAS_UPCOMING_EXHIBITIONS,
+  SITE_HAS_CURRENT_OR_UPCOMING_EXHIBITIONS,
 } from '../../consts';
 import { usePrevious } from '../../hooks';
 import {
@@ -113,7 +113,7 @@ export const Header = () => {
                 <DropdownItemNavLink to={Url.CollectionPage}>
                   Collection
                 </DropdownItemNavLink>
-                {SITE_HAS_UPCOMING_EXHIBITIONS && (
+                {SITE_HAS_CURRENT_OR_UPCOMING_EXHIBITIONS && (
                   <DropdownItemNavLink to={Url.ExhibitionsPage}>
                     Exhibitions
                   </DropdownItemNavLink>
