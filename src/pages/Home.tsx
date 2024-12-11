@@ -146,5 +146,6 @@ const ArtCopy = styled(Paragraph).attrs({ className: 'mb-4' })`
 `;
 
 const Button = styled(OutlineButton)`
+  background: ${colors.white};
   min-width: 164px;
 `;
