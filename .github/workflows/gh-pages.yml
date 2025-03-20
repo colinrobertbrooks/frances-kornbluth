@@ -36,6 +36,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Check if build directory exists
+        run: |
+          if [ ! -d "dist" ]; then echo "Error: dist directory not found"; exit 1; fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -43,5 +47,4 @@ jobs:
           publish_dir: ./dist
           publish_branch: gh-pages
           cname: franceskornbluth.com
-          cleanup: false
-          enable_commit_msg: 'GitHub Actions automated deployment to GitHub Pages'
+          force_orphan: true
