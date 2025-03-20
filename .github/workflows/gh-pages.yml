@@ -6,9 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
   deploy:
@@ -16,11 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          persist-credentials: false
 
       - name: Install dependencies
         run: npm install
@@ -33,4 +28,4 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
-          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
