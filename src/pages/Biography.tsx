@@ -27,25 +27,25 @@ export const Biography = () => (
     <Paragraph>
       In 1947, Kornbluth enrolled in an art workshop on Long Island and began
       painting figures and still lives in the studio. In 1955, she enrolled in
-      the Brooklyn Museum School, where she studied for four years with William
-      Kienbusch and Reuben Tam. During this time, Kornbluth painted in and out
-      of the studio—including the Freeport marshes and Jones Beach—and her work
-      became increasingly abstract. It was Tam who encouraged Kornbluth to
-      exhibit her work at the Brooklyn Museum and the City Center Gallery, in
-      addition to introducing her to Maine’s Monhegan Island in 1957—she would
-      later credit Tam with: “defining me as the artist I had never envisioned
-      becoming.” Kornbluth also studied with Robert Richenburg at the Pratt
-      Institute, where she received a master’s degree in 1962. In 1969,
-      Kornbluth and her family moved to North Grosvenordale, CT, where she would
-      maintain a winter studio for the rest of her life.
+      the Brooklyn Museum Art School, where she studied for four years with
+      William Kienbusch and Reuben Tam. During this time, Kornbluth painted in
+      and out of the studio—including the Freeport marshes and Jones Beach—and
+      her work became increasingly abstract. Kienbusch encouraged Kornbluth to
+      exhibit at the City Center Gallery, and Tam encouraged her to exhibit at
+      the Brooklyn Museum. Tam also introduced her to Maine’s Monhegan Island in
+      1957. Kornbluth would later credit Tam with: “defining me as the artist I
+      had never envisioned becoming.” Kornbluth also studied with Robert
+      Richenburg at the Pratt Institute, where she received a master’s degree in
+      1962. In 1969, Kornbluth and her family moved to North Grosvenordale, CT,
+      where she would maintain a winter studio for the rest of her life.
     </Paragraph>
     <Paragraph>
       For 57 years, Kornbluth spent her summers on Monhegan Island, renting in
       different locations until 1974 when she purchased a cottage in Lobster
       Cove and established a permanent summer studio. Imagery from
-      Monhegan—including Lobster Cove, Burnt Head, White Head and Ice Pond—recur
-      in different ways throughout her work. On the island, Kornbluth's friends
-      and contemporaries included Lynne Drexler and Elena Jahn.
+      Monhegan—including Lobster Cove, White Head and Ice Pond—recur in
+      different ways throughout her work. On the island, Kornbluth's friends and
+      contemporaries included Lynne Drexler and Elena Jahn.
     </Paragraph>
     <Paragraph>
       The Dominican Republic is another location that recurs in Kornbluth’s
