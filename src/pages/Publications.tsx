@@ -6,6 +6,7 @@ import {
   generations2024Img,
   wami2024Img,
   theMonheganWildlands2024Img,
+  rocksSeaAndSky2025Img,
 } from 'assets/pages/publications';
 import { Link, ExternalLink, Url } from 'router';
 import {
@@ -26,6 +27,14 @@ export const Publications = () => (
     description="Publications including artwork by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
   >
     <H1>Publications</H1>
+    <Publication
+      title="Rocks, Sea and Sky"
+      author="J. Kenneth Fine Art"
+      year="2025"
+      coverImg={rocksSeaAndSky2025Img}
+      link="https://online.pubhtml5.com/ojqu/xgtb/"
+    />
+    <Divider />
     <Publication
       title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
       author="Barry A. Logan, Jennifer Pye and Frank H. Goodyear III"
