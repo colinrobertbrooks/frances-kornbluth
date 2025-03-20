@@ -18,10 +18,10 @@ export const Biography = () => (
     <Paragraph>
       Frances Kornbluth was born in New York City on July 26, 1920. As a child,
       Kornbluth developed a passion for the piano, and graduated from Brooklyn
-      College in 1940 with a degree in music. During World War II, she married,
-      and—while her husband was overseas—worked in Washington, D.C. for the Lend
-      Lease Organization and then the Office of Strategic Services. After the
-      war, Kornbluth and her husband moved to Merrick, NY where they had two
+      College in 1940 with a degree in music. During World War II, she married.
+      While her husband was overseas, she worked in Washington, D.C. for the
+      Lend Lease Organization and then the Office of Strategic Services. After
+      the war, Kornbluth and her husband moved to Merrick, NY where they had two
       children.
     </Paragraph>
     <Paragraph>
@@ -29,15 +29,15 @@ export const Biography = () => (
       painting figures and still lives in the studio. In 1955, she enrolled in
       the Brooklyn Museum Art School, where she studied for four years with
       William Kienbusch and Reuben Tam. During this time, Kornbluth painted in
-      and out of the studio—including the Freeport marshes and Jones Beach—and
-      her work became increasingly abstract. Kienbusch encouraged Kornbluth to
+      and out of the studio, including the Freeport marshes and Jones Beach. Her
+      work became increasingly abstract. Kienbusch encouraged Kornbluth to
       exhibit at the City Center Gallery, and Tam encouraged her to exhibit at
       the Brooklyn Museum. Tam also introduced her to Maine’s Monhegan Island in
-      1957. Kornbluth would later credit Tam with: “defining me as the artist I
-      had never envisioned becoming.” Kornbluth also studied with Robert
-      Richenburg at the Pratt Institute, where she received a master’s degree in
-      1962. In 1969, Kornbluth and her family moved to North Grosvenordale, CT,
-      where she would maintain a winter studio for the rest of her life.
+      1957. She would later credit Tam with: “defining me as the artist I had
+      never envisioned becoming.” Kornbluth also studied with Robert Richenburg
+      at the Pratt Institute, where she received a master’s degree in 1962. In
+      1969, Kornbluth and her family moved to North Grosvenordale, CT, where she
+      would maintain a winter studio for the rest of her life.
     </Paragraph>
     <Paragraph>
       For 57 years, Kornbluth spent her summers on Monhegan Island, renting in
