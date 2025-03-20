@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.28.0",
+    "axios": "^1.8.2",
     "bootstrap": "^5.3.3",
     "focus-trap-react": "^8.9.0",
     "focus-visible": "^5.2.0",
