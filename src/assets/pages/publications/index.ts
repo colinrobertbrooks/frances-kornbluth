@@ -5,6 +5,7 @@ import maineWomenPioneers2013Img from './maine-women-pioneers-2013.jpg';
 import generations2024Img from './generations-2024.jpg';
 import wami2024Img from './wami-2024.jpg';
 import theMonheganWildlands2024Img from './the-monhegan-wildlands-2024.jpg';
+import rocksSeaAndSky2025Img from './rocks-sea-and-sky-2025.jpg';
 
 export {
   monhegan1995Img,
@@ -14,4 +15,5 @@ export {
   generations2024Img,
   wami2024Img,
   theMonheganWildlands2024Img,
+  rocksSeaAndSky2025Img,
 };
