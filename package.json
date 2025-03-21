@@ -4,6 +4,7 @@
   "version": "3.0.0",
   "private": true,
   "author": "colinrobertbrooks@gmail.com",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
