@@ -18,6 +18,17 @@ export const Videos = () => (
     <Row>
       <Col xl={8}>
         <H1>Videos</H1>
+
+        <Heading as="h2" color="darkGray" className="h4 mb-4">
+          Interview for <em>The Women Artists of Monhegan Island</em> (2012)
+        </Heading>
+        <VideoWrapper>
+          <Video
+            title="Frances Kornbluth interviewed for The Women Artists of Monhegan Island"
+            src="https://www.youtube.com/embed/OuqiylLBRRA"
+          />
+        </VideoWrapper>
+        <Divider />
         <Heading as="h2" color="darkGray" className="h4 mb-4">
           Interview for <em>Lynne Drexler: A Life in Color</em> (2008)
         </Heading>
@@ -42,16 +53,6 @@ export const Videos = () => (
           </ExternalLink>
           .
         </Paragraph>
-        <Divider />
-        <Heading as="h2" color="darkGray" className="h4 mb-4">
-          Interview for <em>The Women Artists of Monhegan Island</em> (2012)
-        </Heading>
-        <VideoWrapper>
-          <Video
-            title="Frances Kornbluth interviewed for The Women Artists of Monhegan Island"
-            src="https://www.youtube.com/embed/OuqiylLBRRA"
-          />
-        </VideoWrapper>
         <Divider />
         <Paragraph className="mt-4 text-center">
           See more artwork on the{' '}
