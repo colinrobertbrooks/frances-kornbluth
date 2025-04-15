@@ -23,23 +23,34 @@ export const Videos = () => (
         </Heading>
         <VideoWrapper>
           <Video
-            title="Frances Kornbluth interviewed for The Women Artists of Monhegan Island"
-            src="https://www.youtube.com/embed/OuqiylLBRRA"
+            title="The Women Artists of Monhegan Island"
+            src="https://www.youtube.com/embed/R-08hn2LjNk?start=594"
           />
         </VideoWrapper>
+        <Paragraph className="mt-2">
+          Kornbluth appears at{' '}
+          <ExternalLink href="https://youtu.be/R-08hn2LjNk?si=JTvru2H-mwImstpG&t=176">
+            2:56
+          </ExternalLink>{' '}
+          and{' '}
+          <ExternalLink href="https://youtu.be/R-08hn2LjNk?si=d8HGB4F78Ip4Bisy&t=594">
+            9:54
+          </ExternalLink>
+          .
+        </Paragraph>
         <Divider />
         <Heading as="h2" color="darkGray" className="h4 mb-4">
           Interview for <em>Lynne Drexler: A Life in Color</em> (2008)
         </Heading>
         <VideoWrapper>
           <Video
-            title="Frances Kornbluth interviewed for Lynne Drexler: A Life in Color"
+            title="Lynne Drexler: A Life in Color"
             src="https://www.youtube.com/embed/b3_CUm39dIM?start=1460"
           />
         </VideoWrapper>
         <Paragraph className="mt-2">
           Kornbluth appears at{' '}
-          <ExternalLink href="https://www.youtube.com/embed/b3_CUm39dIM?start=877">
+          <ExternalLink href="https://youtu.be/b3_CUm39dIM?si=IZuAbhMke07RJhHO&t=877">
             14:37
           </ExternalLink>
           ,{' '}
