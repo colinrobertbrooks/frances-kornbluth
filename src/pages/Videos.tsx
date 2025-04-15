@@ -18,7 +18,6 @@ export const Videos = () => (
     <Row>
       <Col xl={8}>
         <H1>Videos</H1>
-
         <Heading as="h2" color="darkGray" className="h4 mb-4">
           Interview for <em>The Women Artists of Monhegan Island</em> (2012)
         </Heading>
