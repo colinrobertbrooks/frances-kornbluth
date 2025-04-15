@@ -54,6 +54,19 @@ export const Videos = () => (
           .
         </Paragraph>
         <Divider />
+        <Heading as="h2" color="darkGray" className="h4 mb-4">
+          <em>Frances Kornbluth</em> (2005)
+        </Heading>
+        <VideoWrapper>
+          <Video
+            title="Frances Kornbluth (2005)"
+            src="https://www.youtube.com/embed/YaO5tviJp8Y"
+          />
+        </VideoWrapper>
+        <Paragraph className="mt-2">
+          A documentary commemorating Kornbluth's 85th birthday.
+        </Paragraph>
+        <Divider />
         <Paragraph className="mt-4 text-center">
           See more artwork on the{' '}
           <Link to={Url.CollectionPage}>collection page</Link>.
