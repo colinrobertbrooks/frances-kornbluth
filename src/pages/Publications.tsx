@@ -149,9 +149,12 @@ const PublicationImage = ({
 
 const PublicationImageLink = styled(ExternalLink)`
   display: inline-block;
+  width: 100%;
 
   &:hover {
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    img {
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    }
   }
 `;
 
