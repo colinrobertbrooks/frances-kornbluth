@@ -5,17 +5,13 @@ import { Page, H1, H2, Heading, Paragraph, Small, Divider } from './shared';
 export const Exhibitions = () => (
   <Page
     title="Exhibitions"
-    description="Upcoming and past exhibitions of artwork by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    description="Upcoming, current and past exhibitions of artwork by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
   >
     <H1>Exhibitions</H1>
+    {/*
     <H2 className="mb-4">Current</H2>
-    <Exhibition
-      title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
-      dates="December 12, 2024 - June 1, 2025"
-      location="Bowdoin College Museum of Art (Brunswick, ME)"
-      link="https://www.bowdoin.edu/art-museum/exhibitions/2024/monhegan-wildlands.html"
-    />
     <Divider />
+    */}
     <H2 className="mb-4">Upcoming</H2>
     <Exhibition
       title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
@@ -26,6 +22,12 @@ export const Exhibitions = () => (
     {/* <Paragraph>No upcoming exhibitions.</Paragraph> */}
     <Divider />
     <H2 className="mb-4">Past</H2>
+    <Exhibition
+      title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
+      dates="December 12, 2024 - June 1, 2025"
+      location="Bowdoin College Museum of Art (Brunswick, ME)"
+      link="https://www.bowdoin.edu/art-museum/exhibitions/2024/monhegan-wildlands.html"
+    />
     <Exhibition
       title="Nocturne"
       dates="September 12 – October 20, 2024"
