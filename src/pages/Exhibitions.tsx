@@ -26,7 +26,6 @@ export const Exhibitions = () => (
       title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
       dates="December 12, 2024 - June 1, 2025"
       location="Bowdoin College Museum of Art (Brunswick, ME)"
-      link="https://www.bowdoin.edu/art-museum/exhibitions/2024/monhegan-wildlands.html"
     />
     <Exhibition
       title="Nocturne"
