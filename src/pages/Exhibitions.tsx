@@ -15,7 +15,7 @@ export const Exhibitions = () => (
     <H2 className="mb-4">Upcoming</H2>
     <Exhibition
       title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
-      dates="July 1, 2025 – September 30, 2025"
+      dates="July 1 – September 30, 2025"
       location="Monhegan Museum of Art & History (Monhegan, ME)"
       link="https://monheganmuseum.org/upcoming-exhibition-wildlands"
     />

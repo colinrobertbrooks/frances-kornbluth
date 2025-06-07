@@ -6,10 +6,10 @@ const GlobalBanner = () => (
   <Element>
     <UnstyledLink className="text-center" to={Url.ExhibitionsPage}>
       <span>
-        See <em>The Monhegan Wildlands</em> at the Bowdoin College Museum of Art
+        See <em>The Monhegan Wildlands</em> at the Monhegan Museum
       </span>
       <span className="small d-none d-md-block">
-        December 12, 2024 - June 1, 2025
+        July 1 – September 30, 2025
       </span>
     </UnstyledLink>
   </Element>
