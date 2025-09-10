@@ -6,7 +6,7 @@ const GlobalBanner = () => (
   <Element>
     <UnstyledLink className="text-center" to={Url.ExhibitionsPage}>
       <span>
-        See <em>Frances Kornbluth: Paintings of the 1950s</em> at the J. Kenneth
+        See <em>Frances Kornbluth: Paintings of the 1950s</em> at J. Kenneth
         Fine Art
       </span>
       <span className="small d-none d-md-block">
