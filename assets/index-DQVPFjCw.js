@@ -1205,7 +1205,7 @@ m130 -178 c-5 -7 4 -9 26 -6 49 5 111 -11 126 -33 8 -11 20 -20 28 -20 7 0 27
   cursor: pointer;
   display: inline-block;
   margin: 0 ${ht(8)};
-`,rI=()=>h.jsx(oI,{children:h.jsxs(cO,{className:"text-center",to:Re.ExhibitionsPage,children:[h.jsxs("span",{children:["See ",h.jsx("em",{children:"Frances Kornbluth: Paintings of the 1950s"})," at the J. Kenneth Fine Art"]}),h.jsx("span",{className:"small d-none d-md-block",children:"September 8 – December 31, 2025"})]})}),oI=ee.aside`
+`,rI=()=>h.jsx(oI,{children:h.jsxs(cO,{className:"text-center",to:Re.ExhibitionsPage,children:[h.jsxs("span",{children:["See ",h.jsx("em",{children:"Frances Kornbluth: Paintings of the 1950s"})," at J. Kenneth Fine Art"]}),h.jsx("span",{className:"small d-none d-md-block",children:"September 8 – December 31, 2025"})]})}),oI=ee.aside`
   align-items: center;
   background: ${W.lightRed};
   display: flex;
