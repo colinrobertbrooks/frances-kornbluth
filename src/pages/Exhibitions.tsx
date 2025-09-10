@@ -10,6 +10,12 @@ export const Exhibitions = () => (
     <H1>Exhibitions</H1>
     <H2 className="mb-4">Current</H2>
     <Exhibition
+      title="Frances Kornbluth: Paintings of the 1950s"
+      dates="September 8 – December 31, 2025"
+      location="J. Kenneth Fine Art (Shelburne, VT)"
+      link="https://www.jkennethfineart.com/current-exhibitions"
+    />
+    <Exhibition
       title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
       dates="July 1 – September 30, 2025"
       location="Monhegan Museum of Art & History (Monhegan, ME)"

@@ -6,10 +6,11 @@ const GlobalBanner = () => (
   <Element>
     <UnstyledLink className="text-center" to={Url.ExhibitionsPage}>
       <span>
-        See <em>The Monhegan Wildlands</em> at the Monhegan Museum
+        See <em>Frances Kornbluth: Paintings of the 1950s</em> at the J. Kenneth
+        Fine Art
       </span>
       <span className="small d-none d-md-block">
-        July 1 – September 30, 2025
+        September 8 – December 31, 2025
       </span>
     </UnstyledLink>
   </Element>
