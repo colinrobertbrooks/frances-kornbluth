@@ -1,4 +1,3 @@
-import React from 'react';
 import { ExternalLink, Link, Url } from '../router';
 import { Page, H1, H2, Heading, Paragraph, Small, Divider } from './shared';
 
@@ -15,12 +14,6 @@ export const Exhibitions = () => (
       location="J. Kenneth Fine Art (Shelburne, VT)"
       link="https://www.jkennethfineart.com/current-exhibitions"
     />
-    <Exhibition
-      title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
-      dates="July 1 – September 30, 2025"
-      location="Monhegan Museum of Art & History (Monhegan, ME)"
-      link="https://monheganmuseum.org/upcoming-exhibition-wildlands"
-    />
     <Divider />
     {/*
     <H2 className="mb-4">Upcoming</H2>
@@ -30,8 +23,17 @@ export const Exhibitions = () => (
     <H2 className="mb-4">Past</H2>
     <Exhibition
       title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
+      dates="July 1 – September 30, 2025"
+      location="Monhegan Museum of Art & History (Monhegan, ME)"
+      link="https://www.pressherald.com/2025/08/29/see-the-landscape-of-monhegan-island-through-the-eyes-of-artists/"
+      linkText="Review by Megan Gray"
+    />
+    <Exhibition
+      title="Art, Ecology, and the Resilience of a Maine Island: The Monhegan Wildlands"
       dates="December 12, 2024 - June 1, 2025"
       location="Bowdoin College Museum of Art (Brunswick, ME)"
+      link="https://www.bowdoin.edu/news/2025/04/moved-to-preserve.html"
+      linkText="Review by Jessica Skwire Routhier"
     />
     <Exhibition
       title="Nocturne"
@@ -42,13 +44,8 @@ export const Exhibitions = () => (
       title="A Common Bond: Women Artists of Monhegan Island"
       dates="July 1 – September 30, 2024"
       location="Monhegan Museum of Art & History (Monhegan, ME)"
-      children={
-        <Paragraph>
-          <ExternalLink href="https://www.islandinstitute.org/working-waterfront/righting-a-wrong-monhegans-women-artists-get-their-due/">
-            Review by Carl Little
-          </ExternalLink>
-        </Paragraph>
-      }
+      link="https://www.islandinstitute.org/working-waterfront/righting-a-wrong-monhegans-women-artists-get-their-due/"
+      linkText="Review by Carl Little"
     />
     <Exhibition
       title="Generations: The Legacy of Mentors"
@@ -68,13 +65,13 @@ const Exhibition = ({
   dates,
   location,
   link,
-  children,
+  linkText,
 }: {
   title: string;
   dates: string;
   location: string;
   link?: string;
-  children?: React.ReactNode;
+  linkText?: string;
 }) => (
   <div className="mb-4">
     <Heading as="h3" color="darkGray" className="h4 mb-1">
@@ -85,9 +82,10 @@ const Exhibition = ({
     </Paragraph>
     {link && (
       <Paragraph>
-        <ExternalLink href={link}>More Information</ExternalLink>
+        <ExternalLink href={link}>
+          {linkText ?? 'More Information'}
+        </ExternalLink>
       </Paragraph>
     )}
-    {children}
   </div>
 );
