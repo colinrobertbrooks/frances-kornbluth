@@ -26,20 +26,22 @@ type SelectProps = Omit<
 
 export const Select = ({
   id,
-  isSearchable = true,
   isClearable = true,
+  isMulti = false,
+  isSearchable = true,
   openMenuOnFocus = false,
   tabSelectsValue = false,
-  isMulti = false,
+  menuPlacement = 'auto',
   ...restProps
 }: SelectProps) => (
   <Element
+    isClearable={isClearable}
+    isMulti={isMulti}
     isSearchable={isSearchable}
     openMenuOnFocus={openMenuOnFocus}
     tabSelectsValue={tabSelectsValue}
-    isMulti={isMulti}
+    menuPlacement={menuPlacement}
     {...restProps}
-    isClearable={isClearable}
     inputId={id}
   />
 );
