@@ -6,12 +6,9 @@ const GlobalBanner = () => (
   <Element>
     <UnstyledLink className="text-center" to={Url.ExhibitionsPage}>
       <span>
-        See <em>Frances Kornbluth: Paintings of the 1950s</em> at J. Kenneth
-        Fine Art
+        See <em>Exhibition</em> at venue
       </span>
-      <span className="small d-none d-md-block">
-        September 8 – December 31, 2025
-      </span>
+      <span className="small d-none d-md-block">Dates</span>
     </UnstyledLink>
   </Element>
 );
