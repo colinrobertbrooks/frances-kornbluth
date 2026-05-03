@@ -19,6 +19,17 @@ export const Videos = () => (
       <Col xl={8}>
         <H1>Videos</H1>
         <Heading as="h2" color="darkGray" className="h4 mb-4">
+          <em>AbEx Voices: Women of Abstract Expressionism</em> at J. Kenneth
+          Fine Art (2026)
+        </Heading>
+        <VideoWrapper>
+          <Video
+            title="AbEx Voices: Women of Abstract Expressionism"
+            src="https://www.youtube.com/embed/RUHhfvGtd1Y?start=179"
+          />
+        </VideoWrapper>
+        <Divider />
+        <Heading as="h2" color="darkGray" className="h4 mb-4">
           Interview for <em>The Women Artists of Monhegan Island</em> (2012)
         </Heading>
         <VideoWrapper>

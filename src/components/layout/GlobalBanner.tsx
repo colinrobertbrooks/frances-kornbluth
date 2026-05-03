@@ -6,9 +6,10 @@ const GlobalBanner = () => (
   <Element>
     <UnstyledLink className="text-center" to={Url.ExhibitionsPage}>
       <span>
-        See <em>Exhibition</em> at venue
+        See <em>AbEx Voices: Women of Abstract Expressionism</em> at J. Kenneth
+        Fine Art
       </span>
-      <span className="small d-none d-md-block">Dates</span>
+      <span className="small d-none d-md-block">May 1 - July 1, 2026</span>
     </UnstyledLink>
   </Element>
 );
