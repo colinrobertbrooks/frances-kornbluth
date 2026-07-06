@@ -12,10 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import {
-  SITE_HAS_GLOBAL_BANNER,
-  SITE_HAS_CURRENT_OR_UPCOMING_EXHIBITIONS,
-} from '../../consts';
+import { SITE_HAS_GLOBAL_BANNER } from '../../consts';
 import { usePrevious } from '../../hooks';
 import {
   Link,
@@ -113,11 +110,9 @@ export const Header = () => {
                 <DropdownItemNavLink to={Url.CollectionPage}>
                   Collection
                 </DropdownItemNavLink>
-                {SITE_HAS_CURRENT_OR_UPCOMING_EXHIBITIONS && (
-                  <DropdownItemNavLink to={Url.ExhibitionsPage}>
-                    Exhibitions
-                  </DropdownItemNavLink>
-                )}
+                <DropdownItemNavLink to={Url.ExhibitionsPage}>
+                  Exhibitions
+                </DropdownItemNavLink>
                 <DropdownItemNavLink to={Url.PublicationsPage}>
                   Publications
                 </DropdownItemNavLink>
@@ -232,7 +227,7 @@ const Element = styled.header`
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='${rgba(
       colors.gray,
-      1
+      1,
     )}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
 `;
