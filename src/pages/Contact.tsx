@@ -1,6 +1,6 @@
 import { EMAIL_ADDRESS } from 'consts';
 import { ExternalLink, ExternalUrl, Link, Url } from 'router';
-import { media, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX } from 'styles';
+import { media, colors, HEADER_HEIGHT_PX, MAIN_PADDING_TOP_PX } from 'styles';
 import {
   styled,
   Page,
@@ -11,6 +11,7 @@ import {
   Divider,
   Paragraph,
   Button,
+  Small,
 } from './shared';
 
 export const Contact = () => (
@@ -51,6 +52,14 @@ export const Contact = () => (
           <Link to={Url.CopyrightPage}>copyright page</Link> for more
           information.
         </Paragraph>
+        <Divider />
+        <CreditLine>
+          Site by{' '}
+          <ExternalLink href={ExternalUrl.ColinBrooks}>
+            Colin Brooks
+          </ExternalLink>
+          .
+        </CreditLine>
       </Col>
       <Col md={3} />
     </Row>
@@ -63,6 +72,12 @@ const StickyCol = styled(Col)`
     top: ${HEADER_HEIGHT_PX + MAIN_PADDING_TOP_PX + 14}px;
     z-index: 999;
   `}
+`;
+
+const CreditLine = styled(Small).attrs({ color: 'gray' })`
+  a {
+    color: ${colors.gray};
+  }
 `;
 
 const ContactUsButton = styled(Button).attrs({

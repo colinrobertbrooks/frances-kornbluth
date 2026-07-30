@@ -37,6 +37,7 @@ export enum ExternalUrl {
   Facebook = 'https://www.facebook.com/franceskornbluth',
   Instagram = 'https://www.instagram.com/franceskornbluth',
   JKenneth = 'https://www.jkennethfineart.com/frances-kornbluth',
+  ColinBrooks = 'https://colinrobertbrooks.github.io/',
 }
 
 export const artistUrls = [
@@ -87,7 +88,7 @@ export const RouteAdapter: React.FunctionComponent<{
         navigate(location, { replace: false, state: location.state });
       },
     }),
-    [navigate]
+    [navigate],
   );
   if (!children) return null;
   return children({ history: adaptedHistory, location: routerLocation });
