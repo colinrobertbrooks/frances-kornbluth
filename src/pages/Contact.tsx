@@ -58,7 +58,6 @@ export const Contact = () => (
           <ExternalLink href={ExternalUrl.ColinBrooks}>
             Colin Brooks
           </ExternalLink>
-          .
         </CreditLine>
       </Col>
       <Col md={3} />
