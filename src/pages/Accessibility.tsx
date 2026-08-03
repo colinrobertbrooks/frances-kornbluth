@@ -8,8 +8,8 @@ export const Accessibility = () => (
   >
     <H1>Accessibility</H1>
     <Paragraph>
-      We are committed to making the information on our website accessible to
-      all visitors, including people with disabilities. If you encounter content
+      We are committed to making the information on this site accessible to all
+      visitors, including people with disabilities. If you encounter content
       that you are unable to access due to a{' '}
       <ExternalLink href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">
         web accessibility issue

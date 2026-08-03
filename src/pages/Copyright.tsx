@@ -5,7 +5,7 @@ export const Copyright = () => (
   <Page title="Copyright">
     <H1>Copyright</H1>
     <Paragraph>
-      All photos on this website are copyrighted material and all rights are
+      All artworks on this site are copyrighted material and all rights are
       reserved. The content of this site is for personal and/or educational use
       only. Neither text nor images may be reproduced in any form without
       permission. You may download content solely for personal, non-commercial
