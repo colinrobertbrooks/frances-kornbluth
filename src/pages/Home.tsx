@@ -27,10 +27,10 @@ export const Home = () => (
         <Col lg={6} className="text-center mb-5 mb-lg-0">
           <ArtImg src={artistImg} alt="Artist" />
           <ArtCopy>
-            Frances Kornbluth (1920 - 2014) was an Abstract Expressionist
-            painter who spent 57 summers painting on Monhegan Island off the
-            coast of Maine. Her teachers and mentors included Reuben Tam,
-            William Kienbusch and Robert Richenburg.
+            Frances Kornbluth (1920–2014) was an American painter who spent 57
+            summers painting on Monhegan Island off the coast of Maine. Her
+            teachers and mentors included Reuben Tam, William Kienbusch and
+            Robert Richenburg.
           </ArtCopy>
           <Row>
             <Col xl={2} />

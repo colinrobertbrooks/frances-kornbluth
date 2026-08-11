@@ -20,7 +20,7 @@ type PageProps = {
 
 const DEFAULT_TITLE = 'Frances Kornbluth';
 const DEFAULT_DESCRIPTION =
-  'Frances Kornbluth (1920 - 2014) was an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine.';
+  'Frances Kornbluth (1920–2014) was an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine.';
 
 export const Page = ({
   className = 'pt-4',

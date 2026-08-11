@@ -13,7 +13,7 @@ import {
 export const Videos = () => (
   <Page
     title="Videos"
-    description="Videos including Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    description="Videos including Frances Kornbluth (1920–2014), an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
   >
     <Row>
       <Col xl={8}>

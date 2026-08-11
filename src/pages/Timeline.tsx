@@ -35,7 +35,7 @@ import {
 export const Timeline = () => (
   <Page
     title="Timeline"
-    description="Timeline of Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    description="Timeline of Frances Kornbluth (1920–2014), an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
   >
     <Row>
       <Col md={12}>

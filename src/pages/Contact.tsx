@@ -17,7 +17,7 @@ import {
 export const Contact = () => (
   <Page
     title="Contact"
-    description="Artwork for sale, exhibition and reproduction by Frances Kornbluth, an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    description="Artwork for acquisition, exhibition and reproduction by Frances Kornbluth, an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
   >
     <Row>
       <Col md={9}>

@@ -25,15 +25,15 @@ import Modal from './Modal';
 const checkIsOutsideClick = (event: any) => {
   // prevents react select clear indicator triggering slide outside click
   const isReactSelectClearIndicator = event.target.classList.contains(
-    'react-select__clear-indicator'
+    'react-select__clear-indicator',
   );
   const isReactSelectClearIndicatorSvg =
     event.target.parentElement?.classList.contains(
-      'react-select__clear-indicator'
+      'react-select__clear-indicator',
     );
   const isReactSelectClearIndicatorSvgPath =
     event.target.parentElement?.parentElement?.classList.contains(
-      'react-select__clear-indicator'
+      'react-select__clear-indicator',
     );
   return (
     !isReactSelectClearIndicator &&
@@ -73,7 +73,7 @@ export const Collection = () => {
   return (
     <Page
       title="Collection"
-      description="Collection of artwork by Frances Kornbluth (1920 - 2014), an Abstract Expressionist painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+      description="Collection of artwork by Frances Kornbluth (1920–2014), an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
     >
       {(() => {
         if (collectionIsLoading || !collection)
