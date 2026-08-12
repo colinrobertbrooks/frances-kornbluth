@@ -4,7 +4,7 @@ import { Page, H1, Paragraph, Small } from './shared';
 export const Accessibility = () => (
   <Page
     title="Accessibility"
-    description="Accessibility statement for the website of Frances Kornbluth (1920–2014), an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    description="Accessibility statement for the website of Frances Kornbluth (1920–2014), an American painter who spent 57 summers working on Monhegan Island off the coast of Maine."
   >
     <H1>Accessibility</H1>
     <Paragraph>

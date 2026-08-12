@@ -20,7 +20,7 @@ import {
 export const Reviews = () => (
   <Page
     title="Reviews"
-    description="Reviews of artwork by Frances Kornbluth (1920–2014), an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    description="Reviews of artwork by Frances Kornbluth (1920–2014), an American painter who spent 57 summers working on Monhegan Island off the coast of Maine."
   >
     <H1>Reviews</H1>
     <Artwork

@@ -4,7 +4,7 @@ import { Page, H1, H2, Heading, Paragraph, Small, Divider } from './shared';
 export const Exhibitions = () => (
   <Page
     title="Exhibitions"
-    description="Upcoming, current and past exhibitions of artwork by Frances Kornbluth (1920–2014), an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+    description="Upcoming, current and past exhibitions of artwork by Frances Kornbluth (1920–2014), an American painter who spent 57 summers working on Monhegan Island off the coast of Maine."
   >
     <H1>Exhibitions</H1>
     <H2 className="mb-4">Upcoming</H2>

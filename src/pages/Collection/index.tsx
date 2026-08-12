@@ -73,7 +73,7 @@ export const Collection = () => {
   return (
     <Page
       title="Collection"
-      description="Collection of artwork by Frances Kornbluth (1920–2014), an American painter who spent 57 summers painting on Monhegan Island off the coast of Maine."
+      description="Collection of artwork by Frances Kornbluth (1920–2014), an American painter who spent 57 summers working on Monhegan Island off the coast of Maine."
     >
       {(() => {
         if (collectionIsLoading || !collection)
