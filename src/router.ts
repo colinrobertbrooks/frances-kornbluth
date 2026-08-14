@@ -37,7 +37,7 @@ export enum ExternalUrl {
   Facebook = 'https://www.facebook.com/franceskornbluth',
   Instagram = 'https://www.instagram.com/franceskornbluth',
   JKenneth = 'https://www.jkennethfineart.com/frances-kornbluth',
-  ColinBrooks = 'https://colinrobertbrooks.github.io/',
+  ColinBrooks = 'https://www.colinrobertbrooks.com',
 }
 
 export const artistUrls = [
